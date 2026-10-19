@@ -737,7 +737,7 @@ html[lang="ar"] .coach .ex{font-family:var(--f-body);font-size:13.5px}
 .tg button{border:0;background:none;cursor:pointer;color:var(--ink-2);font-size:15px;line-height:1;padding:0 4px}
 .tags input{width:auto!important;min-width:150px;flex:1 1 150px;padding:6px 10px!important;border-radius:999px!important}
 .avs i.pic,.bnode.char i.pic{background-size:cover;background-position:center;color:transparent}
-.askov{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.35);display:grid;place-items:center;padding:16px;animation:fadeIn .15s}.askbx{background:var(--card,#fff);color:inherit;border-radius:14px;max-width:440px;width:100%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.3)}.askbx p{margin:0 0 16px;line-height:1.5}.askrow{display:flex;gap:8px;justify-content:flex-end}.stages small.live{display:block;opacity:.7}
+.askov{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.35);display:grid;place-items:center;padding:16px;animation:fadeIn .15s}.askbx{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;max-width:440px;width:100%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.35)}.askbx p{margin:0 0 16px;line-height:1.5;color:var(--ink)}.askov{background:rgba(0,0,0,.5)}.askrow{display:flex;gap:8px;justify-content:flex-end}.stages small.live{display:block;opacity:.7}
 /* ---- v9 ---- */
 .pv-rule{position:absolute;border-top:1px solid currentColor;height:0}
 .pv-l.u{text-decoration:underline}.pv-l.i{font-style:italic}
@@ -6911,7 +6911,7 @@ function openPromptStudio(scId){var sc0=scId&&S.scenes.filter(function(x){return
     main.append(h('p',{class:'hint',text:'Prompts are written from your script: the scene, its shots, the cast with their looks and identity locks, the place, the light and the treatment. Change those in the project and the prompts follow.'}));
     wrap.append(nav,main);st.append(wrap)})}
 /* ===================== AI status: what is connected and what it is doing ===================== */
-var AIST={state:'',msg:'',busy:0,at:0,label:''};
+var AIST={state:'',msg:'',busy:0,at:0,label:'',note:''};
 function aiTrack(f,label){if(!f||f.__tracked)return f;
   var w=function(p,o){return aiRun1(function(){return f(p,o)})};Object.keys(f).forEach(function(k){w[k]=f[k]});
   if(typeof f.json==='function')w.json=function(p,o){return aiRun1(function(){return f.json(p,o)})};
@@ -6919,7 +6919,7 @@ function aiTrack(f,label){if(!f||f.__tracked)return f;
 function aiRun1(fn){AIST.busy++;aiStatusDraw();
   return Promise.resolve().then(fn).then(function(r){AIST.busy=Math.max(0,AIST.busy-1);AIST.state='ok';AIST.msg='';AIST.at=Date.now();aiStatusDraw();return r},
     function(e){AIST.busy=Math.max(0,AIST.busy-1);if(!(e&&e.code==='cancelled')){AIST.state='err';AIST.msg=(e&&e.message)||sampleErr(e)||'The request failed.'}aiStatusDraw();throw e})}
-function aiStatusText(){var ar=uiAR();if(AIST.busy)return ['busy',ar?'يعمل الآن…':'Working…'];if(AIST.state==='err')return ['err',(ar?'خطأ: ':'Error: ')+AIST.msg];
+function aiStatusText(){var ar=uiAR();if(AIST.busy)return ['busy',AIST.note||(ar?'يعمل الآن…':'Working…')];if(AIST.state==='err')return ['err',(ar?'خطأ: ':'Error: ')+AIST.msg];
   if(AIST.state==='ok')return ['ok',(ar?'متصل · آخر رد ':'Connected · last answer ')+when(AIST.at)];return caps.sample?['idle',ar?'جاهز، لم يُستخدم بعد':'Set up, not used yet']:['off',ar?'غير متصل':'Not connected']}
 function aiStatusDraw(){
   var b=document.getElementById('btnAI');
@@ -7115,11 +7115,11 @@ function initPublic(){
 var AIP=[
   {k:'anthropic',cost:'paid',keyUrl:'https://console.anthropic.com/settings/keys',tag:'Best writing',l:'Claude (Anthropic)',fmt:'anthropic',url:'https://api.anthropic.com/v1/messages',model:'claude-sonnet-5-5',key:true,vision:true,direct:true,hint:'Get a key at console.anthropic.com.'},
   {k:'openai',cost:'paid',keyUrl:'https://platform.openai.com/api-keys',tag:'Strong all-rounder',l:'ChatGPT (OpenAI)',fmt:'openai',url:'https://api.openai.com/v1/chat/completions',model:'gpt-4.1',key:true,vision:true,direct:true,hint:'Get a key at platform.openai.com.'},
-  {k:'gemini',cost:'free',keyUrl:'https://aistudio.google.com/apikey',tag:'Recommended · free, reads photos',l:'Gemini (Google)',fmt:'openai',url:'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',model:'gemini-flash-latest',key:true,vision:true,direct:true,hint:'Free plan: get a key at aistudio.google.com, no card needed. Daily limits are low and Google may use free-plan text to improve its products.'},
+  {k:'gemini',cost:'free',keyUrl:'https://aistudio.google.com/apikey',tag:'Recommended · free, reads photos',l:'Gemini (Google)',fmt:'openai',url:'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',model:'gemini-2.5-flash',models:['gemini-2.5-flash','gemini-2.5-flash-lite','gemini-2.5-pro'],key:true,vision:true,direct:true,hint:'Free plan: get a key at aistudio.google.com, no card needed. Google sets the limits per project and changes them often. If a model says it has no free quota, type gemini-2.5-flash-lite in the Model box. Google may use free-plan text to improve its products.'},
   {k:'deepseek',cost:'paid',keyUrl:'https://platform.deepseek.com/api_keys',tag:'Very low prices',l:'DeepSeek',fmt:'openai',url:'https://api.deepseek.com/chat/completions',model:'deepseek-chat',key:true,vision:false,direct:false,hint:'Get a key at platform.deepseek.com. Runs through the site’s relay.'},
-  {k:'mistral',cost:'free',keyUrl:'https://console.mistral.ai/api-keys',tag:'Free plan, phone number needed',l:'Mistral',fmt:'openai',url:'https://api.mistral.ai/v1/chat/completions',model:'mistral-large-latest',key:true,vision:false,direct:false,hint:'Free Experiment plan: get a key at console.mistral.ai with a phone number, no card needed. Mistral may use free-plan requests for training. Runs through the site’s relay.'},
-  {k:'groq',cost:'free',keyUrl:'https://console.groq.com/keys',tag:'Free plan, very fast',l:'Groq',fmt:'openai',url:'https://api.groq.com/openai/v1/chat/completions',model:'openai/gpt-oss-120b',key:true,vision:false,direct:false,hint:'Free plan: get a key at console.groq.com, no card needed. Fast, with daily limits. Runs through the site’s relay.'},
-  {k:'openrouter',cost:'free',keyUrl:'https://openrouter.ai/settings/keys',tag:'Free models, about 50 a day',l:'OpenRouter (hundreds of models)',fmt:'openai',url:'https://openrouter.ai/api/v1/chat/completions',model:'anthropic/claude-sonnet-5.5',key:true,vision:true,direct:true,hint:'Get a key at openrouter.ai. For free use, type a model whose name ends in :free (about 50 requests a day). Paid models need credit.'},
+  {k:'mistral',cost:'paid',keyUrl:'https://console.mistral.ai/api-keys',tag:'Has a free plan, but needs setup',l:'Mistral',fmt:'openai',url:'https://api.mistral.ai/v1/chat/completions',model:'mistral-small-latest',models:['mistral-small-latest','mistral-medium-latest','mistral-large-latest'],key:true,vision:false,direct:false,hint:'Mistral offers a free “Experiment” plan, but you have to switch it on in console.mistral.ai (Billing) and verify a phone number, and Mistral may train on your requests. If it asks for a card, treat Mistral as paid. Runs through the site’s relay.'},
+  {k:'groq',cost:'free',keyUrl:'https://console.groq.com/keys',tag:'Free and very fast, small limits',l:'Groq',fmt:'openai',url:'https://api.groq.com/openai/v1/chat/completions',model:'llama-3.3-70b-versatile',models:['llama-3.3-70b-versatile','openai/gpt-oss-120b','llama-3.1-8b-instant'],key:true,vision:false,direct:false,hint:'Free plan: get a key at console.groq.com, no card needed. Fast, but the free plan allows only about 6,000 to 12,000 tokens a minute, so Script Room spaces its requests out and long scripts may not fit. For full scripts, Gemini or a local model is better. Runs through the site’s relay.'},
+  {k:'openrouter',cost:'free',keyUrl:'https://openrouter.ai/settings/keys',tag:'Free models, about 50 a day',l:'OpenRouter (hundreds of models)',fmt:'openai',url:'https://openrouter.ai/api/v1/chat/completions',model:'',key:true,vision:true,direct:true,hint:'Get a key at openrouter.ai. Leave the Model box empty and Script Room picks a free model for you (names ending in :free; about 50 requests a day, more if you ever add credit). Free models can be slow or busy, and some log prompts. Any other model costs money and needs credit.'},
   {k:'ollama',cost:'local',keyUrl:'https://ollama.com/download',tag:'Needs the free Ollama app',l:'Ollama (on this computer)',fmt:'openai',url:'http://localhost:11434/v1/chat/completions',model:'llama3.1',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from ollama.com, then pull a model (e.g. ollama pull llama3.1).'},
   {k:'lmstudio',cost:'local',keyUrl:'https://lmstudio.ai/download',tag:'Needs the free LM Studio app',l:'LM Studio (on this computer)',fmt:'openai',url:'http://localhost:1234/v1/chat/completions',model:'local-model',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from lmstudio.ai, load a model, start the server and enable CORS.'},
   {k:'custom',cost:'other',keyUrl:'',tag:'Your own server',l:'Other (OpenAI-compatible)',fmt:'openai',url:'',model:'',key:true,vision:false,direct:true,hint:'Any server that speaks the OpenAI chat format: vLLM, llama.cpp, Jan, LocalAI, a company gateway.'}];
@@ -7135,11 +7135,80 @@ function toParts(prompt,images,fmt){
   return Promise.all(images.map(function(b){return new Promise(function(res){var r=new FileReader();r.onload=function(){res({type:b.type||'image/jpeg',url:String(r.result)})};r.readAsDataURL(b)})})).then(function(arr){
     var parts=fmt==='anthropic'?arr.map(function(x){return {type:'image',source:{type:'base64',media_type:x.type,data:x.url.split(',')[1]}}}):arr.map(function(x){return {type:'image_url',image_url:{url:x.url}}});
     parts.push({type:'text',text:txt});return [{role:'user',content:parts}]})}
+/* ---- limits, retries and friendly errors ---- */
+function modelOf(c,P){c=c||{};P=P||aiProv(c.provider);return c.model||(c.provider==='openrouter'?(window.__orModel||'a free model, picked for you'):P.model)||''}
+function estTok(s){s=String(s||'');var na=0,n=0;for(var i=0;i<s.length;i+=7){n++;if(s.charCodeAt(i)>127)na++}return Math.ceil(s.length/((na/Math.max(1,n))>0.3?1.6:3.3))}
+function estTokOf(msgs){var t=0;(msgs||[]).forEach(function(m){if(typeof m.content==='string')t+=estTok(m.content);else(m.content||[]).forEach(function(x){if(x.text)t+=estTok(x.text);else t+=800})});return t+20}
+function tpmOf(P,model){if(!P||P.k!=='groq')return 0;model=String(model||'').toLowerCase();if(/llama-3\.3-70b/.test(model))return 12000;if(/gpt-oss/.test(model))return 8000;return 6000}
+var TPML={};
+function sleepAbort(ms,signal){return new Promise(function(res,rej){if(signal&&signal.aborted)return rej({code:'cancelled'});var t=setTimeout(function(){res()},ms);if(signal)signal.addEventListener('abort',function(){clearTimeout(t);rej({code:'cancelled'})},{once:true})})}
+async function tpmGate(k,limit,need,signal,nm){var t0=Date.now(),told=false;
+  for(;;){var now=Date.now(),L=TPML[k]=(TPML[k]||[]).filter(function(x){return now-x[0]<60000});
+    var used=L.reduce(function(a,x){return a+x[1]},0);
+    if(used+need<=limit){var e=[now,need];L.push(e);AIST.note='';aiStatusDraw();return e}
+    var freed=0,w=60000;for(var i=0;i<L.length;i++){freed+=L[i][1];if(used-freed+need<=limit){w=L[i][0]+60000-now;break}}
+    w=Math.max(800,Math.min(w+300,60000));
+    if(now-t0+w>100000){AIST.note='';throw {code:'rate_limited',message:nm+'’s free plan allows only about '+limit.toLocaleString()+' tokens a minute, and this step needs more than is left right now. Wait a minute and try again, or pick Gemini or a local model for long steps.'}}
+    AIST.note=nm+'’s free plan limits tokens per minute. Waiting '+Math.ceil(w/1000)+' s, then continuing…';aiStatusDraw();
+    if(!told){told=true;try{toast(nm+' has a small free limit per minute. Script Room is waiting for it, then continues by itself.')}catch(e){}}
+    await sleepAbort(w,signal)}}
+var orInfo=null;
+async function openRouterInfo(){if(orInfo)return orInfo;var r=await fetch('https://openrouter.ai/api/v1/models');var j=await r.json();
+  orInfo=(j.data||[]).filter(function(m){return /:free$/.test(m.id)}).map(function(m){var a=m.architecture||{},om=a.output_modalities||[];return {id:m.id,ctx:m.context_length||0,text:!om.length||om.indexOf('text')>=0}}).filter(function(m){return m.text});return orInfo}
+async function openRouterFree(){return (await openRouterInfo()).map(function(m){return m.id}).sort()}
+function orRank(m){var s=0;if(/gpt-oss|llama-3\.3|llama-4|qwen3|deepseek|nemotron|gemma|mistral|glm|kimi|minimax/i.test(m.id))s+=2;if(m.ctx>=65000)s+=1;if(/embed|guard|moderation|audio|tts|image/i.test(m.id))s-=9;return s}
+async function orAutoModel(skip){skip=skip||[];var list=[];try{list=(await openRouterInfo()).filter(function(m){return m.ctx>=32000&&skip.indexOf(m.id)<0}).sort(function(a,b){return orRank(b)-orRank(a)||b.ctx-a.ctx})}catch(e){}
+  var id=list.length?list[0].id:['nvidia/nemotron-3.5-super-vl:free','xingchen-agi/xing4.0-29b-a4b:free'].filter(function(x){return skip.indexOf(x)<0})[0];
+  if(!id)throw {code:'unavailable',message:'OpenRouter has no free model that answered right now. Try again later, or pick another provider.'};
+  window.__orModel=id;try{renderAIBadge()}catch(e){}return id}
+function aiNice(P,c,model,st,tx){var nm=P.l.split(' (')[0],k=P.k,t=String(tx||''),daily=/per day|\bTPD\b|\bRPD\b|daily|requests per day/i.test(t);
+  if(k==='gemini'&&/denied access|has been suspended|PERMISSION_DENIED/i.test(t))return 'Google has blocked this key’s project, so the key works but Google refuses it. Open aistudio.google.com: if the project says Unavailable, verify your Google account (phone number and date of birth), make a new key in a new project, or use another provider such as Groq or OpenRouter (also free).';
+  if(st===401||/invalid.*(api.?key|authorization)|incorrect api key|API_KEY_INVALID/i.test(t))return k==='mistral'?'Mistral did not accept the key. Check that the free “Experiment” plan is switched on in console.mistral.ai (Billing) and your phone number is verified, then copy the key again.':'The key was not accepted by '+nm+'. Copy it again from the provider’s site (the whole key, no spaces) and paste it here.';
+  if(k==='openrouter'&&/data policy|guardrail|no endpoints found matching/i.test(t))return 'OpenRouter hides its free models until you allow them. Open openrouter.ai/settings/privacy, turn on the free-model options (free models may log your prompts), then try again.';
+  if(k==='openrouter'&&(st===402||/credit|insufficient|can only afford/i.test(t)))return 'That OpenRouter model costs money and your account has no credit. Clear the Model box (Script Room then picks a free model for you) or press Show free models and pick one ending in :free.';
+  if(st===413||/request too large|reduce your message|too large for model/i.test(t))return k==='groq'?'This step is bigger than Groq’s free plan allows in one minute (about '+(tpmOf(P,model)||6000).toLocaleString()+' tokens for '+model+'). Pick llama-3.3-70b-versatile (the biggest free allowance), use a shorter story, or use Gemini for long steps.':'This request is bigger than '+nm+' accepts at once. Use a shorter story or pick a model with a larger context.';
+  if(st===429){
+    if(k==='gemini')return /limit:\s*0/i.test(t)?'Google gives the model “'+model+'” no free quota for your project. Type gemini-2.5-flash-lite in the Model box, or pick another provider.':daily?'Google’s free daily limit for this model is used up. It resets at midnight Pacific time. Try gemini-2.5-flash-lite in the Model box, or pick another free provider for now.':'Google’s free limit was reached for the moment (limits are per Google project, not per key). Script Room retried; wait a minute and try again, or type gemini-2.5-flash-lite in the Model box.';
+    if(k==='groq')return daily?'Groq’s free daily limit is used up. It resets at midnight UTC. Pick another free provider to keep going.':'Groq’s free plan allows only about '+(tpmOf(P,model)||6000).toLocaleString()+' tokens a minute for '+model+', and one script step uses most of that. Script Room waits and retries by itself; if this keeps happening, pick Gemini for long steps.';
+    if(k==='openrouter')return daily?'OpenRouter’s free models allow about 50 requests a day (more after you add credit). Today’s are used up, so wait until tomorrow or pick another provider.':'That free OpenRouter model is busy or rate-limited right now (free models are shared). Script Room tried again; clear the Model box to let it pick another free one.';
+    if(k==='mistral')return 'Mistral refused this request: its free Experiment plan has low limits and must be switched on in console.mistral.ai (Billing). If it asks for a card, Mistral is not free for you; pick Gemini or Groq.';
+    return nm+' says you have reached a usage limit. Wait a minute, or try again tomorrow if it is a daily free limit.'}
+  if(k==='mistral'&&(st===402||st===403))return 'Mistral refused this request. The free Experiment plan has to be switched on in console.mistral.ai (Billing) with a verified phone number. If Mistral asks for a card, it is not free for you; pick Gemini or Groq instead.';
+  if(st===403)return nm+' refused this key. Check that your account is verified and the key has access to this model.';
+  if(st===404)return k==='gemini'?'Google does not know the model “'+model+'”. Clear the Model box or type gemini-2.5-flash.':nm+' does not know the model “'+model+'”. Clear the Model box to use the default.';
+  if(k==='gemini'&&st===503)return 'Google’s servers are busy right now (a common message on the free plan). Script Room tried again and also tried a lighter model. Wait a minute, or type gemini-2.5-flash-lite in the Model box.';
+  if(st>=500)return nm+' had a problem answering (its server returned an error). Try again; if it keeps happening'+(P.local?', restart '+nm+' or pick a smaller model.':', try later or pick another model.');
+  if(st===402||/insufficient|credit|billing|quota/i.test(t))return nm+' needs credit on your account for this model. Add credit on their site, or pick a free option.';
+  return ''}
+function retryMs(r,tx){var h2=r&&r.headers&&r.headers.get&&r.headers.get('retry-after');if(h2&&!isNaN(+h2))return Math.ceil(+h2*1000);var m=/try again in\s+([\d.]+)\s*(ms|s|m)\b/i.exec(tx||'');if(m){var v=parseFloat(m[1]);return Math.ceil(m[2]==='ms'?v:m[2]==='m'?v*60000:v*1000)}return 0}
 async function aiCall(prompt,opts){
+  opts=opts||{};var c=aiCfg()||{},P=aiProv(c.provider||''),local=!!P.local,ov={},tries=0,rot=[],fell=false,last;
+  var ctx={};
+  for(;;){
+    try{var r=await aiCall1(prompt,Object.assign({},opts,ov,{_ctx:ctx}));AIST.note='';if(ctx.entry)ctx.entry[1]=ctx.estIn+estTok(r&&r.text);return r}
+    catch(e){last=e;if(!e||e.code==='cancelled'||(opts.signal&&opts.signal.aborted))throw e;
+      if(ctx.entry){ctx.entry[1]=0}
+      var st=e.status||0,txt=String(e.body||''),daily=/per day|\bTPD\b|\bRPD\b|daily/i.test(txt);
+      var transient=!local&&(st===429||st>=500||e.code==='unavailable'||e.code==='stream_broken');
+      if(!transient||(st===429&&daily&&c.provider!=='openrouter')||e.code==='prompt_too_large')break;
+      if(c.provider==='openrouter'&&!c.model&&rot.length<3&&(st===429||st===404||st===400||st===402||st>=500)){rot.push(window.__orModel||'');try{ov.model=await orAutoModel(rot);AIST.note='That free model is busy. Trying another one…';aiStatusDraw();continue}catch(x){break}}
+      if(e.code==='stream_broken'&&!ov.nostream){ov.nostream=true;AIST.note='The connection dropped. Trying again…';aiStatusDraw();continue}
+      if(c.provider==='gemini'&&tries>=1&&!fell&&(st===503||st===500||st===404||/limit:\s*0/.test(txt))&&!/flash-lite/.test(modelOf(c,P))){fell=true;ov.model='gemini-2.5-flash-lite';try{toast('Gemini’s main model is busy. Trying the lighter Flash-Lite model.')}catch(x){}continue}
+      if(++tries>3)break;
+      var w=e.retryAfterMs||Math.min(20000,1500*Math.pow(2,tries)+Math.floor(Math.random()*700));if(w>65000)break;
+      AIST.note='Retrying in '+Math.ceil(w/1000)+' s (try '+(tries+1)+' of 4)…';aiStatusDraw();
+      try{await sleepAbort(w,opts.signal)}catch(x){throw x}}}
+  AIST.note='';if(last&&last.message&&last.status&&tries>0&&!/tried/.test(last.message))last.message+=' (Script Room tried '+(tries+1)+' times.)';throw last}
+async function aiCall1(prompt,opts){
   opts=opts||{};var c=aiCfg();if(!c||!c.provider)throw {code:'not_granted',message:'Connect an AI first.'};
-  var P=aiProv(c.provider),fmt=P.fmt,url=c.url||P.url,model=c.model||P.model,key=aiKey(c),stream=!!opts.onText;
+  var P=aiProv(c.provider),fmt=P.fmt,url=c.url||P.url,model=opts.model||c.model||P.model,key=aiKey(c),stream=!!opts.onText&&!opts.nostream,nm=P.l.split(' (')[0];
+  if(c.provider==='openrouter'&&!model)model=window.__orModel||await orAutoModel();
   var msgs=await toParts(prompt,opts.images,fmt);
-  var body=fmt==='anthropic'?{model:model,max_tokens:c.maxTokens||8000,messages:msgs,stream:stream}:{model:model,messages:msgs,stream:stream,max_tokens:c.maxTokens||8000};
+  var outMax=c.maxTokens||8000,estIn=estTokOf(msgs),tpm=tpmOf(P,model);
+  if(opts._ctx)opts._ctx.estIn=estIn;
+  if(tpm){if(estIn>tpm*0.88)throw {code:'prompt_too_large',status:413,message:aiNice(P,c,model,413,'')+' (about '+estIn.toLocaleString()+' tokens needed, '+tpm.toLocaleString()+' allowed a minute)'};
+    outMax=Math.max(700,Math.min(outMax,Math.floor(tpm*0.93)-estIn));var ent=await tpmGate(c.provider+'|'+model,tpm,estIn+outMax,opts.signal,nm);if(opts._ctx)opts._ctx.entry=ent}
+  var body=fmt==='anthropic'?{model:model,max_tokens:outMax,messages:msgs,stream:stream}:{model:model,messages:msgs,stream:stream,max_tokens:outMax};
   var headers={'content-type':'application/json'};
   if(fmt==='anthropic'){headers['x-api-key']=key;headers['anthropic-version']='2023-06-01';headers['anthropic-dangerous-direct-browser-access']='true'}
   else if(key)headers.authorization='Bearer '+key;
@@ -7152,30 +7221,23 @@ async function aiCall(prompt,opts){
     body={model:model,messages:om,stream:stream,options:{num_ctx:ctx}};if(wantJ)body.format='json';
     url=localBase(url).replace(/\/v1$/,'')+'/api/chat'}
   var useRelay=c.route==='relay'||(!c.route&&!P.direct);
-  var tctl=new AbortController(),tmo=false,tlim=P.local?240000:120000,tt=setTimeout(function(){tmo=true;tctl.abort()},tlim);
+  var tctl=new AbortController(),tmo=false,tlim=P.local?240000:(stream?120000:180000),tt=setTimeout(function(){tmo=true;tctl.abort()},tlim);
   if(opts.signal){if(opts.signal.aborted)tctl.abort();else opts.signal.addEventListener('abort',function(){tctl.abort()})}
   var target=useRelay?relayUrl():url,init={method:'POST',headers:headers,body:JSON.stringify(body),signal:tctl.signal};
   if(useRelay){init.headers=Object.assign({},headers,{'x-target':url})}
-  var r;try{r=await fetch(target,init);clearTimeout(tt)}catch(e){clearTimeout(tt);if(tmo)throw {code:'timeout',message:P.l.split(' (')[0]+' did not start answering within '+Math.round(tlim/60000)+' minutes. '+(P.local?'Your computer may be busy loading the model: try again, or pick a smaller model.':'Check your internet connection and try again.')};if(e&&e.name==='AbortError')throw {code:'cancelled'};throw {code:'unavailable',message:P.local?'Could not reach '+P.l.split(' (')[0]+'. The checklist above shows what to fix.':useRelay?'Could not reach the relay. Use Direct, or check the site’s /api/ai function.':'The browser could not reach '+P.l+'. Try the relay route in AI settings.'}}
+  var r;try{r=await fetch(target,init);clearTimeout(tt)}catch(e){clearTimeout(tt);if(tmo)throw {code:'timeout',message:P.l.split(' (')[0]+' did not start answering within '+Math.round(tlim/60000)+' minutes. '+(P.local?'Your computer may be busy loading the model: try again, or pick a smaller model.':'Check your internet connection and try again.')};if(e&&e.name==='AbortError')throw {code:'cancelled'};throw {code:'unavailable',retryable:true,message:P.local?'Could not reach '+P.l.split(' (')[0]+'. The checklist above shows what to fix.':useRelay?'Could not reach the relay. Use Direct, or check the site’s /api/ai function.':'The browser could not reach '+P.l+'. Try the relay route in AI settings.'}}
   if(!r.ok){var tx='';try{tx=await r.text()}catch(e){}var code=r.status===401||r.status===403?'not_granted':r.status===429?'rate_limited':r.status===413?'prompt_too_large':'upstream_error';
-    var nice='';var nm=P.l.split(' (')[0];
-    if(/denied access|has been suspended|PERMISSION_DENIED/i.test(tx)&&c.provider==='gemini')nice='Google has blocked this key’s project, so the key works but Google refuses it. Open aistudio.google.com: if the project says Unavailable, verify your Google account (phone number and date of birth), make a new key in a new project, or use another provider such as Groq or OpenRouter (also free).';
-    else if(r.status===401||/invalid.*(api.?key|authorization)|incorrect api key|API_KEY_INVALID/i.test(tx))nice='The key was not accepted by '+nm+'. Copy it again from the provider’s site (the whole key, no spaces) and paste it here.';
-    else if(r.status===403)nice=nm+' refused this key. Check that your account is verified and the key has access to this model.';
-    else if(r.status===429)nice=nm+' says you have reached a usage limit. Wait a minute, or try again tomorrow if it is a daily free limit.';
-    else if(r.status===404)nice=nm+' does not know this model name. Clear the Model box to use the default.';
-    else if(r.status>=500)nice=nm+' had a problem answering (its server returned an error). Try again; if it keeps happening'+(P.local?', restart '+nm+' or pick a smaller model.':', try later or pick another model.');
-    else if(r.status===402||/insufficient|credit|billing|quota/i.test(tx))nice=nm+' needs credit on your account for this model. Add credit on their site, or pick a free option.';
-    throw {code:code,message:(nice?nice+' ':'')+'('+nm+' answered '+r.status+(tx?': '+tx.replace(/\s+/g,' ').slice(0,160):'')+')'}}
+    var nice=aiNice(P,c,model,r.status,tx);
+    throw {code:code,status:r.status,body:tx,retryAfterMs:retryMs(r,tx),message:(nice?nice+' ':'')+'('+nm+' answered '+r.status+(tx?': '+tx.replace(/\s+/g,' ').slice(0,160):'')+')'}}
   if(native&&!stream){var jn=await r.json();return {text:(jn.message&&jn.message.content)||'',truncated:jn.done_reason==='length'}}
   if(!stream){var j=await r.json();var t=fmt==='anthropic'?(j.content||[]).map(function(x){return x.text||''}).join(''):((j.choices||[])[0]||{}).message?j.choices[0].message.content||'':'';
     var trunc=fmt==='anthropic'?j.stop_reason==='max_tokens':(((j.choices||[])[0]||{}).finish_reason==='length');return {text:t,truncated:trunc}}
   var rd=r.body.getReader(),dec=new TextDecoder(),buf='',out='',trunc2=false;
-  for(;;){var ch=await rd.read();if(ch.done)break;buf+=dec.decode(ch.value,{stream:true});var lines=buf.split('\n');buf=lines.pop();
+  try{for(;;){var ch=await rd.read();if(ch.done)break;buf+=dec.decode(ch.value,{stream:true});var lines=buf.split('\n');buf=lines.pop();
     lines.forEach(function(ln){ln=ln.trim();if(native){if(!ln)return;try{var on=JSON.parse(ln);if(on.message&&on.message.content)out+=on.message.content;if(on.done&&on.done_reason==='length')trunc2=true;if(on.error)throw {code:'upstream_error',message:'Ollama: '+on.error}}catch(e){if(e&&e.code)throw e}return}if(ln.indexOf('data:')!==0)return;var d=ln.slice(5).trim();if(!d||d==='[DONE]')return;try{var o=JSON.parse(d);
       if(fmt==='anthropic'){if(o.type==='content_block_delta'&&o.delta&&o.delta.text)out+=o.delta.text;if(o.type==='message_delta'&&o.delta&&o.delta.stop_reason==='max_tokens')trunc2=true}
       else{var c0=(o.choices||[])[0];if(c0&&c0.delta&&c0.delta.content)out+=c0.delta.content;if(c0&&c0.finish_reason==='length')trunc2=true}}catch(e){}});
-    if(opts.onText)opts.onText({text:out,delta:''})}
+    if(opts.onText)opts.onText({text:out,delta:''})}}catch(e){if(e&&e.code)throw e;if(e&&e.name==='AbortError')throw {code:'cancelled'};throw {code:'stream_broken',retryable:true,partial:out,message:'The connection to '+nm+' dropped while it was answering.'}}
   return {text:out,truncated:trunc2}}
 function aiSampleFn(){
   var c=aiCfg();if(!c||!c.provider)return null;var P=aiProv(c.provider);
@@ -7185,7 +7247,7 @@ function aiSampleFn(){
   f.limits=async function(){return {maxPromptBytes:262144,images:(c.vision!=null?c.vision:P.vision)?{maxCount:4,maxInputBytes:5e6,mediaTypes:['image/jpeg','image/png','image/webp']}:null}};
   return f}
 async function aiApply(){imgApply();var c0=aiCfg();caps.sample=aiTrack(aiSampleFn(),c0&&c0.provider?aiProv(c0.provider).l.split(' (')[0]:'');AIST.state='';AIST.msg='';visionOK=null;renderAll();renderAIBadge()}
-function renderAIBadge(){var b=document.getElementById('btnAI');if(!b)return;var c=aiCfg(),P0=c&&c.provider?aiProv(c.provider):null;var lab=P0?P0.l.split(' (')[0]+' · '+(c.model||P0.model||''):'Connect AI';b.textContent='';b.removeAttribute('data-label');b.append(h('span',{text:lab}));b.classList.toggle('primary',!P0);aiStatusDraw()}
+function renderAIBadge(){var b=document.getElementById('btnAI');if(!b)return;var c=aiCfg(),P0=c&&c.provider?aiProv(c.provider):null;var lab=P0?P0.l.split(' (')[0]+' · '+modelOf(c,P0):'Connect AI';b.textContent='';b.removeAttribute('data-label');b.append(h('span',{text:lab}));b.classList.toggle('primary',!P0);aiStatusDraw()}
 
 function localBase(u){return String(u||'').replace(/\/+$/,'').replace(/\/chat\/completions$/,'').replace(/\/api\/chat$/,'').replace(/\/v1$/,'')+'/v1'}
 async function listLocalModels(u){var r=await fetch(localBase(u)+'/models',{method:'GET'});if(!r.ok)throw new Error('HTTP '+r.status);var j=await r.json();return (j.data||j.models||[]).map(function(m){return m.id||m.name||m.model}).filter(Boolean)}
@@ -7237,8 +7299,7 @@ async function localCheck(u){
   try{await fetch(root,{mode:'no-cors'});out.running=true;out.browser=true;out.allows=false;return out}catch(e){}
   if(out.lna==='denied'){out.browser=false;return out}
   out.running=false;return out}
-var orFree=null;async function openRouterFree(){if(orFree)return orFree;var r=await fetch('https://openrouter.ai/api/v1/models');var j=await r.json();orFree=(j.data||[]).map(function(m){return m.id}).filter(function(id){return /:free$/.test(id)}).sort();return orFree}
-
+var orFree=null;
 /* ===================== image generation (optional) ===================== */
 var IMGP=[{k:'',g:'',l:'None (copy prompts and upload results)'},
   {k:'site',g:'free',l:'This site · Flux Schnell (free)',model:'@cf/black-forest-labs/flux-1-schnell',models:[],noKey:true,hint:'Free, no key: runs on this site’s Cloudflare Workers AI. Everyone using the site shares about 170 free images a day. Good for drafts; no reference images.'},
@@ -7297,12 +7358,12 @@ function imgSettingsBox(){var c=Object.assign({},aiCfg()||{}),ic=Object.assign({
 function openAISettings(){openSheet('AI provider',function(st){
   var c=Object.assign({provider:'',model:'',url:'',key:'',route:'',vision:null,remember:true},aiCfg()||{});if(window.__aiMem&&window.__aiMem.key)c.key=window.__aiMem.key;
   var P=aiProv(c.provider||'gemini');
-  var stt=aiStatusText();if(c.provider)st.append(h('div',{class:'ai-statusline '+stt[0]},h('i',{class:'ai-dot '+stt[0]}),h('b',{text:aiProv(c.provider).l.split(' (')[0]+' · '+(c.model||aiProv(c.provider).model||'')}),h('span',{text:stt[1]})));
+  var stt=aiStatusText();if(c.provider)st.append(h('div',{class:'ai-statusline '+stt[0]},h('i',{class:'ai-dot '+stt[0]}),h('b',{text:aiProv(c.provider).l.split(' (')[0]+' · '+modelOf(c,aiProv(c.provider))}),h('span',{text:stt[1]})));
   st.append(h('div',{class:'studio'},h('h3',{text:'Use any AI you like'}),h('p',{class:'info',text:'Script Room works with Claude, ChatGPT, Gemini, DeepSeek, Mistral, Groq, OpenRouter, or a model running on your own computer with Ollama or LM Studio. Your key stays in this browser and goes only to the provider you pick (or through this site’s relay, which passes it on and stores nothing).'})));
   var sel=h('select',{id:'ai-prov'});COSTS.forEach(function(g){var og=h('optgroup',{label:g[1]});AIP.filter(function(p){return p.cost===g[0]}).forEach(function(p){og.append(h('option',{value:p.k,text:p.l+' · '+p.tag}))});sel.append(og)});sel.value=P.k;
   var picker=h('div',{class:'ai-pick'});COSTS.slice(0,3).forEach(function(g){var col=h('div',{class:'ai-grp'},h('p',{class:'ai-gh'},h('b',{text:g[1]}),h('span',{text:g[2]})));AIP.filter(function(p){return p.cost===g[0]}).forEach(function(p){var bt=h('button',{type:'button',class:'ai-card'+(p.k==='gemini'?' rec':''),'data-k':p.k,onclick:function(){sel.value=p.k;sel.dispatchEvent(new Event('change'))}},h('b',{text:p.l.split(' (')[0]}),h('small',{text:p.tag}));col.append(bt)});picker.append(col)});
   function markPick(){picker.querySelectorAll('.ai-card').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-k')===sel.value?'true':'false')})}
-  var model=h('input',{type:'text',id:'ai-model',placeholder:P.model||'model name'});model.value=c.provider===P.k?(c.model||''):'';
+  var model=h('input',{type:'text',id:'ai-model',placeholder:P.k==='openrouter'?'Leave empty: a free model is picked for you':(P.model||'model name'),list:'ai-models'});var dlm=h('datalist',{id:'ai-models'});function fillDL(q){dlm.textContent='';(q.models||[]).forEach(function(x){dlm.append(h('option',{value:x}))})}fillDL(P);st.append(dlm);model.value=c.provider===P.k?(c.model||''):'';
   var url=h('input',{type:'text',id:'ai-url',placeholder:P.url||'https://your-server/v1/chat/completions'});url.value=c.provider===P.k?(c.url||''):'';
   var key=h('input',{type:'password',id:'ai-key',placeholder:P.key?'Paste your API key':'Not needed for local models',autocomplete:'off'});key.value=c.provider===P.k?(c.key||''):'';
   var rem=h('input',{type:'checkbox',id:'ai-rem'});rem.checked=c.remember!==false;
@@ -7343,7 +7404,7 @@ function openAISettings(){openSheet('AI provider',function(st){
   function updLocal(){var q=aiProv(sel.value),loc=!!q.local;markPick();localBox.style.display=loc?'':'none';keyField.style.display=loc?'none':'';remLbl.style.display=loc?'none':'';orBox.style.display=q.k==='openrouter'?'':'none';
     keyLink.style.display=q.key&&q.keyUrl?'':'none';if(q.keyUrl){keyLink.href=q.keyUrl;keyLink.textContent=(q.cost==='free'?'Get a free key':'Get a key')+' at '+q.keyUrl.replace(/^https:\/\//,'').split('/')[0]+' ↗'}
     if(loc){dl.textContent='Download '+q.l.split(' (')[0]+' ↗';dl.href=q.keyUrl;var b2=setup.querySelector('.dtb');b2.textContent='';b2.append(localSetup(q.k));setup.querySelector('summary').textContent='How to let '+(q.k==='ollama'?'Ollama':'LM Studio')+' talk to this site';findModels(true)}}
-  sel.addEventListener('change',function(){var q=aiProv(sel.value);model.placeholder=q.model||'model name';url.placeholder=q.url||'https://your-server/v1/chat/completions';key.placeholder=q.key?'Paste your API key':'Not needed for local models';hint.textContent=q.hint;vis.checked=!!q.vision;model.value='';url.value='';updLocal()});
+  sel.addEventListener('change',function(){var q=aiProv(sel.value);model.placeholder=q.k==='openrouter'?'Leave empty: a free model is picked for you':(q.model||'model name');fillDL(q);url.placeholder=q.url||'https://your-server/v1/chat/completions';key.placeholder=q.key?'Paste your API key':'Not needed for local models';hint.textContent=q.hint;vis.checked=!!q.vision;model.value='';url.value='';updLocal()});
   var res=h('p',{class:'status',id:'ai-res'});
   function collect(){return {provider:sel.value,model:model.value.trim(),url:url.value.trim(),key:key.value.trim(),route:route.value,vision:vis.checked,remember:rem.checked}}
   var box=h('div',{class:'studio stack'});

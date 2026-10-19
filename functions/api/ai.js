@@ -38,7 +38,7 @@ export async function onRequestPost({ request }) {
   for (const k of PASS) { const v = request.headers.get(k); if (v) headers.set(k, v); }
   const upstream = await fetch(target.toString(), { method: 'POST', headers, body: request.body });
   const out = new Headers();
-  for (const k of ['content-type', 'cache-control']) { const v = upstream.headers.get(k); if (v) out.set(k, v); }
+  for (const k of ['content-type', 'cache-control', 'retry-after']) { const v = upstream.headers.get(k); if (v) out.set(k, v); }
   out.set('cache-control', 'no-store');
   return new Response(upstream.body, { status: upstream.status, headers: out });
 }

@@ -13,9 +13,9 @@ Click **Connect AI** in the toolbar and pick a provider. Your key stays in your 
 | Provider | Key from | Free? | Route |
 |---|---|---|---|
 | Gemini (Google) | aistudio.google.com | free plan, daily limits | direct |
-| Groq | console.groq.com | free plan, daily limits | relay |
-| Mistral | console.mistral.ai | free Experiment plan (phone number) | relay |
-| OpenRouter (hundreds of models) | openrouter.ai | free models ending in `:free`, about 50 a day | direct |
+| Groq | console.groq.com | free, but only about 6,000 to 12,000 tokens a minute. Script Room waits for the limit; long scripts fit better in Gemini | relay |
+| Mistral | console.mistral.ai | **not reliably free**: the Experiment plan must be switched on in Billing and may ask for a card | relay |
+| OpenRouter (hundreds of models) | openrouter.ai | leave the Model box empty and Script Room picks a `:free` model (about 50 requests a day; free models can be busy). Other models need credit | direct |
 | Ollama (local) | no key | free, unlimited, private | direct to your computer |
 | LM Studio (local) | no key | free, unlimited, private | direct to your computer |
 | Claude (Anthropic) | console.anthropic.com | paid per use | direct |

@@ -1,5 +1,5 @@
 /* Script Room offline cache. Bump VERSION when index.html changes. */
-const VERSION = 'scriptroom-public-v4';
+const VERSION = 'scriptroom-public-v5';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
