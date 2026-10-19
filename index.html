@@ -927,6 +927,7 @@ body.v11 #modeSeg,body.v11 #btnTheme,body.v11 #btnInsp,body.v11 #btnPal{display:
 @media (max-width:760px){.ctabs,.stabs{top:0}.acc-h{flex-wrap:wrap;padding:12px}.acc-pills{order:5;width:100%;padding-inline-start:52px}.acc-body{padding:0 12px 16px}}
 .dt>summary{justify-content:flex-start}.dt>summary::after{margin-inline-start:auto}.toolbar .brand h1{white-space:nowrap}@media (max-width:440px){.toolbar .brand h1{display:none}}
 .scn-add>summary{font-weight:600}
+.ai-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.ai-grp{display:flex;flex-direction:column;gap:8px;background:var(--fill-2);border-radius:14px;padding:12px}.ai-gh{display:flex;flex-direction:column;gap:2px;margin:0 0 4px}.ai-gh b{font-size:15px}.ai-gh span{font-size:12.5px;color:var(--ink-2);line-height:1.35}.ai-card{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border:0;border-radius:10px;padding:10px 12px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;color:inherit;font:inherit}.ai-card small{color:var(--ink-2);font-size:12.5px}.ai-card:hover{box-shadow:inset 0 0 0 1px var(--accent)}.ai-card[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--accent);background:var(--accent-soft)}.ai-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}.ai-checks .ck{display:flex;align-items:center;gap:10px;font-size:15px}.ck-i{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex:none;background:var(--fill);color:var(--ink-2)}.ck.ok .ck-i{background:#1f9d55;color:#fff}.ck.bad .ck-i{background:#d93a3a;color:#fff}.ck.wait{color:var(--ink-2)}#ai-keylink{display:inline-block;margin-top:6px}@media (max-width:760px){.ai-pick{grid-template-columns:1fr}}
 .code-box{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--surface);border-radius:12px;padding:12px 14px;box-shadow:inset 0 0 0 .5px var(--line)}.code-box code{font:700 18px var(--f-script);letter-spacing:.06em;white-space:pre-wrap;word-break:break-all;flex:1;min-width:0}#ai-setup .code-box code{font-size:14px;letter-spacing:0}.tb-ai{white-space:nowrap}.ld-foot{text-align:center;color:var(--ink-2);font-size:13.5px;margin-top:22px}
 </style>
 
@@ -6677,16 +6678,16 @@ function initPublic(){
 
 /* ===================== PUBLIC EDITION: bring your own AI ===================== */
 var AIP=[
-  {k:'anthropic',l:'Claude (Anthropic)',fmt:'anthropic',url:'https://api.anthropic.com/v1/messages',model:'claude-sonnet-5-5',key:true,vision:true,direct:true,hint:'Get a key at console.anthropic.com.'},
-  {k:'openai',l:'ChatGPT (OpenAI)',fmt:'openai',url:'https://api.openai.com/v1/chat/completions',model:'gpt-4.1',key:true,vision:true,direct:true,hint:'Get a key at platform.openai.com.'},
-  {k:'gemini',l:'Gemini (Google)',fmt:'openai',url:'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',model:'gemini-flash-latest',key:true,vision:true,direct:true,hint:'Free plan: get a key at aistudio.google.com, no card needed. Daily limits are low and Google may use free-plan text to improve its products.'},
-  {k:'deepseek',l:'DeepSeek',fmt:'openai',url:'https://api.deepseek.com/chat/completions',model:'deepseek-chat',key:true,vision:false,direct:false,hint:'Get a key at platform.deepseek.com. Runs through the site’s relay.'},
-  {k:'mistral',l:'Mistral',fmt:'openai',url:'https://api.mistral.ai/v1/chat/completions',model:'mistral-large-latest',key:true,vision:false,direct:false,hint:'Free Experiment plan: get a key at console.mistral.ai with a phone number, no card needed. Mistral may use free-plan requests for training. Runs through the site’s relay.'},
-  {k:'groq',l:'Groq',fmt:'openai',url:'https://api.groq.com/openai/v1/chat/completions',model:'openai/gpt-oss-120b',key:true,vision:false,direct:false,hint:'Free plan: get a key at console.groq.com, no card needed. Fast, with daily limits. Runs through the site’s relay.'},
-  {k:'openrouter',l:'OpenRouter (hundreds of models)',fmt:'openai',url:'https://openrouter.ai/api/v1/chat/completions',model:'anthropic/claude-sonnet-5.5',key:true,vision:true,direct:true,hint:'Get a key at openrouter.ai. For free use, type a model whose name ends in :free (about 50 requests a day). Paid models need credit.'},
-  {k:'ollama',l:'Ollama (on this computer)',fmt:'openai',url:'http://localhost:11434/v1/chat/completions',model:'llama3.1',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from ollama.com, then pull a model (e.g. ollama pull llama3.1).'},
-  {k:'lmstudio',l:'LM Studio (on this computer)',fmt:'openai',url:'http://localhost:1234/v1/chat/completions',model:'local-model',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from lmstudio.ai, load a model, start the server and enable CORS.'},
-  {k:'custom',l:'Other (OpenAI-compatible)',fmt:'openai',url:'',model:'',key:true,vision:false,direct:true,hint:'Any server that speaks the OpenAI chat format: vLLM, llama.cpp, Jan, LocalAI, a company gateway.'}];
+  {k:'anthropic',cost:'paid',keyUrl:'https://console.anthropic.com/settings/keys',tag:'Best writing',l:'Claude (Anthropic)',fmt:'anthropic',url:'https://api.anthropic.com/v1/messages',model:'claude-sonnet-5-5',key:true,vision:true,direct:true,hint:'Get a key at console.anthropic.com.'},
+  {k:'openai',cost:'paid',keyUrl:'https://platform.openai.com/api-keys',tag:'Strong all-rounder',l:'ChatGPT (OpenAI)',fmt:'openai',url:'https://api.openai.com/v1/chat/completions',model:'gpt-4.1',key:true,vision:true,direct:true,hint:'Get a key at platform.openai.com.'},
+  {k:'gemini',cost:'free',keyUrl:'https://aistudio.google.com/apikey',tag:'Free plan, reads photos',l:'Gemini (Google)',fmt:'openai',url:'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',model:'gemini-flash-latest',key:true,vision:true,direct:true,hint:'Free plan: get a key at aistudio.google.com, no card needed. Daily limits are low and Google may use free-plan text to improve its products.'},
+  {k:'deepseek',cost:'paid',keyUrl:'https://platform.deepseek.com/api_keys',tag:'Very low prices',l:'DeepSeek',fmt:'openai',url:'https://api.deepseek.com/chat/completions',model:'deepseek-chat',key:true,vision:false,direct:false,hint:'Get a key at platform.deepseek.com. Runs through the site’s relay.'},
+  {k:'mistral',cost:'free',keyUrl:'https://console.mistral.ai/api-keys',tag:'Free plan, phone number needed',l:'Mistral',fmt:'openai',url:'https://api.mistral.ai/v1/chat/completions',model:'mistral-large-latest',key:true,vision:false,direct:false,hint:'Free Experiment plan: get a key at console.mistral.ai with a phone number, no card needed. Mistral may use free-plan requests for training. Runs through the site’s relay.'},
+  {k:'groq',cost:'free',keyUrl:'https://console.groq.com/keys',tag:'Free plan, very fast',l:'Groq',fmt:'openai',url:'https://api.groq.com/openai/v1/chat/completions',model:'openai/gpt-oss-120b',key:true,vision:false,direct:false,hint:'Free plan: get a key at console.groq.com, no card needed. Fast, with daily limits. Runs through the site’s relay.'},
+  {k:'openrouter',cost:'free',keyUrl:'https://openrouter.ai/settings/keys',tag:'Free models, about 50 a day',l:'OpenRouter (hundreds of models)',fmt:'openai',url:'https://openrouter.ai/api/v1/chat/completions',model:'anthropic/claude-sonnet-5.5',key:true,vision:true,direct:true,hint:'Get a key at openrouter.ai. For free use, type a model whose name ends in :free (about 50 requests a day). Paid models need credit.'},
+  {k:'ollama',cost:'local',keyUrl:'https://ollama.com/download',tag:'Free, private, unlimited',l:'Ollama (on this computer)',fmt:'openai',url:'http://localhost:11434/v1/chat/completions',model:'llama3.1',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from ollama.com, then pull a model (e.g. ollama pull llama3.1).'},
+  {k:'lmstudio',cost:'local',keyUrl:'https://lmstudio.ai/download',tag:'Free, private, unlimited',l:'LM Studio (on this computer)',fmt:'openai',url:'http://localhost:1234/v1/chat/completions',model:'local-model',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from lmstudio.ai, load a model, start the server and enable CORS.'},
+  {k:'custom',cost:'other',keyUrl:'',tag:'Your own server',l:'Other (OpenAI-compatible)',fmt:'openai',url:'',model:'',key:true,vision:false,direct:true,hint:'Any server that speaks the OpenAI chat format: vLLM, llama.cpp, Jan, LocalAI, a company gateway.'}];
 var AIK='scriptroom.ai';
 function aiCfg(){if(window.__aiMem)return window.__aiMem;var c=null;try{c=JSON.parse(localStorage.getItem(AIK)||'null')}catch(e){}return c}
 function aiSave(c,remember){window.__aiMem=c;try{if(remember)localStorage.setItem(AIK,JSON.stringify(c));else{var cc=Object.assign({},c,{key:''});localStorage.setItem(AIK,JSON.stringify(cc))}}catch(e){}}
@@ -6711,7 +6712,7 @@ async function aiCall(prompt,opts){
   var useRelay=c.route==='relay'||(!c.route&&!P.direct);
   var target=useRelay?relayUrl():url,init={method:'POST',headers:headers,body:JSON.stringify(body),signal:opts.signal};
   if(useRelay){init.headers=Object.assign({},headers,{'x-target':url})}
-  var r;try{r=await fetch(target,init)}catch(e){if(e&&e.name==='AbortError')throw {code:'cancelled'};throw {code:'unavailable',message:P.local?'Could not reach '+P.l+'. Is it running, with CORS allowed for this site?':useRelay?'Could not reach the relay. Use Direct, or check the site’s /api/ai function.':'The browser could not reach '+P.l+'. Try the relay route in AI settings.'}}
+  var r;try{r=await fetch(target,init)}catch(e){if(e&&e.name==='AbortError')throw {code:'cancelled'};throw {code:'unavailable',message:P.local?'Could not reach '+P.l.split(' (')[0]+'. The checklist above shows what to fix.':useRelay?'Could not reach the relay. Use Direct, or check the site’s /api/ai function.':'The browser could not reach '+P.l+'. Try the relay route in AI settings.'}}
   if(!r.ok){var tx='';try{tx=await r.text()}catch(e){}var code=r.status===401||r.status===403?'not_granted':r.status===429?'rate_limited':r.status===413?'prompt_too_large':'upstream_error';
     throw {code:code,message:P.l+' answered '+r.status+(tx?': '+tx.slice(0,240):'')}}
   if(!stream){var j=await r.json();var t=fmt==='anthropic'?(j.content||[]).map(function(x){return x.text||''}).join(''):((j.choices||[])[0]||{}).message?j.choices[0].message.content||'':'';
@@ -6773,11 +6774,23 @@ function localSetup(k){
         h('li',{text:'In the server settings, turn on Enable CORS.'}),
         h('li',{text:'Load your model, then come back here and press Find my models. If the browser asks to let this site reach apps on your device, choose Allow.'})))}
   return box}
+
+var COSTS=[['local','Free on your computer','Private and unlimited. Needs Ollama or LM Studio installed.'],['free','Free online','A free account and key. Daily limits; free plans may use your text to improve their models.'],['paid','Paid','Pay per use with your own account. Best quality.'],['other','Other','Any server that speaks the OpenAI format.']];
+async function lnaState(){if(!navigator.permissions)return 'unknown';for(var n of ['local-network-access','loopback-network','local-network']){try{var r=await navigator.permissions.query({name:n});return r.state}catch(e){}}return 'unknown'}
+async function localCheck(u){
+  var base=localBase(u),root=base.replace(/\/v1$/,'/'),out={running:null,browser:null,allows:null,models:null,lna:await lnaState()};
+  try{var ms=await listLocalModels(u);out.running=out.browser=out.allows=true;out.models=ms;return out}catch(e){}
+  try{await fetch(root,{mode:'no-cors'});out.running=true;out.browser=true;out.allows=false;return out}catch(e){}
+  if(out.lna==='denied'){out.browser=false;return out}
+  out.running=false;return out}
+var orFree=null;async function openRouterFree(){if(orFree)return orFree;var r=await fetch('https://openrouter.ai/api/v1/models');var j=await r.json();orFree=(j.data||[]).map(function(m){return m.id}).filter(function(id){return /:free$/.test(id)}).sort();return orFree}
 function openAISettings(){openSheet('AI provider',function(st){
   var c=Object.assign({provider:'',model:'',url:'',key:'',route:'',vision:null,remember:true},aiCfg()||{});if(window.__aiMem&&window.__aiMem.key)c.key=window.__aiMem.key;
   var P=aiProv(c.provider||'anthropic');
   st.append(h('div',{class:'studio'},h('h3',{text:'Use any AI you like'}),h('p',{class:'info',text:'Script Room works with Claude, ChatGPT, Gemini, DeepSeek, Mistral, Groq, OpenRouter, or a model running on your own computer with Ollama or LM Studio. Your key stays in this browser and goes only to the provider you pick (or through this site’s relay, which passes it on and stores nothing).'})));
-  var sel=h('select',{id:'ai-prov'});AIP.forEach(function(p){sel.append(h('option',{value:p.k,text:p.l}))});sel.value=P.k;
+  var sel=h('select',{id:'ai-prov'});COSTS.forEach(function(g){var og=h('optgroup',{label:g[1]});AIP.filter(function(p){return p.cost===g[0]}).forEach(function(p){og.append(h('option',{value:p.k,text:p.l+' · '+p.tag}))});sel.append(og)});sel.value=P.k;
+  var picker=h('div',{class:'ai-pick'});COSTS.slice(0,3).forEach(function(g){var col=h('div',{class:'ai-grp'},h('p',{class:'ai-gh'},h('b',{text:g[1]}),h('span',{text:g[2]})));AIP.filter(function(p){return p.cost===g[0]}).forEach(function(p){var bt=h('button',{type:'button',class:'ai-card','data-k':p.k,onclick:function(){sel.value=p.k;sel.dispatchEvent(new Event('change'))}},h('b',{text:p.l.split(' (')[0]}),h('small',{text:p.tag}));col.append(bt)});picker.append(col)});
+  function markPick(){picker.querySelectorAll('.ai-card').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-k')===sel.value?'true':'false')})}
   var model=h('input',{type:'text',id:'ai-model',placeholder:P.model||'model name'});model.value=c.provider===P.k?(c.model||''):'';
   var url=h('input',{type:'text',id:'ai-url',placeholder:P.url||'https://your-server/v1/chat/completions'});url.value=c.provider===P.k?(c.url||''):'';
   var key=h('input',{type:'password',id:'ai-key',placeholder:P.key?'Paste your API key':'Not needed for local models',autocomplete:'off'});key.value=c.provider===P.k?(c.key||''):'';
@@ -6785,30 +6798,45 @@ function openAISettings(){openSheet('AI provider',function(st){
   var route=h('select',{id:'ai-route'});[['','Automatic'],['direct','Direct from this browser'],['relay','Through this site’s relay (/api/ai)']].forEach(function(x){route.append(h('option',{value:x[0],text:x[1]}))});route.value=c.route||'';
   var vis=h('input',{type:'checkbox',id:'ai-vis'});vis.checked=c.vision!=null?!!c.vision:!!P.vision;
   var hint=h('p',{class:'hint',text:P.hint});
-  var found=h('select',{id:'ai-found','aria-label':'Models on this computer'});found.addEventListener('change',function(){if(found.value)model.value=found.value});
-  var lstat=h('p',{class:'status',id:'ai-lstat'}),setup=h('details',{class:'dt',id:'ai-setup'},h('summary',null,'Setup steps'),h('div',{class:'dtb'}));
+  var found=h('select',{id:'ai-found','aria-label':'Pick a model'});found.addEventListener('change',function(){if(found.value)model.value=found.value});
+  var lstat=h('p',{class:'status',id:'ai-lstat'}),setup=h('details',{class:'dt',id:'ai-setup'},h('summary',null,'How to let Ollama talk to this site'),h('div',{class:'dtb'}));
   var dl=h('a',{class:'btn sm ghost',target:'_blank',rel:'noopener'});
-  async function findModels(quiet){var q=aiProv(sel.value);if(!q.local)return;lstat.textContent='Looking for '+q.l.split(' (')[0]+'…';
-    try{var ms=await listLocalModels(url.value.trim()||q.url);found.textContent='';
-      if(!ms.length){lstat.textContent=q.k==='ollama'?'Ollama is running but has no models yet. Run: ollama pull llama3.1':'LM Studio is running but no model is loaded. Load one, then try again.';found.style.display='none';setup.open=true;return}
-      ms.forEach(function(m){found.append(h('option',{value:m,text:m}))});found.style.display='';
-      var cur=model.value.trim();if(cur&&ms.indexOf(cur)>=0)found.value=cur;else{found.value=ms[0];model.value=ms[0]}
-      lstat.textContent='Found '+ms.length+' model'+(ms.length>1?'s':'')+'. Pick one, then press Save and test.';setup.open=false}
-    catch(e){found.style.display='none';lstat.textContent=(q.k==='ollama'?'Could not reach Ollama. Is it running and allowed for this site? Follow the setup steps.':'Could not reach LM Studio. Is the server running with CORS on? Follow the setup steps.');setup.open=true}}
-  var localBox=h('div',{class:'stack',id:'ai-local'},h('div',{class:'bar'},h('button',{type:'button',class:'btn sm primary',text:'Find my models',onclick:function(){findModels(false)}}),dl),found,lstat,setup);
-  function updLocal(){var q=aiProv(sel.value),loc=!!q.local;localBox.style.display=loc?'':'none';keyField.style.display=loc?'none':'';remLbl.style.display=loc?'none':'';
-    if(loc){dl.textContent='Download '+q.l.split(' (')[0];dl.href=q.k==='ollama'?'https://ollama.com/download':'https://lmstudio.ai/download';var b2=setup.querySelector('.dtb');b2.textContent='';b2.append(localSetup(q.k));found.style.display='none';lstat.textContent='';findModels(true)}}
+  var checks=h('ol',{class:'ai-checks',id:'ai-checks'}),fix=h('div',{class:'stack',id:'ai-fix'});
+  function row(state,label){return h('li',{class:'ck '+(state===true?'ok':state===false?'bad':'wait')},h('span',{class:'ck-i','aria-hidden':'true',text:state===true?'✓':state===false?'✕':'•'}),h('span',{text:label}))}
+  function browserFix(){var edge=/Edg\//.test(navigator.userAgent),saf=/Safari/.test(navigator.userAgent)&&!/Chrome|Chromium|Edg/.test(navigator.userAgent);
+    return h('div',{class:'stack'},h('p',{class:'info',text:'Your browser is blocking this site from talking to apps on your computer. Allow it once:'}),
+      h('ol',{class:'why'},h('li',{text:'Click the icon at the left end of the address bar (it looks like two sliders or a padlock).'}),
+        h('li',{text:(edge?'Choose Permissions for this site.':'Choose Site settings.')+' Find "Local network access" (it may be called "Apps on this device" or "Local devices").'}),
+        h('li',{text:'Set it to Allow, then reload this page (Ctrl + R, or Cmd + R on a Mac) and open Connect AI again.'})),
+      saf?h('p',{class:'hint',text:'Safari: if it still fails, use Chrome, Edge or Firefox for local models.'}):null)}
+  async function findModels(quiet){var q=aiProv(sel.value);if(!q.local)return;lstat.textContent='Checking '+q.l.split(' (')[0]+'…';checks.textContent='';fix.textContent='';found.style.display='none';
+    var nm=q.k==='ollama'?'Ollama':'LM Studio',r=await localCheck(url.value.trim()||q.url);
+    checks.append(row(r.running,nm+' is installed and running'),row(r.browser,'Your browser lets this site reach it'),row(r.allows,nm+' allows this site'),row(r.models?r.models.length>0:null,'A model is ready'));
+    if(r.running===false){lstat.textContent=nm+' did not answer.';fix.append(h('p',{class:'info',text:'Open '+nm+' (look for its icon next to the clock, or in the menu bar on a Mac). Not installed yet? Download it, install it, open it, then press Check again.'}));setup.open=false;return}
+    if(r.browser===false){lstat.textContent='Your browser blocked the connection.';fix.append(browserFix());return}
+    if(r.allows===false){lstat.textContent=nm+' is running but does not allow this site yet.';setup.open=true;return}
+    if(!r.models.length){lstat.textContent=nm+' is running but has no models.';fix.append(q.k==='ollama'?h('div',{class:'stack'},h('p',{class:'info',text:'Download a model. Open Command Prompt (Windows) or Terminal (Mac) and run:'}),h('div',{class:'code-box'},h('code',{text:'ollama pull llama3.1'}),h('button',{type:'button',class:'btn sm',text:'Copy',onclick:function(){copy('ollama pull llama3.1')}}))):h('p',{class:'info',text:'In LM Studio, download a model from the search tab and load it.'}));return}
+    found.textContent='';r.models.forEach(function(m){found.append(h('option',{value:m,text:m}))});found.style.display='';
+    var cur=model.value.trim();if(cur&&r.models.indexOf(cur)>=0)found.value=cur;else{found.value=r.models[0];model.value=r.models[0]}
+    lstat.textContent='All set. Pick a model, then press Save and test.';setup.open=false}
+  var localBox=h('div',{class:'stack',id:'ai-local'},checks,lstat,fix,found,h('div',{class:'bar'},h('button',{type:'button',class:'btn sm primary',text:'Check again',onclick:function(){findModels(false)}}),dl),setup);
+  var keyLink=h('a',{class:'hint',target:'_blank',rel:'noopener',id:'ai-keylink'});
+  var orBox=h('div',{class:'bar',id:'ai-or'},h('button',{type:'button',class:'btn sm',text:'Show free models',onclick:async function(){orStat.textContent='Loading…';try{var ids=await openRouterFree();orSel.textContent='';ids.forEach(function(id){orSel.append(h('option',{value:id,text:id}))});orSel.style.display='';if(ids.length){orSel.value=ids[0];model.value=ids[0]}orStat.textContent=ids.length+' free models. Pick one.'}catch(e){orStat.textContent='Could not load the list. Type a model name ending in :free.'}}}));
+  var orSel=h('select',{'aria-label':'Free OpenRouter models',style:'display:none'}),orStat=h('span',{class:'hint'});orSel.addEventListener('change',function(){model.value=orSel.value});orBox.append(orSel,orStat);
+  function updLocal(){var q=aiProv(sel.value),loc=!!q.local;markPick();localBox.style.display=loc?'':'none';keyField.style.display=loc?'none':'';remLbl.style.display=loc?'none':'';orBox.style.display=q.k==='openrouter'?'':'none';
+    keyLink.style.display=q.key&&q.keyUrl?'':'none';if(q.keyUrl){keyLink.href=q.keyUrl;keyLink.textContent=(q.cost==='free'?'Get a free key':'Get a key')+' at '+q.keyUrl.replace(/^https:\/\//,'').split('/')[0]+' ↗'}
+    if(loc){dl.textContent='Download '+q.l.split(' (')[0]+' ↗';dl.href=q.keyUrl;var b2=setup.querySelector('.dtb');b2.textContent='';b2.append(localSetup(q.k));setup.querySelector('summary').textContent='How to let '+(q.k==='ollama'?'Ollama':'LM Studio')+' talk to this site';findModels(true)}}
   sel.addEventListener('change',function(){var q=aiProv(sel.value);model.placeholder=q.model||'model name';url.placeholder=q.url||'https://your-server/v1/chat/completions';key.placeholder=q.key?'Paste your API key':'Not needed for local models';hint.textContent=q.hint;vis.checked=!!q.vision;model.value='';url.value='';updLocal()});
   var res=h('p',{class:'status',id:'ai-res'});
   function collect(){return {provider:sel.value,model:model.value.trim(),url:url.value.trim(),key:key.value.trim(),route:route.value,vision:vis.checked,remember:rem.checked}}
   var box=h('div',{class:'studio stack'});
-  var keyField=field('API key',key),remLbl=h('label',{class:'chk','for':'ai-rem'},rem,h('span',{text:'Remember the key on this device. Untick on a shared computer: the key is then kept only until you close the page.'}));
-  box.append(field('Provider',sel),hint,localBox,h('div',{class:'row two'},field('Model',model,'Leave empty for the default shown.'),keyField),
+  var keyField=h('div',null,field('API key',key),keyLink),remLbl=h('label',{class:'chk','for':'ai-rem'},rem,h('span',{text:'Remember the key on this device. Untick on a shared computer: the key is then kept only until you close the page.'}));
+  box.append(picker,field('Provider',sel),hint,localBox,orBox,h('div',{class:'row two'},field('Model',model,'Leave empty for the default shown.'),keyField),
     remLbl,
     h('details',{class:'dt'},h('summary',null,'Advanced'),h('div',{class:'dtb'},field('Address (for local or custom servers)',url),field('Route',route,'Some providers block calls straight from a browser. The relay is a tiny function on this site that forwards your request.'),
       h('label',{class:'chk','for':'ai-vis'},vis,h('span',{text:'This model can read images (photo buttons, consistency checks)'})))),
     h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',text:'Save and test',onclick:async function(e){var n=collect();var Q=aiProv(n.provider);if(Q.key&&!n.key){res.textContent='Paste your '+Q.l.split(' (')[0]+' API key first. '+Q.hint;key.focus();return}aiSave(n,n.remember);res.textContent='Testing…';
-      try{var r=await aiCall('Reply with exactly: ready',{});res.textContent=/ready/i.test(r.text)?'Connected. '+aiProv(n.provider).l+' answered.':'Connected, but the answer was unexpected: '+String(r.text).slice(0,80);aiApply()}catch(err){res.textContent=(err&&err.message)||'That did not work.';if(aiProv(n.provider).local)setup.open=true}}}),
+      try{var r=await aiCall('Reply with exactly: ready',{});res.textContent=/ready/i.test(r.text)?'Connected. '+aiProv(n.provider).l+' answered.':'Connected, but the answer was unexpected: '+String(r.text).slice(0,80);aiApply()}catch(err){res.textContent=(err&&err.message)||'That did not work.';if(aiProv(n.provider).local)findModels(false)}}}),
       h('button',{type:'button',class:'btn ghost',text:'Disconnect',onclick:function(){try{localStorage.removeItem(AIK)}catch(e){}window.__aiMem=null;res.textContent='Disconnected.';aiApply()}}),res));
   st.append(box);updLocal();
   st.append(h('div',{class:'studio'},h('h3',{text:'Which to pick?'}),h('ul',{class:'why'},
