@@ -31,7 +31,11 @@ Image features (fill in from a photo, frame checks) need a model that accepts im
 
 Local models run on your computer, so nothing leaves it. The browser has to be allowed to talk to them:
 
-- **Ollama**: start it with your site allowed, for example `OLLAMA_ORIGINS="https://your-site.pages.dev" ollama serve` (or `OLLAMA_ORIGINS="*"` on your own machine). Then pull a model, `ollama pull llama3.1`, and pick Ollama in Connect AI.
+- **Ollama**: allow your site, then restart Ollama and pull a model (`ollama pull llama3.1`). Use your site's address, for example `https://script-room.karam-a91.workers.dev`:
+  - **Windows**: Start menu, "Edit environment variables for your account", New, name `OLLAMA_ORIGINS`, value your site's address. Quit Ollama from the tray icon and open it again.
+  - **Mac**: in Terminal, `launchctl setenv OLLAMA_ORIGINS "https://your-site"`, then quit Ollama from the menu bar and open it again. Repeat after a restart.
+  - **Linux**: `sudo systemctl edit ollama.service`, add `[Service]` and `Environment="OLLAMA_ORIGINS=https://your-site"`, then `sudo systemctl daemon-reload && sudo systemctl restart ollama`.
+  - In Connect AI, pick Ollama and press **Find my models**. The app shows these steps too, with your site's address filled in.
 - **LM Studio**: open the Developer tab, start the server and turn on **Enable CORS**. Pick LM Studio in Connect AI.
 
 Browsers block an https page from calling plain http addresses other than `localhost`, so a model on another machine needs https or must be reached through `localhost`.
