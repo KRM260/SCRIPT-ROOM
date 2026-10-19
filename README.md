@@ -36,16 +36,20 @@ Browsers block an https page from calling plain http addresses other than `local
 
 ## Hosting
 
-Recommended: the code on **GitHub**, the site on **Cloudflare Pages**.
+Recommended: the code on **GitHub**, the site on **Cloudflare**. Both are free for this.
 
-1. Create a GitHub repository and push this folder to it.
-2. In Cloudflare, go to Workers & Pages, Create, Pages, Connect to Git, and pick the repository.
-3. Build command: none. Output directory: `/`. Deploy.
-4. Cloudflare picks up `functions/api/ai.js` automatically, so the relay works at `/api/ai`. `_headers` adds basic security headers.
+1. Create a GitHub repository and upload everything in this folder.
+2. In Cloudflare, open Workers & Pages, click Create and import the GitHub repository.
+3. Cloudflare reads `wrangler.jsonc` and deploys it as a Worker: `worker.js` serves the app and runs the AI relay at `/api/ai`. Leave the build command empty and keep the deploy command as `npx wrangler deploy`.
+4. Under the project's Domains tab, switch on the `workers.dev` address, or add your own domain.
 
-GitHub Pages also hosts the page, but it cannot run the relay, so DeepSeek, Mistral and Groq won't work there unless you point the relay setting at a Cloudflare deployment. Everything else, including local models, works on any static host.
+If you create a **Pages** project instead, it uses `functions/api/ai.js` for the relay and ignores `worker.js`. Both work.
 
-To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and open `http://localhost:3000` (or `:8000`). The relay needs `npx wrangler pages dev .`.
+To check the relay, open `/api/ai` on your site: it should say "Use POST."
+
+GitHub Pages also hosts the page, but it cannot run the relay, so DeepSeek, Mistral and Groq won't work there. Everything else, including local models, works on any static host.
+
+To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and open the address it prints. With the relay: `npx wrangler dev`.
 
 ## Features
 
@@ -108,7 +112,8 @@ To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and 
 ## Files
 
 - `index.html`: the whole app (HTML, CSS and JavaScript in one file)
-- `functions/api/ai.js`: the AI relay for Cloudflare Pages
+- `worker.js`, `wrangler.jsonc`, `.assetsignore`: run the site and the AI relay on Cloudflare Workers
+- `functions/api/ai.js`: the AI relay itself (also used directly by Cloudflare Pages)
 - `manifest.webmanifest`, `sw.js`, `icons/`: install on desktop and phone, work offline
 - `_headers`: security headers for Cloudflare Pages
 - `ai-adapter.example.js`: optional, to plug in your own backend instead of Connect AI
