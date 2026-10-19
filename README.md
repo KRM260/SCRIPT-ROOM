@@ -172,3 +172,7 @@ No film scripts are bundled. Lesson scenes and the example projects (one per pro
 ## License
 
 MIT. See `LICENSE`.
+
+## Characters
+
+Each character on the Cast card has Name, Age and **Gender** (Woman, Man, Non-binary, Not specified). Gender is optional. It feeds the AI prompts, portraits, wardrobe plates and shot prompts, and the AI cast generator and photo reader fill it in for you (check it, since it is a guess from the story or the photo).

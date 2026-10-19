@@ -1109,7 +1109,10 @@ function blankState(){return {step:0,example:false,title:'',writer:'',format:'sh
   dict:[],exp:{title:true,nums:false,bold:false,contact:'',draft:'',src:'auto',pv:false},chars:[],scenes:[],setting:{mode:'few',place:''},rels:{},lab:{sceneId:'',style:'Naturalistic',subtext:'Medium',length:'Scene',opening:'',free:'',preview:false},
   style:{ending:'',pov:'',pace:'',density:50,themes:'',visual:'',include:'',avoid:''},
   mode:'script',quality:'standard',out:{text:'',kind:'',note:'',err:'',reviseText:''}}}
-function newChar(o){return Object.assign({id:uid(),name:'',role:'Protagonist',age:'',traits:[],background:'',wants:'',struggle:'',secret:'',wardrobe:'',makeup:'',photo:'',
+var GENDERS=['Woman','Man','Non-binary','Not specified'],GENDER_AR={'Woman':'امرأة','Man':'رجل','Non-binary':'غير ثنائي','Not specified':'غير محدد'},GENDER_DE={'Woman':'Frau','Man':'Mann','Non-binary':'Nicht-binär','Not specified':'Nicht angegeben'};
+function genderOf(c){var g=c&&c.gender;if(!g&&c&&c.ident)g=c.ident.gender;return g&&g!=='Not specified'?g:''}
+function genderWord(c){var g=genderOf(c);return g==='Woman'?'woman':g==='Man'?'man':g==='Non-binary'?'non-binary person':''}
+function newChar(o){return Object.assign({id:uid(),name:'',role:'Protagonist',gender:'',age:'',traits:[],background:'',wants:'',struggle:'',secret:'',wardrobe:'',makeup:'',photo:'',
   look:{build:[],hair:[],face:[],style:[],detail:[]},looks:'',voiceTags:[],habits:[],conflictStyle:[],voice:''},o||{})}
 function newConv(){return {subject:'',conflict:'',heat:'',turn:'',winner:'',space:'',parts:{}}}
 function newScene(o){
@@ -1132,13 +1135,13 @@ function exampleState(){var a=uid(),b=uid(),sid=uid();var s=blankState();
   s.logline='On the last night before the city retires its final tram line, a tired driver lets an old conductor ride one more loop and learns what the route really carried.';
   s.setting={mode:'one',place:'Tram'};
   s.chars=[
-    newChar({id:a,name:'Nadia',role:'Protagonist',age:'34',traits:['Guarded','Proud','Funny'],
+    newChar({id:a,name:'Nadia',role:'Protagonist',gender:'Woman',age:'34',traits:['Guarded','Proud','Funny'],
       background:'Third-generation transit worker. Took the driver’s seat when her father retired and never asked whether she wanted it.',
       wants:'To get through the last shift without feeling anything.',struggle:'She is about to lose the only job she has ever had and has no plan for what comes next.',
       secret:'She has already accepted a job in another city and has told no one, not even her father.',
       look:{build:['Slim'],hair:['Short cropped'],face:['Tired eyes'],style:['Work uniform'],detail:['Worn boots']},looks:'Reading glasses pushed up on her head, a worn uniform cap.',
       voiceTags:['Blunt','Quick-witted'],habits:['Jokes when nervous'],conflictStyle:['Deflects'],voice:'Dry, short sentences. Taps the control bar when she is thinking.'}),
-    newChar({id:b,name:'Samir',role:'Supporting',age:'71',traits:['Gentle','Stubborn'],
+    newChar({id:b,name:'Samir',role:'Supporting',gender:'Man',age:'71',traits:['Gentle','Stubborn'],
       background:'Retired conductor who has ridden the line every evening since his wife died.',
       wants:'One more full loop with the brass bell he kept.',struggle:'He fears the end of the line erases the last place where he still feels her.',
       secret:'He did not retire. He was dismissed years ago after a fall-out with Nadia’s father.',
@@ -1429,7 +1432,7 @@ function voiceBuilder(c,pre){
 function charCard(c,i){
   var card=h('div',{class:'card'});
   var pre='c-'+c.id+'-';
-  function cx(){return 'FOCUS CHARACTER: '+(nm(c)||'(unnamed, do not invent a name)')+', '+c.role+(c.age?', age '+c.age:'')+
+  function cx(){return 'FOCUS CHARACTER: '+(nm(c)||'(unnamed, do not invent a name)')+', '+c.role+(genderOf(c)?', '+genderWord(c):'')+(c.age?', age '+c.age:'')+
     (c.traits.length?'\nPersonality: '+c.traits.join(', '):'')+'\nBackground: '+c.background+'\nWants: '+c.wants+'\nStruggle: '+c.struggle+'\nSecret: '+c.secret+
     '\nLooks: '+lookText(c)+'\nVoice: '+voiceText(c)}
   AISPEC[pre+'b']={what:'the character’s background',len:'two or three sentences',extra:cx};
@@ -1446,6 +1449,7 @@ function charCard(c,i){
   card.append(imgSlot(c,'photo',{label:uiAR()?'صورة الشخصية':'Character photo',round:true,hint:uiAR()?'ارفع صورتك أو أنشئ واحدة. املأ الحقول منها إن كان نموذجك يقرأ الصور.':'Upload your own or generate one. Fill in the look from it if your model reads images.',prompt:function(){return portraitPrompt(c)},analyze:function(b,t){return seeCast(c,b,t)},analyzeLabel:uiAR()?'املأ المظهر من الصورة':'Fill in the look from it',ratio:'1:1'}));
   var nameIn=textIn(pre+'n',function(){return c.name},function(v){c.name=v;var hd=card.querySelector('h3');hd.textContent=v.trim()||('Character '+(i+1))},'Name');
   card.append(h('div',{class:'row two'},field('Name',nameIn),field('Age',textIn(pre+'a',function(){return c.age},function(v){c.age=v},'e.g. 34'))));
+  card.append(group(uiAR()?'الجنس':(PREF.lang==='de'?'Geschlecht':'Gender'),chipGroup(GENDERS,function(v){return (c.gender||'')===v},function(v){c.gender=c.gender===v?'':v;if(c.ident)c.ident.gender=c.gender;touched()},function(v){return uiAR()?GENDER_AR[v]:(PREF.lang==='de'?GENDER_DE[v]:v)})));
   card.append(group('Role',chipGroup(ROLES,function(v){return c.role===v},function(v){c.role=v})));
   card.append(v10CharExtras(c,pre));
   var tm=multi(c.traits);
@@ -1829,7 +1833,7 @@ function buildBrief(){
     if(c.background.trim())bits.push('Background: '+c.background.trim());if(c.wants.trim())bits.push('Wants: '+c.wants.trim());
     if(c.struggle.trim())bits.push('Struggle: '+c.struggle.trim());if(c.secret.trim())bits.push('Secret: '+c.secret.trim());
     var lk=lookText(c);if(lk)bits.push('Looks: '+lk);var vt=voiceText(c);if(vt)bits.push('Voice: '+vt);if(c.wardrobe&&c.wardrobe.trim())bits.push('Wardrobe: '+c.wardrobe.trim());if(c.makeup&&c.makeup.trim())bits.push('Hair and makeup: '+c.makeup.trim());
-    L.push('- '+c.name.trim().toUpperCase()+' ('+[c.role,c.age?'age '+c.age:''].filter(Boolean).join(', ')+')'+(bits.length?': '+bits.join(' | '):''))});
+    L.push('- '+c.name.trim().toUpperCase()+' ('+[c.role,genderWord(c),c.age?'age '+c.age:''].filter(Boolean).join(', ')+')'+(bits.length?': '+bits.join(' | '):''))});
   if(!namedChars().length)L.push('(none given)');
   var rl=[];
   pairs().forEach(function(pr){var r=S.rels[pairKey(pr[0].id,pr[1].id)];if(!relFilled(r))return;var b=[];
@@ -2231,14 +2235,14 @@ async function suggestCast(){
   var n=namedChars().length?2:3;
   return withAI(document.getElementById('chain-btn'),'Thinking…',async function(){
     var prompt='You are a script development partner.\n\nBRIEF SO FAR:\n'+buildBrief()+'\n\nSuggest '+n+' characters who would make strong dialogue in this story. They should want different things and have something to hide. Do not reuse names already in the brief. Roles: '+JSON.stringify(ROLES)+'.\n'+LISTS_TXT+
-      '\nFor each give: name, role, age (string), traits (up to 4), background (two sentences), wants (one sentence), struggle (one sentence), secret (one sentence), look {build,hair,face,style,detail} (up to 2 values each, from the lists only), voiceTags (up to 3), habits (up to 2), conflictStyle (1 or 2), voice (a short tic or catchphrase). Write text fields in '+langName(S.lang)+'. Reply with only a JSON array of '+n+' objects.';
+      '\nFor each give: name, role, gender (one of Woman, Man, Non-binary, Not specified), age (string), traits (up to 4), background (two sentences), wants (one sentence), struggle (one sentence), secret (one sentence), look {build,hair,face,style,detail} (up to 2 values each, from the lists only), voiceTags (up to 3), habits (up to 2), conflictStyle (1 or 2), voice (a short tic or catchphrase). Write text fields in '+langName(S.lang)+'. Reply with only a JSON array of '+n+' objects.';
     var arr=await caps.sample.json(prompt,{cache:false});
     if(!Array.isArray(arr))throw {code:'invalid_json'};
     var added=0;
     arr.slice(0,4).forEach(function(o){
       if(!o||!str(o.name)||byName(o.name))return;
       var lk=o.look||{};
-      var c=newChar({name:str(o.name),role:pickOne(o.role,ROLES)||'Supporting',age:str(String(o.age||'')),traits:pickAll(o.traits,TRAITS).slice(0,4),
+      var c=newChar({name:str(o.name),role:pickOne(o.role,ROLES)||'Supporting',gender:pickOne(o.gender,GENDERS)||'',age:str(String(o.age||'')),traits:pickAll(o.traits,TRAITS).slice(0,4),
         background:str(o.background),wants:str(o.wants),struggle:str(o.struggle),secret:str(o.secret),
         look:{build:pickAll(lk.build,LOOKS.build).slice(0,2),hair:pickAll(lk.hair,LOOKS.hair).slice(0,2),face:pickAll(lk.face,LOOKS.face).slice(0,2),style:pickAll(lk.style,LOOKS.style).slice(0,2),detail:pickAll(lk.detail,LOOKS.detail).slice(0,2)},
         voiceTags:pickAll(o.voiceTags,VOICE.style).slice(0,3),habits:pickAll(o.habits,VOICE.habits).slice(0,2),conflictStyle:pickAll(o.conflictStyle,VOICE.conflict).slice(0,2),voice:str(o.voice)});
@@ -3177,7 +3181,8 @@ function handleOf0(c){
   if(lk.face&&lk.face[0])bits.push(lk.face[0].toLowerCase());
   if(lk.style&&lk.style[0])bits.push('a '+lk.style[0].toLowerCase());
   var b=(lk.build&&lk.build[0]?lk.build[0].toLowerCase()+' ':'');
-  return 'the '+b+'figure'+(bits.length?' with '+bits.slice(0,2).join(' and '):'')}
+  var gw=genderOf(c)==='Woman'?'woman':genderOf(c)==='Man'?'man':'figure';
+  return 'the '+b+gw+(bits.length?' with '+bits.slice(0,2).join(' and '):'')}
 function shotChars(sc,sh){var ids=sh.subj&&sh.subj.length?sh.subj:sc.cast;return ids.map(charById).filter(function(c){return c&&nm(c)})}
 function placeOf(sc){return sc.place==='Other'?(sc.custom||'the location'):sc.place.toLowerCase()}
 function timeAir(sc){var t=sc.time;return /NIGHT/.test(t)?'the air carries a thin density at night, each plane slightly softer and lower in contrast toward the back, blacks lifted':
@@ -3997,7 +4002,7 @@ async function runAdapt(){
     var prompt='You are a screenwriter adapting '+how+' '+fid+'\n\nTARGET: '+fmtOf(S.format).l+', about '+lenLabel(S.lenMin)+', '+nScenes+' scenes. Script language: '+lang+'.\n\n'+body+
       '\n\n'+LISTS_TXT+' Roles: '+JSON.stringify(ROLES)+'. Genres: '+JSON.stringify(GENRES)+'. Tones: '+JSON.stringify(TONES)+'. Endings: '+JSON.stringify(ENDINGS)+'. Points of view: '+JSON.stringify(POVS)+'. Pacing: '+JSON.stringify(PACES)+'. Relationship types: '+JSON.stringify(REL_TYPES)+'. Relationship tones: '+JSON.stringify(REL_TONES)+'. Conversation kinds: '+JSON.stringify(CONFLICTS)+'. Heat: '+JSON.stringify(HEAT)+'. Tactics: '+JSON.stringify(TACTICS)+'. Times: '+JSON.stringify(TIMES)+'.'+
       '\n\nBuild the film. Dialogue is the heart: every scene is a conversation where people want different things and hide something. Reply with only a JSON object:\n{"title":string,"logline":string,"genres":[up to 2],"tones":[up to 2],"setting":{"mode":"one"|"few"|"many","place":string},'+
-      '"characters":[{name,role,age,traits,background,wants,struggle,secret,look:{build,hair,face,style,detail},wardrobe,makeup,voiceTags,habits,conflictStyle,voice}] ('+castRule()+'),'+
+      '"characters":[{name,role,gender,age,traits,background,wants,struggle,secret,look:{build,hair,face,style,detail},wardrobe,makeup,voiceTags,habits,conflictStyle,voice}] ('+castRule()+'),'+
       '"relationships":[{"a":name,"b":name,"type":[..],"tone":[..],"power":"a"|"b"|"equal","history":string,"unsaid":string}],'+
       '"scenes":[{"io":"INT."|"EXT."|"INT./EXT.","place":string,"time":string,"beat":string,"cast":[names],"subject":string,"conflict":string,"heat":string,"turn":string,"winner":name or "none","space":string,"props":[string],"parts":[{"who":name,"goal":string,"tactics":[..],"hidden":string}],"source":string (what in the source this scene adapts, one sentence),"keep":[string] (lines from the source to keep verbatim, may be empty)}] ('+nScenes+' scenes, in order),'+
       '"style":{"ending":string,"pov":string,"pace":string,"themes":string,"visual":string}}\nWrite every text field in '+lang+', except values that must come from the allowed lists.';
@@ -4029,7 +4034,7 @@ function applyAdaptation(o){
   if(o.setting&&typeof o.setting==='object')st.setting={mode:pickOne(o.setting.mode,['one','few','many'])||'few',place:str(o.setting.place)};
   var keepS=S;S=st;
   (Array.isArray(o.characters)?o.characters:[]).slice(0,8).forEach(function(c){if(!c||!str(c.name)||byName(c.name))return;var lk=c.look||{};
-    S.chars.push(newChar({name:str(c.name),role:pickOne(c.role,ROLES)||'Supporting',age:str(String(c.age||'')),traits:pickAll(c.traits,TRAITS).slice(0,4),background:str(c.background),wants:str(c.wants),struggle:str(c.struggle),secret:str(c.secret),
+    S.chars.push(newChar({name:str(c.name),role:pickOne(c.role,ROLES)||'Supporting',gender:pickOne(c.gender,GENDERS)||'',age:str(String(c.age||'')),traits:pickAll(c.traits,TRAITS).slice(0,4),background:str(c.background),wants:str(c.wants),struggle:str(c.struggle),secret:str(c.secret),
       look:{build:pickAll(lk.build,LOOKS.build).slice(0,2),hair:pickAll(lk.hair,LOOKS.hair).slice(0,2),face:pickAll(lk.face,LOOKS.face).slice(0,2),style:pickAll(lk.style,LOOKS.style).slice(0,2),detail:pickAll(lk.detail,LOOKS.detail).slice(0,2)},
       wardrobe:str(c.wardrobe),makeup:str(c.makeup),voiceTags:pickAll(c.voiceTags,VOICE.style).slice(0,3),habits:pickAll(c.habits,VOICE.habits).slice(0,2),conflictStyle:pickAll(c.conflictStyle,VOICE.conflict).slice(0,2),voice:str(c.voice)}))});
   (Array.isArray(o.relationships)?o.relationships:[]).forEach(function(r){if(!r)return;var a=byName(r.a),b=byName(r.b);if(!a||!b||a===b)return;var rr=relOf(a.id,b.id);
@@ -4091,10 +4096,10 @@ function photoBtn(label,run){
 function mergeChips(arr,vals,allowed,max){pickAll(vals,allowed).forEach(function(v){if(arr.indexOf(v)<0&&arr.length<(max||3))arr.push(v)})}
 async function seeCast(c,blob,thumb){
   var o=await caps.sample.json('This is a reference photo for a film character. '+VISION_RULES+'\nAllowed values: look.build '+JSON.stringify(LOOKS.build)+', look.hair '+JSON.stringify(LOOKS.hair)+', look.face '+JSON.stringify(LOOKS.face)+', look.style '+JSON.stringify(LOOKS.style)+', look.detail '+JSON.stringify(LOOKS.detail)+
-    '.\nReply with only a JSON object: {"look":{"build":[],"hair":[],"face":[],"style":[],"detail":[]} (up to 2 allowed values each),"ageRange":string (an apparent range like "30s", or ""),"looks":string (one sentence of visible details the lists miss, for a camera),"wardrobe":string (what they wear: garments, fabric, colour with #hex, fit),"makeup":string (visible hair styling and makeup, or "")}. Write text in '+noteLang()+'.',{images:[blob],cache:false});
+    '.\nReply with only a JSON object: {"gender":"Woman"|"Man"|"Non-binary"|"" (apparent presentation only, or ""),"look":{"build":[],"hair":[],"face":[],"style":[],"detail":[]} (up to 2 allowed values each),"ageRange":string (an apparent range like "30s", or ""),"looks":string (one sentence of visible details the lists miss, for a camera),"wardrobe":string (what they wear: garments, fabric, colour with #hex, fit),"makeup":string (visible hair styling and makeup, or "")}. Write text in '+noteLang()+'.',{images:[blob],cache:false});
   if(!o||typeof o!=='object')throw {code:'invalid_json'};var lk=o.look||{};
   Object.keys(LOOKS).forEach(function(k){mergeChips(c.look[k],lk[k],LOOKS[k],3)});
-  if(!c.age.trim()&&str(o.ageRange))c.age=str(o.ageRange);if(!c.looks.trim())c.looks=str(o.looks);if(!str(c.wardrobe))c.wardrobe=str(o.wardrobe);if(!str(c.makeup))c.makeup=str(o.makeup);
+  if(!c.gender&&GENDERS.indexOf(o.gender)>-1&&o.gender!=='Not specified'){c.gender=o.gender;if(c.ident)c.ident.gender=o.gender}if(!c.age.trim()&&str(o.ageRange))c.age=str(o.ageRange);if(!c.looks.trim())c.looks=str(o.looks);if(!str(c.wardrobe))c.wardrobe=str(o.wardrobe);if(!str(c.makeup))c.makeup=str(o.makeup);
   if(!c.photo||/^blob:/.test(c.photo))c.photo=thumb;c.openLook=true;c.openWm=true;
   return uiAR()?'مُلئت ملامح '+(nm(c)||'الشخصية')+' من الصورة. راجعها وعدّلها.':'Filled in '+(nm(c)||'the character')+'’s look from the photo. Check and adjust.'}
 async function seeWardrobe(c,blob,thumb,kind){
@@ -6386,16 +6391,16 @@ var IDF=[['gender','Gender presentation',['Woman','Man','Non-binary','Not specif
   ['facial','Facial hair',['None','Stubble','Short beard','Full beard','Moustache','Goatee']],['marks','Distinguishing marks',['Freckles','Scar','Tattoo','Birthmark','Glasses','Piercings','Wrinkles','Dimples']]];
 function identText(c){var I=c&&c.ident;if(!I||!I.locked)return '';var b=[];
   function g(k){var v=I[k];return Array.isArray(v)?v.join(', '):v||''}
-  var who=[g('gender')&&g('gender')!=='Not specified'?g('gender').toLowerCase():'',g('ageLook')?'looks '+g('ageLook'):'',c.ethnicity?c.ethnicity+' heritage':''].filter(Boolean).join(', ');if(who)b.push(who);
+  var who=[genderOf(c)?genderOf(c).toLowerCase():'',g('ageLook')?'looks '+g('ageLook'):'',c.ethnicity?c.ethnicity+' heritage':''].filter(Boolean).join(', ');if(who)b.push(who);
   if(g('skin'))b.push(g('skin').toLowerCase()+' skin'+(g('under')?' with a '+g('under').toLowerCase()+' undertone':''));
   [['height',''],['build','build'],['face','face'],['eyes','eyes'],['brows','brows'],['nose','nose'],['lips','lips']].forEach(function(x){var v=g(x[0]);if(v)b.push(v.toLowerCase()+(x[1]?' '+x[1]:''))});
   var hair=[g('hairL'),g('hairT'),g('hairC')].filter(Boolean).join(' ').toLowerCase();if(hair)b.push(hair+' hair'+(g('hairS')?', '+g('hairS').toLowerCase():''));
   if(g('facial')&&g('facial')!=='None')b.push(g('facial').toLowerCase());if(g('marks'))b.push(g('marks').toLowerCase());
   if(I.wardrobe)b.push('signature wardrobe: '+I.wardrobe);if(I.palette)b.push('colour palette '+I.palette);if(I.notes)b.push(I.notes);
   return b.join('; ')}
-function lookText(c){var t=lookText0(c);if(c&&c.ethnicity&&!(c.ident&&c.ident.locked))t=(t?t+'. ':'')+'Heritage: '+c.ethnicity;var id=identText(c);return id?id+(t?'. '+t:''):t}
+function lookText(c){var t=lookText0(c);if(c&&genderWord(c)&&!(c.ident&&c.ident.locked))t=genderWord(c)+(t?'. '+t:'');if(c&&c.ethnicity&&!(c.ident&&c.ident.locked))t=(t?t+'. ':'')+'Heritage: '+c.ethnicity;var id=identText(c);return id?id+(t?'. '+t:''):t}
 function handleOf(c){var I=c&&c.ident;if(I&&I.locked){var bits=[];var g=function(k){var v=I[k];return Array.isArray(v)?v[0]:v};
-    var noun=g('gender')==='Woman'?'woman':g('gender')==='Man'?'man':'person';if(g('ageLook')&&/child|teen/i.test(g('ageLook')))noun=g('gender')==='Woman'?'girl':g('gender')==='Man'?'boy':'young person';
+    var gg=genderOf(c),noun=gg==='Woman'?'woman':gg==='Man'?'man':'person';if(g('ageLook')&&/child|teen/i.test(g('ageLook')))noun=gg==='Woman'?'girl':gg==='Man'?'boy':'young person';
     var hair=[g('hairL'),g('hairC')].filter(Boolean).join(' ').toLowerCase();if(hair)bits.push(hair+' hair');if(g('facial')&&g('facial')!=='None')bits.push(g('facial').toLowerCase());if(I.wardrobe)bits.push(I.wardrobe.split(/[,.]/)[0].toLowerCase());
     return 'the '+(g('ageLook')&&!/child|teen/i.test(g('ageLook'))?g('ageLook')+' ':'')+noun+(bits.length?' with '+bits.slice(0,2).join(' and '):'')}
   return handleOf0(c)}
@@ -6421,7 +6426,7 @@ function openCreator(c){
     box.classList.add('creator');
     var pv=h('p',{class:'picked cc-pv'});function up(){var was=I.locked;I.locked=true;pv.textContent=identText(c)||'Pick a few options. Every one is optional.';I.locked=was}
     var grid=h('div',{class:'cc-grid'});
-    IDF.forEach(function(f){var multiK=f[0]==='marks'||f[0]==='eyes';var g=chipGroup(f[2],function(v){return multiK?(I[f[0]]||[]).indexOf(v)>-1:I[f[0]]===v},function(v){if(multiK){var a=I[f[0]]=I[f[0]]||[];var k=a.indexOf(v);if(k>-1)a.splice(k,1);else a.push(v)}else I[f[0]]=I[f[0]]===v?'':v;up()});grid.append(group(f[1],g))});
+    IDF.forEach(function(f){var multiK=f[0]==='marks'||f[0]==='eyes';var g=chipGroup(f[2],function(v){return multiK?(I[f[0]]||[]).indexOf(v)>-1:I[f[0]]===v},function(v){if(multiK){var a=I[f[0]]=I[f[0]]||[];var k=a.indexOf(v);if(k>-1)a.splice(k,1);else a.push(v)}else I[f[0]]=I[f[0]]===v?'':v;if(f[0]==='gender')c.gender=I.gender||'';up()});grid.append(group(f[1],g))});
     box.append(h('p',{class:'info',text:'Fix how this person looks once. When the identity is locked, every image and video prompt repeats it exactly, which keeps faces, hair and costume consistent across shots and tools.'}),
       group('Heritage',h('p',{class:'hint',text:c.ethnicity?c.ethnicity+' (set on the Cast card)':'Not set. You can add it on the Cast card.'})),grid,
       field('Signature wardrobe',(function(){var t=h('input',{type:'text',id:'cc-wd'});t.value=I.wardrobe||c.wardrobe||'';t.addEventListener('input',function(){I.wardrobe=t.value;up()});return t})(),'The outfit they are recognised by.'),
@@ -6457,7 +6462,7 @@ function mergeChars(keep,drop){
     shotsOf(sc).forEach(function(sh){sh.subj=(sh.subj||[]).map(function(id){return id===drop.id?keep.id:id}).filter(function(id,k,a){return a.indexOf(id)===k})});
     if(sc.conv&&sc.conv.parts&&sc.conv.parts[drop.id]&&!sc.conv.parts[keep.id])sc.conv.parts[keep.id]=sc.conv.parts[drop.id];if(sc.conv&&sc.conv.winner===drop.id)sc.conv.winner=keep.id;
     if(sc.dialogue&&nm(drop)&&nm(keep))sc.dialogue=sc.dialogue.split('@'+nm(drop).toUpperCase()).join('@'+nm(keep).toUpperCase())});
-  ['background','wants','struggle','secret','looks','voice','wardrobe','makeup','photo','ethnicity'].forEach(function(k){if(!keep[k]&&drop[k])keep[k]=drop[k]});
+  ['background','wants','struggle','secret','looks','voice','wardrobe','makeup','photo','ethnicity','gender'].forEach(function(k){if(!keep[k]&&drop[k])keep[k]=drop[k]});
   S.chars=S.chars.filter(function(c){return c!==drop})}
 function dupBox(kinds){
   var L=dupIssues().filter(function(x){return !kinds||kinds.indexOf(x.k)>-1});if(!L.length)return null;
@@ -6628,7 +6633,7 @@ function wrapCharCard(card,c,i){
   if(c.ident&&c.ident.locked)pills.append(h('span',{class:'pill lock',text:'🔒 Identity'}));
   var rm=t.head.querySelector('.acts');
   var hd=accHeader(open,function(){uiOpen.char=open?'':c.id;renderStep();setTimeout(function(){var el=document.querySelector('[data-acc="c'+c.id+'"]');if(el&&!open)el.scrollIntoView({block:'start',behavior:motionOK()?'smooth':'auto'})},30)},
-    [av,h('span',{class:'acc-t'},h('b',{text:nm(c)||('Character '+(i+1))}),h('small',{text:[c.narrator?'Narrator':c.role,c.age?c.age:'',c.wants?c.wants.slice(0,70):''].filter(Boolean).join(' · ')})),pills],open?rm:null);
+    [av,h('span',{class:'acc-t'},h('b',{text:nm(c)||('Character '+(i+1))}),h('small',{text:[c.narrator?'Narrator':c.role,genderOf(c)||'',c.age?c.age:'',c.wants?c.wants.slice(0,70):''].filter(Boolean).join(' · ')})),pills],open?rm:null);
   var out=h('div',{class:'card acc'+(open?' open':''),'data-acc':'c'+c.id},hd);if(open)out.append(t.body);return out}
 function wrapSceneCard(card,sc,i){
   var last=S.scenes[S.scenes.length-1]===sc&&!sc.beat&&!sc.custom;if(last&&uiOpen.scene===null)uiOpen.scene=sc.id;
@@ -6719,6 +6724,7 @@ function initV11(){
 
 
 /* ===================== Examples for every project type (original content) ===================== */
+var EXG={Rima:'Woman',Karim:'Man',Lina:'Woman',Maya:'Woman',Tony:'Man',Nour:'Woman','Dr. Leila Haddad':'Woman','Dr. Adel Mansour':'Man',Yusuf:'Man','Commander Saleh':'Man',Zeina:'Woman','Abu Fadi':'Man'};
 var EXS={
  tvc:{title:'First Pour',logline:'At 5 a.m. in a sleeping city, a night-shift nurse and a baker share the only open window, and one cup of Halo coffee turns the end of a shift into the start of a day.',genres:['Drama'],tones:['Warm','Hopeful'],setting:{mode:'one',place:'Corner café'},
   client:{brand:'Halo Roasters (fictional)',objective:'Launch the new Dawn Blend',audience:'Early risers and shift workers, 25 to 45',message:'The first cup belongs to you.',mandatories:'Pack shot of the Dawn Blend bag, end card with logo and line',duration:'30 seconds',cta:'Find Dawn Blend at your corner café'},
@@ -6781,7 +6787,7 @@ function exampleFor(k){var pt=ptOf(k)||ptOf('film');
     s0.scenes[1].shots=[newShot({desc:'Samir reaches for the bell cord',size:'Medium close-up',move:'Static',dur:4}),newShot({desc:'Nadia watches him in the mirror',size:'Close-up',move:'Static',dur:3})];return s0}
   var e=EXS[pt.k],s=blankState();s.example=true;s.ptype=pt.k;s.format=pt.fmt;s.lenMin=pt.len;s.lenTouched=true;s.acts=pt.acts.slice();s.exp.tpl=pt.tpl;s.treat=pt.treat||'';
   s.title=e.title;s.logline=e.logline;s.genres=e.genres||[];s.tones=e.tones||[];s.setting=Object.assign(s.setting,e.setting||{});s.voOnly=!!e.voOnly;if(e.client)s.client=e.client;
-  var ids={};s.chars=e.chars.map(function(c){var n=newChar(Object.assign({},c,{look:Object.assign({build:[],hair:[],face:[],style:[],detail:[]},c.look||{})}));ids[c.name]=n.id;return n});
+  var ids={};s.chars=e.chars.map(function(c){var n=newChar(Object.assign({gender:EXG[c.name]||''},c,{look:Object.assign({build:[],hair:[],face:[],style:[],detail:[]},c.look||{})}));ids[c.name]=n.id;return n});
   s.scenes=e.scenes.map(function(x){var sc=newScene({id:uid(),io:x.io,place:x.place||'Other',custom:x.custom||'',time:x.time,beat:x.beat,cast:(x.cast||[]).map(function(n){return ids[n]}).filter(Boolean),dialogue:x.dialogue||''});
     if(x.shots)sc.shots=x.shots.map(function(q){return newShot({desc:q[0],size:q[1],move:q[2],dur:q[3]})});return sc});
   if(s.chars.length>1){var a=s.chars[0],b=s.chars[1];s.rels[pairKey(a.id,b.id)]={type:[],tone:['Guarded','Warm'],power:'equal',history:'',unsaid:''}}
@@ -6802,7 +6808,7 @@ function visionWhy(){var ar=uiAR();if(!caps.sample)return ar?'اربط ذكاء�
 function portraitPrompt(c){var b=['Photographic character portrait for a film, chest-up, facing the camera with a calm neutral expression, plain mid-grey studio background, soft even front light, natural skin texture, sharp focus on the eyes.'];
   if(c.age)b.push('Apparent age: '+c.age+'.');var t=identText(c)||lookText(c);if(t)b.push('Look: '+t+'.');if(c.wardrobe)b.push('Wearing: '+c.wardrobe.trim().replace(/[.\s]+$/,'')+'.');if(c.makeup)b.push('Hair and makeup: '+c.makeup.trim().replace(/[.\s]+$/,'')+'.');
   if(TREAT_PH[S.treat])b.push('Rendered as '+TREAT_PH[S.treat]+'.');b.push('No text, no logos, no watermark.');return b.join(' ')}
-function wardrobePrompt(c){return 'Costume reference for a film: the complete outfit shown on an invisible ghost mannequin, front view, full outfit in frame, plain light-grey background, even soft light, no person, no face, no hands. Outfit: '+String(c.wardrobe||'').trim().replace(/[.\s]+$/,'')+'.'+(c.role?' For the '+String(c.role).toLowerCase()+(c.age?', age '+c.age:'')+'.':'')+(TREAT_PH[S.treat]?' Rendered as '+TREAT_PH[S.treat]+'.':'')+' No text.'}
+function wardrobePrompt(c){return 'Costume reference for a film: the complete outfit shown on an invisible ghost mannequin, front view, full outfit in frame, plain light-grey background, even soft light, no person, no face, no hands. Outfit: '+String(c.wardrobe||'').trim().replace(/[.\s]+$/,'')+'.'+(c.role?' For the '+String(c.role).toLowerCase()+(genderWord(c)?', a '+genderWord(c):'')+(c.age?', age '+c.age:'')+'.':'')+(TREAT_PH[S.treat]?' Rendered as '+TREAT_PH[S.treat]+'.':'')+' No text.'}
 function makeupPrompt(c){var t=identText(c)||lookText(c);return 'Hair and makeup reference for a film character: close head-and-shoulders view, plain mid-grey background, soft beauty light, detail on hair and skin. Hair and makeup: '+String(c.makeup||'').trim().replace(/[.\s]+$/,'')+'.'+(t?' Person: '+t+'.':'')+(TREAT_PH[S.treat]?' Rendered as '+TREAT_PH[S.treat]+'.':'')+' No text.'}
 async function dataToBlob(u){var r=await fetch(u);return await r.blob()}
 function imgSlot(o,key,opt){var ar=uiAR(),box=h('div',{class:'img-slot'});
