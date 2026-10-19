@@ -2,7 +2,9 @@
 
 A guided brief for writing scripts: TV commercials, social reels, films, TV, web series, podcasts, corporate films and more. You fill in the story, cast, scenes and style; the AI you connect drafts the script, the dialogue and the shot list from it.
 
-Script Room is one web page. No account, no build step, no server database. Projects stay in your browser.
+Script Room is one web page. No account and no build step. Projects stay in your browser; only projects you choose to share are stored on the site (see Write together).
+
+The first screen asks for the interface language: **English, العربية or Deutsch**. You can change it later from the View menu.
 
 ## Use any AI
 
@@ -25,6 +27,8 @@ Free cloud plans usually let the provider use your text to improve its models. F
 
 Some providers refuse calls straight from a browser. For those, Script Room sends the request through the site's relay, `functions/api/ai.js`, which forwards it to the provider and stores nothing. You can change the route under **Advanced** in AI settings.
 
+The toolbar always shows which AI is connected and what it is doing: **Not connected**, **Ready** (provider and model), **Working…** while a request runs, or **Error** with the reason (wrong key, quota reached, model missing, provider refused, timed out). Click it to open AI settings.
+
 Image features (fill in from a photo, frame checks) need a model that accepts images, such as Claude, GPT-4.1 or Gemini. Text-only models still do everything else.
 
 ### Local models
@@ -40,20 +44,44 @@ Local models run on your computer, so nothing leaves it. The browser has to be a
 
 Browsers block an https page from calling plain http addresses other than `localhost`, so a model on another machine needs https or must be reached through `localhost`.
 
+## Images
+
+Characters (portrait and turnaround sheet), wardrobe, hair and makeup, locations, props and storyboard frames each have **Upload image**, **Generate with AI** and, where it helps, **Fill in from it**. Generate shows the full prompt first, and you can edit it before anything is made. Pick the image model under **Connect AI → Images**.
+
+| Image model | Cost | Key |
+|---|---|---|
+| This site: Flux Schnell (Cloudflare Workers AI) | free, about 170 images a day shared by everyone using the site | none |
+| Pollinations: Flux | free, slow (one image every 15 s), may carry a small watermark | none |
+| Stable Diffusion on your computer (Automatic1111 or Forge) | free, private | none; start it with `--api --cors-allow-origins=<your site>` |
+| Google Nano Banana (Gemini image models) | paid per image | Gemini key; uses character photos as references |
+| OpenAI GPT Image | paid per image | OpenAI key |
+| OpenRouter: ByteDance Seedream, Flux 2 Pro, GPT Image, Nano Banana | paid, needs OpenRouter credit | OpenRouter key |
+| fal.ai: Seedream, Flux Pro Ultra, Recraft, Ideogram | paid per image | fal.ai key, sent through the site's relay |
+
+Model names are editable, because providers rename them. Video (Seedance, Kling, Runway, Veo, Sora and others) is not generated inside Script Room: the prompt studio prepares the prompts and you paste them into the video tool.
+
+## Projects and series
+
+**Projects** in the toolbar lists everything you have made. A **TV series** or **web series** is a folder of episodes that share the series bible (premise, world, recurring cast, episode count and length); each episode is its own project. Add, duplicate, open or delete projects and episodes there.
+
+Project types: short film, feature film, TV series, single TV episode, web series, TVC / commercial, social reel (9:16), podcast / audio, corporate / explainer, documentary and music video. The type shows as a pill at the top of every step and sets the realistic length range, the default length, the acts, which steps you need and how the AI writes. The length has a slider and a minutes field that stay in sync; once you set it yourself, changing other things never overwrites it. **Explore an example** loads a finished sample of the type you are making.
+
 ## Hosting
 
 Recommended: the code on **GitHub**, the site on **Cloudflare**. Both are free for this.
 
 1. Create a GitHub repository and upload everything in this folder.
 2. In Cloudflare, open Workers & Pages, click Create and import the GitHub repository.
-3. Cloudflare reads `wrangler.jsonc` and deploys it as a Worker: `worker.js` serves the app and runs the AI relay at `/api/ai`. Leave the build command empty and keep the deploy command as `npx wrangler deploy`.
+3. Cloudflare reads `wrangler.jsonc` and deploys it as a Worker: `worker.js` serves the app and runs the AI relay at `/api/ai`, share links at `/api/share` and free images at `/api/image`. Leave the build command empty and keep the deploy command as `npx wrangler deploy`.
 4. Under the project's Domains tab, switch on the `workers.dev` address, or add your own domain.
+5. **Share links and Write together:** in Cloudflare, Storage & Databases → KV → Create a namespace, then put its id in `wrangler.jsonc` under `kv_namespaces` (binding `SHARES`). Without it, everything else works and Share explains that links are off on this site.
+6. The free **image model** uses Workers AI through the `"ai": { "binding": "AI" }` line in `wrangler.jsonc`. It needs no setup on a Workers project. Open `/api/image/health` to check it.
 
-If you create a **Pages** project instead, it uses `functions/api/ai.js` for the relay and ignores `worker.js`. Both work.
+If you create a **Pages** project instead, it uses the files in `functions/api/` and ignores `worker.js`. Bind the KV namespace (`SHARES`) and Workers AI (`AI`) in the Pages settings.
 
 To check the relay, open `/api/ai` on your site: it should say "Use POST."
 
-GitHub Pages also hosts the page, but it cannot run the relay, so DeepSeek, Mistral and Groq won't work there. Everything else, including local models, works on any static host.
+GitHub Pages also hosts the page, but it cannot run the relay, share links or the free image model, so DeepSeek, Mistral, Groq, fal.ai and Write together won't work there. Everything else, including local models, works on any static host.
 
 To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and open the address it prints. With the relay: `npx wrangler dev`.
 
@@ -79,15 +107,18 @@ To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and 
 - Scene School: six lessons with original annotated example scenes, eight famous film scenes explained in our own words, and Study a film. "Explain my scene" adds numbered teaching notes to your own dialogue.
 - Guided tour, daily word goal with streaks, progress ring, animated transitions (all motion respects reduced-motion settings)
 - Apple-style interface: frosted toolbar, sidebar with icon tiles, grouped cards, iOS segmented controls, system fonts (SF on Apple devices, Inter and IBM Plex Sans Arabic elsewhere), Light, Dark or Auto theme, hideable script bible
-- Interface in English or Arabic, with a full right-to-left layout. Arabic scripts get Arabic scene headings (داخلي / خارجي) and right-to-left pages. UI text is translated by a built-in dictionary; anything it misses is translated once by the AI and cached in the browser
+- Interface in English, Arabic or German, with a full right-to-left layout for Arabic. Arabic scripts get Arabic scene headings (داخلي / خارجي) and right-to-left pages. UI text is translated by a built-in dictionary; anything it misses is translated once by the AI and cached in the browser
 - Board: index cards you drag (or Alt + arrow) to reorder scenes, and a mind map of the story, scenes, characters and relationships with drag, pan, pinch and wheel zoom, Tidy up and Order scenes by position
 - Focus mode for distraction-free writing, and Table read: the browser reads the scene aloud with a different voice for each character
 - Shots step: a shot list per scene with presets for shot size, framing, angle, camera height, movement, rig, lens (field-of-view ladder 107° to 8°), focus, light, composition, frame rate, transition and directing mode; ten coverage recipes (shot / reverse shot, walk and talk, slow push, insert, POV and more); the AI can plan a scene's coverage from its dialogue; a schematic storyboard frame for every shot; exports as PDF, CSV, printable HTML and JSON
 - Prompt generator: every shot becomes an image prompt and a video prompt. JSON export (see PROMPTS-SCHEMA.md) and a webhook let you plug in your own tools
 - Draft history: automatic and manual snapshots, side-by-side compare with line-level changes, restore
-- Write together (when opened on claude.ai): share a project with a private code; scenes, the brief and the draft sync live, people on the page show in the toolbar and on the steps they are working on, and margin comments are shared. On your own copy, margin comments are saved with the project
+- Write together: **Share** makes two private links for the project you have open, an **edit link** (co-writers change the same project) and a **view-only link** (a reading copy people can save as their own). Links are long random codes; the site keeps only a hash of each key, so it cannot rebuild them. Changes sync every few seconds. If two people change the project at once, nobody's work is overwritten: you choose to take theirs, keep yours, or take theirs and keep yours as a copy. **Stop sharing** deletes the online copy and every link stops working. Your own copy always stays in your browser
+- Shot board: every shot of the film on one board, grouped by act and scene, with drag to reorder or move a shot to another scene, and a Timeline view sized by duration; click a shot to jump to it
+- Prompt studio: a large, readable preview of exactly the text that will be copied, for one shot, a whole scene or the whole film, per platform. Edit a prompt there and your edit is what gets copied; Reset returns to the generated one
+- Script bible: one drawer that opens from the toolbar (**Script bible**) and closes with Esc, instead of a panel on every step
 - Character arcs: a chart and a table of how things stand for each character in each scene, which the AI can draft
-- Installable app: in a self-hosted copy (https or localhost) the page installs on desktop and phone and works offline (manifest.webmanifest, sw.js, icons/)
+- Install the app: in a self-hosted copy (https or localhost) the page installs on desktop and phone. It then opens in its own window from your dock, start menu or home screen, and it opens and works without internet; AI, images and share links still need a connection. **Install** in the View menu gives the steps for your browser (one click in Chrome and Edge)
 - Scene School in Arabic, written by hand; Arabic spelling is checked by the AI, since there is no browser-ready open-source Arabic Hunspell package
 - Import writing: upload a book, short story, essay, life story or client brief (.txt, .md, .docx, .epub, .pdf, .rtf) or paste it. the AI reads it in parts, then builds the logline, cast, relationships, scenes and conversation setups, writes each scene's dialogue, plans the shot list and can write the full script. Faithful or Inspired by, any format and length, script in English, Arabic or French. Final Draft (.fdx) and Fountain scripts import directly without AI. Your current project goes to Draft history first
 - Import a shot list: paste or upload a shot list in any shape (table, list, notes) and the AI maps each shot to a scene with the camera presets filled in
@@ -120,6 +151,8 @@ To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and 
 - `index.html`: the whole app (HTML, CSS and JavaScript in one file)
 - `worker.js`, `wrangler.jsonc`, `.assetsignore`: run the site and the AI relay on Cloudflare Workers
 - `functions/api/ai.js`: the AI relay itself (also used directly by Cloudflare Pages)
+- `lib/share-core.js`, `functions/api/share/`: share links and Write together (Cloudflare KV)
+- `lib/image-core.js`, `functions/api/image/`: the free image model (Cloudflare Workers AI)
 - `manifest.webmanifest`, `sw.js`, `icons/`: install on desktop and phone, work offline
 - `_headers`: security headers for Cloudflare Pages
 - `ai-adapter.example.js`: optional, to plug in your own backend instead of Connect AI
@@ -134,7 +167,7 @@ To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and 
 - Fountain, the open screenplay text format
 - Fonts from Google Fonts: Bricolage Grotesque, Instrument Sans, Courier Prime, Inter, IBM Plex Sans Arabic (SIL Open Font License)
 
-No film scripts are bundled. Lesson scenes and the example project (The Last Tram) are original. Famous-scene notes describe the films without quoting them.
+No film scripts are bundled. Lesson scenes and the example projects (one per project type) are original. Famous-scene notes describe the films without quoting them.
 
 ## License
 

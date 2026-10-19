@@ -18,7 +18,8 @@ const ALLOWED = new Set([
   'api.deepseek.com',
   'api.mistral.ai',
   'api.groq.com',
-  'openrouter.ai'
+  'openrouter.ai',
+  'fal.run'
 ]);
 const PASS = ['content-type', 'authorization', 'x-api-key', 'x-goog-api-key', 'anthropic-version', 'http-referer', 'x-title'];
 

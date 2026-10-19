@@ -2,10 +2,12 @@
   Script Room on Cloudflare Workers.
   Serves the app files, and runs the AI relay at /api/ai
   (the same relay as functions/api/ai.js, which Cloudflare Pages uses),
-  and share links / Write together at /api/share (lib/share-core.js).
+  share links / Write together at /api/share (lib/share-core.js),
+  and free image generation at /api/image (lib/image-core.js, Workers AI).
 */
 import { onRequestPost } from './functions/api/ai.js';
 import { handleShare } from './lib/share-core.js';
+import { handleImage } from './lib/image-core.js';
 
 export default {
   async fetch(request, env) {
@@ -14,6 +16,7 @@ export default {
       if (request.method === 'POST') return onRequestPost({ request });
       return new Response('Use POST.', { status: 405, headers: { allow: 'POST' } });
     }
+    if (url.pathname === '/api/image' || url.pathname.startsWith('/api/image/')) return handleImage(request, env);
     if (url.pathname === '/api/share' || url.pathname.startsWith('/api/share/')) return handleShare(request, env);
     return env.ASSETS.fetch(request);
   }
