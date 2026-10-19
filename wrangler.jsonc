@@ -7,5 +7,10 @@
     "directory": ".",
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
-  }
+  },
+  // Share links and Write together: the KV namespace that stores shared projects.
+  // To use your own, create one in Cloudflare (Storage & databases > KV) and put its ID here.
+  "kv_namespaces": [
+    { "binding": "SHARES", "id": "85be47de5e104fd9b566690c37bbb90e" }
+  ]
 }

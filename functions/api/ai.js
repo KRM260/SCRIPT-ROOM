@@ -20,7 +20,7 @@ const ALLOWED = new Set([
   'api.groq.com',
   'openrouter.ai'
 ]);
-const PASS = ['content-type', 'authorization', 'x-api-key', 'anthropic-version', 'http-referer', 'x-title'];
+const PASS = ['content-type', 'authorization', 'x-api-key', 'x-goog-api-key', 'anthropic-version', 'http-referer', 'x-title'];
 
 export async function onRequestPost({ request }) {
   const origin = request.headers.get('origin');

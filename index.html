@@ -927,7 +927,15 @@ body.v11 #modeSeg,body.v11 #btnTheme,body.v11 #btnInsp,body.v11 #btnPal{display:
 @media (max-width:760px){.ctabs,.stabs{top:0}.acc-h{flex-wrap:wrap;padding:12px}.acc-pills{order:5;width:100%;padding-inline-start:52px}.acc-body{padding:0 12px 16px}}
 .dt>summary{justify-content:flex-start}.dt>summary::after{margin-inline-start:auto}.toolbar .brand h1{white-space:nowrap}@media (max-width:440px){.toolbar .brand h1{display:none}}
 .scn-add>summary{font-weight:600}
-.ai-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.ai-grp{display:flex;flex-direction:column;gap:8px;background:var(--fill-2);border-radius:14px;padding:12px}.ai-gh{display:flex;flex-direction:column;gap:2px;margin:0 0 4px}.ai-gh b{font-size:15px}.ai-gh span{font-size:12.5px;color:var(--ink-2);line-height:1.35}.ai-card{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border:0;border-radius:10px;padding:10px 12px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;color:inherit;font:inherit}.ai-card small{color:var(--ink-2);font-size:12.5px}.ai-card.rec small{color:var(--accent);font-weight:600}.ai-card:hover{box-shadow:inset 0 0 0 1px var(--accent)}.ai-card[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--accent);background:var(--accent-soft)}.ai-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}.ai-checks .ck{display:flex;align-items:center;gap:10px;font-size:15px}.ck-i{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex:none;background:var(--fill);color:var(--ink-2)}.ck.ok .ck-i{background:#1f9d55;color:#fff}.ck.bad .ck-i{background:#d93a3a;color:#fff}.ck.wait{color:var(--ink-2)}#ai-keylink{display:inline-block;margin-top:6px}@media (max-width:760px){.ai-pick{grid-template-columns:1fr}}
+.ld-langs{display:grid;grid-template-columns:repeat(2,minmax(0,260px));gap:16px;justify-content:center;margin-top:8px}.ld-lang{display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 18px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;box-shadow:var(--shadow-1,0 1px 2px rgba(0,0,0,.06))}.ld-lang b{font-size:28px;font-weight:800}.ld-lang small{color:var(--ink-2);font-size:15px}.ld-lang:hover,.ld-lang:focus-visible{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}.ld-note{text-align:center;color:var(--ink-2);font-size:13.5px;margin-top:20px}.ld-lsw{display:flex;width:max-content;margin:0 0 0 auto}[dir=rtl] .ld-lsw{margin:0 auto 0 0}@media (max-width:560px){.ld-langs{grid-template-columns:1fr}}.tb-proj{max-width:280px}@media (max-width:760px){.tb-proj span,.tb-ai span,.tb-exp span{display:none}.tb-proj,.tb-ai,.tb-exp{padding-inline:9px}}@media (max-width:430px){#meter{display:none}}.tb-proj span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pj-row{display:flex;align-items:center;gap:6px;border-radius:12px;padding:4px;margin:2px 0}.pj-row.cur{background:var(--accent-soft)}.pj-open{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:start;border:0;background:transparent;color:inherit;font:inherit;padding:8px 10px;border-radius:10px;cursor:pointer}.pj-open:hover{background:var(--fill-2)}.pj-open b{font-weight:600}.pj-open small{color:var(--ink-2);font-size:12.5px}.pj-sh{display:flex;align-items:center;gap:10px;margin-bottom:6px}.pj-sh input{flex:1;font-weight:700;font-size:17px}.pj-series{display:flex;flex-direction:column;gap:4px}
+.type-pill{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:5px 12px 5px 9px;background:var(--accent-soft);color:var(--accent);font:600 13px/1.2 inherit;font-family:inherit;cursor:pointer;margin-bottom:8px;max-width:100%}.type-pill span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.type-pill .ic{width:15px;height:15px}.phead.pro{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.phead.pro .type-pill{margin:0}
+.type-card{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}.type-card small{display:block;color:var(--accent);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}.type-card b{display:block;font-size:20px;margin:2px 0}.type-card p{margin:0}
+.slrow{display:flex;align-items:center;gap:12px;margin:4px 0 10px}.slrow input[type=range]{flex:1;accent-color:var(--accent);min-width:0}.sl-v{min-width:64px;font-weight:700;font-variant-numeric:tabular-nums}
+.ai-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;background:var(--ink-3,#aaa);margin-inline-end:2px}.ai-dot.ok{background:#1f9d55}.ai-dot.err{background:#d93a3a}.ai-dot.busy{background:#e8a317;animation:aipulse 1s ease-in-out infinite}.ai-dot.idle{background:#8e8e93}.ai-dot.off{background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink-2)}@keyframes aipulse{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.ai-dot.busy{animation:none}}.tb-ai.ai-err{box-shadow:inset 0 0 0 1px #d93a3a}
+.ps-wrap{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:18px;align-items:start}.ps-nav{display:flex;flex-direction:column;gap:2px;position:sticky;top:0;max-height:calc(100vh - 120px);overflow:auto;padding-bottom:20px}.ps-n{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:start;border:0;background:transparent;color:inherit;font:inherit;padding:8px 10px;border-radius:10px;cursor:pointer}.ps-n:hover{background:var(--fill-2)}.ps-n.on{background:var(--accent-soft);color:var(--accent)}.ps-n small{color:var(--ink-2);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}.ps-n.lv1{margin-top:6px}.ps-n.lv2{padding-inline-start:24px}.ps-n.lv2 b{font-weight:500;font-size:14px}.ps-main{display:flex;flex-direction:column;gap:12px;min-width:0}.ps-head{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}.ps-head small{color:var(--ink-2);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.ps-head h3{margin:2px 0 0}.ps-ctx{display:flex;flex-wrap:wrap;gap:6px}.ps-chip{font-size:12.5px;background:var(--fill-2);border-radius:999px;padding:4px 10px}.ps-chip b{font-weight:600}.ps-text{width:100%;min-height:340px;resize:vertical;font-size:14px;line-height:1.55;white-space:pre-wrap;padding:14px 16px;border-radius:12px}.ps-flag{margin:0;font-size:13.5px;padding:8px 12px;border-radius:10px;background:var(--fill-2)}.ps-flag.warn{background:rgba(232,163,23,.2)}.ps-copy.done{background:#1f9d55!important}@media (max-width:760px){.ps-wrap{grid-template-columns:1fr}.ps-nav{position:static;max-height:240px}}
+@media (min-width:1241px){.shell,body.no-insp .shell{grid-template-columns:236px minmax(0,1fr)}}.sum{position:fixed!important;top:72px;inset-inline-end:14px;bottom:14px;width:min(420px,calc(100vw - 28px));max-height:none!important;z-index:150;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.28);grid-column:auto!important;display:block;padding-top:44px}body.no-insp .sum{display:none!important}#sumClose{position:fixed;top:82px;inset-inline-end:24px;z-index:151}#sumClose[hidden]{display:none}#btnInsp{width:auto;padding-inline:10px;gap:6px;display:inline-flex;align-items:center}#btnInsp .ib-l{font-size:13px;font-weight:600}@media (max-width:1100px){#btnInsp .ib-l{display:none}}@media (max-width:760px){.sum{top:62px}#sumClose{top:72px}}
+.img-slot{display:flex;gap:14px;align-items:center;padding:10px 0}.img-slot .ph{width:84px;height:84px;object-fit:cover;border-radius:14px;flex:none;background:var(--fill-2)}.img-slot .ph.round{border-radius:50%}.ph-empty{display:inline-flex;align-items:center;justify-content:center;color:var(--ink-2)}.img-slot-b{display:flex;flex-direction:column;gap:4px;min-width:0}.img-slot-b .bar{margin:2px 0 0;flex-wrap:wrap}
+.ai-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.ai-grp{display:flex;flex-direction:column;gap:8px;background:var(--fill-2);border-radius:14px;padding:12px}.ai-gh{display:flex;flex-direction:column;gap:2px;margin:0 0 4px}.ai-gh b{font-size:15px}.ai-gh span{font-size:12.5px;color:var(--ink-2);line-height:1.35}.ai-card{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border:0;border-radius:10px;padding:10px 12px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;color:inherit;font:inherit}.ai-card small{color:var(--ink-2);font-size:12.5px}.ai-card.rec small{color:var(--accent);font-weight:600}.ai-card:hover{box-shadow:inset 0 0 0 1px var(--accent)}.ai-card[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--accent);background:var(--accent-soft)}.ai-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}.ai-checks .ck{display:flex;align-items:center;gap:10px;font-size:15px}.ck-i{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex:none;background:var(--fill);color:var(--ink-2)}.ck.ok .ck-i{background:#1f9d55;color:#fff}.ck.bad .ck-i{background:#d93a3a;color:#fff}.ck.wait{color:var(--ink-2)}#ai-keylink{display:inline-block;margin-top:6px}.ai-statusline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;background:var(--fill-2);margin-bottom:14px}.ai-statusline.err{box-shadow:inset 0 0 0 1px #d93a3a}.ai-statusline span{color:var(--ink-2)}.shr-link .code-box input{flex:1;min-width:0;border:0;background:transparent;font:13px var(--f-mono,monospace)}.shr-link b{display:block;margin-bottom:4px}.shr-view{position:fixed;inset:0;z-index:300;background:var(--bg,#fff);display:flex;flex-direction:column}.shr-vbar{display:flex;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}.shr-vbar b{flex:1;min-width:0}.shr-view iframe{flex:1;border:0;width:100%;background:#fff}#btnTeam.on{color:var(--accent)}@media (max-width:760px){.ai-pick{grid-template-columns:1fr}}
 .code-box{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--surface);border-radius:12px;padding:12px 14px;box-shadow:inset 0 0 0 .5px var(--line)}.code-box code{font:700 18px var(--f-script);letter-spacing:.06em;white-space:pre-wrap;word-break:break-all;flex:1;min-width:0}#ai-setup .code-box code{font-size:14px;letter-spacing:0}.tb-ai{white-space:nowrap}.ld-foot{text-align:center;color:var(--ink-2);font-size:13.5px;margin-top:22px}
 </style>
 
@@ -965,7 +973,7 @@ body.v11 #modeSeg,body.v11 #btnTheme,body.v11 #btnInsp,body.v11 #btnPal{display:
         <button class="sbtn" id="btnHist" type="button" data-ic="hist">Draft history</button>
         <button class="sbtn" id="btnTeam" type="button" data-ic="team">Write together</button>
         <button class="sbtn" id="btnTour" type="button" data-ic="tour">Tour</button>
-        <button class="sbtn" id="btnInstall" type="button" data-ic="dl" hidden>Install the app</button>
+        <button class="sbtn" id="btnInstall" type="button" data-ic="dl" hidden title="Use Script Room like an app: own window, home-screen icon, works offline">Install the app</button>
         <button class="sbtn" id="btnExample" type="button" data-ic="example">Load example</button>
         <button class="sbtn" id="btnBlank" type="button" data-ic="blank">Start blank</button>
       </div>
@@ -989,11 +997,11 @@ body.v11 #modeSeg,body.v11 #btnTheme,body.v11 #btnInsp,body.v11 #btnPal{display:
 
 /* ---------- reference data ---------- */
 var FORMATS=[
-  {k:'short',l:'Short film',typ:'3 to 20 min',def:8,presets:[3,5,8,12,20]},
+  {k:'short',l:'Short film',typ:'5 to 40 min',def:12,presets:[5,10,12,15,20,30,40]},
   {k:'ad',l:'Commercial',typ:'15 sec to 2 min',def:1,presets:[0.25,0.5,1,2]},
   {k:'reel',l:'Social reel',typ:'15 to 60 sec',def:0.5,presets:[0.25,0.5,1]},
-  {k:'ep',l:'TV episode',typ:'22 to 60 min',def:30,presets:[22,30,45,60]},
-  {k:'feat',l:'Feature',typ:'80 to 120 min',def:95,presets:[85,95,110,120]},
+  {k:'ep',l:'TV episode',typ:'22 to 60 min',def:45,presets:[22,30,45,60]},
+  {k:'feat',l:'Feature film',typ:'80 to 120 min',def:100,presets:[85,90,100,110,120]},
   {k:'doc',l:'Documentary',typ:'5 to 60 min',def:12,presets:[5,12,30,60]},
   {k:'mv',l:'Music video',typ:'3 to 5 min',def:4,presets:[3,4,5]}
 ];
@@ -1158,7 +1166,7 @@ var caps={sample:undefined,downloads:undefined,mcp:undefined,db:null,room:null,u
 var ctl=null,busy=false;
 
 function load(){
-  try{var pr=JSON.parse(localStorage.getItem(PKEY)||'null');if(pr){['landed','school','exported','webhook','savedAt','expandAll','teamCode'].forEach(function(k){if(pr[k]!==undefined)PREF[k]=pr[k]});PREF.ui=pr.ui==='pro'?'pro':'guided';PREF.tips=pr.tips!==false;PREF.ac=pr.ac!==false;PREF.toured=!!pr.toured;PREF.goal=+pr.goal||300;if(pr.stats&&typeof pr.stats==='object')PREF.stats=Object.assign(PREF.stats,pr.stats);if(pr.lang==='ar'||pr.lang==='en')PREF.lang=pr.lang;if(['auto','light','dark'].indexOf(pr.theme)>-1)PREF.theme=pr.theme;PREF.insp=pr.insp!==false;PREF.team=!!pr.team;PREF.snapDay=pr.snapDay||'';if(typeof pr.webhook==='string')PREF.webhook=pr.webhook}}catch(e){}
+  try{var pr=JSON.parse(localStorage.getItem(PKEY)||'null');if(pr){['landed','school','exported','webhook','savedAt','expandAll','langChosen','teamCode'].forEach(function(k){if(pr[k]!==undefined)PREF[k]=pr[k]});PREF.ui=pr.ui==='pro'?'pro':'guided';PREF.tips=pr.tips!==false;PREF.ac=pr.ac!==false;PREF.toured=!!pr.toured;PREF.goal=+pr.goal||300;if(pr.stats&&typeof pr.stats==='object')PREF.stats=Object.assign(PREF.stats,pr.stats);if(pr.lang==='ar'||pr.lang==='en')PREF.lang=pr.lang;if(['auto','light','dark'].indexOf(pr.theme)>-1)PREF.theme=pr.theme;PREF.insp=false;PREF.team=!!pr.team;PREF.snapDay=pr.snapDay||'';if(typeof pr.webhook==='string')PREF.webhook=pr.webhook}}catch(e){}
   try{var raw=localStorage.getItem(KEY);if(raw){var o=JSON.parse(raw);var d=blankState();
     S=Object.assign(d,o);S.style=Object.assign(d.style,o.style||{});S.out=Object.assign(d.out,o.out||{});S.chars=o.chars||[];S.scenes=o.scenes||[];S.out.err='';S=normState(S);return}}catch(e){}
   S=exampleState();
@@ -1166,7 +1174,7 @@ function load(){
 var saveT=null;
 function scheduleSave(){clearTimeout(saveT);saveT=setTimeout(function(){
   var el=document.getElementById('saved');
-  try{PREF.savedAt=Date.now();localStorage.setItem(KEY,JSON.stringify(S));if(team.on)teamPush();localStorage.setItem(PKEY,JSON.stringify(PREF));el.textContent='Saved on this device'}catch(e){el.textContent='Not saved: storage is blocked here'}},400)}
+  try{PREF.savedAt=Date.now();try{libSync()}catch(e){}try{if(typeof shareDirty==='function')shareDirty()}catch(e){}localStorage.setItem(KEY,JSON.stringify(S));if(team.on)teamPush();localStorage.setItem(PKEY,JSON.stringify(PREF));el.textContent='Saved on this device'}catch(e){var full=e&&(e.name==='QuotaExceededError'||e.code===22);el.textContent=full?'Not saved: storage is full':'Not saved: storage is blocked here';if(full&&!window.__fullWarned){window.__fullWarned=1;toast(uiAR()?'مساحة التخزين في المتصفح ممتلئة. احذف بعض الصور أو المشاريع القديمة، أو احفظ ملف المشروع.':'This browser’s storage is full, so the latest changes are not saved. Remove some images or old projects in Projects, or save a project file.')}}},400)}
 
 /* ---------- helpers ---------- */
 function h(tag,props){
@@ -1181,6 +1189,9 @@ function h(tag,props){
   return el}
 function fmtOf(k){return FORMATS.filter(function(f){return f.k===k})[0]||FORMATS[0]}
 function langName(k){return LANGS.filter(function(l){return l.k===k})[0].n}
+
+var LENR={tvc:[0.25,3,0.25,'usually 15 to 60 seconds'],social:[0.25,3,0.25,'usually 15 to 90 seconds'],film:[1,40,1,'usually 5 to 40 minutes'],feature:[60,180,5,'usually 80 to 120 minutes'],tv:[10,90,1,'usually 22 to 60 minutes an episode'],tvep:[10,90,1,'usually 22 to 60 minutes'],web:[2,30,1,'usually 5 to 15 minutes an episode'],podcast:[5,90,1,'usually 20 to 60 minutes'],corp:[0.5,15,0.5,'usually 1 to 5 minutes'],doc:[5,120,1,'usually 10 to 90 minutes'],mv:[2,8,0.5,'usually 3 to 5 minutes']};
+function lenRange(){return LENR[S.ptype]||[0.25,180,0.25,'']}
 function lenLabel(m){if(m<1)return Math.round(m*60)+' sec';return (Math.round(m*100)/100)+' min'}
 function pagesLabel(m){return m<1?'under 1 page':'about '+Math.round(m)+(Math.round(m)===1?' page':' pages')}
 function sceneHint(m){if(m<=0.5)return '1 to 2';if(m<=2)return '2 to 4';return Math.max(3,Math.round(m/3))+' to '+Math.max(4,Math.round(m/1.5))}
@@ -1304,10 +1315,15 @@ var COACH=[
    ex:''},
   {tip:'Plan the camera for each scene. Presets give you classic coverage in one click. Each shot becomes ready prompts for any image or video tool, formatted for the platform you pick.',
    ex:'Shot / reverse shot for the argument, a slow push for the reveal, an insert of the bell.'}];
+
+function typePill(){try{var pt=ptOf();if(!pt)return null;var ar=uiAR(),bits=[pt.l];
+  if(S.series){bits.push((ar?'الحلقة ':'Ep ')+(S.ep||1)+(S.series.total?(ar?' من ':' of ')+S.series.total:''));bits.push(lenLabel(S.lenMin)+(ar?' للحلقة':' per episode'))}else bits.push(lenLabel(S.lenMin));
+  if(S.example)bits.push(ar?'مثال':'Example');
+  return h('button',{type:'button',class:'type-pill',title:ar?'نوع المشروع: اضغط للتغيير':'Project type: click to change',onclick:function(){go(ST.story);setTimeout(function(){var e=document.querySelector('.proj-type');if(e)e.scrollIntoView({behavior:motionOK()?'smooth':'auto',block:'center'})},120)}},svgI(pt.ico),h('span',{text:bits.join(' · ')}))}catch(e){return null}}
 function head(t,p){
   var _o=typeHead(t,p);t=_o[0];p=_o[1];
-  if(PREF.ui==='pro')return h('div',{class:'phead pro'},h('h2',{text:t}));
-  var box=h('div',{class:'phead'},h('h2',{text:t}),h('p',{text:p}));
+  if(PREF.ui==='pro')return h('div',{class:'phead pro'},h('h2',{text:t}),typePill());
+  var box=h('div',{class:'phead'},typePill(),h('h2',{text:t}),h('p',{text:p}));
   var c=COACH[curSec],tip=null;
   if(c&&PREF.tips){
     tip=h('div',{class:'coach'},h('span',null,h('b',{text:'Tip. '}),c.tip),c.ex?h('span',{class:'ex',text:'Example: '+c.ex}):null,
@@ -1348,15 +1364,21 @@ function stepStory0(p){
   st.append(field('Logline',areaIn('f-log',function(){return S.logline},function(v){S.logline=v},'Who wants what, and what stands in the way?',3),'One or two sentences. This is the spine of the script.'));
   /* length */
   var f=fmtOf(S.format);var info=h('p',{class:'info'});
-  function upInfo(){info.textContent=lenLabel(S.lenMin)+', '+pagesLabel(S.lenMin)+'. Aim for '+sceneHint(S.lenMin)+' scenes.'}
-  var num=h('input',{id:'f-len',type:'number',min:'0.25',max:'180',step:'0.25'});num.value=String(S.lenMin);
+  var LR=lenRange();
+  function upInfo(){var t=lenLabel(S.lenMin)+' of screen time'+(S.series?' per episode':'')+', '+pagesLabel(S.lenMin)+' (one script page is about one minute). Aim for '+sceneHint(S.lenMin)+' scenes.';
+    if(S.series&&+S.series.total>1)t+=' Season: '+S.series.total+' episodes, about '+lenLabel(S.lenMin*S.series.total)+' in total.';
+    info.textContent=t;if(S.lenMin<LR[0]||S.lenMin>LR[1]){var pt0=ptOf();info.append(' This is unusual for a '+(pt0?pt0.l.toLowerCase():'project')+' ('+LR[3]+'). ');if(pt0)info.append(h('button',{type:'button',class:'btn sm',text:'Use '+lenLabel(pt0.len),onclick:function(){S.lenMin=pt0.len;S.lenTouched=false;touched();renderAll()}}))}}
+  var num=h('input',{id:'f-len',type:'number',min:'0.25',max:'240',step:'0.25'});num.value=String(S.lenMin);
+  var sl=h('input',{id:'f-len-sl',type:'range',min:String(LR[0]),max:String(LR[1]),step:String(LR[2]),'aria-label':'Approximate length'});sl.value=String(Math.min(LR[1],Math.max(LR[0],S.lenMin)));
+  function slOut(){slv.textContent=lenLabel(S.lenMin)}var slv=h('output',{'for':'f-len-sl',class:'sl-v'});slOut();
+  sl.addEventListener('input',function(){var v=parseFloat(sl.value);S.lenMin=v;S.lenTouched=true;num.value=String(v);syncLen();upInfo();slOut();touched()});
   var lc=h('div',{class:'chips'});
   function syncLen(){Array.prototype.forEach.call(lc.children,function(b){b.setAttribute('aria-pressed',Number(b.dataset.v)===S.lenMin?'true':'false')})}
-  f.presets.forEach(function(m){lc.append(h('button',{type:'button',class:'chip','data-v':String(m),text:lenLabel(m),onclick:function(){S.lenMin=m;S.lenTouched=true;num.value=String(m);syncLen();upInfo();touched()}}))});
-  num.addEventListener('input',function(){var v=parseFloat(num.value);if(v>0&&v<=180){S.lenMin=v;S.lenTouched=true;syncLen();upInfo();touched()}});
+  f.presets.forEach(function(m){lc.append(h('button',{type:'button',class:'chip','data-v':String(m),text:lenLabel(m),onclick:function(){S.lenMin=m;S.lenTouched=true;num.value=String(m);sl.value=String(Math.min(LR[1],Math.max(LR[0],m)));syncLen();upInfo();slOut();touched()}}))});
+  num.addEventListener('input',function(){var v=parseFloat(num.value);if(v>0&&v<=240){S.lenMin=v;S.lenTouched=true;sl.value=String(Math.min(LR[1],Math.max(LR[0],v)));syncLen();upInfo();slOut();touched()}});
   syncLen();upInfo();
-  st.append(h('div',{class:'field lenbox'},h('span',{class:'lbl',text:'Approximate length'}),lc,
-    h('div',{class:'lenrow'},h('label',{'for':'f-len',class:'unit',text:'Or type minutes'}),num,h('span',{class:'unit',text:'min'})),info));
+  st.append(h('div',{class:'field lenbox'},h('span',{class:'lbl',text:'Approximate length'+(S.series?' per episode':'')}),h('div',{class:'slrow'},sl,slv),lc,
+    h('div',{class:'lenrow'},h('label',{'for':'f-len',class:'unit',text:'Exact minutes'}),num,h('span',{class:'unit',text:'min'})),info));
   var placeIn=textIn('f-place',function(){return S.setting.place},function(v){S.setting.place=v},'Where does it all happen? e.g. a living room, a tram, a cabin');
   placeIn.hidden=S.setting.mode!=='one';
   var setBox=h('div',{class:'field'},h('span',{class:'lbl',text:'Setting'}),
@@ -1417,8 +1439,7 @@ function charCard(c,i){
   card.append(h('div',{class:'chead'},h('h3',{text:nm(c)||('Character '+(i+1))}),
     h('div',{class:'acts'},h('button',{type:'button',class:'btn sm ghost',text:'Remove',onclick:function(){
       S.chars=S.chars.filter(function(x){return x.id!==c.id});S.scenes.forEach(function(sc){sc.cast=sc.cast.filter(function(id){return id!==c.id})});touched();renderStep()}}))));
-  card.append(h('div',{class:'photo-row'},c.photo?h('img',{class:'ph round',alt:'',src:c.photo}):h('span',{class:'ph round'}),
-    photoBtn(uiAR()?'املأ من صورة':'Fill in from a photo',function(b,t){return seeCast(c,b,t)}),h('span',{class:'hint',text:uiAR()?'يملأ المظهر والملابس والمكياج مما يظهر في الصورة.':'Fills in looks, wardrobe and makeup from what the photo shows.'})));
+  card.append(imgSlot(c,'photo',{label:uiAR()?'صورة الشخصية':'Character photo',round:true,hint:uiAR()?'ارفع صورتك أو أنشئ واحدة. املأ الحقول منها إن كان نموذجك يقرأ الصور.':'Upload your own or generate one. Fill in the look from it if your model reads images.',prompt:function(){return portraitPrompt(c)},analyze:function(b,t){return seeCast(c,b,t)},analyzeLabel:uiAR()?'املأ المظهر من الصورة':'Fill in the look from it',ratio:'1:1'}));
   var nameIn=textIn(pre+'n',function(){return c.name},function(v){c.name=v;var hd=card.querySelector('h3');hd.textContent=v.trim()||('Character '+(i+1))},'Name');
   card.append(h('div',{class:'row two'},field('Name',nameIn),field('Age',textIn(pre+'a',function(){return c.age},function(v){c.age=v},'e.g. 34'))));
   card.append(group('Role',chipGroup(ROLES,function(v){return c.role===v},function(v){c.role=v})));
@@ -1433,9 +1454,9 @@ function charCard(c,i){
   card.append(detailsBox(c,'openLook','Looks: pick chips, add a detail',[lookBuilder(c,pre)],true));
   card.append(detailsBox(c,'openVoice','Voice and conflict style: how they talk',[voiceBuilder(c,pre)],true));
   card.append(detailsBox(c,'openWm',uiAR()?'الملابس والشعر والمكياج':'Wardrobe, hair and makeup',[
-    h('div',{class:'phs'},c.wardrobePhoto?h('img',{class:'ph',alt:'',src:c.wardrobePhoto}):null,photoBtn(uiAR()?'ملابس من صورة':'Wardrobe from a photo',function(b,t){return seeWardrobe(c,b,t,'wardrobe')})),
+    imgSlot(c,'wardrobePhoto',{label:uiAR()?'صورة الملابس':'Wardrobe image',prompt:function(){return wardrobePrompt(c)},refs:function(){return c.photo?[{name:(nm(c)||'Character')+' photo',image:c.photo}]:[]},analyze:function(b,t){return seeWardrobe(c,b,t,'wardrobe')},analyzeLabel:uiAR()?'اكتب الملابس من الصورة':'Describe the wardrobe from it',ratio:'3:4'}),
     field(uiAR()?'الملابس':'Wardrobe',areaIn(pre+'wd',function(){return c.wardrobe||''},function(v){c.wardrobe=v},uiAR()?'القطع والقماش واللون والمقاس والحالة.':'Garments, fabric, colour, fit, wear.',2)),
-    h('div',{class:'phs'},c.makeupPhoto?h('img',{class:'ph',alt:'',src:c.makeupPhoto}):null,photoBtn(uiAR()?'مكياج من صورة':'Makeup from a photo',function(b,t){return seeWardrobe(c,b,t,'makeup')})),
+    imgSlot(c,'makeupPhoto',{label:uiAR()?'صورة الشعر والمكياج':'Hair and makeup image',prompt:function(){return makeupPrompt(c)},refs:function(){return c.photo?[{name:(nm(c)||'Character')+' photo',image:c.photo}]:[]},analyze:function(b,t){return seeWardrobe(c,b,t,'makeup')},analyzeLabel:uiAR()?'اكتب الشعر والمكياج من الصورة':'Describe hair and makeup from it',ratio:'1:1'}),
     field(uiAR()?'الشعر والمكياج':'Hair and makeup',areaIn(pre+'mk',function(){return c.makeup||''},function(v){c.makeup=v},uiAR()?'تسريحة الشعر والمكياج والإطلالة.':'Hair styling, makeup, finish.',2))],false));
   return wrapCharCard(card,c,i)}
 function stepCast(p){
@@ -1795,6 +1816,7 @@ function buildBrief(){
   if(S.genres.length)L.push('GENRE: '+S.genres.join(', '));
   if(S.tones.length)L.push('TONE: '+S.tones.join(', '));
   L.push('LANGUAGE: '+langName(S.lang));var cbt=clientBriefText();if(cbt)L.push(cbt);L.push('PROJECT: '+(ptOf()?ptOf().l:fmtOf(S.format).l)+(S.treat?'. TREATMENT: '+S.treat+(TREAT_PH[S.treat]?' ('+TREAT_PH[S.treat]+')':''):''));var vr=voRule();if(vr)L.push(vr);L.push('STRUCTURE: '+actsOf().join(' / '));
+  try{var sx=seriesCtx();if(sx)L.push(sx)}catch(e){}
   L.push('LOGLINE: '+(S.logline.trim()||'(none)'));
   L.push('SETTING: '+({one:'One location'+(S.setting.place.trim()?' ('+S.setting.place.trim()+')':'')+'. The whole story happens in this one place.',few:'A few locations',many:'Many locations'}[S.setting.mode]||'A few locations'));
   L.push('','CHARACTERS:');
@@ -1978,7 +2000,7 @@ function sampleErr(e){
     case 'refused':return 'The AI declined this brief. Change the premise or the wording and try again.';
     case 'empty_completion':return 'The AI returned nothing. Simplify the brief and try again.';
     case 'truncated':return 'The AI’s answer hit the length limit. Try a shorter length or fewer scenes, then run it again.';
-    case 'invalid_json':return 'The AI answered in a format this page could not read. Try again.';
+    case 'invalid_json':return 'The AI answered in a format this page could not read. Try again. Small local models often struggle with long, structured tasks: try a bigger model (for example qwen2.5:14b or llama3.1:70b if your computer can run it) or a free online AI such as Groq.';
     default:return 'The connection broke before the AI finished. Anything that arrived is kept. Try again.'}}
 async function run(prompt,opt){
   if(!caps.sample||busy)return;
@@ -3161,6 +3183,7 @@ function subjText(sc,sh,named){
   var cs=shotChars(sc,sh);if(!cs.length)return 'no people in frame';
   var hs=cs.map(function(c){return named?nm(c)+' ('+(lookText(c)||c.role)+')':handleOf(c)});
   return hs.join(' and ')}
+function joinDW(d,w){d=String(d||'').trim().replace(/\s+$/,'');w=String(w||'').trim();if(!w)return d.replace(/[.!?]+$/,'');if(!d)return 'On screen: '+w;return d.replace(/[.!?]*$/,'')+'. On screen: '+w}
 function descText(sc,sh,named){
   var cs=shotChars(sc,sh),d=sh.desc||sc.beat||'';
   cs.forEach(function(c,i){var rep=named?nm(c):handleOf(c);d=d.split('{'+(i?'B':'A')+'}').join(rep)});
@@ -3193,8 +3216,8 @@ function promptsFor0(sc,sh,i,target){
       'SOUND: diegetic only'+(sh.audio?': '+sh.audio:', room tone and the sounds the action makes')+'.',
       'LAST FRAME: '+(sh.move==='Static'?'the same framing, held':'the end of the move, held')+', the subject still in frame.'].join('\n\n')}
   else{
-    img=['Cinematic still, '+framing+', '+lens+' lens, '+FOCUS_PH[sh.focus]+'.',desc+' '+who+'.'+(wd?' Wardrobe: '+wd+'.':'')+' Location: '+place+', '+sc.time.toLowerCase()+'.'+(sc.locnotes?' '+sc.locnotes.trim():'')+(props?' Props: '+props+'.':''),'Lighting: '+light+'.',(look?'Style: '+look+'. ':'')+'Composition: '+(sh.comp||'rule of thirds').toLowerCase()+'. Aspect ratio '+c.ratio+'. Photorealistic, film grain.'].join(' ');
-    vid=['Cinematic shot, '+framing+', '+lens+' lens, '+FOCUS_PH[sh.focus]+'. Camera '+MOVE_PH[sh.move]+', '+RIG_PH[sh.rig]+'.',desc+' '+who+'.',(lineOf(sh)?'Dialogue: "'+lineOf(sh)+'".':''),'Location: '+place+', '+sc.time.toLowerCase()+'. Lighting: '+light+'.',(look?'Style: '+look+'.':''),'Duration '+sh.dur+' seconds, '+sh.fps+' fps, aspect ratio '+c.ratio+'.'].filter(Boolean).join(' ')}
+    img=['Cinematic still, '+framing+', '+lens+' lens, '+FOCUS_PH[sh.focus]+'.',joinDW(desc,who)+'.'+(wd?' Wardrobe: '+wd+'.':'')+' Location: '+place+', '+sc.time.toLowerCase()+'.'+(sc.locnotes?' '+sc.locnotes.trim():'')+(props?' Props: '+props+'.':''),'Lighting: '+light+'.',(look?'Style: '+look+'. ':'')+'Composition: '+(sh.comp||'rule of thirds').toLowerCase()+'. Aspect ratio '+c.ratio+'. Photorealistic, film grain.'].join(' ');
+    vid=['Cinematic shot, '+framing+', '+lens+' lens, '+FOCUS_PH[sh.focus]+'. Camera '+MOVE_PH[sh.move]+', '+RIG_PH[sh.rig]+'.',joinDW(desc,who)+'.',(lineOf(sh)?'Dialogue: "'+lineOf(sh)+'".':''),'Location: '+place+', '+sc.time.toLowerCase()+'. Lighting: '+light+'.',(look?'Style: '+look+'.':''),'Duration '+(sh.dur||5)+' seconds, '+(sh.fps||24)+' fps, aspect ratio '+c.ratio+'.'].filter(Boolean).join(' ')}
   return {image:img.slice(0,4000),video:vid.slice(0,4000),negative:avoid?avoid+', on-screen text, watermark, captions':'on-screen text, watermark, captions, distorted hands, extra limbs'}}
 function shotJSON(target){
   var c=shotCfg(),out={app:'Script Room',version:1,title:S.title||'Untitled',ratio:c.ratio,target:target,look:c.look||'',shots:[]};
@@ -3877,7 +3900,7 @@ function renderImport(st){
     drawSheet()}
   var ta=h('textarea',{id:'imp-text',rows:5,placeholder:uiAR()?'أو الصق نصك هنا…':'Or paste your text here…'});ta.value=imp.name?'':imp.text;
   ta.addEventListener('input',function(){imp.text=ta.value;imp.name='';imp.kind=looksLikeScript(ta.value)?'script':'prose';imp.words=words(ta.value)});
-  up.append(fi,drop,ta);if(imp.err)up.append(h('p',{class:'err',text:imp.err}));
+  up.append(fi,drop,ta);if(imp.err&&!imp.status.length)up.append(h('p',{class:'err',text:imp.err}));
   st.append(up);
   if(imp.kind==='script'&&imp.words){
     var sb=h('div',{class:'studio'},h('h3',{text:uiAR()?'هذا سيناريو بالفعل':'This is already a script'}),h('p',{class:'info',text:uiAR()?'استورده كما هو: تصبح المشاهد والشخصيات والحوار جاهزة للتعديل، والسيناريو مسودتك.':'Bring it in as it is: scenes, characters and dialogue become editable, and the script becomes your draft.'}),
@@ -3906,7 +3929,7 @@ function renderImport(st){
     else bar.append(h('button',{type:'button',class:'btn primary',disabled:!imp.words,onclick:runAdapt},svgI('style'),h('span',{text:uiAR()?'حوّلها إلى سيناريو':'Turn it into a script'})));
     if(imp.words){var parts=Math.max(1,Math.ceil(imp.text.length/60000));bar.append(h('span',{class:'status',text:(parts>1?(uiAR()?'سيقرأ الذكاء الاصطناعي النص على '+parts+' أجزاء':'The AI reads it in '+parts+' parts'):(uiAR()?'سيقرأ الذكاء الاصطناعي النص كاملاً':'The AI reads it in one pass'))}))}
     go2.append(bar)}
-  if(imp.status.length){var ul=h('ol',{class:'stages'});imp.status.forEach(function(s){ul.append(h('li',{class:s.state},h('i'),h('span',{text:s.label}),s.info?h('small',{text:s.info}):null,s.state==='run'?h('small',{class:'live',text:imp.live||(uiAR()?'الذكاء الاصطناعي يعمل…':'The AI is working…')}):null))});go2.append(ul)}
+  if(imp.status.length){var ul=h('ol',{class:'stages'});imp.status.forEach(function(s){ul.append(h('li',{class:s.state},h('i'),h('span',{text:s.label}),s.info?h('small',{text:s.info}):null,s.state==='run'?h('small',{class:'live',text:imp.live||(uiAR()?'الذكاء الاصطناعي يعمل…':'The AI is working…')}):null))});go2.append(ul);if(imp.err&&!imp.busy)go2.append(h('p',{class:'err',role:'alert',text:imp.err}))}
   st.append(go2)}
 function impDraw(){var el=document.getElementById('sheet');if(el&&!el.hidden&&sheetR&&sheetR.render===renderImport)drawSheet()}
 function chunksOf(t,size){var out=[],i=0;while(i<t.length){var end=Math.min(t.length,i+size);if(end<t.length){var br=t.lastIndexOf('\n\n',end);if(br>i+size*0.6)end=br}out.push(t.slice(i,end));i=end}return out}
@@ -3940,7 +3963,8 @@ function parseLooseJSON(s){s=String(s||'').replace(/^\s*```(?:json)?/i,'').repla
   var a=s.search(/[\[{]/);if(a<0)throw {code:'invalid_json'};var open=s[a],close=open==='{'?'}':']',b=s.lastIndexOf(close);if(b<a)throw {code:'invalid_json'};
   try{return JSON.parse(s.slice(a,b+1))}catch(e){throw {code:'invalid_json'}}}
 async function streamJSON(prompt,signal,onLen){var r=await caps.sample(prompt,{cache:false,signal:signal,onText:function(u){if(onLen&&u&&u.text)onLen(u.text.length)}});
-  if(r&&r.truncated)throw {code:'truncated'};return parseLooseJSON(r&&r.text)}
+  if(r&&r.truncated)throw {code:'truncated'};try{return parseLooseJSON(r&&r.text)}catch(e){if(!caps.sample||!caps.sample.json)throw e;
+    return await caps.sample.json('Your previous answer was meant to be valid JSON but could not be parsed. Rewrite it as valid JSON that fits the request. Keep all its content; close any open brackets; remove comments and trailing commas.\n\nREQUEST (shortened):\n'+String(prompt).slice(0,3000)+'\n\nANSWER TO FIX:\n'+String(r&&r.text||'').slice(0,14000),{cache:false,signal:signal})}}
 async function runAdapt(){
   if(!caps.sample||imp.busy||!imp.words)return;
   if(aiBusy||busy||lab.busy){toast(uiAR()?AR['The AI is already working. Wait for it to finish.']:'The AI is already working. Wait for it to finish.');return}
@@ -4052,7 +4076,7 @@ function shrink(file,max,q){return new Promise(function(res,rej){var u=URL.creat
 var VISION_RULES='Describe only what is visible in the photo. Do not identify the person or say who they look like, and do not guess ethnicity, nationality, religion, health or personality. If something is not visible, leave it empty.';
 function photoBtn(label,run){
   var fi=h('input',{type:'file',accept:'image/jpeg,image/png,image/webp,image/gif',hidden:true});
-  var b=h('button',{type:'button',class:'btn sm',onclick:async function(){if(!(await canSee())){toast(uiAR()?'تحليل الصور غير متاح هنا. يمكنك إرفاق الصورة كمرجع فقط.':'Photo analysis is not available in this view.');return}fi.click()}},svgI('cam'),h('span',{text:label}));
+  var b=h('button',{type:'button',class:'btn sm',onclick:async function(){if(!(await canSee())){toast(visionWhy());return}fi.click()}},svgI('cam'),h('span',{text:label}));
   fi.addEventListener('change',async function(){var f=fi.files[0];fi.value='';if(!f)return;
     if(aiBusy||busy||lab.busy){toast(uiAR()?AR['The AI is already working. Wait for it to finish.']:'The AI is already working. Wait for it to finish.');return}
     aiBusy=true;b.disabled=true;var lab0=b.querySelector('span').textContent;b.querySelector('span').textContent=uiAR()?'جارٍ النظر…':'Looking…';b.classList.add('shimmer-box');
@@ -4067,13 +4091,13 @@ async function seeCast(c,blob,thumb){
   if(!o||typeof o!=='object')throw {code:'invalid_json'};var lk=o.look||{};
   Object.keys(LOOKS).forEach(function(k){mergeChips(c.look[k],lk[k],LOOKS[k],3)});
   if(!c.age.trim()&&str(o.ageRange))c.age=str(o.ageRange);if(!c.looks.trim())c.looks=str(o.looks);if(!str(c.wardrobe))c.wardrobe=str(o.wardrobe);if(!str(c.makeup))c.makeup=str(o.makeup);
-  c.photo=thumb;c.openLook=true;c.openWm=true;
+  if(!c.photo||/^blob:/.test(c.photo))c.photo=thumb;c.openLook=true;c.openWm=true;
   return uiAR()?'مُلئت ملامح '+(nm(c)||'الشخصية')+' من الصورة. راجعها وعدّلها.':'Filled in '+(nm(c)||'the character')+'’s look from the photo. Check and adjust.'}
 async function seeWardrobe(c,blob,thumb,kind){
   var isM=kind==='makeup';
   var o=await caps.sample.json('This is a '+(isM?'hair and makeup':'wardrobe')+' reference photo for a film character. '+VISION_RULES+'\nReply with only a JSON object: {"text":string ('+(isM?'hair styling and makeup: products, finish, colours with #hex, condition':'each garment: type, fabric, colour with #hex, fit, wear and condition, accessories')+', two or three sentences for a costume or makeup department)'+(isM?'':',"style":[up to 2 of '+JSON.stringify(LOOKS.style)+'],"detail":[up to 2 of '+JSON.stringify(LOOKS.detail)+']')+'}. Write in '+noteLang()+'.',{images:[blob],cache:false});
   if(!o||!str(o.text))throw {code:'invalid_json'};
-  if(isM){c.makeup=str(o.text);c.makeupPhoto=thumb}else{c.wardrobe=str(o.text);c.wardrobePhoto=thumb;mergeChips(c.look.style,o.style,LOOKS.style,3);mergeChips(c.look.detail,o.detail,LOOKS.detail,3)}
+  if(isM){c.makeup=str(o.text);if(!c.makeupPhoto)c.makeupPhoto=thumb}else{c.wardrobe=str(o.text);if(!c.wardrobePhoto)c.wardrobePhoto=thumb;mergeChips(c.look.style,o.style,LOOKS.style,3);mergeChips(c.look.detail,o.detail,LOOKS.detail,3)}
   c.openWm=true;return uiAR()?'تمت الإضافة من الصورة.':'Added from the photo.'}
 async function seeLocation(sc,blob,thumb){
   var o=await caps.sample.json('This is a location reference photo for a film scene. '+VISION_RULES+'\nReply with only a JSON object: {"io":"INT."|"EXT.","name":string (a short location name, like "Tram depot"),"time":one of '+JSON.stringify(TIMES)+' or "","look":string (fixed anchors, materials, palette with #hex, and the light: direction, quality, temperature; three sentences),"space":string (where people could sit or stand and what they could use),"props":[string] (up to 8 objects visible that could matter)}. Write text in '+langName(S.lang)+'.',{images:[blob],cache:false});
@@ -4220,7 +4244,7 @@ var AR={
 'Write or draft some dialogue for a scene first, then try this technique on it.':'اكتب حواراً لمشهد أولاً، ثم جرّب هذه التقنية عليه.','Choose who is in the scene first.':'اختر من في المشهد أولاً.','Add a scene first.':'أضف مشهداً أولاً.','Name a film first.':'سمِّ فيلماً أولاً.',
 'AI access was declined for this page. Reload and allow it to write drafts.':'تم رفض وصول الذكاء الاصطناعي لهذه الصفحة. أعد التحميل واسمح له بالكتابة.','Too many requests, or your AI usage limit was reached. Try again later.':'طلبات كثيرة أو بلغت حد استخدام الذكاء الاصطناعي. حاول لاحقاً.',
 'Your session expired. Reconnect your AI, then retry.':'انتهت الجلسة. سجّل الدخول إلى الذكاء الاصطناعي مجدداً ثم أعد المحاولة.','The AI is not available for this account.':'الذكاء الاصطناعي غير متاح لهذا الحساب.','The AI declined this brief. Change the premise or the wording and try again.':'رفض الذكاء الاصطناعي هذا الملخص. غيّر الفكرة أو الصياغة وحاول مجدداً.',
-'The AI returned nothing. Simplify the brief and try again.':'لم يُرجع الذكاء الاصطناعي شيئاً. بسّط الملخص وحاول مجدداً.','The AI answered in a format this page could not read. Try again.':'أجاب الذكاء الاصطناعي بصيغة لم تستطع الصفحة قراءتها. حاول مجدداً.',
+'The AI returned nothing. Simplify the brief and try again.':'لم يُرجع الذكاء الاصطناعي شيئاً. بسّط الملخص وحاول مجدداً.','The AI answered in a format this page could not read. Try again. Small local models often struggle with long, structured tasks: try a bigger model (for example qwen2.5:14b or llama3.1:70b if your computer can run it) or a free online AI such as Groq.':'أجاب الذكاء الاصطناعي بصيغة لم تستطع الصفحة قراءتها. حاول مجدداً.',
 'The connection broke before the AI finished. Anything that arrived is kept. Try again.':'انقطع الاتصال قبل أن ينتهي الذكاء الاصطناعي. ما وصل محفوظ. حاول مجدداً.','The script is too long to send back for a revision. Ask for a smaller change or copy it out.':'السيناريو أطول من أن يُرسل للتعديل. اطلب تعديلاً أصغر أو انسخه.',
 'Scene School':'مدرسة المشهد','Why great dialogue works, and how to use it':'لماذا ينجح الحوار العظيم، وكيف تستخدمه','Lessons':'الدروس','Famous scenes':'مشاهد شهيرة','Study a film':'ادرس فيلماً','Why it works':'لماذا ينجح','Example scene (original)':'مشهد مثال (أصلي)','Notes':'ملاحظات',
 'Try this on my scene':'جرّب هذا على مشهدي','Try it on my scene':'جرّبه على مشهدي','← All lessons':'→ كل الدروس','Steal this: ':'استعِر هذا: ','Reading real scripts':'قراءة سيناريوهات حقيقية','BBC Writers script library':'مكتبة سيناريوهات BBC Writers','Film':'الفيلم','Explain it':'اشرحه','Studying…':'جارٍ الدراسة…',
@@ -4639,13 +4663,14 @@ function tableRead(blocks,page,btn){
 
 function applyTheme(){var t=PREF.theme;if(t==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',t);
   var b=document.getElementById('btnTheme');if(b){b.textContent='';b.append(svgI(t==='dark'?'moon':t==='light'?'sun':'auto'));var lab=(uiAR()?'المظهر: ':'Theme: ')+(uiAR()?{auto:'تلقائي',light:'فاتح',dark:'داكن'}[t]:{auto:'Auto',light:'Light',dark:'Dark'}[t]);b.title=lab;b.setAttribute('aria-label',lab)}}
-function applyInsp(){document.body.classList.toggle('no-insp',!PREF.insp);var b=document.getElementById('btnInsp');if(b){var l=PREF.insp?'Hide the script bible':'Show the script bible';b.title=uiAR()?AR[l]:l;b.setAttribute('aria-label',b.title);b.setAttribute('aria-pressed',PREF.insp?'true':'false')}}
+function applyInsp(){document.body.classList.toggle('no-insp',!PREF.insp);var cl=document.getElementById('sumClose');if(!cl){cl=h('button',{type:'button',id:'sumClose',class:'ib','aria-label':'Close the script bible',title:'Close the script bible',onclick:function(){PREF.insp=false;applyInsp();scheduleSave()}},svgI('x'));document.body.append(cl)}cl.hidden=!PREF.insp;var b=document.getElementById('btnInsp');if(b){if(!b.querySelector('.ib-l'))b.append(h('span',{class:'ib-l',text:uiAR()?'دليل السيناريو':'Script bible'}));var l=PREF.insp?'Hide the script bible':'Show the script bible';b.title=uiAR()?AR[l]:l;b.setAttribute('aria-label',b.title);b.setAttribute('aria-pressed',PREF.insp?'true':'false')}}
 function initShell(){
   applyAR2();
   initIcons();applyTheme();applyInsp();
   document.getElementById('btnBoard').addEventListener('click',function(){openBoard()});
   document.getElementById('btnTheme').addEventListener('click',function(){PREF.theme={auto:'light',light:'dark',dark:'auto'}[PREF.theme];applyTheme();scheduleSave()});
   document.getElementById('btnInsp').addEventListener('click',function(){PREF.insp=!PREF.insp;applyInsp();scheduleSave()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&PREF.insp&&!document.querySelector('#sheet:not([hidden]),.askov')){PREF.insp=false;applyInsp();scheduleSave()}});
   Array.prototype.forEach.call(document.getElementById('langSeg').children,function(b){b.addEventListener('click',function(){setLang(b.dataset.v)})});
   applyLang(true)}
 
@@ -5225,7 +5250,7 @@ function renderImport(st,bar){
     drawSheet();if(imp.words&&!/\.(fdx|fountain)$/i.test(f.name))detectSource()}
   var ta=h('textarea',{id:'imp-text',rows:5,placeholder:uiAR()?'أو الصق نصك هنا…':'Or paste your text here…'});ta.value=imp.name?'':imp.text;
   ta.addEventListener('input',function(){imp.text=ta.value;imp.name='';imp.done=false;var was=imp.kind;imp.kind=looksLikeScript(ta.value)?'script':'prose';imp.words=words(ta.value);if(was!==imp.kind)drawSheet();scheduleDetect()});
-  up.append(fi,drop,ta);if(imp.err)up.append(h('p',{class:'err',text:imp.err}));
+  up.append(fi,drop,ta);if(imp.err&&!imp.status.length)up.append(h('p',{class:'err',text:imp.err}));
   st.append(up);
   var dcard=detCard();if(dcard)st.append(dcard);
   var isScript=imp.words&&(imp.kind==='script'||imp.type==='script');
@@ -5262,7 +5287,7 @@ function renderImport(st,bar){
     else gb.append(h('button',{type:'button',class:'btn primary',disabled:!imp.words,onclick:runAdapt},svgI('style'),h('span',{text:uiAR()?'حوّلها إلى سيناريو':'Turn it into a script'})));
     if(imp.words){var parts=Math.max(1,Math.ceil(imp.text.length/60000));gb.append(h('span',{class:'status',text:(parts>1?(uiAR()?'سيقرأ الذكاء الاصطناعي النص على '+parts+' أجزاء':'The AI reads it in '+parts+' parts'):(uiAR()?'سيقرأ الذكاء الاصطناعي النص كاملاً':'The AI reads it in one pass'))}))}
     go2.append(gb)}
-  if(imp.status.length){var ul=h('ol',{class:'stages'});imp.status.forEach(function(s){ul.append(h('li',{class:s.state},h('i'),h('span',{text:s.label}),s.info?h('small',{text:s.info}):null,s.state==='run'?h('small',{class:'live',text:imp.live||(uiAR()?'الذكاء الاصطناعي يعمل…':'The AI is working…')}):null))});go2.append(ul)}
+  if(imp.status.length){var ul=h('ol',{class:'stages'});imp.status.forEach(function(s){ul.append(h('li',{class:s.state},h('i'),h('span',{text:s.label}),s.info?h('small',{text:s.info}):null,s.state==='run'?h('small',{class:'live',text:imp.live||(uiAR()?'الذكاء الاصطناعي يعمل…':'The AI is working…')}):null))});go2.append(ul);if(imp.err&&!imp.busy)go2.append(h('p',{class:'err',role:'alert',text:imp.err}))}
   st.append(go2);
   if(imp.done){var d2=doneCard();d2.removeAttribute('id');st.append(d2)}}
 async function cleanScript(){
@@ -5560,11 +5585,11 @@ async function genFrame(sc,sh,i){
   if(!(await consistencyDialog(sc,sh,i)))return;
   var c=shotCfg(),p=finalPrompts(sc,sh,i);
   if(c.target==='sabatage'&&caps.mcp&&c.sab.boardId){await sabRender(sc,sh,i,'frame');return}
-  var A=window.ScriptRoomAI;
-  if(A&&typeof A.image==='function'){
-    var ok=await confirmSpend({title:'Generate '+shotNo(sc,i),text:'This sends the prompt and the character reference photos to your own image tool.',refs:shotChars(sc,sh).filter(function(x){return x.photo}).map(function(x){return 'Reference photo: '+nm(x)}),prompt:p.image,yes:'Generate'});if(!ok)return;
+  var A={image:imgFn()};
+  if(A.image){
+    var ok=await confirmSpend({title:'Generate '+shotNo(sc,i),text:'This sends the prompt and the character reference photos to your own image tool.',refs:shotChars(sc,sh).filter(function(x){return x.photo||x.turnImg}).map(function(x){return 'Reference: '+nm(x)+(x.turnImg?' (turnaround)':' (photo)')}),prompt:p.image,yes:'Generate'});if(!ok)return;
     sh.frame={status:'running',at:Date.now()};renderShotsPanel();
-    try{var r=await A.image(p.image,{ratio:c.ratio,negative:p.negative,references:shotChars(sc,sh).filter(function(x){return x.photo}).map(function(x){return {name:nm(x),image:x.photo}})});
+    try{var r=await A.image(p.image,{ratio:c.ratio,negative:p.negative,references:shotChars(sc,sh).filter(function(x){return x.turnImg||x.photo}).map(function(x){return {name:nm(x),image:x.turnImg||x.photo}})});
       var u=r&&(r.url||r.dataUrl);if(!isImgUrl(u))throw new Error('no image');sh.frame={url:u,status:'done',at:Date.now(),by:'adapter'};touched();renderShotsPanel();toast('Frame added. Check consistency next.')}
     catch(e){sh.frame=null;renderShotsPanel();toast('Your image tool did not return an image.')}
     return}
@@ -5879,9 +5904,11 @@ ROLES.push('Narrator');
 var PTYPES=[
   {k:'tvc',l:'TVC / Commercial',ico:'play',d:'15 to 60 seconds for TV, cinema or online. From a brief: a hook, one message and an end card.',fmt:'ad',len:.5,acts:['Hook','Story','Product moment','Payoff and end card'],tpl:'av',ratio:'16:9',hide:['bonds'],treat:'Live action'},
   {k:'social',l:'Social / Reel',ico:'cam',d:'Vertical 9:16 for Reels, TikTok and Shorts. Hook in the first second, a call to action at the end.',fmt:'reel',len:.5,acts:['Hook','Body','Call to action'],tpl:'av',ratio:'9:16',hide:['bonds'],treat:'Live action'},
-  {k:'film',l:'Film',ico:'scenes',d:'Short or feature film in full screenplay format, with three acts and studio exports.',fmt:'short',len:8,acts:['Act I · Setup','Act II · Confrontation','Act III · Resolution'],tpl:'us',ratio:'16:9',hide:[],treat:'Live action'},
-  {k:'tv',l:'TV episode',ico:'board',d:'Drama or comedy episode with a teaser, acts and a tag.',fmt:'ep',len:30,acts:['Teaser','Act One','Act Two','Act Three','Act Four','Tag'],tpl:'us',ratio:'16:9',hide:[],treat:'Live action'},
-  {k:'web',l:'Web series',ico:'globe',d:'Short episodes for YouTube or streaming, each with a hook and a cliffhanger.',fmt:'web',len:8,acts:['Cold open','Rising','Cliffhanger'],tpl:'us',ratio:'16:9',hide:[],treat:'Live action'},
+  {k:'film',l:'Short film',ico:'scenes',d:'5 to 40 minutes in full screenplay format: one strong idea, three acts and studio exports.',fmt:'short',len:12,acts:['Act I · Setup','Act II · Confrontation','Act III · Resolution'],tpl:'us',ratio:'16:9',hide:[],treat:'Live action'},
+  {k:'feature',l:'Feature film',ico:'scenes',d:'A full-length film of 80 to 120 minutes: three acts built from sequences, a midpoint and subplots.',fmt:'feat',len:100,acts:['Act I · Setup','Act IIa · Fun and games','Midpoint','Act IIb · Bad guys close in','Act III · Finale'],tpl:'us',ratio:'2.39:1',hide:[],treat:'Live action'},
+  {k:'tv',l:'TV series',ico:'board',d:'A drama or comedy series: set the number of episodes, then write them one by one with the same cast.',fmt:'ep',len:45,acts:['Teaser','Act One','Act Two','Act Three','Act Four','Tag'],tpl:'us',ratio:'16:9',hide:[],treat:'Live action'},
+  {k:'tvep',l:'Single TV episode',ico:'board',d:'One episode on its own: a pilot, or a spec script for an existing show. Teaser, acts and a tag.',fmt:'ep',len:45,acts:['Teaser','Act One','Act Two','Act Three','Act Four','Tag'],tpl:'us',ratio:'16:9',hide:[],treat:'Live action'},
+  {k:'web',l:'Web series',ico:'globe',d:'Short episodes for YouTube or streaming, each with a hook and a cliffhanger. Add episodes in Projects.',fmt:'web',len:8,acts:['Cold open','Rising','Cliffhanger'],tpl:'us',ratio:'16:9',hide:[],treat:'Live action'},
   {k:'podcast',l:'Podcast / Audio',ico:'speak',d:'Audio drama or a narrated show: voices, sound and music, no camera.',fmt:'pod',len:20,acts:['Cold open','Segment one','Segment two','Outro'],tpl:'radio',ratio:'16:9',hide:['shots'],treat:'Audio only'},
   {k:'corp',l:'Corporate / Explainer',ico:'style',d:'Brand films, explainers and internal comms: problem, solution, proof, call to action.',fmt:'corp',len:2,acts:['Problem','Solution','Proof','Call to action'],tpl:'av',ratio:'16:9',hide:['bonds'],treat:'Motion graphics'},
   {k:'doc',l:'Documentary',ico:'dialogue',d:'Interviews, narration and real footage, written as a two-column script.',fmt:'doc',len:12,acts:['Opening','Act I','Act II','Act III'],tpl:'av',ratio:'16:9',hide:['bonds'],treat:'Archive and real footage'},
@@ -5911,6 +5938,13 @@ function openLanding(){
   var el=document.getElementById('landing');if(el)el.remove();
   el=h('div',{class:'landing',id:'landing',role:'dialog','aria-modal':'true','aria-label':'Start a project'});
   var inner=h('div',{class:'ld-in'});
+  if(!PREF.langChosen){
+    inner.append(h('div',{class:'ld-hero'},h('div',{class:'mark big','aria-hidden':'true'},svgI('dialogue')),h('h1',{text:'Script Room'}),h('p',{'data-nt':'1'},h('span',{dir:'ltr',text:'Choose your language'}),h('br'),h('span',{dir:'rtl',lang:'ar',text:'اختر لغتك'}))));
+    var lg=h('div',{class:'ld-langs'});[['en','English','Continue in English'],['ar','العربية','تابع بالعربية']].forEach(function(x){lg.append(h('button',{type:'button',class:'ld-lang','data-nt':'1',lang:x[0],dir:x[0]==='ar'?'rtl':'ltr',onclick:function(){setLang(x[0]);PREF.langChosen=true;scheduleSave();openLanding()}},h('b',{text:x[1]}),h('small',{text:x[2]})))});
+    inner.append(lg,h('p',{class:'ld-note','data-nt':'1'},h('span',{dir:'ltr',text:'You can change this any time in View.'}),h('br'),h('span',{dir:'rtl',lang:'ar',text:'يمكنك تغيير اللغة في أي وقت من «عرض».'})));
+    el.append(inner);document.body.append(el);requestAnimationFrame(function(){el.classList.add('in')});return}
+  var lsw=h('div',{class:'seg ld-lsw'});[['en','English'],['ar','العربية']].forEach(function(x){lsw.append(h('button',{type:'button','data-nt':'1','aria-pressed':PREF.lang===x[0]?'true':'false',text:x[1],onclick:function(){setLang(x[0]);openLanding()}}))});
+  inner.append(lsw);
   inner.append(h('div',{class:'ld-hero'},h('div',{class:'mark big','aria-hidden':'true'},svgI('dialogue')),h('h1',{text:uiAR()?'ماذا تصنع اليوم؟':'What are you making?'}),
     h('p',{text:uiAR()?'اختر نوع المشروع. يضبط Script Room الطول والصيغة والخطوات لتناسبه، ويمكنك تغيير كل شيء لاحقاً.':'Pick a project type. Script Room sets the length, the format, the acts and the steps to fit it. You can change everything later.'})));
   var g=h('div',{class:'ld-grid'});
@@ -5919,7 +5953,10 @@ function openLanding(){
   inner.append(g);
   var row=h('div',{class:'ld-row'});
   row.append(h('button',{type:'button',class:'ld-alt',onclick:function(){closeLanding();openImport()}},svgI('dl'),h('span',null,h('b',{text:uiAR()?'من كتابتك':'Start from your writing'}),h('small',{text:'A book, story, brief, memoir or script'}))));
-  if(hasWork())row.append(h('button',{type:'button',class:'ld-alt',onclick:closeLanding},svgI('write'),h('span',null,h('b',{text:(uiAR()?'تابع: ':'Continue: ')+(S.title||'your project')}),h('small',{text:(ptOf()?ptOf().l:fmtOf(S.format).l)+' · '+S.scenes.length+' scenes'}))));
+  var recent=libGet().items.slice().sort(function(a,b){return b.updated-a.updated}).slice(0,3);
+  recent.forEach(function(m){var cur=m.id===S.pid;row.append(h('button',{type:'button',class:'ld-alt',onclick:function(){if(cur)closeLanding();else pjOpen(m.id)}},svgI(m.sid?'folder':'write'),h('span',null,h('b',{text:(uiAR()?'تابع: ':'Continue: ')+pjLabel(m)}),h('small',{text:(ptOf(m.ptype)?ptOf(m.ptype).l:'')+' · '+m.scenes+(uiAR()?' مشاهد':' scenes')}))))});
+  if(!recent.length&&hasWork())row.append(h('button',{type:'button',class:'ld-alt',onclick:closeLanding},svgI('write'),h('span',null,h('b',{text:(uiAR()?'تابع: ':'Continue: ')+(S.title||'your project')}),h('small',{text:(ptOf()?ptOf().l:fmtOf(S.format).l)+' · '+S.scenes.length+' scenes'}))));
+  if(libGet().items.length)row.append(h('button',{type:'button',class:'ld-alt',onclick:function(){closeLanding();openProjects()}},svgI('folder'),h('span',null,h('b',{text:uiAR()?'كل المشاريع':'All projects'}),h('small',{text:uiAR()?'المسلسلات والحلقات وكل ما حفظته':'Series, episodes and everything you saved'}))));
   row.append(h('button',{type:'button',class:'ld-alt',onclick:function(){closeLanding();var b=document.getElementById('btnExample');if(b)b.click()}},svgI('example'),h('span',null,h('b',{text:uiAR()?'جرّب مثالاً':'Explore the example'}),h('small',{text:'A finished short film to look around'}))));
   inner.append(row);
   inner.append(h('p',{class:'ld-foot'},'Your projects stay in this browser. AI features use the AI you connect: Claude, ChatGPT, Gemini, DeepSeek, a local model and more. ',h('button',{type:'button',class:'btn sm ghost',text:'Privacy',onclick:openPrivacy})));
@@ -5929,15 +5966,17 @@ function openLanding(){
 function closeLanding(){var el=document.getElementById('landing');if(!el)return;PREF.landed=true;scheduleSave();if(el._esc)document.removeEventListener('keydown',el._esc);el.classList.remove('in');setTimeout(function(){el.remove()},motionOK()?260:0)}
 async function pickType(k){
   var p=ptOf(k);if(!p)return;
-  if(hasWork()){if(!(await askIn('Start a new '+p.l+' project? Your current project is saved in Draft history first.',uiAR()?'ابدأ':'Start new')))return;snapshot('Before a new '+p.l+' project',true)}
-  var keep={lang:S.lang,writer:S.writer};S=normState(blankState());S.lang=keep.lang;S.writer=keep.writer;applyType(p);closeLanding();renderAll();scheduleSave();go(ST.story);
-  toast(p.l+' project ready. Start with a title and one sentence.')}
+  var had=hasWork();if(had){if(teamBlocks())return;pjSaveNow()}
+  var keep={lang:S.lang,writer:S.writer};S=normState(blankState());S.pid=newPid();S.lang=keep.lang;S.writer=keep.writer;applyType(p);if(isSeriesType(p.k)){S.series={id:newPid()};S.ep=1}closeLanding();renderAll();scheduleSave();go(ST.story);
+  toast(p.l+(isSeriesType(p.k)?' series ready: this is episode 1. Add more episodes from Projects.':' project ready. Start with a title and one sentence.')+(had?' Your previous project is in Projects.':''))}
 function applyType(p){S.ptype=p.k;S.format=p.fmt;S.lenMin=p.len;S.lenTouched=false;S.acts=p.acts.slice();S.exp.tpl=p.tpl;S.exp.paper='auto';S.treat=S.treat||p.treat;var c=shotCfg();c.ratio=p.ratio;}
 /* ---- story step extras ---- */
 function v10StoryExtras(){
   var w=h('div',{class:'stack v10-story'});
-  var pt=h('div',{class:'chips'});PTYPES.forEach(function(p){pt.append(h('button',{type:'button',class:'chip','aria-pressed':S.ptype===p.k?'true':'false',text:p.l,onclick:function(){if(S.ptype===p.k)return;S.ptype=p.k;S.acts=p.acts.slice();S.format=p.fmt;if(!S.lenTouched)S.lenMin=p.len;S.exp.tpl=p.tpl;shotCfg().ratio=p.ratio;touched();renderAll()}}))});
-  w.append(group('Project type',pt));
+  var pt=h('div',{class:'chips'});PTYPES.forEach(function(p){pt.append(h('button',{type:'button',class:'chip','aria-pressed':S.ptype===p.k?'true':'false',text:p.l,onclick:function(){if(S.ptype===p.k)return;S.ptype=p.k;S.acts=p.acts.slice();S.format=p.fmt;if(!S.lenTouched)S.lenMin=p.len;S.exp.tpl=p.tpl;shotCfg().ratio=p.ratio;if(isSeriesType(p.k)&&!S.series){S.series={id:newPid()};S.ep=S.ep||1}else if(!isSeriesType(p.k)&&S.series){S.series=null;S.ep=0}try{applyHidden()}catch(e){}touched();renderAll();toast((uiAR()?'النوع الآن: ':'Now making: ')+p.l)}}))});
+  var cpt=ptOf();if(cpt)w.append(h('div',{class:'type-card proj-type'},h('span',{class:'ld-ic'},svgI(cpt.ico)),h('div',null,h('small',{text:uiAR()?'أنت تكتب':'You are making'}),h('b',{text:cpt.l}),h('p',{class:'hint',text:cpt.d}))));
+  var sf=seriesFields();if(sf)w.append(group(uiAR()?'المسلسل':'Series',sf));
+  w.append(group(uiAR()?'غيّر النوع':'Change the type',pt));
   w.append(group('Treatment',chipGroup(TREATS,function(v){return S.treat===v},function(v){S.treat=S.treat===v?'':v;touched()})));
   var vo=h('button',{type:'button',class:'chip','aria-pressed':S.voOnly?'true':'false',text:S.voOnly?'✓ Narration only: one voice-over, no characters on screen':'Narration only: one voice-over, no characters on screen',onclick:function(){setVO(!S.voOnly)}});
   w.append(group('Voices',h('div',{class:'chips'},vo)),h('p',{class:'hint',text:'For explainers, documentaries, brand films and essays told by a narrator. The script is written as visuals plus voice-over.'}));
@@ -6244,7 +6283,8 @@ function shootCard(sc){
 var PLATS=[['seedance','Seedance','v'],['kling','Kling','v'],['runway','Runway','v'],['veo','Google Veo','v'],['sora','Sora','v'],['luma','Luma','v'],['hailuo','Hailuo / MiniMax','v'],['pika','Pika','v'],['mj','Midjourney','i'],['flux','Flux','i'],['gptimg','GPT Image','i'],['nano','Nano Banana','i'],['sd','Stable Diffusion','i'],['generic','Any tool','v']];
 function platOf(){var c=shotCfg();return PLATS.filter(function(p){return p[0]===c.plat})[0]||PLATS[0]}
 function arTok(){var r=shotCfg().ratio;return r}
-function forPlat(pk,sc,sh,i){
+function forPlat(pk,sc,sh,i){var e=pEditGet(pKey('shot',sc,sh,pk));return e!=null?e.text:forPlat0(pk,sc,sh,i)}
+function forPlat0(pk,sc,sh,i){
   var p=finalPrompts(sc,sh,i),c=shotCfg(),dur=Math.max(2,+sh.dur||5),neg=p.negative;
   switch(pk){
     case 'mj':return p.image.replace(/\s*Aspect ratio [\d:]+\.?/i,'')+' --ar '+arTok()+' --style raw --v 7'+(neg?' --no '+neg.split(',').slice(0,6).join(','):'');
@@ -6255,7 +6295,8 @@ function forPlat(pk,sc,sh,i){
     case 'veo':return p.video+(sh.line?'\nDialogue (lip-synced): "'+sh.line+'"':'')+(sh.audio?'\nAudio: '+sh.audio:'')+'\nSettings: '+arTok()+', '+dur+' s';
     case 'seedance':return p.video+'\n\nSettings: '+arTok()+', '+dur+' s, '+(sh.fps||24)+' fps';
     default:return p.video+'\nAspect ratio '+arTok()+', '+dur+' seconds.'}}
-function scenePrompt(sc,pk){
+function scenePrompt(sc,pk){var e=pEditGet(pKey('scene',sc,null,pk));return e!=null?e.text:scenePrompt0(sc,pk)}
+function scenePrompt0(sc,pk){
   var list=shotsOf(sc);if(!list.length)return '';var t=0,beats=[],ref=list.length?finalPrompts(sc,list[0],0):null;
   list.forEach(function(sh,i){var d=Math.max(2,+sh.dur||5);beats.push('['+t+'s–'+(t+d)+'s] '+(SH_ABBR[sh.size]||sh.size)+', '+sh.angle.toLowerCase()+', '+lensTxt(sh.lens)+', camera '+(MOVE_PH[sh.move]||sh.move)+': '+descText(sc,sh,false)+(sh.line&&shotCfg().lines?' Line: "'+sh.line+'".':''));t+=d});
   var last=list[list.length-1],head='One continuous scene in '+list.length+' shots, '+t+' seconds. '+placeOf(sc)+', '+sc.time.toLowerCase()+'. '+(sc.locnotes?sc.locnotes+' ':'')+'Lighting: '+lightOf(sc,list[0])+'.';
@@ -6269,6 +6310,7 @@ function promptBar(sc){
   ps.addEventListener('change',function(){c.plat=ps.value;scheduleSave();renderShotsPanel()});
   var mode=h('div',{class:'seg'});[['shot','Per shot'],['scene','Whole scene']].forEach(function(x){mode.append(h('button',{type:'button','aria-pressed':(c.pmode||'shot')===x[0]?'true':'false',text:x[1],onclick:function(){c.pmode=x[0];scheduleSave();renderShotsPanel()}}))});
   box.append(h('div',{class:'bar'},h('h3',{text:'Copy prompts'}),h('span',{class:'grow'}),field('Platform',ps),group('Prompt',mode)));
+  box.append(h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',onclick:function(){openPromptStudio(sc.id)}},svgI('edit'),h('span',{text:'Open the prompt studio'})),h('span',{class:'hint',text:'See, refine and copy the exact prompt for each shot, the scene or the whole film.'})));
   var bar=h('div',{class:'bar'});
   if(!shotsOf(sc).length){box.append(h('p',{class:'hint',text:'Add shots to this scene first (a preset, the AI, or Add shot). Then copy them one by one, as a list, or as one scene prompt.'}));return box}
   if((c.pmode||'shot')==='scene')bar.append(h('button',{type:'button',class:'btn primary',onclick:function(){copy(scenePrompt(sc,platOf()[0]));toast('Scene prompt copied for '+platOf()[1]+'.')}},svgI('copy'),h('span',{text:'Copy this scene as one prompt'})));
@@ -6316,7 +6358,15 @@ function v10CharExtras(c,pre){
   var locked=c.ident&&c.ident.locked;
   w.append(h('div',{class:'cc-row'},h('button',{type:'button',class:'btn'+(locked?'':' primary'),onclick:function(){openCreator(c)}},svgI('cast'),h('span',{text:locked?'Edit the character creator':'Open the character creator'})),
     locked?h('span',{class:'tag strength',text:'🔒 Identity locked for AI'}):h('span',{class:'hint',text:'Builds a fixed visual identity that every image and video prompt repeats word for word, so the character stays the same.'})));
+  if(locked||c.turnImg)w.append(imgSlot(c,'turnImg',{label:'Turnaround sheet',hint:'Front, three-quarter and profile. Used as a reference when generating frames.',ratio:'16:9',max:1400,prompt:function(){var I=c.ident||{},was=I.locked;I.locked=true;var t=identText(c);I.locked=was;return 'Character turnaround sheet on a flat 18% grey background, even soft light. Three views side by side: front, three-quarter and profile, chest-up, neutral expression. '+t+'.'+(TREAT_PH[S.treat]?' Rendered as '+TREAT_PH[S.treat]+'.':'')+' No text, no labels.'},refs:function(){return c.photo?[{name:(nm(c)||'Character')+' photo',image:c.photo}]:[]}}));
   return w}
+
+async function creatorSuggest(c){var I=c.ident=c.ident||{};
+  var allowed={};IDF.forEach(function(f){allowed[f[0]]=f[2]});
+  var o=await caps.sample.json('You are a casting director designing the fixed visual identity of a film character. Use only the allowed values for each list field. Base it on the character and the story; do not invent a real person or say who they look like. Ethnicity: '+(c.ethnicity?'the writer set it as '+c.ethnicity+'; respect it.':'not set; do not guess it, leave skin and features neutral if unknown.')+'\n\nSTORY: '+(S.logline||S.title||'')+'\nCHARACTER: '+[nm(c),c.role,c.age?'age '+c.age:'',c.background,lookText(c),c.wardrobe?'wardrobe: '+c.wardrobe:''].filter(Boolean).join('. ')+
+    '\n\nALLOWED VALUES: '+JSON.stringify(allowed)+'\nFields "marks" and "eyes" are lists (up to 2 values); the others are one value or "".\nReply with JSON: {"ident":{'+IDF.map(function(f){return '"'+f[0]+'":'+(f[0]==='marks'||f[0]==='eyes'?'[]':'""')}).join(',')+'},"wardrobe":string (signature outfit, one sentence),"palette":string (3 colours with #hex),"notes":string (one thing that never changes)}',{cache:false});
+  var id=o&&o.ident||{};IDF.forEach(function(f){var v=id[f[0]],ok=f[2];if(f[0]==='marks'||f[0]==='eyes'){if(Array.isArray(v))I[f[0]]=v.filter(function(x){return ok.indexOf(x)>-1}).slice(0,2)}else if(typeof v==='string'&&ok.indexOf(v)>-1)I[f[0]]=v});
+  if(o&&o.wardrobe&&!I.wardrobe)I.wardrobe=String(o.wardrobe);if(o&&o.palette&&!I.palette)I.palette=String(o.palette);if(o&&o.notes&&!I.notes)I.notes=String(o.notes);touched()}
 function openCreator(c){
   c.ident=c.ident||{};var I=c.ident;
   modalBox('Character creator: '+(nm(c)||'Unnamed'),function(box,done){
@@ -6333,7 +6383,9 @@ function openCreator(c){
     up();
     var pr=function(){var was=I.locked;I.locked=true;var t=identText(c);I.locked=was;return 'Character turnaround sheet on a flat 18% grey background, even soft light, no shadows baked in. Three views side by side: front, three-quarter and profile, chest-up, neutral expression. '+t+'. '+(TREAT_PH[S.treat]?'Rendered as '+TREAT_PH[S.treat]+'. ':'Photoreal. ')+'No text, no labels, no watermark.'};
     box.append(h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',onclick:function(){I.locked=true;touched();done(true);renderStep();toast('Identity locked. It now rides in every prompt for '+(nm(c)||'this character')+'.')}},svgI('check'),h('span',{text:'Lock this identity'})),
-      h('button',{type:'button',class:'btn',text:'Copy a turnaround prompt',onclick:function(){copy(pr());toast('Turnaround prompt copied. Generate it, then add it as the reference photo.')}}),
+      caps.sample?h('button',{type:'button',class:'btn',onclick:async function(e){var b=e.currentTarget;b.disabled=true;b.querySelector('span').textContent='Thinking…';try{await creatorSuggest(c);done(true);openCreator(c);toast('Suggested from the character and the story. Check each choice, then lock it.')}catch(err){b.disabled=false;b.querySelector('span').textContent='Suggest with AI';toast(err&&err.code?sampleErr(err):'The AI could not suggest a look.')}}},svgI('style'),h('span',{text:'Suggest with AI'})):null,
+      h('button',{type:'button',class:'btn',onclick:function(){I.locked=true;touched();done(true);renderStep();genImgFor(c,'turnImg',{prompt:pr,ratio:'16:9',max:1400,refs:function(){return c.photo?[{name:(nm(c)||'Character')+' photo',image:c.photo}]:[]}})}},svgI('cam'),h('span',{text:'Generate a turnaround sheet'})),
+      h('button',{type:'button',class:'btn ghost',text:'Copy a turnaround prompt',onclick:function(){copy(pr());toast('Turnaround prompt copied. Generate it, then add it as the reference photo.')}}),
       I.locked?h('button',{type:'button',class:'btn ghost',text:'Unlock',onclick:function(){I.locked=false;touched();done(true);renderStep()}}):null,
       h('button',{type:'button',class:'btn ghost',text:'Close',onclick:function(){touched();done(true);renderStep()}})))})}
 /* ===================== v10: duplicates ===================== */
@@ -6387,18 +6439,21 @@ async function genAsset(sc,kind){
     var ok=await confirmSpend({title:kind==='location'?'Location plate on Sabatage Studio':'Props sheet on Sabatage Studio',text:'This renders one preview still on your board and spends render credit.',refs:[],prompt:p,yes:'Render it'});if(!ok)return;
     try{var r=await sabCall('generate_image',{boardId:c.sab.boardId,prompt:p,preview:true,async:true,aspect:kind==='location'?c.ratio:'16:9',label:(S.title||'Script')+' '+(kind==='location'?'location':'props')+' '+(S.scenes.indexOf(sc)+1)});
       var u=findUrl(r);sc[kind==='location'?'locImg':'propImg']={url:u||'',gen:r&&(r.generationId||r.id)||'',at:Date.now()};touched();renderStep();toast('Started. It lands on your board.')}catch(e){toast(mcpErr(e))}return}
-  var A=window.ScriptRoomAI;
-  if(A&&typeof A.image==='function'){try{var rr=await A.image(p,{ratio:c.ratio});var uu=rr&&(rr.url||rr.dataUrl);if(!isImgUrl(uu))throw 0;sc[kind==='location'?'locImg':'propImg']={url:uu,at:Date.now()};touched();renderStep()}catch(e){toast('Your image tool did not return an image.')}return}
+  var A={image:imgFn()};
+  if(A.image){var ok2=await confirmSpend({title:kind==='location'?'Generate the location':'Generate the props',text:'This sends the prompt to the image generator you connected and may use credit on your account.',refs:[],prompt:p,yes:'Generate'});if(!ok2)return;try{var rr=await A.image(p,{ratio:c.ratio});var uu=rr&&(rr.url||rr.dataUrl);if(!isImgUrl(uu))throw 0;sc[kind==='location'?'locImg':'propImg']={url:uu,at:Date.now()};touched();renderStep()}catch(e){toast('Your image tool did not return an image.')}return}
   await modalBox(kind==='location'?'Generate the location':'Generate the props',function(box,done){
     var fi=h('input',{type:'file',accept:'image/*',hidden:true});fi.addEventListener('change',async function(){var f=fi.files[0];if(!f)return;var r=await shrink(f,1100,.82);sc[kind==='location'?'locImg':'propImg']={url:r.url,at:Date.now()};touched();done(true);renderStep()});
     box.append(h('p',{class:'info',text:'Copy the prompt into your own image tool, then add the result here.'}),h('pre',{class:'mono mprompt',dir:'ltr',text:p}),
       h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',text:'Copy prompt',onclick:function(){copy(p)}}),h('button',{type:'button',class:'btn',text:'Add the image',onclick:function(){fi.click()}}),fi,h('button',{type:'button',class:'btn ghost',text:'Close',onclick:function(){done(false)}})))})}
+function upAssetBtn(sc,k,label){var fi=h('input',{type:'file',accept:'image/jpeg,image/png,image/webp',hidden:true});fi.addEventListener('change',async function(){var f=fi.files[0];fi.value='';if(!f)return;try{var r=await shrink(f,1100,.82);sc[k]={url:r.url,at:Date.now(),own:true};touched();renderStep()}catch(e){toast('Could not read that image.')}});
+  return h('span',null,h('button',{type:'button',class:'btn sm ghost',onclick:function(){fi.click()}},svgI('dl'),h('span',{text:label})),fi)}
 function v10SceneExtras(sc){
   var w=h('div',{class:'bar gen-row'});
   if(caps.sample){w.append(h('button',{type:'button',class:'btn sm',onclick:function(e){describeLocation(sc,e.currentTarget)}},svgI('style'),h('span',{text:'Describe the location with AI'})),
     h('button',{type:'button',class:'btn sm',onclick:function(e){suggestProps(sc,e.currentTarget)}},svgI('style'),h('span',{text:'Suggest props'})))}
   w.append(h('button',{type:'button',class:'btn sm ghost',onclick:function(){genAsset(sc,'location')}},svgI('cam'),h('span',{text:'Generate the location'})),
-    h('button',{type:'button',class:'btn sm ghost',onclick:function(){genAsset(sc,'props')}},svgI('cam'),h('span',{text:'Generate the props'})));
+    h('button',{type:'button',class:'btn sm ghost',onclick:function(){genAsset(sc,'props')}},svgI('cam'),h('span',{text:'Generate the props'})),
+    upAssetBtn(sc,'locImg','Upload a location photo'),upAssetBtn(sc,'propImg','Upload a props photo'));
   var imgs=h('div',{class:'phs'});[['locImg','Location'],['propImg','Props']].forEach(function(x){var o=sc[x[0]];if(o&&isImgUrl(o.url))imgs.append(h('figure',{class:'asset'},h('img',{src:o.url,alt:x[1]}),h('figcaption',{text:x[1]})))});
   return h('div',{class:'stack'},w,imgs.children.length?imgs:null)}
 /* ===================== v10: share ===================== */
@@ -6419,9 +6474,10 @@ function readerHTML(){var sh=[];return '<!doctype html><html'+(scriptRTL()?' dir
   parseBlocks(hasDraft()?S.out.text:assembled()).map(function(b){if(b.t==='head')return '<p class="h">'+xmlEsc(b.x.toUpperCase())+'</p>';if(b.t==='trans')return '<p class="a" style="text-align:right">'+xmlEsc(b.x.toUpperCase())+'</p>';if(b.t==='action')return '<p class="a">'+xmlEsc(b.x).replace(/\n/g,'<br>')+'</p>';
     return '<p class="c">'+xmlEsc((b.who||'')+(b.ext?' ('+b.ext+')':''))+'</p>'+(b.p?'<p class="p">('+xmlEsc(b.p)+')</p>':'')+'<p class="d">'+xmlEsc(b.x||'').replace(/\n/g,'<br>')+'</p>'}).join('')+'</main></body></html>'}
 function openShare(){openSheet(uiAR()?'المشاركة':'Share',function(st){
+  if(typeof shareLinkBox==='function'&&shareOn())st.append(shareLinkBox());
   var txt=shareText(),enc=encodeURIComponent(txt);
   var soc=h('div',{class:'share-grid'});
-  [['WhatsApp','https://wa.me/?text='+enc],['Telegram','https://t.me/share/url?url='+encodeURIComponent('https://claude.ai')+'&text='+enc],['X','https://twitter.com/intent/tweet?text='+enc],['LinkedIn','https://www.linkedin.com/feed/?shareActive=true&text='+enc],['Facebook','https://www.facebook.com/sharer/sharer.php?quote='+enc+'&u='+encodeURIComponent('https://claude.ai')],['Email','mailto:?subject='+encodeURIComponent(S.title||'My script')+'&body='+encodeURIComponent(txt+'\n\n'+plainScript().slice(0,6000))]].forEach(function(x){
+  [['WhatsApp','https://wa.me/?text='+enc],['Telegram','https://t.me/share/url?url='+encodeURIComponent(location.origin+location.pathname)+'&text='+enc],['X','https://twitter.com/intent/tweet?text='+enc],['LinkedIn','https://www.linkedin.com/feed/?shareActive=true&text='+enc],['Facebook','https://www.facebook.com/sharer/sharer.php?quote='+enc+'&u='+encodeURIComponent(location.origin+location.pathname)],['Email','mailto:?subject='+encodeURIComponent(S.title||'My script')+'&body='+encodeURIComponent(txt+'\n\n'+plainScript().slice(0,6000))]].forEach(function(x){
     soc.append(h('a',{class:'share-b',href:x[1],target:'_blank',rel:'noopener noreferrer',onclick:function(){PREF.exported=true;scheduleSave()}},h('b',{text:x[0]}),h('small',{text:x[0]==='Email'?'Title, logline and the script text':'Post the title and logline'})))});
   st.append(h('div',{class:'studio'},h('h3',{text:'Share on social and messaging'}),h('p',{class:'info',text:'Posts the title and logline. Attach the poster or the PDF in the app for the full thing.'}),soc));
   var f=h('div',{class:'bar'});
@@ -6435,7 +6491,7 @@ function openShare(){openSheet(uiAR()?'المشاركة':'Share',function(st){
     h('div',{class:'bar'},h('button',{type:'button',class:'btn',text:'Open Write together',onclick:function(){closeSheet();setTimeout(function(){var b=document.getElementById('btnTeam');if(b)b.click()},300)}}),h('button',{type:'button',class:'btn ghost',text:'Studio exports',onclick:function(){openExport()}}))))})}
 
 /* ===================== v10: wiring ===================== */
-var FMT2TYPE={ad:'tvc',reel:'social',ep:'tv',feat:'film',short:'film',doc:'doc',mv:'mv',web:'web',pod:'podcast',corp:'corp'};
+var FMT2TYPE={ad:'tvc',reel:'social',ep:'tvep',feat:'feature',short:'film',doc:'doc',mv:'mv',web:'web',pod:'podcast',corp:'corp'};
 function fmtToType(f){return FMT2TYPE[f]||'film'}
 function castRule(){var n=imp.castN;if(n==='vo')return 'one character only: the NARRATOR, who speaks only in voice-over; no other speaking characters';if(+n>0)return 'exactly '+(+n)+' characters: keep the most important, merge or cut the rest';return '2 to 6, merge minor ones'}
 function castNPick(){var w=h('div',{class:'chips'});[['auto','Auto'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['8','8'],['10','10'],['vo','Narrator only']].forEach(function(x){
@@ -6479,7 +6535,7 @@ var TYPE_STEPS={
   doc:{1:['Contributors','Interviewees and narrator'],3:['Sequences','Scenes and interviews'],4:['Interviews & VO','Questions, answers, narration'],6:['Script','Two-column script']},
   podcast:{0:['Show','Premise and format'],1:['Voices','Hosts and characters'],3:['Segments','The running order'],4:['Script lines','What is said'],5:['Sound & tone','Music, sound, mood'],6:['Script','Audio script']},
   mv:{0:['Song & idea','The song and the concept'],1:['Performers','Artist and cast'],3:['Sections','Intro, verse, chorus'],5:['Look','Visual language'],6:['Treatment','Treatment and exports']},
-  web:{3:['Scenes','Hook to cliffhanger']},tv:{3:['Scenes','Teaser, acts, tag']}};
+  web:{3:['Scenes','Hook to cliffhanger']},tv:{3:['Scenes','Teaser, acts, tag']},tvep:{3:['Scenes','Teaser, acts, tag']},feature:{3:['Sequences and scenes','Acts, sequences, midpoint']}};
 var TYPE_HEADS={
   tvc:{'What is the story?':['What is the spot?','The client, the one message and the idea. Fill in the brief, then the idea in one sentence.'],'Who is in it?':['Who is on screen?','The talent, and who speaks or narrates. Keep it to the people the spot needs.'],'Where and when?':['Beat by beat','Each beat is a few seconds: hook, story, product moment, payoff and end card.'],'Write the conversation':['Write the lines and voice-over','Short and spoken. Every word has to earn its second.'],'Write it':['Write the script','Get the two-column AV script and the studio exports.']},
   social:{'What is the story?':['What is the idea?','One hook, one message, one call to action, in under a minute.'],'Where and when?':['Beat by beat','Hook in the first second, then the body, then the call to action.'],'Write it':['Write the script','Get the script and the shot list for vertical video.']},
@@ -6610,6 +6666,225 @@ function initV11(){
   (lang||tb.lastChild).after(vb);document.body.classList.add('v11');relabelNav();
   if(INFRAME){var obs=function(){var b=document.querySelector('#sheet button.share-native');if(b)b.remove()};document.addEventListener('click',function(){setTimeout(obs,50)})}}
 
+
+
+
+/* ===================== Images: upload your own, generate with AI, fill in from them ===================== */
+function imgFn(){var A=window.ScriptRoomAI;if(A&&typeof A.image==='function')return A.image;return typeof window.__srImage==='function'?window.__srImage:null}
+function imgGenReady(){return !!imgFn()}
+function visionWhy(){var ar=uiAR();if(!caps.sample)return ar?'اربط ذكاءً اصطناعياً أولاً (زر «Connect AI» في الشريط).':'Connect an AI first (Connect AI in the toolbar).';
+  try{if(typeof aiCfg==='function'){var c=aiCfg();if(c&&c.provider){var P=aiProv(c.provider),m=c.model||P.model;return (ar?'النموذج المتصل ('+P.l.split(' (')[0]+' · '+m+') لا يقرأ الصور. ':'The connected model ('+P.l.split(' (')[0]+' · '+m+') cannot read images. ')+(ar?'اختر نموذجاً يقرأ الصور: Gemini (مجاني)، أو GPT-4.1، أو Claude، أو llava أو qwen2.5vl في Ollama ثم فعّل «هذا النموذج يقرأ الصور» في الإعدادات المتقدمة. ما زال بإمكانك رفع الصورة كمرجع.':'Pick one that can: Gemini (free), GPT-4.1, Claude, or llava / qwen2.5vl in Ollama (then tick “This model can read images” under Advanced). You can still upload the image as a reference.')}}}catch(e){}
+  return ar?'تحليل الصور غير متاح هنا. يمكنك رفع الصورة كمرجع.':'Photo analysis is not available here. You can still upload the image as a reference.'}
+function portraitPrompt(c){var b=['Photographic character portrait for a film, chest-up, facing the camera with a calm neutral expression, plain mid-grey studio background, soft even front light, natural skin texture, sharp focus on the eyes.'];
+  if(c.age)b.push('Apparent age: '+c.age+'.');var t=identText(c)||lookText(c);if(t)b.push('Look: '+t+'.');if(c.wardrobe)b.push('Wearing: '+c.wardrobe.trim().replace(/[.\s]+$/,'')+'.');if(c.makeup)b.push('Hair and makeup: '+c.makeup.trim().replace(/[.\s]+$/,'')+'.');
+  if(TREAT_PH[S.treat])b.push('Rendered as '+TREAT_PH[S.treat]+'.');b.push('No text, no logos, no watermark.');return b.join(' ')}
+function wardrobePrompt(c){return 'Costume reference for a film: the complete outfit shown on an invisible ghost mannequin, front view, full outfit in frame, plain light-grey background, even soft light, no person, no face, no hands. Outfit: '+String(c.wardrobe||'').trim().replace(/[.\s]+$/,'')+'.'+(c.role?' For the '+String(c.role).toLowerCase()+(c.age?', age '+c.age:'')+'.':'')+(TREAT_PH[S.treat]?' Rendered as '+TREAT_PH[S.treat]+'.':'')+' No text.'}
+function makeupPrompt(c){var t=identText(c)||lookText(c);return 'Hair and makeup reference for a film character: close head-and-shoulders view, plain mid-grey background, soft beauty light, detail on hair and skin. Hair and makeup: '+String(c.makeup||'').trim().replace(/[.\s]+$/,'')+'.'+(t?' Person: '+t+'.':'')+(TREAT_PH[S.treat]?' Rendered as '+TREAT_PH[S.treat]+'.':'')+' No text.'}
+async function dataToBlob(u){var r=await fetch(u);return await r.blob()}
+function imgSlot(o,key,opt){var ar=uiAR(),box=h('div',{class:'img-slot'});
+  var fi=h('input',{type:'file',accept:'image/jpeg,image/png,image/webp',hidden:true});
+  function busyOn(b,t){b.disabled=true;b.dataset.l=b.querySelector('span').textContent;b.querySelector('span').textContent=t}
+  function busyOff(b){b.disabled=false;if(b.dataset.l)b.querySelector('span').textContent=b.dataset.l}
+  fi.addEventListener('change',async function(){var f=fi.files[0];fi.value='';if(!f)return;try{var r=await shrink(f,opt.max||640,0.82);o[key]=r.url;touched();renderStep();toast(ar?'أُضيفت الصورة.':'Image added.')}catch(e){toast(ar?'تعذر قراءة الصورة.':'Could not read that image.')}});
+  var thumb=o[key]?h('img',{class:'ph'+(opt.round?' round':''),alt:opt.label,src:o[key]}):h('span',{class:'ph ph-empty'+(opt.round?' round':''),'aria-hidden':'true'},svgI('cam'));
+  var bar=h('div',{class:'bar'});
+  bar.append(h('button',{type:'button',class:'btn sm',onclick:function(){fi.click()}},svgI('dl'),h('span',{text:o[key]?(ar?'استبدل':'Replace'):(ar?'ارفع صورة':'Upload image')})));
+  if(opt.prompt)bar.append(h('button',{type:'button',class:'btn sm',onclick:function(e){genImgFor(o,key,opt,e.currentTarget)}},svgI('style'),h('span',{text:ar?'أنشئ بالذكاء الاصطناعي':'Generate with AI'})));
+  if(opt.analyze&&o[key])bar.append(h('button',{type:'button',class:'btn sm ghost',onclick:async function(e){var b=e.currentTarget;if(!(await canSee())){modalBox(ar?'قراءة الصورة':'Reading the image',function(bx,done){bx.append(h('p',{class:'info',text:visionWhy()}),h('div',{class:'bar'},typeof openAISettings==='function'?h('button',{type:'button',class:'btn primary',text:ar?'إعدادات الذكاء الاصطناعي':'AI settings',onclick:function(){done(true);openAISettings()}}):null,h('button',{type:'button',class:'btn ghost',text:ar?'إغلاق':'Close',onclick:function(){done(false)}})))});return}
+      if(aiBusy){toast('The AI is already working. Wait for it to finish.');return}aiBusy=true;busyOn(b,ar?'جارٍ النظر…':'Looking…');
+      try{var bl=await dataToBlob(o[key]);var msg=await opt.analyze(bl,o[key]);touched();renderStep();if(msg)toast(msg)}catch(err){toast(err&&err.code?sampleErr(err):(ar?'تعذرت قراءة الصورة.':'Could not read that image.'))}finally{aiBusy=false;busyOff(b)}}},svgI('cam'),h('span',{text:opt.analyzeLabel||(ar?'املأ الحقول من الصورة':'Fill in from this image')})));
+  if(o[key])bar.append(h('button',{type:'button',class:'btn sm ghost',text:ar?'إزالة':'Remove',onclick:function(){o[key]='';touched();renderStep()}}));
+  box.append(thumb,h('div',{class:'img-slot-b'},h('b',{text:opt.label}),opt.hint?h('span',{class:'hint',text:opt.hint}):null,bar),fi);return box}
+async function genImgFor(o,key,opt,btn){var ar=uiAR(),prompt=opt.prompt();
+  var refs=(opt.refs?opt.refs():[]).filter(function(r){return r&&r.image});
+  await modalBox(ar?'أنشئ صورة':'Generate an image',function(box,done){
+    var ta=h('textarea',{class:'mono',rows:'8',dir:'ltr','aria-label':'Image prompt'});ta.value=prompt;
+    box.append(h('p',{class:'info',text:imgGenReady()?(ar?'هذا هو الأمر الذي سيُرسل إلى مولّد الصور الذي ربطته. راجعه وعدّله إن شئت. قد يكلّف ذلك من رصيد حسابك لدى المزوّد.':'This is the exact prompt that goes to the image generator you connected. Review or edit it first. This may use credit on your account with that provider.')+(refs.length?(ar?' مراجع مرفقة: ':' References attached: ')+refs.map(function(r){return r.name}).join(', ')+'.':''):(ar?'لا يوجد مولّد صور متصل. انسخ الأمر إلى أي تطبيق صور ثم ارفع النتيجة، أو اربط مولّد صور في إعدادات الذكاء الاصطناعي (قسم الصور).':'No image generator is connected. Copy the prompt into any image app and upload the result, or connect an image generator in AI settings (Images section).')}),ta);
+    var row=h('div',{class:'bar'});
+    if(imgGenReady())row.append(h('button',{type:'button',class:'btn primary',onclick:async function(e){var b=e.currentTarget;b.disabled=true;b.textContent=ar?'جارٍ الإنشاء…':'Generating…';
+      try{var r=await imgFn()(ta.value,{ratio:opt.ratio||'1:1',references:refs});var u=r&&(r.dataUrl||r.url);if(!u)throw {message:'No image came back.'};
+        if(/^data:/.test(u)){try{var bl=await dataToBlob(u);var sh2=await shrink(bl,opt.max||768,0.84);u=sh2.url}catch(x){}}
+        o[key]=u;touched();done(true);renderStep();toast(ar?'أُضيفت الصورة.':'Image added.')}catch(err){b.disabled=false;b.textContent=ar?'حاول مجدداً':'Try again';toast((err&&err.message)||'The image generator did not return an image.')}}},ar?'أنشئ الصورة':'Generate'));
+    row.append(h('button',{type:'button',class:imgGenReady()?'btn':'btn primary',text:ar?'انسخ الأمر':'Copy prompt',onclick:function(){copy(ta.value)}}));
+    if(!imgGenReady()&&typeof openAISettings==='function')row.append(h('button',{type:'button',class:'btn',text:ar?'اربط مولّد صور':'Connect an image generator',onclick:function(){done(false);openAISettings()}}));
+    row.append(h('button',{type:'button',class:'btn ghost',text:ar?'إغلاق':'Close',onclick:function(){done(false)}}));box.append(row)})}
+/* ===================== Prompt studio: see, refine, copy the exact prompt ===================== */
+function pKey(kind,sc,sh,pk){return kind+'|'+(sc?sc.id:'')+'|'+(sh?sh.id:'')+'|'+pk}
+function pEditGet(k){var m=S.pedits;return m&&m[k]?m[k]:null}
+function pHash(t){var x=0;t=String(t||'');for(var i=0;i<t.length;i++){x=(x*31+t.charCodeAt(i))|0}return x}
+function filmPrompt(pk,mode){var o=[];S.scenes.forEach(function(x){if(!shotsOf(x).length)return;o.push('## '+(S.scenes.indexOf(x)+1)+'. '+slug(x));if(mode==='scene')o.push(scenePrompt(x,pk));else shotsOf(x).forEach(function(sh,i){o.push('### '+shotNo(x,i)+'\n'+forPlat(pk,x,sh,i))})});return o.join('\n\n')}
+var PST={sel:'film',mode:'shot'};
+function openPromptStudio(scId){var sc0=scId&&S.scenes.filter(function(x){return x.id===scId})[0];PST.sel=sc0?(shotsOf(sc0).length?'scene:'+sc0.id:'film'):'film';PST.mode=shotCfg().pmode||'shot';
+  openSheet('Prompt studio',function(st){var c=shotCfg(),pk=platOf()[0],P=platOf(),ar=uiAR();
+    var wrap=h('div',{class:'ps-wrap'}),nav=h('nav',{class:'ps-nav','aria-label':'Scenes and shots'}),main=h('div',{class:'ps-main'});
+    var ps=h('select',{'aria-label':'Platform'});var og1=h('optgroup',{label:'Video'}),og2=h('optgroup',{label:'Image'});PLATS.forEach(function(p){(p[2]==='i'?og2:og1).append(h('option',{value:p[0],text:p[1]}))});ps.append(og1,og2);ps.value=pk;
+    ps.addEventListener('change',function(){c.plat=ps.value;scheduleSave();drawSheet()});
+    function navBtn(id,label,sub,lvl){return h('button',{type:'button',class:'ps-n lv'+lvl+(PST.sel===id?' on':''),'aria-current':PST.sel===id?'true':'false',onclick:function(){PST.sel=id;drawSheet()}},h('b',{text:label}),sub?h('small',{text:sub}):null)}
+    var tot=0;S.scenes.forEach(function(x){tot+=shotsOf(x).length});
+    nav.append(navBtn('film',ar?'الفيلم كله':'Whole film',tot+(tot===1?' shot':' shots'),0));
+    S.scenes.forEach(function(x,si){var n=shotsOf(x).length;nav.append(navBtn('scene:'+x.id,(si+1)+'. '+slug(x),n?n+(n===1?' shot':' shots'):'No shots yet',1));
+      if(PST.sel==='scene:'+x.id||PST.sel.indexOf('shot:'+x.id+':')===0)shotsOf(x).forEach(function(sh,i){nav.append(navBtn('shot:'+x.id+':'+sh.id,shotNo(x,i)+' · '+(SH_ABBR[sh.size]||sh.size),String(descText(x,sh,false)||'').slice(0,60),2))})});
+    /* what is selected */
+    var parts=PST.sel.split(':'),kind=parts[0],sc=parts[1]?S.scenes.filter(function(x){return x.id===parts[1]})[0]:null,sh=null,idx=-1;
+    if(kind==='shot'&&sc){shotsOf(sc).forEach(function(y,k){if(y.id===parts[2]){sh=y;idx=k}});if(!sh){kind='scene'}}
+    if(kind!=='film'&&!sc)kind='film';
+    var title,gen,key,ctx=[];
+    if(kind==='film'){title=ar?'الفيلم كله':'Whole film';var md=h('div',{class:'seg'});[['shot','Shot by shot'],['scene','One prompt per scene']].forEach(function(x){md.append(h('button',{type:'button','aria-pressed':PST.mode===x[0]?'true':'false',text:x[1],onclick:function(){PST.mode=x[0];c.pmode=x[0];scheduleSave();drawSheet()}}))});
+      gen=filmPrompt(pk,PST.mode);key=null;ctx.push(['Scenes',String(S.scenes.filter(function(x){return shotsOf(x).length}).length)],['Shots',String(tot)]);main.append(h('div',{class:'bar'},group('Layout',md)))}
+    else if(kind==='scene'){title=(S.scenes.indexOf(sc)+1)+'. '+slug(sc);key=pKey('scene',sc,null,pk);gen=scenePrompt0(sc,pk)}
+    else{title=shotNo(sc,idx)+' · '+(sh.size||'')+' · '+slug(sc);key=pKey('shot',sc,sh,pk);gen=forPlat0(pk,sc,sh,idx)}
+    if(sc){var cast=(sh?shotChars(sc,sh):castIds(sc).map(charById)).filter(Boolean);ctx.push(['Place',placeOf(sc)+', '+String(sc.time||'').toLowerCase()]);
+      cast.forEach(function(ch){ctx.push([nm(ch)||'Character',identText(ch)?'identity locked':(lookText(ch)?'look described':'no look yet')])});
+      try{ctx.push(['Light',lightOf(sc,sh||shotsOf(sc)[0]||{})])}catch(e){}}
+    if(S.treat)ctx.push(['Treatment',S.treat]);var lk=(c.look||S.style.visual||'').trim();if(lk)ctx.push(['Look',lk.slice(0,60)]);
+    var ed=key?pEditGet(key):null,txt=ed?ed.text:gen;
+    main.append(h('div',{class:'ps-head'},h('div',null,h('small',{text:kind==='film'?'Everything':kind==='scene'?'Scene as one prompt':'Single shot'}),h('h3',{text:title})),h('span',{class:'grow'}),field('Platform',ps)));
+    var chips=h('div',{class:'ps-ctx'});ctx.forEach(function(x){chips.append(h('span',{class:'ps-chip'},h('b',{text:x[0]+': '}),x[1]))});main.append(chips);
+    if(!gen){main.append(h('div',{class:'studio'},h('p',{class:'info',text:kind==='film'?'No shots yet. Plan shots in the Shots step (presets, the AI, or Add shot), then come back.':'This scene has no shots yet. Add shots in the Shots step first.'})));wrap.append(nav,main);st.append(wrap);return}
+    var stale=ed&&ed.base!==pHash(gen);
+    if(ed)main.append(h('p',{class:'ps-flag'+(stale?' warn':''),text:stale?'You edited this prompt, and the script or shot has changed since. Your edited text is what will be copied. Reset to get a fresh prompt from the current script.':'Edited by you. This exact text is what Copy and the other copy buttons use.'}));
+    var ta=h('textarea',{class:'ps-text mono',dir:'ltr',spellcheck:'false','aria-label':'Prompt text',readonly:kind==='film'?'':null});ta.value=txt;
+    var meta=h('span',{class:'hint'});function upMeta(){var w=ta.value.trim()?ta.value.trim().split(/\s+/).length:0;meta.textContent=ta.value.length.toLocaleString()+' characters · '+w.toLocaleString()+' words'+(P[2]==='i'?' · image prompt':' · video prompt')}upMeta();
+    var saveT2=null;ta.addEventListener('input',function(){upMeta();if(!key)return;clearTimeout(saveT2);saveT2=setTimeout(function(){S.pedits=S.pedits||{};if(ta.value===gen){delete S.pedits[key]}else S.pedits[key]={text:ta.value,base:pHash(gen),at:Date.now()};scheduleSave();var f=main.querySelector('.ps-flag');if(!f&&S.pedits[key]){drawSheet()}},500)});
+    var cb=h('button',{type:'button',class:'btn primary ps-copy',onclick:function(){copy(ta.value);cb.classList.add('done');cb.querySelector('span').textContent='Copied ✓';setTimeout(function(){cb.classList.remove('done');cb.querySelector('span').textContent='Copy this prompt'},1600)}},svgI('copy'),h('span',{text:'Copy this prompt'}));
+    main.append(ta,h('div',{class:'bar'},cb,ed?h('button',{type:'button',class:'btn ghost',text:'Reset to the generated prompt',onclick:function(){delete S.pedits[key];scheduleSave();drawSheet()}}):null,h('span',{class:'grow'}),meta));
+    if(kind==='film')main.append(h('p',{class:'hint',text:'The whole-film text is put together from each scene and shot, including your edits. Edit a scene or a shot to change it.'}));
+    else if(kind==='scene'){var all=shotsOf(sc).map(function(y,k){return '### '+shotNo(sc,k)+'\n'+forPlat(pk,sc,y,k)}).join('\n\n');main.append(h('div',{class:'bar'},h('button',{type:'button',class:'btn',onclick:function(){copy(all)}},svgI('copy'),h('span',{text:'Copy every shot of this scene, one by one'}))))}
+    main.append(h('p',{class:'hint',text:'Prompts are written from your script: the scene, its shots, the cast with their looks and identity locks, the place, the light and the treatment. Change those in the project and the prompts follow.'}));
+    wrap.append(nav,main);st.append(wrap)})}
+/* ===================== AI status: what is connected and what it is doing ===================== */
+var AIST={state:'',msg:'',busy:0,at:0,label:''};
+function aiTrack(f,label){if(!f||f.__tracked)return f;
+  var w=function(p,o){return aiRun1(function(){return f(p,o)})};Object.keys(f).forEach(function(k){w[k]=f[k]});
+  if(typeof f.json==='function')w.json=function(p,o){return aiRun1(function(){return f.json(p,o)})};
+  w.__tracked=true;if(label)AIST.label=label;setTimeout(aiStatusDraw,0);return w}
+function aiRun1(fn){AIST.busy++;aiStatusDraw();
+  return Promise.resolve().then(fn).then(function(r){AIST.busy=Math.max(0,AIST.busy-1);AIST.state='ok';AIST.msg='';AIST.at=Date.now();aiStatusDraw();return r},
+    function(e){AIST.busy=Math.max(0,AIST.busy-1);if(!(e&&e.code==='cancelled')){AIST.state='err';AIST.msg=(e&&e.message)||sampleErr(e)||'The request failed.'}aiStatusDraw();throw e})}
+function aiStatusText(){var ar=uiAR();if(AIST.busy)return ['busy',ar?'يعمل الآن…':'Working…'];if(AIST.state==='err')return ['err',(ar?'خطأ: ':'Error: ')+AIST.msg];
+  if(AIST.state==='ok')return ['ok',(ar?'متصل · آخر رد ':'Connected · last answer ')+when(AIST.at)];return caps.sample?['idle',ar?'جاهز، لم يُستخدم بعد':'Set up, not used yet']:['off',ar?'غير متصل':'Not connected']}
+function aiStatusDraw(){
+  var b=document.getElementById('btnAI');
+  if(!b&&caps.sample&&!document.getElementById('aiStat')){var tb=document.querySelector('.toolbar'),sv=document.getElementById('btnSave');if(tb){b=h('button',{type:'button',class:'btn sm tb-ai',id:'aiStat',onclick:function(){var t=aiStatusText();toast((AIST.label||'The AI')+': '+t[1])}},h('span',{text:AIST.label||'The AI'}));(sv||tb.lastChild).before(b)}}
+  b=b||document.getElementById('aiStat');if(!b)return;var d=b.querySelector('.ai-dot');if(!d){d=h('i',{class:'ai-dot','aria-hidden':'true'});b.prepend(d)}
+  var t=aiStatusText();d.className='ai-dot '+t[0];var lab=b.querySelector('span');var base=b.getAttribute('data-label')||(lab?lab.textContent:'');if(lab&&!b.getAttribute('data-label'))b.setAttribute('data-label',base);
+  if(lab)lab.textContent=AIST.busy?base+(uiAR()?' · يعمل…':' · working…'):base;
+  b.title=base+' — '+t[1];b.setAttribute('aria-label',base+'. '+t[1]);b.classList.toggle('ai-err',t[0]==='err')}
+/* ===================== Projects library and series ===================== */
+(function(){var X={'TVC / Commercial':'إعلان تلفزيوني','15 to 60 seconds for TV, cinema or online. From a brief: a hook, one message and an end card.':'من 15 إلى 60 ثانية للتلفزيون أو السينما أو الإنترنت. من موجز العميل: بداية جاذبة ورسالة واحدة ولقطة ختامية.',
+ 'Social / Reel':'سوشيال / ريلز','Vertical 9:16 for Reels, TikTok and Shorts. Hook in the first second, a call to action at the end.':'فيديو عمودي 9:16 لريلز وتيك توك وشورتس. جذب من الثانية الأولى ودعوة إلى الفعل في النهاية.',
+ 'Film':'فيلم','Short or feature film in full screenplay format, with three acts and studio exports.':'فيلم قصير أو طويل بصيغة السيناريو الكاملة، بثلاثة فصول وتصدير بمعايير الاستوديوهات.',
+ 'TV series':'مسلسل تلفزيوني','Drama or comedy series: episodes with a teaser, acts and a tag. Add episodes in Projects.':'مسلسل درامي أو كوميدي: حلقات بمقدمة وفصول وخاتمة. أضف الحلقات من «المشاريع».',
+ 'Web series':'مسلسل ويب','Short episodes for YouTube or streaming, each with a hook and a cliffhanger. Add episodes in Projects.':'حلقات قصيرة ليوتيوب أو منصات البث، لكل حلقة بداية جاذبة ونهاية مشوّقة. أضف الحلقات من «المشاريع».',
+ 'Podcast / Audio':'بودكاست / صوت','Audio drama or a narrated show: voices, sound and music, no camera.':'دراما صوتية أو برنامج بالسرد: أصوات ومؤثرات وموسيقى، بلا كاميرا.',
+ 'Corporate / Explainer':'فيلم مؤسسي / توضيحي','Brand films, explainers and internal comms: problem, solution, proof, call to action.':'أفلام العلامات التجارية والفيديوهات التوضيحية والتواصل الداخلي: المشكلة، الحل، الدليل، الدعوة إلى الفعل.',
+ 'Documentary':'وثائقي','Interviews, narration and real footage, written as a two-column script.':'مقابلات وسرد ولقطات حقيقية، مكتوبة كسيناريو بعمودين.',
+ 'Music video':'فيديو موسيقي','Performance and story shots mapped to the song’s sections.':'لقطات أداء وقصة موزّعة على مقاطع الأغنية.',
+ 'A book, story, brief, memoir or script':'كتاب أو قصة أو موجز أو مذكرات أو سيناريو','Explore the example':'جرّب مثالاً','A finished short film to look around':'فيلم قصير جاهز لتتعرّف على الأداة',
+ 'Projects':'المشاريع','New project':'مشروع جديد','sec':'ثانية','min':'دقيقة'};
+ Object.keys(X).forEach(function(k){if(!AR[k])AR[k]=X[k]})})();
+
+IC.x='M6 6l12 12M18 6L6 18';
+IC.folder='M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z';
+IC.copy='M9 9h10v10H9zM5 15V5h10';
+IC.trash='M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3';
+var LIBK='scriptroom.lib',PJK='scriptroom.proj.';
+function newPid(){return 'p'+Date.now().toString(36)+uid()}
+function libGet(){var l=null;try{l=JSON.parse(localStorage.getItem(LIBK)||'null')}catch(e){}l=l||{};l.items=Array.isArray(l.items)?l.items:[];l.series=l.series||{};return l}
+function libPut(l){try{localStorage.setItem(LIBK,JSON.stringify(l));return true}catch(e){return false}}
+function isSeriesType(k){return k==='tv'||k==='web'}
+function pjMeta(x){return {id:x.pid,title:(x.title||'').trim(),ptype:x.ptype||'',sid:x.series&&x.series.id||'',ep:+x.ep||0,scenes:(x.scenes||[]).length,updated:Date.now()}}
+function seriesName(sid){var l=libGet();return (l.series[sid]||'').trim()}
+function pjLabel(m){m=m||pjMeta(S);var ar=uiAR(),t=m.title||(ar?'بلا عنوان':'Untitled');
+  if(m.sid){var sn=seriesName(m.sid)||(ar?'مسلسل بلا اسم':'Untitled series');return sn+' · '+(ar?'الحلقة ':'Ep ')+(m.ep||1)+(m.title?' · '+m.title:'')}return t}
+/* called from scheduleSave before the main save */
+function libSync(){
+  try{if(!S||S.example)return;if(!S.pid){if(!hasWork())return;S.pid=newPid()}
+    if(isSeriesType(S.ptype)&&!S.series){S.series={id:newPid()};S.ep=S.ep||1}
+    var l=libGet(),m=pjMeta(S),i=-1;l.items.forEach(function(it,k){if(it.id===S.pid)i=k});
+    if(i<0)l.items.push(m);else l.items[i]=Object.assign(l.items[i],m);l.cur=S.pid;libPut(l);
+    try{localStorage.setItem(PJK+S.pid,JSON.stringify(S))}catch(e){}
+    renderProjBtn()}catch(e){}}
+function pjData(id){if(S&&S.pid===id)return JSON.parse(JSON.stringify(S));try{return JSON.parse(localStorage.getItem(PJK+id)||'null')}catch(e){return null}}
+function setState(o){var d=blankState();var n=Object.assign(d,o);n.style=Object.assign(blankState().style,o.style||{});n.out=Object.assign(blankState().out,o.out||{});n.chars=o.chars||[];n.scenes=o.scenes||[];n.out.err='';S=normState(n);seriesMetaApply();try{if(typeof shareStop==='function'){shareStop();if(S.share)shareStart()}}catch(e){}
+  try{if(typeof applyHidden==='function')applyHidden()}catch(e){}renderAll();scheduleSave();renderProjBtn()}
+function teamBlocks(){if(typeof team!=='undefined'&&team&&team.on){toast(uiAR()?'أنت في مشروع مشترك. اخرج منه أولاً من «اكتبوا معاً».':'You are in a shared project. Leave it first in Write together.');return true}return false}
+function pjSaveNow(){clearTimeout(saveT);libSync();try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function pjOpen(id){if(S.pid===id){closeSheet();return}if(teamBlocks())return;pjSaveNow();var o=pjData(id);
+  if(!o){toast(uiAR()?'تعذر فتح هذا المشروع.':'That project could not be opened.');return}
+  setState(o);closeSheet();try{closeLanding()}catch(e){}go(S.step||0);toast((uiAR()?'فُتح: ':'Opened: ')+pjLabel())}
+function pjNewBlank(){S=normState(blankState());S.pid=newPid()}
+function pjAddEpisode(sid){if(teamBlocks())return;pjSaveNow();var l=libGet(),eps=l.items.filter(function(it){return it.sid===sid}).sort(function(a,b){return (a.ep||0)-(b.ep||0)});
+  var last=eps[eps.length-1];var src=last?pjData(last.id):null;if(!src){toast('No episode to copy from.');return}
+  var b=blankState(),n=JSON.parse(JSON.stringify(src));
+  n.pid=newPid();delete n.share;n.ep=(last.ep||eps.length)+1;n.title='';n.logline='';n.scenes=[];n.out=b.out;n.lab=b.lab;n.arcs={};n.step=0;n.example=false;n.client=null;
+  setState(n);closeSheet();try{closeLanding()}catch(e){}go(0);
+  toast((uiAR()?'الحلقة '+n.ep+' جاهزة: الشخصيات والعلاقات والأسلوب منسوخة من الحلقة '+last.ep+'.':'Episode '+n.ep+' is ready. Cast, relationships and style are copied from episode '+last.ep+'.'))}
+function pjDuplicate(id){pjSaveNow();var o=pjData(id);if(!o)return;o.pid=newPid();delete o.share;o.title=(o.title||'Untitled')+(uiAR()?' (نسخة)':' (copy)');if(o.series){o.series={id:newPid()};o.ep=1;var l=libGet();l.series[o.series.id]=(seriesName((pjData(id).series||{}).id)||'')+(uiAR()?' (نسخة)':' (copy)');libPut(l)}
+  try{localStorage.setItem(PJK+o.pid,JSON.stringify(o))}catch(e){toast('Storage is full. Delete an old project first.');return}
+  var l2=libGet();l2.items.push(pjMeta(o));libPut(l2);drawSheet()}
+async function pjDelete(id){var l=libGet(),m=l.items.filter(function(it){return it.id===id})[0];if(!m)return;
+  if(!(await askIn((uiAR()?'حذف «':'Delete “')+pjLabel(m)+(uiAR()?'» نهائياً من هذا المتصفح؟':'” for good from this browser? Save a project file first if you may need it.'),uiAR()?'احذف':'Delete')))return;
+  l.items=l.items.filter(function(it){return it.id!==id});if(m.sid&&!l.items.some(function(it){return it.sid===m.sid}))delete l.series[m.sid];libPut(l);try{localStorage.removeItem(PJK+id)}catch(e){}
+  if(S.pid===id){var nx=l.items.slice().sort(function(a,b){return b.updated-a.updated})[0];if(nx){var o=pjData(nx.id);if(o){setState(o);drawSheet();return}}pjNewBlank();renderAll();scheduleSave();closeSheet();openLanding();return}
+  drawSheet()}
+function pjRenameSeries(sid,v){var l=libGet();l.series[sid]=v;libPut(l);renderProjBtn()}
+function when(t){if(!t)return '';var d=new Date(t),now=new Date();var same=d.toDateString()===now.toDateString();return same?d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):d.toLocaleDateString([],{day:'numeric',month:'short'})}
+function openProjects(){libSync();openSheet(uiAR()?'المشاريع':'Projects',function(st){
+  var ar=uiAR(),l=libGet(),items=l.items.slice().sort(function(a,b){return b.updated-a.updated});
+  st.append(h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',onclick:function(){closeSheet();openLanding()}},svgI('plus'),h('span',{text:ar?'مشروع جديد':'New project'})),
+    h('p',{class:'hint',text:ar?'كل مشاريعك محفوظة في هذا المتصفح. احفظ ملف مشروع للنسخ الاحتياطي أو للنقل إلى جهاز آخر.':'All your projects are saved in this browser. Save a project file to back one up or move it to another device.'})));
+  if(!items.length){st.append(h('div',{class:'studio'},h('p',{class:'info',text:ar?'لا مشاريع بعد. ابدأ مشروعاً جديداً.':'No projects yet. Start a new one.'})));return}
+  function row(m){var cur=m.id===S.pid,pt=ptOf(m.ptype);
+    return h('div',{class:'pj-row'+(cur?' cur':'')},
+      h('button',{type:'button',class:'pj-open',onclick:function(){pjOpen(m.id)}},h('b',{text:m.sid?((ar?'الحلقة ':'Episode ')+(m.ep||1)+(m.title?' · '+m.title:'')):(m.title||(ar?'بلا عنوان':'Untitled'))}),
+        h('small',{text:[pt?pt.l:'',m.scenes+(ar?' مشاهد':' scenes'),when(m.updated)].filter(Boolean).join(' · ')+(cur?(ar?' · مفتوح الآن':' · open now'):'')})),
+      h('button',{type:'button',class:'btn sm ghost',title:ar?'نسخة':'Duplicate','aria-label':(ar?'نسخ ':'Duplicate ')+pjLabel(m),onclick:function(){pjDuplicate(m.id)}},svgI('copy')),
+      h('button',{type:'button',class:'btn sm ghost',title:ar?'حذف':'Delete','aria-label':(ar?'حذف ':'Delete ')+pjLabel(m),onclick:function(){pjDelete(m.id)}},svgI('trash')))}
+  var sids=[];items.forEach(function(m){if(m.sid&&sids.indexOf(m.sid)<0)sids.push(m.sid)});
+  sids.forEach(function(sid){var eps=items.filter(function(m){return m.sid===sid}).sort(function(a,b){return (a.ep||0)-(b.ep||0)});
+    var nm0=h('input',{type:'text',value:l.series[sid]||'',placeholder:ar?'اسم المسلسل':'Series name','aria-label':ar?'اسم المسلسل':'Series name'});nm0.addEventListener('change',function(){pjRenameSeries(sid,nm0.value.trim())});
+    var box=h('div',{class:'studio pj-series'},h('div',{class:'pj-sh'},svgI('folder'),nm0,h('span',{class:'hint',text:eps.length+(ar?' حلقات':(eps.length>1?' episodes':' episode'))})));
+    eps.forEach(function(m){box.append(row(m))});
+    box.append(h('button',{type:'button',class:'btn',onclick:function(){pjAddEpisode(sid)}},svgI('plus'),h('span',{text:ar?'أضف حلقة':'Add episode'})),
+      h('p',{class:'hint',text:ar?'الحلقة الجديدة تأخذ الشخصيات والعلاقات والأسلوب من آخر حلقة، وتبدأ بمشاهد ونص فارغين.':'A new episode takes the cast, relationships and style from the latest episode, and starts with empty scenes and script.'}));
+    st.append(box)});
+  var solo=items.filter(function(m){return !m.sid});
+  if(solo.length){var b2=h('div',{class:'studio'},h('h3',{text:sids.length?(ar?'مشاريع أخرى':'Other projects'):(ar?'مشاريعك':'Your projects')}));solo.forEach(function(m){b2.append(row(m))});st.append(b2)}})}
+function renderProjBtn(){var b=document.getElementById('btnProjects');if(!b)return;var t=S&&!S.example&&(S.pid||hasWork())?pjLabel():(uiAR()?'المشاريع':'Projects');b.querySelector('span').textContent=t;b.title=(uiAR()?'المشاريع: ':'Projects: ')+t}
+
+function seriesCtx(){if(!S.series)return '';var nm0=seriesName(S.series.id)||'Untitled series',tot=+S.series.total||0,ep=+S.ep||1;
+  var L=['SERIES: '+nm0+'. This script is episode '+ep+(tot?' of '+tot:'')+', about '+lenLabel(S.lenMin)+'. Write only this episode, not the whole series.'];
+  if(S.series.premise&&S.series.premise.trim())L.push('SERIES PREMISE: '+S.series.premise.trim());
+  var prev=libGet().items.filter(function(it){return it.sid===S.series.id&&it.ep<ep}).sort(function(a,b){return a.ep-b.ep});
+  if(prev.length){L.push('EARLIER EPISODES (keep continuity with them):');prev.slice(-6).forEach(function(it){var d=pjData(it.id);L.push('- Ep '+it.ep+(it.title?' "'+it.title+'"':'')+(d&&d.logline?': '+String(d.logline).slice(0,240):''))})}
+  L.push(tot&&ep>=tot?'This is the final episode: resolve the season’s main threads.':'End on a hook that makes the audience want the next episode, and leave the season’s main threads open.');
+  return L.join('\n')}
+function seriesFields(){if(!S.series)return null;var ar=uiAR();
+  var sn=h('input',{type:'text',value:seriesName(S.series.id),placeholder:ar?'اسم المسلسل':'Series name'});sn.addEventListener('input',function(){pjRenameSeries(S.series.id,sn.value)});
+  var tot=h('input',{type:'number',min:'1',max:'100',value:String(S.series.total||''),placeholder:'6'});
+  var ep=h('input',{type:'number',min:'1',max:'100',value:String(S.ep||1)});
+  var info=h('p',{class:'info'});function up(){var t=+S.series.total||0;info.textContent=(ar?'هذه الحلقة ':'This is episode ')+(S.ep||1)+(t?(ar?' من ':' of ')+t:'')+(ar?'، نحو ':', about ')+lenLabel(S.lenMin)+(t>1?(ar?'. الموسم كله نحو ':'. Whole season: about ')+lenLabel(S.lenMin*t)+'.':'.')+(ar?' كل حلقة تُكتب كنص مستقل.':' Each episode is written as its own script.')}
+  tot.addEventListener('input',function(){var v=Math.max(0,Math.min(100,parseInt(tot.value,10)||0));S.series.total=v||0;up();seriesSync();scheduleSave()});
+  ep.addEventListener('change',function(){S.ep=Math.max(1,+ep.value||1);up();scheduleSave()});
+  var pre=h('textarea',{rows:'2',placeholder:ar?'عمّ يدور المسلسل كله؟ الفكرة التي تتكرر في كل حلقة.':'What is the whole series about? The engine that drives every episode.'});pre.value=S.series.premise||'';
+  pre.addEventListener('input',function(){S.series.premise=pre.value;seriesSync();scheduleSave()});
+  up();
+  return h('div',{class:'stack'},h('div',{class:'row two'},field(ar?'اسم المسلسل':'Series name',sn),field(ar?'عدد الحلقات':'Number of episodes',tot)),
+    h('div',{class:'row two'},field(ar?'رقم هذه الحلقة':'This episode',ep),h('div')),field(ar?'فكرة المسلسل':'Series premise',pre),info,
+    h('div',{class:'bar'},h('button',{type:'button',class:'btn sm',onclick:openProjects},svgI('folder'),h('span',{text:ar?'كل الحلقات وإضافة حلقة':'All episodes and Add episode'}))))}
+/* series-level fields (total, premise) live on every episode; keep them in step */
+function seriesSync(){if(!S.series)return;var l=libGet();l.seriesMeta=l.seriesMeta||{};l.seriesMeta[S.series.id]={total:+S.series.total||0,premise:S.series.premise||''};libPut(l)}
+function seriesMetaApply(){if(!S||!S.series)return;var l=libGet(),m=l.seriesMeta&&l.seriesMeta[S.series.id];if(m){if(m.total)S.series.total=m.total;if(m.premise&&!S.series.premise)S.series.premise=m.premise;if(m.premise)S.series.premise=m.premise}}
+function initProjects(){
+  /* migrate: the project already open becomes the first library entry */
+  try{if(S&&!S.example&&hasWork()&&!S.pid){S.pid=newPid();libSync()}}catch(e){}
+  var tb=document.querySelector('.toolbar'),sv=document.getElementById('btnSave');
+  if(tb&&!document.getElementById('btnProjects')){var b=h('button',{type:'button',class:'btn sm tb-proj',id:'btnProjects',onclick:openProjects},svgI('folder'),h('span',{text:'Projects'}));
+    var brand=tb.querySelector('.brand');if(brand&&brand.nextSibling)brand.after(b);else (sv||tb.lastChild).before(b)}
+  var tools=document.querySelector('.side-tools');if(tools&&!document.getElementById('btnProjS')){var s=h('button',{class:'sbtn',id:'btnProjS',type:'button'},svgI('folder'),'Projects');s.addEventListener('click',openProjects);var nb=document.getElementById('btnNew');if(nb)nb.after(s);else tools.prepend(s)}
+  renderProjBtn()}
+
 /* ===================== PUBLIC EDITION ===================== */
 var EDITION='public';
 function shotCfg(){var c=shotCfg0();c.target='generic';return c}
@@ -6642,7 +6917,7 @@ async function joinShared(code){code=cleanCode(code);if(code.length<10){toast('T
   await teamJoin(false);joinRoom();drawSheet()}
 function leaveShared(){try{teamLeave()}catch(e){}try{if(team.rm&&team.rm.leave)team.rm.leave()}catch(e){}team.rm=null;team.rmc='';PREF.teamCode='';team.code='';team.exists=false;team.info=null;PREF.team=false;scheduleSave();drawSheet()}
 function renderTeam(st){
-  if(!teamReady()){st.append(h('div',{class:'studio'},h('h3',{text:'Not available here'}),h('p',{text:'Writing together works when this page is opened on claude.ai. In a self-hosted copy, share the project file instead (Save, then Save project file).'})));return}
+  if(!teamReady()){st.append(shareLinkBox('team'));return}
   var box=h('div',{class:'studio'});
   if(team.code){
     box.append(h('h3',{text:team.on?'You are in a shared project':'Shared project'}),
@@ -6690,7 +6965,7 @@ var AIP=[
   {k:'custom',cost:'other',keyUrl:'',tag:'Your own server',l:'Other (OpenAI-compatible)',fmt:'openai',url:'',model:'',key:true,vision:false,direct:true,hint:'Any server that speaks the OpenAI chat format: vLLM, llama.cpp, Jan, LocalAI, a company gateway.'}];
 var AIK='scriptroom.ai';
 function aiCfg(){if(window.__aiMem)return window.__aiMem;var c=null;try{c=JSON.parse(localStorage.getItem(AIK)||'null')}catch(e){}return c}
-function aiSave(c,remember){window.__aiMem=c;try{if(remember)localStorage.setItem(AIK,JSON.stringify(c));else{var cc=Object.assign({},c,{key:''});localStorage.setItem(AIK,JSON.stringify(cc))}}catch(e){}}
+function aiSave(c,remember){var prevImg=(aiCfg()||{}).img;if(prevImg&&!c.img)c.img=prevImg;window.__aiMem=c;try{if(remember)localStorage.setItem(AIK,JSON.stringify(c));else{var cc=Object.assign({},c,{key:''});localStorage.setItem(AIK,JSON.stringify(cc))}}catch(e){}}
 function aiProv(k){return AIP.filter(function(p){return p.k===k})[0]||AIP[0]}
 function aiKey(c){return (window.__aiMem&&window.__aiMem.key)||c.key||''}
 function relayUrl(){return (aiCfg()||{}).relay||'/api/ai'}
@@ -6709,17 +6984,35 @@ async function aiCall(prompt,opts){
   if(fmt==='anthropic'){headers['x-api-key']=key;headers['anthropic-version']='2023-06-01';headers['anthropic-dangerous-direct-browser-access']='true'}
   else if(key)headers.authorization='Bearer '+key;
   if(c.provider==='openrouter'){headers['HTTP-Referer']=location.origin;headers['X-Title']='Script Room'}
+  var native=c.provider==='ollama'&&c.route!=='relay';
+  if(native){var ptxt=typeof prompt==='string'?prompt:JSON.stringify(prompt);
+    var wantJ=/reply with (only )?(a )?json|json only|only a json|reply only with json|return (only )?json/i.test(ptxt);
+    var om=msgs.map(function(m){if(typeof m.content==='string')return {role:m.role,content:m.content};var t='',im=[];m.content.forEach(function(x){if(x.type==='text')t+=x.text;else if(x.image_url)im.push(String(x.image_url.url).split(',')[1])});var o={role:m.role,content:t};if(im.length)o.images=im;return o});
+    var ctx=Math.min(32768,Math.max(8192,Math.ceil((ptxt.length/3+6000)/2048)*2048));
+    body={model:model,messages:om,stream:stream,options:{num_ctx:ctx}};if(wantJ)body.format='json';
+    url=localBase(url).replace(/\/v1$/,'')+'/api/chat'}
   var useRelay=c.route==='relay'||(!c.route&&!P.direct);
-  var target=useRelay?relayUrl():url,init={method:'POST',headers:headers,body:JSON.stringify(body),signal:opts.signal};
+  var tctl=new AbortController(),tmo=false,tlim=P.local?240000:120000,tt=setTimeout(function(){tmo=true;tctl.abort()},tlim);
+  if(opts.signal){if(opts.signal.aborted)tctl.abort();else opts.signal.addEventListener('abort',function(){tctl.abort()})}
+  var target=useRelay?relayUrl():url,init={method:'POST',headers:headers,body:JSON.stringify(body),signal:tctl.signal};
   if(useRelay){init.headers=Object.assign({},headers,{'x-target':url})}
-  var r;try{r=await fetch(target,init)}catch(e){if(e&&e.name==='AbortError')throw {code:'cancelled'};throw {code:'unavailable',message:P.local?'Could not reach '+P.l.split(' (')[0]+'. The checklist above shows what to fix.':useRelay?'Could not reach the relay. Use Direct, or check the site’s /api/ai function.':'The browser could not reach '+P.l+'. Try the relay route in AI settings.'}}
+  var r;try{r=await fetch(target,init);clearTimeout(tt)}catch(e){clearTimeout(tt);if(tmo)throw {code:'timeout',message:P.l.split(' (')[0]+' did not start answering within '+Math.round(tlim/60000)+' minutes. '+(P.local?'Your computer may be busy loading the model: try again, or pick a smaller model.':'Check your internet connection and try again.')};if(e&&e.name==='AbortError')throw {code:'cancelled'};throw {code:'unavailable',message:P.local?'Could not reach '+P.l.split(' (')[0]+'. The checklist above shows what to fix.':useRelay?'Could not reach the relay. Use Direct, or check the site’s /api/ai function.':'The browser could not reach '+P.l+'. Try the relay route in AI settings.'}}
   if(!r.ok){var tx='';try{tx=await r.text()}catch(e){}var code=r.status===401||r.status===403?'not_granted':r.status===429?'rate_limited':r.status===413?'prompt_too_large':'upstream_error';
-    throw {code:code,message:P.l+' answered '+r.status+(tx?': '+tx.slice(0,240):'')}}
+    var nice='';var nm=P.l.split(' (')[0];
+    if(/denied access|has been suspended|PERMISSION_DENIED/i.test(tx)&&c.provider==='gemini')nice='Google has blocked this key’s project, so the key works but Google refuses it. Open aistudio.google.com: if the project says Unavailable, verify your Google account (phone number and date of birth), make a new key in a new project, or use another provider such as Groq or OpenRouter (also free).';
+    else if(r.status===401||/invalid.*(api.?key|authorization)|incorrect api key|API_KEY_INVALID/i.test(tx))nice='The key was not accepted by '+nm+'. Copy it again from the provider’s site (the whole key, no spaces) and paste it here.';
+    else if(r.status===403)nice=nm+' refused this key. Check that your account is verified and the key has access to this model.';
+    else if(r.status===429)nice=nm+' says you have reached a usage limit. Wait a minute, or try again tomorrow if it is a daily free limit.';
+    else if(r.status===404)nice=nm+' does not know this model name. Clear the Model box to use the default.';
+    else if(r.status>=500)nice=nm+' had a problem answering (its server returned an error). Try again; if it keeps happening'+(P.local?', restart '+nm+' or pick a smaller model.':', try later or pick another model.');
+    else if(r.status===402||/insufficient|credit|billing|quota/i.test(tx))nice=nm+' needs credit on your account for this model. Add credit on their site, or pick a free option.';
+    throw {code:code,message:(nice?nice+' ':'')+'('+nm+' answered '+r.status+(tx?': '+tx.replace(/\s+/g,' ').slice(0,160):'')+')'}}
+  if(native&&!stream){var jn=await r.json();return {text:(jn.message&&jn.message.content)||'',truncated:jn.done_reason==='length'}}
   if(!stream){var j=await r.json();var t=fmt==='anthropic'?(j.content||[]).map(function(x){return x.text||''}).join(''):((j.choices||[])[0]||{}).message?j.choices[0].message.content||'':'';
     var trunc=fmt==='anthropic'?j.stop_reason==='max_tokens':(((j.choices||[])[0]||{}).finish_reason==='length');return {text:t,truncated:trunc}}
   var rd=r.body.getReader(),dec=new TextDecoder(),buf='',out='',trunc2=false;
   for(;;){var ch=await rd.read();if(ch.done)break;buf+=dec.decode(ch.value,{stream:true});var lines=buf.split('\n');buf=lines.pop();
-    lines.forEach(function(ln){ln=ln.trim();if(ln.indexOf('data:')!==0)return;var d=ln.slice(5).trim();if(!d||d==='[DONE]')return;try{var o=JSON.parse(d);
+    lines.forEach(function(ln){ln=ln.trim();if(native){if(!ln)return;try{var on=JSON.parse(ln);if(on.message&&on.message.content)out+=on.message.content;if(on.done&&on.done_reason==='length')trunc2=true;if(on.error)throw {code:'upstream_error',message:'Ollama: '+on.error}}catch(e){if(e&&e.code)throw e}return}if(ln.indexOf('data:')!==0)return;var d=ln.slice(5).trim();if(!d||d==='[DONE]')return;try{var o=JSON.parse(d);
       if(fmt==='anthropic'){if(o.type==='content_block_delta'&&o.delta&&o.delta.text)out+=o.delta.text;if(o.type==='message_delta'&&o.delta&&o.delta.stop_reason==='max_tokens')trunc2=true}
       else{var c0=(o.choices||[])[0];if(c0&&c0.delta&&c0.delta.content)out+=c0.delta.content;if(c0&&c0.finish_reason==='length')trunc2=true}}catch(e){}});
     if(opts.onText)opts.onText({text:out,delta:''})}
@@ -6727,13 +7020,14 @@ async function aiCall(prompt,opts){
 function aiSampleFn(){
   var c=aiCfg();if(!c||!c.provider)return null;var P=aiProv(c.provider);
   var f=function(p,o){return aiCall(p,o)};
-  f.json=async function(p,o){var r=await aiCall(p+'\n\nReply with JSON only, no commentary, no code fences.',Object.assign({},o||{},{onText:null}));return parseLooseJSON(r.text)};
+  f.json=async function(p,o){var oo=Object.assign({},o||{},{onText:null});var r=await aiCall(p+'\n\nReply with JSON only, no commentary, no code fences.',oo);
+    try{return parseLooseJSON(r.text)}catch(e){var r2=await aiCall('Your previous answer was meant to be valid JSON but could not be parsed. Rewrite it as valid JSON that fits the request. Keep its content; close any open brackets; remove comments and trailing commas. Reply with JSON only.\n\nREQUEST (shortened):\n'+String(p).slice(0,3000)+'\n\nANSWER TO FIX:\n'+String(r.text||'').slice(0,14000),oo);return parseLooseJSON(r2.text)}};
   f.limits=async function(){return {maxPromptBytes:262144,images:(c.vision!=null?c.vision:P.vision)?{maxCount:4,maxInputBytes:5e6,mediaTypes:['image/jpeg','image/png','image/webp']}:null}};
   return f}
-async function aiApply(){caps.sample=aiSampleFn();visionOK=null;renderAll();renderAIBadge()}
-function renderAIBadge(){var b=document.getElementById('btnAI');if(!b)return;var c=aiCfg();b.textContent='';b.append(svgI('style'),h('span',{text:c&&c.provider?aiProv(c.provider).l.split(' (')[0]:'Connect AI'}));b.classList.toggle('primary',!(c&&c.provider))}
+async function aiApply(){imgApply();var c0=aiCfg();caps.sample=aiTrack(aiSampleFn(),c0&&c0.provider?aiProv(c0.provider).l.split(' (')[0]:'');AIST.state='';AIST.msg='';visionOK=null;renderAll();renderAIBadge()}
+function renderAIBadge(){var b=document.getElementById('btnAI');if(!b)return;var c=aiCfg(),P0=c&&c.provider?aiProv(c.provider):null;var lab=P0?P0.l.split(' (')[0]+' · '+(c.model||P0.model||''):'Connect AI';b.textContent='';b.removeAttribute('data-label');b.append(h('span',{text:lab}));b.classList.toggle('primary',!P0);aiStatusDraw()}
 
-function localBase(u){return String(u||'').replace(/\/+$/,'').replace(/\/chat\/completions$/,'').replace(/\/v1$/,'')+'/v1'}
+function localBase(u){return String(u||'').replace(/\/+$/,'').replace(/\/chat\/completions$/,'').replace(/\/api\/chat$/,'').replace(/\/v1$/,'')+'/v1'}
 async function listLocalModels(u){var r=await fetch(localBase(u)+'/models',{method:'GET'});if(!r.ok)throw new Error('HTTP '+r.status);var j=await r.json();return (j.data||j.models||[]).map(function(m){return m.id||m.name||m.model}).filter(Boolean)}
 function localSetup(k){
   var o=/^https?:$/.test(location.protocol)?location.origin:'*',win=/Windows/i.test(navigator.userAgent),mac=/Mac/i.test(navigator.userAgent);
@@ -6784,9 +7078,50 @@ async function localCheck(u){
   if(out.lna==='denied'){out.browser=false;return out}
   out.running=false;return out}
 var orFree=null;async function openRouterFree(){if(orFree)return orFree;var r=await fetch('https://openrouter.ai/api/v1/models');var j=await r.json();orFree=(j.data||[]).map(function(m){return m.id}).filter(function(id){return /:free$/.test(id)}).sort();return orFree}
+
+/* ===================== image generation (optional) ===================== */
+var IMGP=[{k:'',l:'None (copy prompts and upload results)'},
+  {k:'google',l:'Google · Nano Banana',model:'gemini-nano-banana-2.1',keyFrom:'gemini',url:'https://generativelanguage.googleapis.com/v1beta/interactions',refs:true,keyUrl:'https://aistudio.google.com/apikey',hint:'Paid per image (no free tier for images). Can use your character photos as references, which keeps faces consistent.'},
+  {k:'openai',l:'OpenAI · GPT Image',model:'gpt-image-1',keyFrom:'openai',url:'https://api.openai.com/v1/images/generations',keyUrl:'https://platform.openai.com/api-keys',hint:'Paid per image. Strong at following detailed prompts.'},
+  {k:'openrouter',l:'OpenRouter · many image models',model:'google/gemini-2.5-flash-image',keyFrom:'openrouter',url:'https://openrouter.ai/api/v1/images',keyUrl:'https://openrouter.ai/settings/keys',hint:'One key for Seedream, Flux, GPT Image, Nano Banana and more. Needs credit on your OpenRouter account.'}];
+function imgProv(k){return IMGP.filter(function(p){return p.k===k})[0]||IMGP[0]}
+function imgCfg(){var c=aiCfg()||{};return c.img||{provider:''}}
+function imgKey(){var ic=imgCfg(),P=imgProv(ic.provider),c=aiCfg()||{};if(ic.key)return ic.key;if(window.__aiMem&&window.__aiMem.img&&window.__aiMem.img.key)return window.__aiMem.img.key;return c.provider===P.keyFrom?aiKey(c):''}
+var GRATIOS=['1:1','2:3','3:2','3:4','4:3','4:5','5:4','9:16','16:9','21:9'];
+function gRatio(r){r=String(r||'1:1');if(GRATIOS.indexOf(r)>=0)return r;var p=r.split(':'),v=(+p[0]||1)/(+p[1]||1),best='1:1',bd=9;GRATIOS.forEach(function(g){var q=g.split(':'),d=Math.abs(q[0]/q[1]-v);if(d<bd){bd=d;best=g}});return best}
+function oaSize(r){var g=gRatio(r).split(':'),v=g[0]/g[1];return v>1.15?'1536x1024':v<0.87?'1024x1536':'1024x1024'}
+async function imgFetch(url,headers,body){var init={method:'POST',headers:headers,body:JSON.stringify(body)};
+  try{return await fetch(url,init)}catch(e){try{return await fetch(relayUrl(),{method:'POST',headers:Object.assign({},headers,{'x-target':url}),body:init.body})}catch(e2){throw {message:'Could not reach the image generator. Check your internet connection.'}}}}
+async function srImage(prompt,opts){opts=opts||{};var ic=imgCfg(),P=imgProv(ic.provider),key=imgKey(),model=ic.model||P.model;if(!P.k)throw {message:'No image generator is connected.'};if(!key)throw {message:'Add an API key for '+P.l+' in AI settings (Images).'};
+  var r,j,b64='',mime='image/png';
+  if(P.k==='google'){var input=[{type:'text',text:prompt}];(opts.references||[]).slice(0,6).forEach(function(x){var m=/^data:([^;]+);base64,(.+)$/.exec(String(x.image||''));if(m)input.push({type:'image',mime_type:m[1],data:m[2]})});
+    r=await imgFetch(P.url,{'content-type':'application/json','x-goog-api-key':key},{model:model,input:input,response_format:{type:'image',mime_type:'image/jpeg',aspect_ratio:gRatio(opts.ratio),image_size:'1K'}});
+    j=await r.json().catch(function(){return null});if(!r.ok)throw {message:'Google answered '+r.status+': '+((j&&j.error&&j.error.message)||'').slice(0,200)};
+    var oi=j&&j.output_image;if(oi&&oi.data){b64=oi.data;mime=oi.mime_type||'image/jpeg'}else{(j&&j.steps||[]).forEach(function(st){(st.content||[]).forEach(function(cb){if(cb.type==='image'&&cb.data){b64=cb.data;mime=cb.mime_type||mime}})})}}
+  else if(P.k==='openai'){r=await imgFetch(P.url,{'content-type':'application/json',authorization:'Bearer '+key},{model:model,prompt:prompt,size:oaSize(opts.ratio),n:1});
+    j=await r.json().catch(function(){return null});if(!r.ok)throw {message:'OpenAI answered '+r.status+': '+((j&&j.error&&j.error.message)||'').slice(0,200)};var d0=j&&j.data&&j.data[0];if(d0&&d0.b64_json)b64=d0.b64_json;else if(d0&&d0.url)return {url:d0.url}}
+  else if(P.k==='openrouter'){r=await imgFetch(P.url,{'content-type':'application/json',authorization:'Bearer '+key,'HTTP-Referer':location.origin,'X-Title':'Script Room'},{model:model,prompt:prompt,aspect_ratio:gRatio(opts.ratio)});
+    j=await r.json().catch(function(){return null});if(!r.ok)throw {message:'OpenRouter answered '+r.status+': '+((j&&j.error&&(j.error.message||j.error))||'').toString().slice(0,200)};var d1=j&&j.data&&j.data[0];if(d1&&d1.b64_json){b64=d1.b64_json;mime=d1.media_type||mime}else if(d1&&d1.url)return {url:d1.url}}
+  if(!b64)throw {message:P.l+' did not return an image. The prompt may have been refused; try rewording it.'};
+  return {dataUrl:'data:'+mime+';base64,'+b64}}
+function imgApply(){var ic=imgCfg();window.__srImage=ic.provider?function(p,o){return aiRun1(function(){return srImage(p,o)})}:null}
+function imgSettingsBox(){var c=Object.assign({},aiCfg()||{}),ic=Object.assign({provider:'',model:'',key:''},c.img||{});if(window.__aiMem&&window.__aiMem.img&&window.__aiMem.img.key)ic.key=window.__aiMem.img.key;
+  var sel=h('select',{id:'img-prov'});IMGP.forEach(function(p){sel.append(h('option',{value:p.k,text:p.l}))});sel.value=ic.provider||'';
+  var model=h('input',{type:'text',id:'img-model',placeholder:imgProv(sel.value).model||''});model.value=ic.model||'';
+  var key=h('input',{type:'password',id:'img-key',autocomplete:'off'});key.value=ic.key||'';
+  var hint=h('p',{class:'hint'}),link=h('a',{class:'hint',target:'_blank',rel:'noopener'}),res=h('p',{class:'status',id:'img-res'});
+  function up(){var P=imgProv(sel.value);model.placeholder=P.model||'';var same=(aiCfg()||{}).provider===P.keyFrom;key.placeholder=P.k?(same?'Leave empty to use the key above':'Paste your '+P.l.split(' ·')[0]+' API key'):'Not needed';hint.textContent=P.hint||'Without a generator, Generate shows the prompt to copy into any image app, and you upload the result.';
+    link.style.display=P.keyUrl?'':'none';if(P.keyUrl){link.href=P.keyUrl;link.textContent='Get a key at '+P.keyUrl.replace('https://','').split('/')[0]+' ↗'}model.parentNode&&(model.closest('.field').style.display=P.k?'':'none');key.closest&&key.closest('.field')&&(key.closest('.field').style.display=P.k?'':'none')}
+  sel.addEventListener('change',function(){model.value='';up()});
+  var box=h('div',{class:'studio stack',id:'img-box'},h('h3',{text:'Images (optional)'}),h('p',{class:'info',text:'Connect an image generator to create character portraits, wardrobe and makeup references, locations, props and storyboard frames. You always see the full prompt before anything is generated.'}),
+    field('Image generator',sel),hint,h('div',{class:'row two'},field('Image model',model,'Leave empty for the default shown.'),field('Image API key',key)),link,
+    h('div',{class:'bar'},h('button',{type:'button',class:'btn',text:'Save image settings',onclick:function(){var cc=Object.assign({},aiCfg()||{}),n={provider:sel.value,model:model.value.trim(),key:key.value.trim()};var rem=cc.remember!==false;
+      window.__aiMem=Object.assign({},window.__aiMem||cc,{img:n});cc.img=rem?n:Object.assign({},n,{key:''});try{localStorage.setItem(AIK,JSON.stringify(cc))}catch(e){}imgApply();res.textContent=n.provider?('Saved. '+imgProv(n.provider).l+' will be used for images.'):'Saved. No image generator.'}}),res));
+  setTimeout(up,0);return box}
 function openAISettings(){openSheet('AI provider',function(st){
   var c=Object.assign({provider:'',model:'',url:'',key:'',route:'',vision:null,remember:true},aiCfg()||{});if(window.__aiMem&&window.__aiMem.key)c.key=window.__aiMem.key;
   var P=aiProv(c.provider||'gemini');
+  var stt=aiStatusText();if(c.provider)st.append(h('div',{class:'ai-statusline '+stt[0]},h('i',{class:'ai-dot '+stt[0]}),h('b',{text:aiProv(c.provider).l.split(' (')[0]+' · '+(c.model||aiProv(c.provider).model||'')}),h('span',{text:stt[1]})));
   st.append(h('div',{class:'studio'},h('h3',{text:'Use any AI you like'}),h('p',{class:'info',text:'Script Room works with Claude, ChatGPT, Gemini, DeepSeek, Mistral, Groq, OpenRouter, or a model running on your own computer with Ollama or LM Studio. Your key stays in this browser and goes only to the provider you pick (or through this site’s relay, which passes it on and stores nothing).'})));
   var sel=h('select',{id:'ai-prov'});COSTS.forEach(function(g){var og=h('optgroup',{label:g[1]});AIP.filter(function(p){return p.cost===g[0]}).forEach(function(p){og.append(h('option',{value:p.k,text:p.l+' · '+p.tag}))});sel.append(og)});sel.value=P.k;
   var picker=h('div',{class:'ai-pick'});COSTS.slice(0,3).forEach(function(g){var col=h('div',{class:'ai-grp'},h('p',{class:'ai-gh'},h('b',{text:g[1]}),h('span',{text:g[2]})));AIP.filter(function(p){return p.cost===g[0]}).forEach(function(p){var bt=h('button',{type:'button',class:'ai-card'+(p.k==='gemini'?' rec':''),'data-k':p.k,onclick:function(){sel.value=p.k;sel.dispatchEvent(new Event('change'))}},h('b',{text:p.l.split(' (')[0]}),h('small',{text:p.tag}));col.append(bt)});picker.append(col)});
@@ -6842,21 +7177,114 @@ function openAISettings(){openSheet('AI provider',function(st){
     h('details',{class:'dt'},h('summary',null,'Advanced'),h('div',{class:'dtb'},field('Address (for local or custom servers)',url),field('Route',route,'Some providers block calls straight from a browser. The relay is a tiny function on this site that forwards your request.'),
       h('label',{class:'chk','for':'ai-vis'},vis,h('span',{text:'This model can read images (photo buttons, consistency checks)'})))),
     h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',text:'Save and test',onclick:async function(e){var n=collect();var Q=aiProv(n.provider);if(Q.key&&!n.key){res.textContent='Paste your '+Q.l.split(' (')[0]+' API key first. '+Q.hint;key.focus();return}aiSave(n,n.remember);res.textContent='Testing…';
-      try{var r=await aiCall('Reply with exactly: ready',{});res.textContent=/ready/i.test(r.text)?'Connected. '+aiProv(n.provider).l+' answered.':'Connected, but the answer was unexpected: '+String(r.text).slice(0,80);aiApply()}catch(err){res.textContent=(err&&err.message)||'That did not work.';if(aiProv(n.provider).local)findModels(false)}}}),
+      try{var r=await aiRun1(function(){return aiCall('Reply with exactly: ready',{})});res.textContent=/ready/i.test(r.text)?'Connected. '+aiProv(n.provider).l+' answered.':'Connected, but the answer was unexpected: '+String(r.text).slice(0,80);aiApply()}catch(err){res.textContent=(err&&err.message)||'That did not work.';if(aiProv(n.provider).local)findModels(false)}}}),
       h('button',{type:'button',class:'btn ghost',text:'Disconnect',onclick:function(){try{localStorage.removeItem(AIK)}catch(e){}window.__aiMem=null;res.textContent='Disconnected.';aiApply()}}),res));
-  st.append(box);updLocal();
+  st.append(box);updLocal();st.append(imgSettingsBox());
   st.append(h('div',{class:'studio'},h('h3',{text:'Which to pick?'}),h('ul',{class:'why'},
     h('li',{text:'Best writing quality: Claude or GPT-4.1 class models. Long books need a model with a large context window.'}),
     h('li',{text:'Free and private: Ollama or LM Studio on your own computer. Smaller local models write simpler scenes and may struggle with long books and JSON; pick the largest model your computer runs well.'}),
     h('li',{text:'Photo features need a model that reads images (Claude, GPT-4.1, Gemini, or a local vision model such as llava).'}),h('li',{text:'Free options: Gemini, Groq and Mistral have free plans with daily limits; OpenRouter has free models; Ollama and LM Studio are free with no limits on your own computer. Claude, ChatGPT and DeepSeek are paid per use.'}))))})}
 function initAI(){
   if(window.claude&&window.claude.use)return; /* inside claude.ai the built-in Claude is used */
+  imgApply();
   var tb=document.querySelector('.toolbar'),ex=document.getElementById('btnSave');
   if(tb&&!document.getElementById('btnAI')){var b=h('button',{type:'button',class:'btn sm tb-ai',id:'btnAI',onclick:openAISettings});(ex||tb.lastChild).before(b);renderAIBadge()}
   var tools=document.querySelector('.side-tools');if(tools&&!document.getElementById('btnAIs')){var s=h('button',{class:'sbtn',id:'btnAIs',type:'button'},svgI('style'),'AI provider');s.addEventListener('click',openAISettings);tools.prepend(s)}
   if(!caps.sample&&aiCfg()&&aiCfg().provider)aiApply()}
 
-load();initPal();syncMode();renderAll();scheduleSave();initExtras();initShell();initV9Shell();initV10();initV11();initPublic();initAI();
+/* ===================== Share links and Write together (self-hosted, Cloudflare KV) ===================== */
+var SHR={avail:null,reason:'',dirty:false,applying:false,pushing:false,timer:null,poll:null,lastSync:0,err:''};
+function shareBase(){return location.origin+location.pathname}
+function shareOn(){return /^https?:$/.test(location.protocol)&&!(window.claude&&window.claude.use)}
+async function shareAvail(force){if(SHR.avail!==null&&!force)return SHR.avail;if(!shareOn()){SHR.avail=false;SHR.reason='host';return false}
+  try{var r=await fetch('/api/share/health',{cache:'no-store'});var j=await r.json();SHR.avail=!!j.ready;SHR.reason=j.ready?'':'kv'}catch(e){SHR.avail=false;SHR.reason='none'}return SHR.avail}
+function shareData(){var o=JSON.parse(JSON.stringify(S));delete o.share;delete o.pid;o.example=false;o.series=o.series?{id:o.series.id,total:o.series.total||0,premise:o.series.premise||'',name:seriesName(o.series.id)}:null;return o}
+async function shareApi(method,path,key,body){var hd={'content-type':'application/json'};if(key)hd['x-key']=key;
+  var r=await fetch('/api/share'+path,{method:method,headers:hd,body:body?JSON.stringify(body):undefined,cache:'no-store'});var j=null;try{j=await r.json()}catch(e){}
+  if(!r.ok&&r.status!==409)throw {status:r.status,message:(j&&j.message)||('The share service answered '+r.status+'.')};return {status:r.status,j:j}}
+function linkOf(kind){if(!S.share)return '';var k=kind==='view'?S.share.viewKey:S.share.editKey;return k?shareBase()+'#'+kind+'='+S.share.id+'.'+k:''}
+async function shareCreate(){var ar=uiAR();if(!(await shareAvail(true))){toast(shareWhyNot());return false}
+  pjSaveNow();try{var res=await shareApi('POST','',null,{data:shareData(),name:pjLabel()});var j=res.j;S.share={id:j.id,viewKey:j.viewKey,editKey:j.editKey,ver:j.ver,role:'owner',at:Date.now()};SHR.dirty=false;SHR.applying=true;scheduleSave();setTimeout(function(){SHR.applying=false},800);SHR.lastSync=Date.now();shareStart();return true}
+  catch(e){toast((ar?'تعذرت المشاركة: ':'Could not share: ')+(e.message||''));return false}}
+function shareWhyNot(){var ar=uiAR();if(SHR.reason==='kv')return ar?'روابط المشاركة غير مفعّلة على هذا الموقع بعد. على صاحب الموقع ربط مساحة KV في Cloudflare (راجع README).':'Share links are not switched on for this site yet. The site owner needs to connect Cloudflare KV storage (see the README, "Share links and Write together").';
+  if(SHR.reason==='host')return ar?'روابط المشاركة تعمل على موقع Script Room المستضاف، وليس هنا.':'Share links work on a hosted Script Room site, not in this view.';
+  return ar?'تعذر الوصول إلى خدمة المشاركة على هذا الموقع.':'The share service on this site could not be reached.'}
+/* sync: push my changes every few seconds, pull theirs, never overwrite silently */
+function shareDirty(){if(S.share&&S.share.editKey&&!SHR.applying){SHR.dirty=true;clearTimeout(SHR.timer);SHR.timer=setTimeout(sharePush,4000)}}
+async function sharePush(){if(!S.share||!S.share.editKey||SHR.pushing||!SHR.dirty)return;SHR.pushing=true;var mine=shareData(),sid=S.share.id;
+  try{var res=await shareApi('PUT','/'+S.share.id,S.share.editKey,{baseVer:S.share.ver,data:mine,name:pjLabel()});
+    if(!S.share||S.share.id!==sid){SHR.pushing=false;return}
+    if(res.status===409){SHR.pushing=false;shareConflict(res.j,mine);return}
+    S.share.ver=res.j.ver;SHR.dirty=false;SHR.lastSync=Date.now();SHR.err='';SHR.applying=true;scheduleSave();setTimeout(function(){SHR.applying=false},500)}
+  catch(e){SHR.err=e.message||'Sync failed';if(e.status===404){shareGone()}}
+  SHR.pushing=false;shareStatusDraw()}
+async function sharePull(){if(!S.share||document.hidden||SHR.pushing)return;var key=S.share.editKey||S.share.viewKey;
+  var sid=S.share.id;try{var res=await shareApi('GET','/'+sid+'?since='+S.share.ver,key);if(!S.share||S.share.id!==sid)return;var j=res.j;SHR.lastSync=Date.now();SHR.err='';
+    if(!j.unchanged&&j.ver>S.share.ver){if(SHR.dirty){shareConflict(j,shareData())}else shareApply(j,true)}}
+  catch(e){if(!S.share||S.share.id!==sid)return;SHR.err=e.message||'Sync failed';if(e.status===404)shareGone()}shareStatusDraw()}
+function shareApply(j,notify){var keep={share:S.share,pid:S.pid,step:S.step,series:S.series};SHR.applying=true;
+  var d=blankState(),n=Object.assign(d,j.data);n.style=Object.assign(blankState().style,j.data.style||{});n.out=Object.assign(blankState().out,j.data.out||{});n.out.err='';
+  S=normState(n);S.share=keep.share;S.share.ver=j.ver;S.pid=keep.pid;S.step=keep.step;if(keep.series){S.series=keep.series;if(j.data.series){S.series.total=j.data.series.total;S.series.premise=j.data.series.premise}}
+  renderAll();scheduleSave();setTimeout(function(){SHR.applying=false},600);SHR.dirty=false;if(notify)toast(uiAR()?'وصلت تعديلات من شريكك في الكتابة.':'Updated with changes from your co-writer.')}
+function shareConflict(theirs,mine){var ar=uiAR();modalBox(ar?'تعديلان في الوقت نفسه':'Two sets of changes',function(box,done){
+  box.append(h('p',{text:ar?'حفظ شخص آخر تغييرات على هذا المشروع بينما كنت تعدّل. لم يُستبدل شيء. ماذا تريد أن تفعل؟':'Someone else saved changes to this project while you were editing. Nothing has been overwritten. What would you like to do?'}),
+    h('div',{class:'stack'},
+      h('button',{type:'button',class:'btn primary',text:ar?'خذ نسختهم، واحفظ نسختي كمشروع منفصل':'Use their version, and keep mine as a separate project',onclick:function(){var copy=JSON.parse(JSON.stringify(mine));copy.pid=newPid();copy.title=(copy.title||'Untitled')+(ar?' (نسختي)':' (my version)');copy.series=null;delete copy.share;try{localStorage.setItem(PJK+copy.pid,JSON.stringify(copy));var l=libGet();l.items.push(pjMeta(copy));libPut(l)}catch(e){}shareApply(theirs,false);done(true);toast(ar?'نسختك محفوظة في «المشاريع».':'Your version is saved in Projects.')}}),
+      h('button',{type:'button',class:'btn',text:ar?'خذ نسختهم وتجاهل تعديلاتي':'Use their version and drop my changes',onclick:function(){shareApply(theirs,false);done(true)}}),
+      h('button',{type:'button',class:'btn ghost',text:ar?'احتفظ بنسختي واستبدل نسختهم':'Keep mine and replace theirs',onclick:async function(){done(true);try{var res=await shareApi('PUT','/'+S.share.id,S.share.editKey,{baseVer:theirs.ver,data:shareData(),name:pjLabel()});if(res.status===409){shareConflict(res.j,shareData());return}S.share.ver=res.j.ver;SHR.dirty=false;scheduleSave();shareStatusDraw()}catch(e){toast(e.message||'Sync failed')}}})))})}
+function shareGone(){var ar=uiAR();shareStop();if(S.share){S.share=null;scheduleSave()}toast(ar?'لم يعد هذا المشروع مشتركاً. نسختك محفوظة على هذا الجهاز.':'This project is no longer shared. Your copy stays on this device.')}
+function shareStart(){shareStop();if(!S.share)return;SHR.poll=setInterval(sharePull,S.share.editKey?10000:30000);shareStatusDraw()}
+function shareStop(){clearInterval(SHR.poll);SHR.poll=null;clearTimeout(SHR.timer)}
+async function shareEnd(){var ar=uiAR();if(!S.share)return;var owner=S.share.role==='owner';
+  if(!(await askIn(owner?(ar?'إيقاف المشاركة؟ تتوقف كل الروابط ويُحذف النسخة الموجودة على الإنترنت. نسختك تبقى هنا.':'Stop sharing? All links stop working and the online copy is deleted. Your copy stays here.'):(ar?'مغادرة المشروع المشترك؟ تبقى نسخة على جهازك.':'Leave the shared project? A copy stays on your device.'),ar?'نعم':'Yes')))return;
+  var gone=S.share;shareStop();S.share=null;SHR.dirty=false;if(owner){try{await shareApi('DELETE','/'+gone.id,gone.editKey)}catch(e){}}S.share=null;scheduleSave();drawSheet();toast(owner?(ar?'توقفت المشاركة.':'Sharing stopped.'):(ar?'غادرت المشروع المشترك.':'You left the shared project.'))}
+async function shareRotate(){var ar=uiAR();if(!S.share||S.share.role!=='owner')return;if(!(await askIn(ar?'إنشاء روابط جديدة؟ تتوقف الروابط القديمة فوراً.':'Make new links? The old links stop working straight away.',ar?'روابط جديدة':'New links')))return;
+  try{var res=await shareApi('POST','/'+S.share.id+'/rotate',S.share.editKey);S.share.viewKey=res.j.viewKey;S.share.editKey=res.j.editKey;scheduleSave();drawSheet();toast(ar?'روابط جديدة جاهزة.':'New links are ready.')}catch(e){toast(e.message||'Failed')}}
+function shareStatusDraw(){var el=document.getElementById('shr-status');if(el){el.textContent=shareStatusText()}var b=document.getElementById('btnTeam');if(b)b.classList.toggle('on',!!S.share)}
+function shareStatusText(){var ar=uiAR();if(!S.share)return '';if(SHR.err)return (ar?'مشكلة في المزامنة: ':'Sync problem: ')+SHR.err;if(SHR.pushing)return ar?'يحفظ…':'Saving…';if(SHR.dirty)return ar?'تعديلات لم تُرسل بعد…':'Changes waiting to be sent…';
+  return SHR.lastSync?(ar?'متزامن · ':'In sync · ')+when(SHR.lastSync):(ar?'مشترك':'Shared')}
+function linkRow(label,url,note){var inp=h('input',{type:'text',readonly:'',value:url,'aria-label':label});inp.addEventListener('focus',function(){inp.select()});
+  return h('div',{class:'shr-link'},h('b',{text:label}),h('div',{class:'code-box'},inp,h('button',{type:'button',class:'btn sm primary',text:uiAR()?'انسخ':'Copy',onclick:function(){copy(url)}})),h('p',{class:'hint',text:note}))}
+/* used by both the Share sheet and the Write together sheet */
+function shareLinkBox(focus){var ar=uiAR(),box=h('div',{class:'studio stack',id:'shr-box'});
+  box.append(h('h3',{text:focus==='team'?(ar?'اكتبوا معاً':'Write together'):(ar?'شارك رابطاً لهذا المشروع':'Share a link to this project')}));
+  var body=h('div',{class:'stack'},h('p',{class:'hint',text:ar?'جارٍ التحقق…':'Checking…'}));box.append(body);
+  shareAvail().then(function(ok){body.textContent='';
+    if(!ok){body.append(h('p',{class:'info',text:shareWhyNot()}));if(SHR.reason!=='host')body.append(h('p',{class:'hint',text:ar?'إلى ذلك الحين: احفظ ملف المشروع وأرسله، أو صدّر PDF.':'Until then: save the project file and send it, or export a PDF.'}));return}
+    if(S.example){body.append(h('p',{class:'info',text:ar?'هذا مثال. ابدأ مشروعك الخاص لتشاركه.':'This is the example. Start your own project to share it.'}));return}
+    if(!S.share){body.append(h('p',{class:'info',text:focus==='team'?(ar?'يحصل شركاؤك على رابط تعديل. تُحفظ تغييرات الجميع على الإنترنت كل بضع ثوانٍ وتظهر عند الآخرين خلال نحو عشر ثوانٍ. إذا عدّل اثنان في اللحظة نفسها، يسألك التطبيق بدل أن يستبدل عمل أحد.':'Your co-writers get an edit link. Everyone’s changes are saved online every few seconds and show up for the others within about ten seconds. If two people save at the same moment, the app asks instead of overwriting anyone’s work.'):(ar?'أنشئ رابطين: رابط للقراءة فقط، ورابط يسمح بالتعديل. لا يمكن تخمين الروابط، ويمكنك إيقافها في أي وقت.':'Creates two links: one that can only read the project and one that can edit it. Links cannot be guessed, and you can switch them off at any time.')}),
+        h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',onclick:async function(e){e.target.disabled=true;if(await shareCreate())drawSheet();else e.target.disabled=false}},svgI('share'),h('span',{text:focus==='team'?(ar?'ابدأ الكتابة معاً':'Start writing together'):(ar?'أنشئ روابط المشاركة':'Create share links')}))),
+        h('p',{class:'hint',text:ar?'تُرفع نسخة من المشروع إلى خدمة المشاركة على هذا الموقع، ويقرؤها كل من لديه الرابط.':'A copy of the project is uploaded to this site’s share service, where anyone with a link can read it.'}));return}
+    var owner=S.share.role==='owner';
+    body.append(h('p',{class:'status',id:'shr-status',text:shareStatusText()}));
+    if(S.share.editKey)body.append(linkRow(ar?'رابط التعديل':'Edit link',linkOf('edit'),ar?'يستطيع من يملكه قراءة المشروع وتغييره. شاركه كما تشارك كلمة مرور.':'Anyone with it can read and change the project. Share it like a password.'));
+    if(S.share.viewKey)body.append(linkRow(ar?'رابط القراءة فقط':'View-only link',linkOf('view'),ar?'يفتح نسخة للقراءة. يمكن لمن يملكه حفظ نسخة خاصة به، لكنه لا يستطيع تغيير مشروعك.':'Opens a reading copy. People can save their own copy, but cannot change yours.'));
+    body.append(h('div',{class:'bar'},owner?h('button',{type:'button',class:'btn sm',text:ar?'روابط جديدة':'Make new links',onclick:shareRotate}):null,
+      h('button',{type:'button',class:'btn sm ghost',text:owner?(ar?'أوقف المشاركة':'Stop sharing'):(ar?'غادر المشروع المشترك':'Leave the shared project'),onclick:shareEnd}),
+      h('button',{type:'button',class:'btn sm ghost',text:ar?'زامن الآن':'Sync now',onclick:function(){SHR.dirty?sharePush():sharePull()}})),
+      h('p',{class:'hint',text:ar?'ملاحظة: قد يتأخر وصول التعديلات بين بلدين متباعدين حتى دقيقة.':'Note: between far-apart locations, changes can take up to a minute to arrive.'}))});
+  return box}
+/* opening a link */
+async function shareOpenFromHash(){var m=/^#(view|edit)=([A-Za-z0-9_-]{16,40})\.([A-Za-z0-9_-]{16,64})$/.exec(location.hash||'');if(!m)return;var kind=m[1],id=m[2],key=m[3],ar=uiAR();
+  try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+  try{var res=await shareApi('GET','/'+id,key);var j=res.j}catch(e){toast(e.message||(ar?'تعذر فتح الرابط.':'That link could not be opened.'));return}
+  try{closeLanding()}catch(e){}
+  if(kind==='edit'&&j.canEdit){var ex=libGet().items.map(function(it){return pjData(it.id)}).filter(function(d){return d&&d.share&&d.share.id===id})[0];
+    if(ex){if(S.pid!==ex.pid){pjSaveNow();setState(ex)}S.share.editKey=key;shareApply(j,false);shareStart();toast(ar?'فُتح المشروع المشترك.':'Opened the shared project.');return}
+    pjSaveNow();var d=JSON.parse(JSON.stringify(j.data));d.pid=newPid();d.example=false;var sn=d.series&&d.series.name;if(d.series){var l=libGet();l.series[d.series.id]=sn||'';libPut(l)}
+    d.share={id:id,editKey:key,ver:j.ver,role:'editor',at:Date.now()};SHR.applying=true;setState(d);setTimeout(function(){SHR.applying=false;SHR.dirty=false},800);SHR.lastSync=Date.now();shareStart();go(S.step||0);toast(ar?'أنت الآن تكتب مع الآخرين في «'+pjLabel()+'».':'You are now writing together on “'+pjLabel()+'”.');return}
+  shareViewer(j,id,key)}
+function shareViewer(j,id,key){var ar=uiAR(),keep=S;S=normState(Object.assign(blankState(),j.data));var html='';try{html=readerHTML()}catch(e){}var copyData=JSON.parse(JSON.stringify(j.data));S=keep;
+  var ov=h('div',{class:'shr-view',role:'dialog','aria-modal':'true','aria-label':ar?'نسخة للقراءة':'Reading copy'});
+  var fr=h('iframe',{title:ar?'المشروع المشترك':'Shared project'});fr.setAttribute('sandbox','');fr.srcdoc=html||'<p style="font:16px sans-serif;padding:20px">'+(j.name||'Shared project')+'</p>';
+  ov.append(h('div',{class:'shr-vbar'},h('b',{text:(ar?'للقراءة فقط · ':'Read only · ')+(j.name||(j.data&&j.data.title)||'')}),
+    h('button',{type:'button',class:'btn sm primary',text:ar?'احفظ نسخة لي':'Save my own copy',onclick:function(){pjSaveNow();var d=copyData;d.pid=newPid();d.example=false;delete d.share;if(d.series)d.series={id:newPid(),total:d.series.total,premise:d.series.premise};setState(d);ov.remove();go(0);toast(ar?'نسختك في «المشاريع». التغييرات فيها لا تصل إلى المالك.':'Your copy is in Projects. Changes you make there do not reach the owner.')}}),
+    h('button',{type:'button',class:'btn sm ghost',text:ar?'إغلاق':'Close',onclick:function(){ov.remove()}})),fr);
+  document.body.append(ov)}
+function initShare(){if(!shareOn())return;shareAvail().then(function(){if(S.share&&SHR.avail)shareStart()});shareOpenFromHash();window.addEventListener('hashchange',shareOpenFromHash);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&S.share)sharePull()})}
+
+load();initPal();syncMode();renderAll();scheduleSave();initExtras();initShell();initV9Shell();initV10();initV11();initPublic();initAI();initShare();initProjects();
 
 function localDownloads(){return {save:async function(r){var b=r.data instanceof Blob?r.data:new Blob([r.data],{type:'application/octet-stream'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=r.filename;document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);return {status:'saved'}}}}
 function adapterSample(){var A=window.ScriptRoomAI;if(!A||typeof A.sample!=='function')return null;
@@ -6873,15 +7301,41 @@ function initPWA(){
   var ap=document.createElement('link');ap.rel='apple-touch-icon';ap.href='icons/apple-touch-icon.png';document.head.append(ap);
   var m=document.createElement('meta');m.name='theme-color';m.content='#0071E3';document.head.append(m);
   navigator.serviceWorker.register('sw.js').catch(function(){});
-  var dp=null,btn=document.getElementById('btnInstall');
-  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;btn.hidden=false});
-  btn.addEventListener('click',async function(){if(!dp)return;dp.prompt();try{await dp.userChoice}catch(x){}dp=null;btn.hidden=true})}
+  var btn=document.getElementById('btnInstall');btn.hidden=false;
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();INST.dp=e;if(sheetR&&sheetR.title===instTitle())drawSheet()});
+  window.addEventListener('appinstalled',function(){INST.dp=null;INST.done=true;toast(uiAR()?'تم تثبيت Script Room.':'Script Room is installed.');if(sheetR&&sheetR.title===instTitle())drawSheet()});
+  btn.addEventListener('click',openInstall)}
+var INST={dp:null,done:false};
+function instTitle(){return uiAR()?'ثبّت التطبيق':'Install the app'}
+function instEnv(){var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1),android=/Android/.test(ua),
+  edge=/Edg\//.test(ua),ff=/Firefox\//.test(ua),chrome=/Chrome\//.test(ua)&&!edge,safari=/Safari\//.test(ua)&&!chrome&&!edge&&!/CriOS|FxiOS/.test(ua),mac=/Macintosh/.test(ua)&&!ios;
+  var installed=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;return {ios:ios,android:android,edge:edge,ff:ff,chrome:chrome,safari:safari,mac:mac,installed:installed||INST.done}}
+function instSteps(e){var ar=uiAR();
+  if(e.ios)return [ar?'اضغط زر المشاركة (المربع مع السهم) في Safari.':'Tap the Share button (the square with an arrow) in Safari.',ar?'اختر «إضافة إلى الشاشة الرئيسية».':'Choose Add to Home Screen.',ar?'اضغط «إضافة». يظهر Script Room على شاشتك الرئيسية.':'Tap Add. Script Room appears on your home screen.'];
+  if(e.android&&e.ff)return [ar?'افتح قائمة Firefox (⋮).':'Open the Firefox menu (⋮).',ar?'اختر «تثبيت».':'Choose Install.'];
+  if(e.android)return [ar?'افتح قائمة المتصفح (⋮).':'Open the browser menu (⋮).',ar?'اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».':'Choose Install app (or Add to Home screen).'];
+  if(e.safari&&e.mac)return [ar?'في شريط القوائم اختر «ملف».':'In the menu bar choose File.',ar?'اختر «إضافة إلى Dock».':'Choose Add to Dock.'];
+  if(e.ff)return [ar?'Firefox على الحاسوب لا يثبّت تطبيقات الويب. افتح هذا العنوان في Chrome أو Edge لتثبيته.':'Firefox on computers does not install web apps. Open this address in Chrome or Edge to install it.'];
+  if(e.edge)return [ar?'افتح قائمة Edge (…).':'Open the Edge menu (…).',ar?'اختر «التطبيقات» ثم «تثبيت هذا الموقع كتطبيق».':'Choose Apps, then Install this site as an app.'];
+  return [ar?'اضغط أيقونة التثبيت في نهاية شريط العنوان، أو افتح قائمة Chrome (⋮).':'Click the install icon at the end of the address bar, or open the Chrome menu (⋮).',ar?'اختر «تثبيت Script Room» (قد يكون تحت «الحفظ والمشاركة»).':'Choose Install Script Room (it may be under Cast, save and share).']}
+function openInstall(){openSheet(instTitle(),function(st){var ar=uiAR(),e=instEnv();
+  var box=h('div',{class:'studio stack'});
+  if(e.installed){box.append(h('h3',{text:ar?'التطبيق مثبّت':'You are using the installed app'}),h('p',{class:'info',text:ar?'Script Room مثبّت على هذا الجهاز. افتحه من الشاشة الرئيسية أو Dock أو قائمة ابدأ.':'Script Room is installed on this device. Open it from your home screen, Dock, Start menu or app list.'}))}
+  else if(INST.dp){box.append(h('h3',{text:ar?'ثبّت Script Room بضغطة':'Install Script Room in one click'}),h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',onclick:async function(){var d=INST.dp;INST.dp=null;d.prompt();try{var c=await d.userChoice;if(c&&c.outcome==='accepted')INST.done=true}catch(x){}drawSheet()}},svgI('dl'),h('span',{text:ar?'ثبّت الآن':'Install now'}))))}
+  else{var ol=h('ol',{class:'why'});instSteps(e).forEach(function(t){ol.append(h('li',{text:t}))});box.append(h('h3',{text:ar?'كيف تثبّته على هذا الجهاز':'How to install it on this device'}),ol)}
+  st.append(box);
+  st.append(h('div',{class:'studio'},h('h3',{text:ar?'ما الذي يتغيّر؟':'What changes when you install it'}),h('ul',{class:'why'},
+    h('li',{text:ar?'يفتح في نافذته الخاصة بلا أشرطة المتصفح، وله أيقونة على الشاشة الرئيسية أو Dock أو قائمة ابدأ.':'It opens in its own window without browser bars, with an icon on your home screen, Dock or Start menu.'}),
+    h('li',{text:ar?'التطبيق نفسه يعمل دون إنترنت بعد فتحه مرة: الكتابة والتعديل والتصدير ومدرسة المشاهد.':'The app itself works without internet once it has been opened: writing, editing, exports and Scene School.'}),
+    h('li',{text:ar?'تحتاج الإنترنت لميزات الذكاء الاصطناعي عبر الإنترنت، والكتابة معاً، وروابط المشاركة. النموذج المحلي (Ollama أو LM Studio) يعمل دون إنترنت.':'Online AI, Write together and share links still need the internet. A local model (Ollama or LM Studio) works offline.'}),
+    h('li',{text:ar?'مشاريعك هي نفسها في المتصفح والتطبيق المثبّت على الحاسوب. على iPhone وiPad للتطبيق المثبّت ذاكرة منفصلة عن Safari: انقل مشروعاً بحفظ ملف المشروع وفتحه.':'On a computer the installed app and the browser share your projects. On iPhone and iPad the home-screen app has its own storage, separate from Safari: move a project by saving the project file and opening it there.'}),
+    h('li',{text:ar?'لا شيء يُثبَّت خارج المتصفح، ويمكنك إزالته في أي وقت مثل أي تطبيق.':'Nothing is installed outside the browser, and you can remove it like any other app.'}))))})}
 initPWA();
 document.getElementById('btnHist').addEventListener('click',openHistory);
 document.getElementById('btnImport').addEventListener('click',openImport);
 document.getElementById('btnTeam').addEventListener('click',openTeam);
 loadAdapter().then(function(){return Promise.all([useCap('sample'),useCap('downloads'),useCap('mcp'),useCap('db'),useCap('room'),useCap('user')])}).then(function(r){
-  caps.sample=r[0];caps.downloads=r[1];caps.mcp=r[2];caps.db=r[3];caps.room=r[4];caps.user=r[5];
+  caps.sample=aiTrack(r[0],(window.claude&&window.claude.use)?'Claude (built-in)':'Your AI');caps.downloads=r[1];caps.mcp=r[2];caps.db=r[3];caps.room=r[4];caps.user=r[5];
   if(!busy){var ae=document.activeElement;var typing=ae&&/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName);if(!typing)renderStep()}
   renderSummary();teamInit()});
 })();
