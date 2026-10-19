@@ -76,7 +76,7 @@ button,input,textarea,select{font:inherit;color:inherit}
 .field{display:grid;gap:6px;min-width:0}
 .lbl{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 .hint{margin:0;font-size:13px;color:var(--ink-2)}
-input[type=text],input[type=number],textarea,select{width:100%;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;min-width:0}
+input[type=text],input[type=password],input[type=number],textarea,select{width:100%;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;min-width:0}
 textarea{resize:vertical;min-height:70px;line-height:1.45}
 input::placeholder,textarea::placeholder{color:var(--ink-2);opacity:.7}
 input[type=range]{width:100%;accent-color:var(--accent)}
@@ -486,9 +486,9 @@ body.no-insp .sum{display:none}
 .stack{gap:22px}
 .lbl{font-size:13px;font-weight:600;letter-spacing:-.005em;text-transform:none;color:var(--ink)}
 .hint,.info{color:var(--ink-2)}
-input[type=text],input[type=number],textarea,select{border:0;background:var(--fill-2);border-radius:11px;padding:11px 13px;font-size:15px;
+input[type=text],input[type=password],input[type=number],textarea,select{border:0;background:var(--fill-2);border-radius:11px;padding:11px 13px;font-size:15px;
   transition:box-shadow .2s,background-color .2s;box-shadow:inset 0 0 0 .5px var(--line)}
-input[type=text]:focus,input[type=number]:focus,textarea:focus,select:focus{outline:none;background:var(--surface);box-shadow:0 0 0 4px var(--accent-soft),inset 0 0 0 1px var(--accent)}
+input[type=text]:focus,input[type=password]:focus,input[type=number]:focus,textarea:focus,select:focus{outline:none;background:var(--surface);box-shadow:0 0 0 4px var(--accent-soft),inset 0 0 0 1px var(--accent)}
 select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);
   background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-inline-end:34px}
 [dir="rtl"] select{background-position:18px 50%,13px 50%}
@@ -6688,7 +6688,7 @@ var AIP=[
   {k:'lmstudio',l:'LM Studio (on this computer)',fmt:'openai',url:'http://localhost:1234/v1/chat/completions',model:'local-model',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from lmstudio.ai, load a model, start the server and enable CORS.'},
   {k:'custom',l:'Other (OpenAI-compatible)',fmt:'openai',url:'',model:'',key:true,vision:false,direct:true,hint:'Any server that speaks the OpenAI chat format: vLLM, llama.cpp, Jan, LocalAI, a company gateway.'}];
 var AIK='scriptroom.ai';
-function aiCfg(){var c=null;try{c=JSON.parse(localStorage.getItem(AIK)||'null')}catch(e){}if(!c&&window.__aiMem)c=window.__aiMem;return c}
+function aiCfg(){if(window.__aiMem)return window.__aiMem;var c=null;try{c=JSON.parse(localStorage.getItem(AIK)||'null')}catch(e){}return c}
 function aiSave(c,remember){window.__aiMem=c;try{if(remember)localStorage.setItem(AIK,JSON.stringify(c));else{var cc=Object.assign({},c,{key:''});localStorage.setItem(AIK,JSON.stringify(cc))}}catch(e){}}
 function aiProv(k){return AIP.filter(function(p){return p.k===k})[0]||AIP[0]}
 function aiKey(c){return (window.__aiMem&&window.__aiMem.key)||c.key||''}
@@ -6751,7 +6751,7 @@ function openAISettings(){openSheet('AI provider',function(st){
     h('label',{class:'chk','for':'ai-rem'},rem,h('span',{text:'Remember the key on this device. Untick on a shared computer: the key is then kept only until you close the page.'})),
     h('details',{class:'dt'},h('summary',null,'Advanced'),h('div',{class:'dtb'},field('Address (for local or custom servers)',url),field('Route',route,'Some providers block calls straight from a browser. The relay is a tiny function on this site that forwards your request.'),
       h('label',{class:'chk','for':'ai-vis'},vis,h('span',{text:'This model can read images (photo buttons, consistency checks)'})))),
-    h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',text:'Save and test',onclick:async function(e){var n=collect();aiSave(n,n.remember);res.textContent='Testing…';
+    h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',text:'Save and test',onclick:async function(e){var n=collect();var Q=aiProv(n.provider);if(Q.key&&!n.key){res.textContent='Paste your '+Q.l.split(' (')[0]+' API key first. '+Q.hint;key.focus();return}aiSave(n,n.remember);res.textContent='Testing…';
       try{var r=await aiCall('Reply with exactly: ready',{});res.textContent=/ready/i.test(r.text)?'Connected. '+aiProv(n.provider).l+' answered.':'Connected, but the answer was unexpected: '+String(r.text).slice(0,80);aiApply()}catch(err){res.textContent=(err&&err.message)||'That did not work.'}}}),
       h('button',{type:'button',class:'btn ghost',text:'Disconnect',onclick:function(){try{localStorage.removeItem(AIK)}catch(e){}window.__aiMem=null;res.textContent='Disconnected.';aiApply()}}),res));
   st.append(box);
