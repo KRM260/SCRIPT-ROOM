@@ -6731,6 +6731,34 @@ function aiSampleFn(){
   return f}
 async function aiApply(){caps.sample=aiSampleFn();visionOK=null;renderAll();renderAIBadge()}
 function renderAIBadge(){var b=document.getElementById('btnAI');if(!b)return;var c=aiCfg();b.textContent='';b.append(svgI('style'),h('span',{text:c&&c.provider?aiProv(c.provider).l.split(' (')[0]:'Connect AI'}));b.classList.toggle('primary',!(c&&c.provider))}
+
+function localBase(u){return String(u||'').replace(/\/+$/,'').replace(/\/chat\/completions$/,'').replace(/\/v1$/,'')+'/v1'}
+async function listLocalModels(u){var r=await fetch(localBase(u)+'/models',{method:'GET'});if(!r.ok)throw new Error('HTTP '+r.status);var j=await r.json();return (j.data||j.models||[]).map(function(m){return m.id||m.name||m.model}).filter(Boolean)}
+function localSetup(k){
+  var o=/^https?:$/.test(location.protocol)?location.origin:'*',win=/Windows/i.test(navigator.userAgent),mac=/Mac/i.test(navigator.userAgent);
+  var cp=function(t){return h('button',{type:'button',class:'btn sm',text:'Copy',onclick:function(){copy(t)}})};
+  var line=function(t){return h('div',{class:'code-box'},h('code',{text:t}),cp(t))};
+  var box=h('div',{class:'stack'});
+  if(k==='ollama'){
+    box.append(h('p',{class:'info',text:'Ollama has to allow this site to talk to it. Do this once:'}));
+    var ol=h('ol',{class:'why'});
+    if(!mac){ol.append(h('li',{text:'Windows: open the Start menu, search for "environment variables" and open "Edit environment variables for your account".'}),
+      h('li',null,'Click New. Variable name: ',h('b',{text:'OLLAMA_ORIGINS'}),'. Variable value: the address below. Click OK twice.'))}
+    if(!win){ol.append(h('li',{text:'Mac: open Terminal and run the command below.'}))}
+    ol.append(h('li',{text:'Quit Ollama (right-click its icon by the clock, or the menu bar on a Mac, then Quit) and open it again.'}),
+      h('li',{text:'If you have no model yet, run the pull command below in a terminal (Command Prompt or Terminal).'}),
+      h('li',{text:'Come back here and press Find my models. If the browser asks to let this site reach apps on your device, choose Allow.'}));
+    box.append(ol);
+    if(!mac)box.append(h('p',{class:'lbl',text:'Value for OLLAMA_ORIGINS'}),line(o));
+    if(!win)box.append(h('p',{class:'lbl',text:'Mac command'}),line('launchctl setenv OLLAMA_ORIGINS "'+o+'"'));
+    box.append(h('p',{class:'lbl',text:'Get a model (about 5 GB)'}),line('ollama pull llama3.1'))}
+  else{
+    box.append(h('p',{class:'info',text:'LM Studio has to run its server with CORS on. Do this once:'}),
+      h('ol',{class:'why'},h('li',{text:'Open LM Studio and download a model (the search tab). Llama 3.1 8B or Qwen are good starts.'}),
+        h('li',{text:'Open the Developer tab and switch the server on (Status: Running).'}),
+        h('li',{text:'In the server settings, turn on Enable CORS.'}),
+        h('li',{text:'Load your model, then come back here and press Find my models. If the browser asks to let this site reach apps on your device, choose Allow.'})))}
+  return box}
 function openAISettings(){openSheet('AI provider',function(st){
   var c=Object.assign({provider:'',model:'',url:'',key:'',route:'',vision:null,remember:true},aiCfg()||{});if(window.__aiMem&&window.__aiMem.key)c.key=window.__aiMem.key;
   var P=aiProv(c.provider||'anthropic');
@@ -6743,18 +6771,32 @@ function openAISettings(){openSheet('AI provider',function(st){
   var route=h('select',{id:'ai-route'});[['','Automatic'],['direct','Direct from this browser'],['relay','Through this site’s relay (/api/ai)']].forEach(function(x){route.append(h('option',{value:x[0],text:x[1]}))});route.value=c.route||'';
   var vis=h('input',{type:'checkbox',id:'ai-vis'});vis.checked=c.vision!=null?!!c.vision:!!P.vision;
   var hint=h('p',{class:'hint',text:P.hint});
-  sel.addEventListener('change',function(){var q=aiProv(sel.value);model.placeholder=q.model||'model name';url.placeholder=q.url||'https://your-server/v1/chat/completions';key.placeholder=q.key?'Paste your API key':'Not needed for local models';hint.textContent=q.hint;vis.checked=!!q.vision;model.value='';url.value=''});
+  var found=h('select',{id:'ai-found','aria-label':'Models on this computer'});found.addEventListener('change',function(){if(found.value)model.value=found.value});
+  var lstat=h('p',{class:'status',id:'ai-lstat'}),setup=h('details',{class:'dt',id:'ai-setup'},h('summary',null,'Setup steps'),h('div',{class:'dtb'}));
+  var dl=h('a',{class:'btn sm ghost',target:'_blank',rel:'noopener'});
+  async function findModels(quiet){var q=aiProv(sel.value);if(!q.local)return;lstat.textContent='Looking for '+q.l.split(' (')[0]+'…';
+    try{var ms=await listLocalModels(url.value.trim()||q.url);found.textContent='';
+      if(!ms.length){lstat.textContent=q.k==='ollama'?'Ollama is running but has no models yet. Run: ollama pull llama3.1':'LM Studio is running but no model is loaded. Load one, then try again.';found.style.display='none';setup.open=true;return}
+      ms.forEach(function(m){found.append(h('option',{value:m,text:m}))});found.style.display='';
+      var cur=model.value.trim();if(cur&&ms.indexOf(cur)>=0)found.value=cur;else{found.value=ms[0];model.value=ms[0]}
+      lstat.textContent='Found '+ms.length+' model'+(ms.length>1?'s':'')+'. Pick one, then press Save and test.';setup.open=false}
+    catch(e){found.style.display='none';lstat.textContent=(q.k==='ollama'?'Could not reach Ollama. Is it running and allowed for this site? Follow the setup steps.':'Could not reach LM Studio. Is the server running with CORS on? Follow the setup steps.');setup.open=true}}
+  var localBox=h('div',{class:'stack',id:'ai-local'},h('div',{class:'bar'},h('button',{type:'button',class:'btn sm primary',text:'Find my models',onclick:function(){findModels(false)}}),dl),found,lstat,setup);
+  function updLocal(){var q=aiProv(sel.value),loc=!!q.local;localBox.style.display=loc?'':'none';keyField.style.display=loc?'none':'';remLbl.style.display=loc?'none':'';
+    if(loc){dl.textContent='Download '+q.l.split(' (')[0];dl.href=q.k==='ollama'?'https://ollama.com/download':'https://lmstudio.ai/download';var b2=setup.querySelector('.dtb');b2.textContent='';b2.append(localSetup(q.k));found.style.display='none';lstat.textContent='';findModels(true)}}
+  sel.addEventListener('change',function(){var q=aiProv(sel.value);model.placeholder=q.model||'model name';url.placeholder=q.url||'https://your-server/v1/chat/completions';key.placeholder=q.key?'Paste your API key':'Not needed for local models';hint.textContent=q.hint;vis.checked=!!q.vision;model.value='';url.value='';updLocal()});
   var res=h('p',{class:'status',id:'ai-res'});
   function collect(){return {provider:sel.value,model:model.value.trim(),url:url.value.trim(),key:key.value.trim(),route:route.value,vision:vis.checked,remember:rem.checked}}
   var box=h('div',{class:'studio stack'});
-  box.append(field('Provider',sel),hint,h('div',{class:'row two'},field('Model',model,'Leave empty for the default shown.'),field('API key',key)),
-    h('label',{class:'chk','for':'ai-rem'},rem,h('span',{text:'Remember the key on this device. Untick on a shared computer: the key is then kept only until you close the page.'})),
+  var keyField=field('API key',key),remLbl=h('label',{class:'chk','for':'ai-rem'},rem,h('span',{text:'Remember the key on this device. Untick on a shared computer: the key is then kept only until you close the page.'}));
+  box.append(field('Provider',sel),hint,localBox,h('div',{class:'row two'},field('Model',model,'Leave empty for the default shown.'),keyField),
+    remLbl,
     h('details',{class:'dt'},h('summary',null,'Advanced'),h('div',{class:'dtb'},field('Address (for local or custom servers)',url),field('Route',route,'Some providers block calls straight from a browser. The relay is a tiny function on this site that forwards your request.'),
       h('label',{class:'chk','for':'ai-vis'},vis,h('span',{text:'This model can read images (photo buttons, consistency checks)'})))),
     h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',text:'Save and test',onclick:async function(e){var n=collect();var Q=aiProv(n.provider);if(Q.key&&!n.key){res.textContent='Paste your '+Q.l.split(' (')[0]+' API key first. '+Q.hint;key.focus();return}aiSave(n,n.remember);res.textContent='Testing…';
-      try{var r=await aiCall('Reply with exactly: ready',{});res.textContent=/ready/i.test(r.text)?'Connected. '+aiProv(n.provider).l+' answered.':'Connected, but the answer was unexpected: '+String(r.text).slice(0,80);aiApply()}catch(err){res.textContent=(err&&err.message)||'That did not work.'}}}),
+      try{var r=await aiCall('Reply with exactly: ready',{});res.textContent=/ready/i.test(r.text)?'Connected. '+aiProv(n.provider).l+' answered.':'Connected, but the answer was unexpected: '+String(r.text).slice(0,80);aiApply()}catch(err){res.textContent=(err&&err.message)||'That did not work.';if(aiProv(n.provider).local)setup.open=true}}}),
       h('button',{type:'button',class:'btn ghost',text:'Disconnect',onclick:function(){try{localStorage.removeItem(AIK)}catch(e){}window.__aiMem=null;res.textContent='Disconnected.';aiApply()}}),res));
-  st.append(box);
+  st.append(box);updLocal();
   st.append(h('div',{class:'studio'},h('h3',{text:'Which to pick?'}),h('ul',{class:'why'},
     h('li',{text:'Best writing quality: Claude or GPT-4.1 class models. Long books need a model with a large context window.'}),
     h('li',{text:'Free and private: Ollama or LM Studio on your own computer. Smaller local models write simpler scenes and may struggle with long books and JSON; pick the largest model your computer runs well.'}),
