@@ -8,18 +8,20 @@ Script Room is one web page. No account, no build step, no server database. Proj
 
 Click **Connect AI** in the toolbar and pick a provider. Your key stays in your browser.
 
-| Provider | Key from | Route |
-|---|---|---|
-| Claude (Anthropic) | console.anthropic.com | direct |
-| ChatGPT (OpenAI) | platform.openai.com | direct |
-| Gemini (Google) | aistudio.google.com | direct |
-| DeepSeek | platform.deepseek.com | relay |
-| Mistral | console.mistral.ai | relay |
-| Groq | console.groq.com | relay |
-| OpenRouter (hundreds of models) | openrouter.ai | direct |
-| Ollama (local) | no key | direct to your computer |
-| LM Studio (local) | no key | direct to your computer |
-| Any OpenAI-compatible server | your own | direct or relay |
+| Provider | Key from | Free? | Route |
+|---|---|---|---|
+| Gemini (Google) | aistudio.google.com | free plan, daily limits | direct |
+| Groq | console.groq.com | free plan, daily limits | relay |
+| Mistral | console.mistral.ai | free Experiment plan (phone number) | relay |
+| OpenRouter (hundreds of models) | openrouter.ai | free models ending in `:free`, about 50 a day | direct |
+| Ollama (local) | no key | free, unlimited, private | direct to your computer |
+| LM Studio (local) | no key | free, unlimited, private | direct to your computer |
+| Claude (Anthropic) | console.anthropic.com | paid per use | direct |
+| ChatGPT (OpenAI) | platform.openai.com | paid per use | direct |
+| DeepSeek | platform.deepseek.com | paid per use, very low prices | relay |
+| Any OpenAI-compatible server | your own | depends | direct or relay |
+
+Free cloud plans usually let the provider use your text to improve its models. For private work, use a local model or a paid plan. Limits and prices change, so check each provider's site.
 
 Some providers refuse calls straight from a browser. For those, Script Room sends the request through the site's relay, `functions/api/ai.js`, which forwards it to the provider and stores nothing. You can change the route under **Advanced** in AI settings.
 

@@ -6679,13 +6679,13 @@ function initPublic(){
 var AIP=[
   {k:'anthropic',l:'Claude (Anthropic)',fmt:'anthropic',url:'https://api.anthropic.com/v1/messages',model:'claude-sonnet-5-5',key:true,vision:true,direct:true,hint:'Get a key at console.anthropic.com.'},
   {k:'openai',l:'ChatGPT (OpenAI)',fmt:'openai',url:'https://api.openai.com/v1/chat/completions',model:'gpt-4.1',key:true,vision:true,direct:true,hint:'Get a key at platform.openai.com.'},
-  {k:'gemini',l:'Gemini (Google)',fmt:'openai',url:'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',model:'gemini-2.5-flash',key:true,vision:true,direct:true,hint:'Get a key at aistudio.google.com.'},
+  {k:'gemini',l:'Gemini (Google)',fmt:'openai',url:'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',model:'gemini-flash-latest',key:true,vision:true,direct:true,hint:'Free plan: get a key at aistudio.google.com, no card needed. Daily limits are low and Google may use free-plan text to improve its products.'},
   {k:'deepseek',l:'DeepSeek',fmt:'openai',url:'https://api.deepseek.com/chat/completions',model:'deepseek-chat',key:true,vision:false,direct:false,hint:'Get a key at platform.deepseek.com. Runs through the site’s relay.'},
-  {k:'mistral',l:'Mistral',fmt:'openai',url:'https://api.mistral.ai/v1/chat/completions',model:'mistral-large-latest',key:true,vision:false,direct:false,hint:'Get a key at console.mistral.ai.'},
-  {k:'groq',l:'Groq',fmt:'openai',url:'https://api.groq.com/openai/v1/chat/completions',model:'llama-3.3-70b-versatile',key:true,vision:false,direct:false,hint:'Get a key at console.groq.com.'},
-  {k:'openrouter',l:'OpenRouter (hundreds of models)',fmt:'openai',url:'https://openrouter.ai/api/v1/chat/completions',model:'anthropic/claude-sonnet-5.5',key:true,vision:true,direct:true,hint:'One key for many models: openrouter.ai/keys. Use any model name from their list.'},
-  {k:'ollama',l:'Ollama (on this computer)',fmt:'openai',url:'http://localhost:11434/v1/chat/completions',model:'llama3.1',key:false,vision:false,direct:true,local:true,hint:'Start Ollama with OLLAMA_ORIGINS set to this site’s address (or *), then pull a model, for example: ollama pull llama3.1. Use a vision model such as llava for photos.'},
-  {k:'lmstudio',l:'LM Studio (on this computer)',fmt:'openai',url:'http://localhost:1234/v1/chat/completions',model:'local-model',key:false,vision:false,direct:true,local:true,hint:'In LM Studio, open Developer, start the server and turn on CORS. Use the model name it shows.'},
+  {k:'mistral',l:'Mistral',fmt:'openai',url:'https://api.mistral.ai/v1/chat/completions',model:'mistral-large-latest',key:true,vision:false,direct:false,hint:'Free Experiment plan: get a key at console.mistral.ai with a phone number, no card needed. Mistral may use free-plan requests for training. Runs through the site’s relay.'},
+  {k:'groq',l:'Groq',fmt:'openai',url:'https://api.groq.com/openai/v1/chat/completions',model:'openai/gpt-oss-120b',key:true,vision:false,direct:false,hint:'Free plan: get a key at console.groq.com, no card needed. Fast, with daily limits. Runs through the site’s relay.'},
+  {k:'openrouter',l:'OpenRouter (hundreds of models)',fmt:'openai',url:'https://openrouter.ai/api/v1/chat/completions',model:'anthropic/claude-sonnet-5.5',key:true,vision:true,direct:true,hint:'Get a key at openrouter.ai. For free use, type a model whose name ends in :free (about 50 requests a day). Paid models need credit.'},
+  {k:'ollama',l:'Ollama (on this computer)',fmt:'openai',url:'http://localhost:11434/v1/chat/completions',model:'llama3.1',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from ollama.com, then pull a model (e.g. ollama pull llama3.1).'},
+  {k:'lmstudio',l:'LM Studio (on this computer)',fmt:'openai',url:'http://localhost:1234/v1/chat/completions',model:'local-model',key:false,vision:false,direct:true,local:true,hint:'Free and private: runs on your own computer. Install from lmstudio.ai, load a model, start the server and enable CORS.'},
   {k:'custom',l:'Other (OpenAI-compatible)',fmt:'openai',url:'',model:'',key:true,vision:false,direct:true,hint:'Any server that speaks the OpenAI chat format: vLLM, llama.cpp, Jan, LocalAI, a company gateway.'}];
 var AIK='scriptroom.ai';
 function aiCfg(){var c=null;try{c=JSON.parse(localStorage.getItem(AIK)||'null')}catch(e){}if(!c&&window.__aiMem)c=window.__aiMem;return c}
@@ -6758,7 +6758,7 @@ function openAISettings(){openSheet('AI provider',function(st){
   st.append(h('div',{class:'studio'},h('h3',{text:'Which to pick?'}),h('ul',{class:'why'},
     h('li',{text:'Best writing quality: Claude or GPT-4.1 class models. Long books need a model with a large context window.'}),
     h('li',{text:'Free and private: Ollama or LM Studio on your own computer. Smaller local models write simpler scenes and may struggle with long books and JSON; pick the largest model your computer runs well.'}),
-    h('li',{text:'Photo features need a model that reads images (Claude, GPT-4o or 4.1, Gemini, or a local vision model such as llava).'}))))})}
+    h('li',{text:'Photo features need a model that reads images (Claude, GPT-4.1, Gemini, or a local vision model such as llava).'}),h('li',{text:'Free options: Gemini, Groq and Mistral have free plans with daily limits; OpenRouter has free models; Ollama and LM Studio are free with no limits on your own computer. Claude, ChatGPT and DeepSeek are paid per use.'}))))})}
 function initAI(){
   if(window.claude&&window.claude.use)return; /* inside claude.ai the built-in Claude is used */
   var tb=document.querySelector('.toolbar'),ex=document.getElementById('btnSave');
