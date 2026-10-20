@@ -17,3 +17,5 @@ Script Room is a single web page. It has no accounts and no analytics. The only 
 **Prompts you copy** go wherever you paste them. Script Room never connects to your video accounts.
 
 **Webhook.** If you set a webhook address in the Shots step, your shot list is sent to that address when you press Send. Only use an address you control.
+
+**Connected tools (MCP).** If you connect an MCP server in Review, then the text you choose to send (for example your script) goes from your browser straight to that server's address, after you confirm it. Script Room does not relay it. The server's own terms apply. A bearer token you type is kept in memory until you close the tab, unless you tick *Remember*, which stores it in this browser only.

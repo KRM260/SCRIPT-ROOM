@@ -1,4 +1,4 @@
-# Accessibility in Script Room V3
+# Accessibility in Script Room V4 (builds on V3)
 
 Target: **WCAG 2.2 level AA**. This is a goal and a test log, not a certification. Read "What was not tested" before you rely on it.
 
@@ -39,9 +39,16 @@ They were run on the landing screen and on all nine internal steps plus the card
 
 For comparison, the same checker found about 110 low-contrast text instances, 40 form fields with a 1.09:1 border, no skip link, 2 unnamed fields, 18 duplicate ids and 42 undersized targets in V2.
 
-`tests/a11y-kb.js` drives the page with the keyboard only: skip link, focus ring on the first 69 tab stops, focus after stage change, the live region, dialog focus move, trap, Escape and focus return, the command palette, the View menu (Escape closes it and returns focus), arrow keys in tab lists and the cards board. The keyboard test was run in English and Arabic; in Arabic one check (finding the cards board's move buttons) relies on English labels and failed for that reason, not because the buttons are missing. `tests/a11y-more.js` checks Pro mode, phone width, 200% zoom, text spacing and reduced motion. `tests/rv3.js` and `tests/rv3t.js` check the stages, Next/Back order, every Review button and six project types.
+`tests/a11y-kb.js` drives the page with the keyboard only: skip link, focus ring on the first 69 tab stops, focus after stage change, the live region, dialog focus move, trap, Escape and focus return, the command palette, the View menu (Escape closes it and returns focus), arrow keys in tab lists and the cards board. The keyboard test was run in English and Arabic; in V4 the Arabic and German labels are matched too, and it passes 15/15 in English and Arabic. `tests/a11y-more.js` checks Pro mode, phone width, 200% zoom, text spacing and reduced motion. `tests/rv3.js` and `tests/rv3t.js` check the stages, Next/Back order, every Review button and six project types.
 
 `tests/a11y-axe.js` runs the real axe-core. **It was not run by the author.** Install `axe-core` and `playwright`, run it, and treat its report as the better source.
+
+## Added in V4
+
+- Tab lists use a roving tab index (one Tab stop, arrow keys, Home/End) and keep focus after redraws (`tests/tabs.js`, 8 checks). Selected state is `aria-selected`.
+- The confirmation dialog has an accessible name.
+- The new sheets (Revisions and scene numbers, Connect other tools, the confirmation, the Review cards, the export sheet) were run through the homemade checker in English, Arabic and German (`tests/a11y-run4.js`): 0 findings. Still not axe-core, still no screen reader.
+- Revision colours are never the only signal: the page header names the colour and the date, and changed lines carry a star.
 
 ## What was not tested
 
@@ -51,9 +58,8 @@ For comparison, the same checker found about 110 low-contrast text instances, 40
 - **Windows high-contrast / forced colours**, colour-blindness simulations and low-vision magnifiers.
 - **Arabic and German with assistive technology.** The translations are machine-assisted and have not been reviewed by native speakers.
 - **Contrast over gradients or images** is skipped by the checker. The AI and landing cards use soft gradients; they were checked by eye only.
-- **Third-party and generated content.** Exported PDFs are not tagged for accessibility.
+- **Third-party and generated content.** V4 PDFs are basic tagged PDFs (language, title, reading order, one paragraph tag per line, rules and tints as decoration). They are not PDF/UA, because Courier is not embedded, and they were checked structurally (qpdf, pikepdf), not with PAC or Acrobat.
 - **Cognitive load and plain language** were improved but not tested with people.
 - **The cards board** offers buttons to move a card as well as dragging, which satisfies "no drag-only controls" in principle. It was not tested with a screen reader.
-- Some older components still use a single Tab stop per tab instead of the "roving" pattern; arrow keys work, but a screen-reader user may hear more stops than needed.
 
 If you find a barrier, please report it. Real users find what scripts cannot.

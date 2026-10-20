@@ -6,6 +6,22 @@ Script Room is one web page. No account and no build step. Projects stay in your
 
 The first screen asks for the interface language: **English, العربية or Deutsch**. You can change it later from the View menu.
 
+## What is new in V4
+
+V4 keeps everything in V3 and adds three things that working screenwriters ask for, plus accessibility work that was left over.
+
+- **Lock the script, scene numbers and revision colours.** Open it from **Review → Lock and revisions**, or from **Export → Script**.
+  - **Lock** numbers every scene 1, 2, 3. After that the numbers never move: a scene added later becomes 5A, a scene added before the first becomes A1, and deleting a scene leaves a gap instead of renumbering.
+  - **Start a revision** (Blue, then Pink, Yellow, Green, Goldenrod, Buff, Salmon, Cherry, then Double White and so on, the order script revision pages use). From then on, every changed block is starred in the right margin and its page is printed on that colour with a header such as *Blue Revision 20 Oct 2026*. Starting the next colour makes the current text its starting point. A page keeps the colour of the latest round that touched it.
+  - Where it shows: the page preview, the PDF and the print page (colour, stars, header, scene numbers on both sides). Fountain files get `#5A#` after each scene heading. Final Draft files get a scene Number on each heading. Fountain and Final Draft have no revision colours, so those files carry numbers only.
+  - The whole changed block is starred, not single words. Edits made between locking and starting the first revision are not marked. Unlocking clears the history.
+  - Your Export choice (full draft or scenes so far) is what gets compared, so keep it the same between rounds.
+- **Connect other tools (MCP).** Open it from **Review → Other tools**. It is a small client for MCP servers that are reachable over HTTP, for example a screenplay formatter or analyser. You choose a tool, fill its fields (a text field can be filled from the project: script as Fountain, plain text, title, logline, character names) and press Send. A box first shows the server and what is about to be sent. The answer is shown as the server gave it, and can be copied or opened in Import. Read `MCP.md` for what works and what does not.
+- **Accessibility leftovers.** Tab lists (the Export tabs and the other tab lists) now have one tab stop each and use the arrow keys, Home and End, and the focus stays put after the page redraws. The confirmation dialog now has a name. The PDF is a basic tagged PDF: reading order, language, title and one paragraph tag per line, with rules and page tints marked as decoration. It is **not** PDF/UA, because the standard Courier font is not embedded.
+- Arabic and German cover everything new. Both are machine-assisted and still need a native reader.
+
+What this build does **not** do: dual dialogue, Final Draft revision attributes inside `.fdx`, scene "OMITTED" placeholder pages, AI that calls MCP tools by itself, video.
+
 ## What is new in V3
 
 V3 keeps every feature of V2 (AI providers, usage counter, storyboard, cards board, stats, drafts, write together, export, example projects, Arabic and German) and replaces the way you move around.
@@ -171,6 +187,8 @@ To try it on your own computer: `npx serve .` (or `python3 -m http.server`) and 
 - Saves to your browser. Project files can be saved and reopened as JSON.
 
 ## Files
+
+(V4 adds `MCP.md`, `DEPLOY.md` and more tests.)
 
 - `index.html`: the whole app (HTML, CSS and JavaScript in one file)
 - `worker.js`, `wrangler.jsonc`, `.assetsignore`: run the site and the AI relay on Cloudflare Workers

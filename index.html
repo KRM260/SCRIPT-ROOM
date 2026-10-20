@@ -3989,7 +3989,7 @@ async function importScript(){
 function askIn(msg,ok){return new Promise(function(res){var ar=uiAR();
   var ov=document.createElement('div');ov.className='askov';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');
   var bx=document.createElement('div');bx.className='askbx';if(ar)bx.dir='rtl';
-  var p=document.createElement('p');p.textContent=msg;
+  var p=document.createElement('p');p.textContent=msg;p.id='askmsg';ov.setAttribute('aria-labelledby','askmsg');
   var row=document.createElement('div');row.className='askrow';
   var no=document.createElement('button');no.type='button';no.className='btn';no.textContent=ar?'إلغاء':'Cancel';
   var yes=document.createElement('button');yes.type='button';yes.className='btn primary';yes.textContent=ok||(ar?'متابعة':'Continue');
@@ -4431,6 +4431,58 @@ DE_PAT.push(
  [/^(.+?) · (\d+:\d\d)$/,function(m){return tx(m[1])+' · '+m[2]}],
  [/^(.+?) · ([\d.]+) (min|sec) · (English|Arabic)$/,function(m){return tx(m[1])+' · '+m[2]+' '+de(m[3])+' · '+LN[m[4]][1]}]
 );
+/* i18n v4: revisions, scene numbers, connect tools */
+fillDict(AR,{"Revisions and scene numbers": "المراجعات وأرقام المشاهد", "Locking fixes every scene number so pages printed on different days still match. After that, each round of changes can be printed on coloured pages with a star in the margin beside every changed block.": "يثبّت القفل رقم كل مشهد كي تبقى الصفحات المطبوعة في أيام مختلفة متطابقة. بعد ذلك يمكن طباعة كل جولة تعديلات على صفحات ملوّنة مع نجمة في الهامش بجانب كل مقطع تغيّر.", "The script is not locked": "السيناريو غير مقفل", "Scenes are numbered 1, 2, 3 in the order they stand now. Add a scene later and it becomes 5A. Delete one and the others keep their numbers.": "تُرقَّم المشاهد 1 و2 و3 بالترتيب الحالي. إن أضفت مشهداً لاحقاً صار 5A. وإن حذفت مشهداً احتفظت المشاهد الأخرى بأرقامها.", "Lock the script": "اقفل السيناريو", "Lock scene numbers now? You can unlock later, but unlocking clears the revision history.": "هل تقفل أرقام المشاهد الآن؟ يمكنك فتح القفل لاحقاً، لكن ذلك يمسح سجل المراجعات.", "Lock": "اقفل", "Script locked. Scenes are numbered.": "تم قفل السيناريو. المشاهد مرقّمة.", "There are no scene headings yet. Write or generate some scenes first.": "لا توجد عناوين مشاهد بعد. اكتب بعض المشاهد أو ولّدها أولاً.", "Margin stars: on": "نجوم الهامش: مفعّلة", "Margin stars: off": "نجوم الهامش: متوقفة", "Preview the pages": "عاين الصفحات", "Unlock": "افتح القفل", "Unlock the script? Scene numbers go back to 1, 2, 3 and the revision history is deleted.": "هل تفتح قفل السيناريو؟ ترجع أرقام المشاهد إلى 1 و2 و3 ويُحذف سجل المراجعات.", "Script unlocked.": "تم فتح قفل السيناريو.", "Start": "ابدأ", "All pages are white. Changes are not marked until you start a revision.": "كل الصفحات بيضاء. لا تُعلَّم التغييرات حتى تبدأ مراجعة.", "What carries into exports: scene numbers appear on the page preview, the PDF and the print page, in Fountain as #5A#, and in Final Draft files as scene numbers. Page colours and stars appear on the preview, the PDF and the print page. A whole changed block is starred, not single words. Final Draft revision marks and Fountain have no revision colours, so those files carry numbers only.": "ما يُنقل إلى التصدير: تظهر أرقام المشاهد في معاينة الصفحات وفي ملف PDF وفي صفحة الطباعة، وفي Fountain بصيغة #5A#، وفي ملفات Final Draft كأرقام مشاهد. وتظهر ألوان الصفحات والنجوم في المعاينة وفي PDF وفي صفحة الطباعة. يُعلَّم المقطع المتغيّر كله بنجمة وليس الكلمات المفردة. لا تحمل علامات مراجعة Final Draft ولا Fountain ألوان مراجعة، لذلك تحمل هذه الملفات الأرقام فقط.", "Lock and revisions": "القفل والمراجعات", "Fix the scene numbers and print each round of changes on coloured pages.": "ثبّت أرقام المشاهد واطبع كل جولة تعديلات على صفحات ملوّنة.", "Open revisions": "افتح المراجعات", "Lock script, revisions and scene numbers": "قفل السيناريو والمراجعات وأرقام المشاهد", "Revisions and scene numbers (locked)": "المراجعات وأرقام المشاهد (مقفل)", "Locked. All pages white.": "مقفل. كل الصفحات بيضاء.", "White": "أبيض", "Blue": "أزرق", "Pink": "وردي", "Yellow": "أصفر", "Green": "أخضر", "Goldenrod": "ذهبي", "Buff": "بيج", "Salmon": "سلموني", "Cherry": "كرزي", "Double": "مزدوج", "Connect other tools": "اربط أدوات أخرى", "Connect an MCP server to use its tools with your project, for example a screenplay formatter or analyser. Nothing is sent until you press Send, and you see what goes first.": "اربط خادم MCP لتستخدم أدواته مع مشروعك، مثل منسّق سيناريو أو محلّل. لا يُرسل شيء حتى تضغط إرسال، وترى ما سيُرسل أولاً.", "What works and what does not": "ما الذي يعمل وما الذي لا يعمل", "Works: servers that are reachable over HTTP at an address you have (Streamable HTTP, answering as JSON or as an event stream). That includes servers on your own computer, at http://localhost.": "يعمل: الخوادم التي يمكن الوصول إليها عبر HTTP بعنوان تملكه (Streamable HTTP، وتجيب بصيغة JSON أو كتدفّق أحداث). ويشمل ذلك الخوادم على حاسوبك عند http://localhost.", "Does not work from a web page: servers that only run as a program on your computer (stdio) unless something turns them into an HTTP address, and servers that do not allow web pages to call them (CORS). The page will tell you if that is the problem.": "لا يعمل من صفحة ويب: الخوادم التي تعمل فقط كبرنامج على حاسوبك (stdio) ما لم يحوّلها شيء إلى عنوان HTTP، والخوادم التي لا تسمح لصفحات الويب باستدعائها (CORS). ستخبرك الصفحة إن كانت هذه هي المشكلة.", "The AI in this app does not call these tools by itself. You choose the tool, fill the fields and press Send.": "لا يستدعي الذكاء الاصطناعي في هذا التطبيق هذه الأدوات من تلقاء نفسه. أنت تختار الأداة وتملأ الحقول وتضغط إرسال.", "Your servers": "خوادمك", "None yet. Add one below.": "لا يوجد شيء بعد. أضف خادماً بالأسفل.", "Add a server": "أضف خادماً", "Name": "الاسم", "Address": "العنوان", "Token (optional)": "الرمز (اختياري)", "For example My screenplay tools": "مثلاً أدوات السيناريو الخاصة بي", "Must start with https://, or http://localhost for a server on this computer.": "يجب أن يبدأ بـ https://‎، أو http://localhost لخادم على هذا الحاسوب.", "Only if the server asks for one. It is sent to that server and nowhere else.": "فقط إن طلبه الخادم. يُرسل إلى ذلك الخادم ولا يُرسل إلى أي مكان آخر.", "Remember the token on this device (stored as plain text in this browser)": "تذكّر الرمز على هذا الجهاز (يُخزَّن كنص عادي في هذا المتصفح)", "Add and connect": "أضف واتصل", "Connect": "اتصل", "Reconnect": "أعد الاتصال", "Remove": "أزل", "Tool": "الأداة", "Choose a tool": "اختر أداة", "Choose": "اختر", "Send": "أرسل", "Waiting for the server…": "بانتظار الخادم…", "Answer from the server": "جواب الخادم", "The tool reported an error": "أبلغت الأداة عن خطأ", "Copy": "انسخ", "Open in Import": "افتح في الاستيراد", "This tool says it can change or delete things on the server.": "تقول هذه الأداة إنها قد تغيّر أو تحذف أشياء على الخادم.", "This tool takes no fields.": "لا تحتاج هذه الأداة إلى حقول.", "This server connected but lists no tools.": "اتصل هذا الخادم لكنه لا يعرض أي أدوات.", "Give the server a name.": "أعطِ الخادم اسماً.", "The address must start with https://, or be http://localhost for this computer.": "يجب أن يبدأ العنوان بـ https://‎، أو أن يكون http://localhost لهذا الحاسوب.", "I will type it": "سأكتبه بنفسي", "Script as Fountain text": "السيناريو كنص Fountain", "Script as plain text": "السيناريو كنص عادي", "Title": "العنوان", "Logline": "الملخص في جملة", "Character names": "أسماء الشخصيات", "Fill from the project: ": "املأ من المشروع: ", "Other tools": "أدوات أخرى", "Connect an MCP server, for example a screenplay formatter or analyser, and use its tools with this project.": "اربط خادم MCP، مثل منسّق سيناريو أو محلّل، واستخدم أدواته مع هذا المشروع.", "Connect tools": "اربط الأدوات", "Could not reach the server. Check the address and that the server is running. If it is running, it may not allow web pages to call it (CORS). This page cannot get around that.": "تعذّر الوصول إلى الخادم. تحقق من العنوان ومن أن الخادم يعمل. وإن كان يعمل فقد لا يسمح لصفحات الويب باستدعائه (CORS)، وهذه الصفحة لا تستطيع تجاوز ذلك.", "The server did not answer in time.": "لم يجب الخادم في الوقت المناسب.", "The server closed the connection without an answer.": "أغلق الخادم الاتصال دون جواب.", "The server sent no answer to this request.": "لم يرسل الخادم أي جواب لهذا الطلب.", "Something went wrong talking to the server.": "حدث خطأ أثناء التخاطب مع الخادم.", "Share and Write together: when you press Share, a copy of that one project is stored on this site so people with the link can open it. The link contains a long random key, and the site keeps only a hash of it.": "المشاركة والكتابة معاً: عند الضغط على مشاركة تُخزَّن نسخة من ذلك المشروع وحده على هذا الموقع كي يفتحه من لديهم الرابط. يحتوي الرابط على مفتاح عشوائي طويل، ولا يحتفظ الموقع إلا ببصمة (hash) منه.", "Images: when you generate an image, the prompt (and any character photos you chose as references) goes to the image service you picked.": "الصور: عند توليد صورة يُرسل الوصف (وأي صور شخصيات اخترتها كمراجع) إلى خدمة الصور التي اخترتها.", "Connected tools (MCP): when you press Send, the fields you filled in, including any part of the project you chose to fill them with, go to that server. A token is kept in memory unless you tick Remember, and is never put in project files or share links.": "الأدوات المتصلة (MCP): عند الضغط على إرسال تذهب الحقول التي ملأتها، بما في ذلك أي جزء من المشروع اخترت ملأها به، إلى ذلك الخادم. يُحفظ الرمز في الذاكرة ما لم تحدد تذكّر، ولا يوضع أبداً في ملفات المشروع أو روابط المشاركة."});
+fillDict(DE,{"Revisions and scene numbers": "Überarbeitungen und Szenennummern", "Locking fixes every scene number so pages printed on different days still match. After that, each round of changes can be printed on coloured pages with a star in the margin beside every changed block.": "Das Sperren fixiert jede Szenennummer, damit an verschiedenen Tagen gedruckte Seiten zusammenpassen. Danach lässt sich jede Änderungsrunde auf farbigen Seiten drucken, mit einem Stern am Rand neben jedem geänderten Block.", "The script is not locked": "Das Drehbuch ist nicht gesperrt", "Scenes are numbered 1, 2, 3 in the order they stand now. Add a scene later and it becomes 5A. Delete one and the others keep their numbers.": "Die Szenen werden in der aktuellen Reihenfolge 1, 2, 3 nummeriert. Wird später eine Szene eingefügt, heißt sie 5A. Wird eine gelöscht, behalten die anderen ihre Nummern.", "Lock the script": "Drehbuch sperren", "Lock scene numbers now? You can unlock later, but unlocking clears the revision history.": "Szenennummern jetzt sperren? Du kannst später entsperren, doch dabei wird der Überarbeitungsverlauf gelöscht.", "Lock": "Sperren", "Script locked. Scenes are numbered.": "Drehbuch gesperrt. Die Szenen sind nummeriert.", "There are no scene headings yet. Write or generate some scenes first.": "Es gibt noch keine Szenenüberschriften. Schreibe zuerst Szenen oder erzeuge welche.", "Margin stars: on": "Randsterne: an", "Margin stars: off": "Randsterne: aus", "Preview the pages": "Seiten ansehen", "Unlock": "Entsperren", "Unlock the script? Scene numbers go back to 1, 2, 3 and the revision history is deleted.": "Drehbuch entsperren? Die Szenennummern gehen zurück auf 1, 2, 3 und der Überarbeitungsverlauf wird gelöscht.", "Script unlocked.": "Drehbuch entsperrt.", "Start": "Starten", "All pages are white. Changes are not marked until you start a revision.": "Alle Seiten sind weiß. Änderungen werden erst markiert, wenn du eine Überarbeitung beginnst.", "What carries into exports: scene numbers appear on the page preview, the PDF and the print page, in Fountain as #5A#, and in Final Draft files as scene numbers. Page colours and stars appear on the preview, the PDF and the print page. A whole changed block is starred, not single words. Final Draft revision marks and Fountain have no revision colours, so those files carry numbers only.": "Was in den Export übernommen wird: Szenennummern erscheinen in der Seitenvorschau, im PDF und auf der Druckseite, in Fountain als #5A# und in Final-Draft-Dateien als Szenennummern. Seitenfarben und Sterne erscheinen in der Vorschau, im PDF und auf der Druckseite. Der ganze geänderte Block erhält einen Stern, nicht einzelne Wörter. Final-Draft-Überarbeitungsmarken und Fountain kennen keine Überarbeitungsfarben, diese Dateien enthalten daher nur die Nummern.", "Lock and revisions": "Sperren und Überarbeitungen", "Fix the scene numbers and print each round of changes on coloured pages.": "Szenennummern fixieren und jede Änderungsrunde auf farbigen Seiten drucken.", "Open revisions": "Überarbeitungen öffnen", "Lock script, revisions and scene numbers": "Drehbuch sperren, Überarbeitungen und Szenennummern", "Revisions and scene numbers (locked)": "Überarbeitungen und Szenennummern (gesperrt)", "Locked. All pages white.": "Gesperrt. Alle Seiten weiß.", "White": "Weiß", "Blue": "Blau", "Pink": "Rosa", "Yellow": "Gelb", "Green": "Grün", "Goldenrod": "Goldrute", "Buff": "Beige", "Salmon": "Lachs", "Cherry": "Kirschrot", "Double": "Doppelt", "Connect other tools": "Weitere Werkzeuge verbinden", "Connect an MCP server to use its tools with your project, for example a screenplay formatter or analyser. Nothing is sent until you press Send, and you see what goes first.": "Verbinde einen MCP-Server, um seine Werkzeuge mit deinem Projekt zu nutzen, etwa einen Drehbuch-Formatierer oder -Analysator. Nichts wird gesendet, bis du auf Senden drückst, und du siehst vorher, was gesendet wird.", "What works and what does not": "Was funktioniert und was nicht", "Works: servers that are reachable over HTTP at an address you have (Streamable HTTP, answering as JSON or as an event stream). That includes servers on your own computer, at http://localhost.": "Funktioniert: Server, die über HTTP unter einer dir bekannten Adresse erreichbar sind (Streamable HTTP, Antwort als JSON oder Ereignisstrom). Dazu gehören Server auf deinem eigenen Rechner unter http://localhost.", "Does not work from a web page: servers that only run as a program on your computer (stdio) unless something turns them into an HTTP address, and servers that do not allow web pages to call them (CORS). The page will tell you if that is the problem.": "Funktioniert nicht von einer Webseite aus: Server, die nur als Programm auf deinem Rechner laufen (stdio), außer etwas macht daraus eine HTTP-Adresse, und Server, die Webseiten den Aufruf nicht erlauben (CORS). Die Seite sagt dir, falls das das Problem ist.", "The AI in this app does not call these tools by itself. You choose the tool, fill the fields and press Send.": "Die KI in dieser App ruft diese Werkzeuge nicht selbst auf. Du wählst das Werkzeug, füllst die Felder aus und drückst Senden.", "Your servers": "Deine Server", "None yet. Add one below.": "Noch keine. Füge unten einen hinzu.", "Add a server": "Server hinzufügen", "Name": "Name", "Address": "Adresse", "Token (optional)": "Token (optional)", "For example My screenplay tools": "Zum Beispiel Meine Drehbuch-Werkzeuge", "Must start with https://, or http://localhost for a server on this computer.": "Muss mit https:// beginnen, oder http://localhost für einen Server auf diesem Rechner.", "Only if the server asks for one. It is sent to that server and nowhere else.": "Nur, wenn der Server eines verlangt. Es wird an diesen Server gesendet und nirgendwohin sonst.", "Remember the token on this device (stored as plain text in this browser)": "Token auf diesem Gerät merken (als Klartext in diesem Browser gespeichert)", "Add and connect": "Hinzufügen und verbinden", "Connect": "Verbinden", "Reconnect": "Neu verbinden", "Remove": "Entfernen", "Tool": "Werkzeug", "Choose a tool": "Werkzeug wählen", "Choose": "Wählen", "Send": "Senden", "Waiting for the server…": "Warte auf den Server…", "Answer from the server": "Antwort des Servers", "The tool reported an error": "Das Werkzeug meldete einen Fehler", "Copy": "Kopieren", "Open in Import": "Im Import öffnen", "This tool says it can change or delete things on the server.": "Dieses Werkzeug gibt an, dass es Dinge auf dem Server ändern oder löschen kann.", "This tool takes no fields.": "Dieses Werkzeug hat keine Felder.", "This server connected but lists no tools.": "Dieser Server hat sich verbunden, listet aber keine Werkzeuge auf.", "Give the server a name.": "Gib dem Server einen Namen.", "The address must start with https://, or be http://localhost for this computer.": "Die Adresse muss mit https:// beginnen oder http://localhost für diesen Rechner sein.", "I will type it": "Ich tippe es selbst", "Script as Fountain text": "Drehbuch als Fountain-Text", "Script as plain text": "Drehbuch als einfacher Text", "Title": "Titel", "Logline": "Logline", "Character names": "Figurennamen", "Fill from the project: ": "Aus dem Projekt füllen: ", "Other tools": "Weitere Werkzeuge", "Connect an MCP server, for example a screenplay formatter or analyser, and use its tools with this project.": "Verbinde einen MCP-Server, etwa einen Drehbuch-Formatierer oder -Analysator, und nutze seine Werkzeuge mit diesem Projekt.", "Connect tools": "Werkzeuge verbinden", "Could not reach the server. Check the address and that the server is running. If it is running, it may not allow web pages to call it (CORS). This page cannot get around that.": "Der Server ist nicht erreichbar. Prüfe die Adresse und ob der Server läuft. Läuft er, erlaubt er Webseiten den Aufruf womöglich nicht (CORS). Diese Seite kann das nicht umgehen.", "The server did not answer in time.": "Der Server hat nicht rechtzeitig geantwortet.", "The server closed the connection without an answer.": "Der Server hat die Verbindung ohne Antwort geschlossen.", "The server sent no answer to this request.": "Der Server hat auf diese Anfrage nicht geantwortet.", "Something went wrong talking to the server.": "Bei der Kommunikation mit dem Server ist etwas schiefgelaufen.", "Share and Write together: when you press Share, a copy of that one project is stored on this site so people with the link can open it. The link contains a long random key, and the site keeps only a hash of it.": "Teilen und Zusammen schreiben: Wenn du auf Teilen drückst, wird eine Kopie dieses einen Projekts auf dieser Seite gespeichert, damit Personen mit dem Link es öffnen können. Der Link enthält einen langen Zufallsschlüssel, und die Seite behält nur einen Hash davon.", "Images: when you generate an image, the prompt (and any character photos you chose as references) goes to the image service you picked.": "Bilder: Wenn du ein Bild erzeugst, geht der Prompt (und alle Figurenfotos, die du als Referenz gewählt hast) an den gewählten Bilddienst.", "Connected tools (MCP): when you press Send, the fields you filled in, including any part of the project you chose to fill them with, go to that server. A token is kept in memory unless you tick Remember, and is never put in project files or share links.": "Verbundene Werkzeuge (MCP): Wenn du auf Senden drückst, gehen die ausgefüllten Felder, auch die Teile des Projekts, mit denen du sie gefüllt hast, an diesen Server. Ein Token bleibt im Arbeitsspeicher, solange du nicht Merken wählst, und gelangt nie in Projektdateien oder Freigabelinks."});
+function v4col(x){var m=/^(Double )?(.+)$/.exec(x);return (m[1]?tx('Double')+' ':'')+tx(m[2])}
+AR_PAT.unshift([/^Locked on (.+)$/,function(m){return 'مقفل بتاريخ '+m[1]}]);
+AR_PAT.unshift([/^(\d+) scenes? would be numbered\.$/,function(m){return m[1]+' مشاهد ستُرقَّم.'}]);
+AR_PAT.unshift([/^(\d+) scenes? numbered\. (.+)$/,function(m){var r=m[2],c=/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision in progress\.$/.exec(r);return m[1]+' مشاهد مرقّمة. '+(c?'مراجعة '+v4col(c[1])+' جارية.':tx(r))}]);
+AR_PAT.unshift([/^Start the ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision$/,function(m){return 'ابدأ المراجعة '+v4col(m[1])+''}]);
+AR_PAT.unshift([/^Start the ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision\? Everything you change from now on is marked as ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry))\. The current text becomes the starting point\.$/,function(m){return 'هل تبدأ المراجعة '+v4col(m[1])+'؟ كل ما تغيّره من الآن يُعلَّم باللون '+v4col(m[2])+'. يصبح النص الحالي نقطة البداية.'}]);
+AR_PAT.unshift([/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision started\.$/,function(m){return 'بدأت المراجعة '+v4col(m[1])+''}]);
+AR_PAT.unshift([/^Locked\. ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision in progress\.$/,function(m){return 'مقفل. المراجعة '+v4col(m[1])+' جارية.'}]);
+AR_PAT.unshift([/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision in progress\.$/,function(m){return 'المراجعة '+v4col(m[1])+' جارية.'}]);
+AR_PAT.unshift([/^White\. The locked script, (.+)$/,function(m){return 'أبيض. السيناريو المقفل، '+m[1]}]);
+AR_PAT.unshift([/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision, started (.+?) · (\d+) changed (?:block|blocks)( \(current\))?$/,function(m){return 'مراجعة '+v4col(m[1])+'، بدأت '+m[2]+' · '+m[3]+' مقطع متغيّر'+(m[4]?' (الحالية)':'')}]);
+AR_PAT.unshift([/^Scene numbers now \((\d+)\)$/,function(m){return 'أرقام المشاهد الآن ('+m[1]+')'}]);
+AR_PAT.unshift([/^Tools on (.+)$/,function(m){return 'أدوات '+m[1]}]);
+AR_PAT.unshift([/^Connecting to (.+)…$/,function(m){return 'جارٍ الاتصال بـ '+m[1]+'…'}]);
+AR_PAT.unshift([/^Connected to (.+)\. (\d+) tools? found\.$/,function(m){return 'تم الاتصال بـ '+m[1]+'. وُجدت '+m[2]+' أداة.'}]);
+AR_PAT.unshift([/^Connect to (.+)$/,function(m){return 'اتصل بـ '+m[1]}]);
+AR_PAT.unshift([/^Reconnect (.+)$/,function(m){return 'أعد الاتصال بـ '+m[1]}]);
+AR_PAT.unshift([/^Remove (.+)$/,function(m){return 'أزل '+m[1]}]);
+AR_PAT.unshift([/^Fill (.+) from the project$/,function(m){return 'املأ '+m[1]+' من المشروع'}]);
+AR_PAT.unshift([/^(.+) \(required\)$/,function(m){return m[1]+' (مطلوب)'}]);
+AR_PAT.unshift([/^"(.+)" is required\.$/,function(m){return '"'+m[1]+'" مطلوب.'}]);
+AR_PAT.unshift([/^"(.+)" is not valid JSON\.$/,function(m){return '"'+m[1]+'" ليس JSON صالحاً.'}]);
+AR_PAT.unshift([/^The server reported an error: (.*)$/,function(m){return 'أبلغ الخادم عن خطأ: '+m[1]}]);
+AR_PAT.unshift([/^The server answered with status (\d+)( \(not allowed: check the token\)| \(nothing at this address\))?(?:: (.*))?\.?$/,function(m){var s=m[2]?(/token/.test(m[2])?' (غير مسموح: تحقق من الرمز)':' (لا يوجد شيء في هذا العنوان)'):'';return 'أجاب الخادم بالحالة '+m[1]+s+(m[3]?': '+m[3]:'.')}]);
+AR_PAT.unshift([/^Send to (.+?) \((.+?)\)\?\n([\s\S]*)$/,function(m){return 'هل ترسل إلى '+m[1]+' ('+m[2]+')؟\n'+m[3]}]);
+DE_PAT.unshift([/^Locked on (.+)$/,function(m){return 'Gesperrt am '+m[1]}]);
+DE_PAT.unshift([/^(\d+) scenes? would be numbered\.$/,function(m){return m[1]+' Szenen würden nummeriert.'}]);
+DE_PAT.unshift([/^(\d+) scenes? numbered\. (.+)$/,function(m){var r=m[2],c=/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision in progress\.$/.exec(r);return m[1]+' Szenen nummeriert. '+(c?'Überarbeitung '+v4col(c[1])+' läuft.':tx(r))}]);
+DE_PAT.unshift([/^Start the ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision$/,function(m){return 'Starte die Überarbeitung '+v4col(m[1])+''}]);
+DE_PAT.unshift([/^Start the ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision\? Everything you change from now on is marked as ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry))\. The current text becomes the starting point\.$/,function(m){return 'Überarbeitung '+v4col(m[1])+' starten? Alles, was du ab jetzt änderst, wird als '+v4col(m[2])+' markiert. Der aktuelle Text wird zum Ausgangspunkt.'}]);
+DE_PAT.unshift([/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision started\.$/,function(m){return 'Überarbeitung '+v4col(m[1])+' gestartet.'}]);
+DE_PAT.unshift([/^Locked\. ((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision in progress\.$/,function(m){return 'Gesperrt. Überarbeitung '+v4col(m[1])+' läuft.'}]);
+DE_PAT.unshift([/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision in progress\.$/,function(m){return 'Überarbeitung '+v4col(m[1])+' läuft.'}]);
+DE_PAT.unshift([/^White\. The locked script, (.+)$/,function(m){return 'Weiß. Das gesperrte Drehbuch, '+m[1]}]);
+DE_PAT.unshift([/^((?:Double )?(?:White|Blue|Pink|Yellow|Green|Goldenrod|Buff|Salmon|Cherry)) revision, started (.+?) · (\d+) changed (?:block|blocks)( \(current\))?$/,function(m){return 'Überarbeitung '+v4col(m[1])+', begonnen '+m[2]+' · '+m[3]+' geänderte Blöcke'+(m[4]?' (aktuell)':'')}]);
+DE_PAT.unshift([/^Scene numbers now \((\d+)\)$/,function(m){return 'Szenennummern jetzt ('+m[1]+')'}]);
+DE_PAT.unshift([/^Tools on (.+)$/,function(m){return 'Werkzeuge auf '+m[1]}]);
+DE_PAT.unshift([/^Connecting to (.+)…$/,function(m){return 'Verbinde mit '+m[1]+'…'}]);
+DE_PAT.unshift([/^Connected to (.+)\. (\d+) tools? found\.$/,function(m){return 'Verbunden mit '+m[1]+'. '+m[2]+' Werkzeug(e) gefunden.'}]);
+DE_PAT.unshift([/^Connect to (.+)$/,function(m){return 'Verbinden mit '+m[1]}]);
+DE_PAT.unshift([/^Reconnect (.+)$/,function(m){return 'Neu verbinden: '+m[1]}]);
+DE_PAT.unshift([/^Remove (.+)$/,function(m){return 'Entfernen: '+m[1]}]);
+DE_PAT.unshift([/^Fill (.+) from the project$/,function(m){return ''+m[1]+' aus dem Projekt füllen'}]);
+DE_PAT.unshift([/^(.+) \(required\)$/,function(m){return m[1]+' (erforderlich)'}]);
+DE_PAT.unshift([/^"(.+)" is required\.$/,function(m){return '"'+m[1]+'" ist erforderlich.'}]);
+DE_PAT.unshift([/^"(.+)" is not valid JSON\.$/,function(m){return '"'+m[1]+'" ist kein gültiges JSON.'}]);
+DE_PAT.unshift([/^The server reported an error: (.*)$/,function(m){return 'Der Server meldete einen Fehler: '+m[1]}]);
+DE_PAT.unshift([/^The server answered with status (\d+)( \(not allowed: check the token\)| \(nothing at this address\))?(?:: (.*))?\.?$/,function(m){var s=m[2]?(/token/.test(m[2])?' (nicht erlaubt: Token prüfen)':' (unter dieser Adresse ist nichts)'):'';return 'Der Server antwortete mit Status '+m[1]+s+(m[3]?': '+m[3]:'.')}]);
+DE_PAT.unshift([/^Send to (.+?) \((.+?)\)\?\n([\s\S]*)$/,function(m){return 'An '+m[1]+' ('+m[2]+') senden?\n'+m[3]}]);
 /* i18n v3: stages, guidance, review */
 fillDict(AR,{"When a retired conductor asks for one last ride, a tired driver must choose between the rules and a stranger’s goodbye.": "عندما يطلب مُحصّل متقاعد رحلة أخيرة، على سائق متعب أن يختار بين القواعد ووداع غريب.", "Wants: to finish the shift unnoticed. Hides: she has already accepted a job in another city.": "تريد: أن تنهي المناوبة دون أن يلاحظها أحد. تخفي: أنها قبلت بالفعل عملاً في مدينة أخرى.", "Samir trained Nadia’s father. Samir knows why they stopped speaking. Nadia does not.": "درّب سمير والد نادية. يعرف سمير لماذا توقفا عن الكلام. أما نادية فلا تعرف.", "Topic: the bell. Nadia wants quiet. Samir wants to be remembered. It turns when he lets slip he did not retire.": "الموضوع: الجرس. تريد نادية الهدوء. ويريد سمير أن يُتذكَّر. ينقلب المشهد عندما يفلت منه أنه لم يتقاعد.", "Ending: bittersweet. Must include: the brass bell.": "النهاية: حلوة ومُرّة. يجب أن يتضمن: الجرس النحاسي.", "Shot / reverse shot for the argument, a slow push for the reveal, an insert of the bell.": "لقطة وقطة مقابلة للجدال، ودفع بطيء للكشف، ولقطة تفصيلية للجرس."});
 fillDict(DE,{"When a retired conductor asks for one last ride, a tired driver must choose between the rules and a stranger’s goodbye.": "Als ein pensionierter Schaffner um eine letzte Fahrt bittet, muss ein müder Fahrer zwischen den Vorschriften und dem Abschied eines Fremden wählen.", "Wants: to finish the shift unnoticed. Hides: she has already accepted a job in another city.": "Will: die Schicht unbemerkt beenden. Verbirgt: Sie hat bereits eine Stelle in einer anderen Stadt angenommen.", "Samir trained Nadia’s father. Samir knows why they stopped speaking. Nadia does not.": "Samir hat Nadias Vater ausgebildet. Samir weiß, warum sie nicht mehr miteinander sprechen. Nadia nicht.", "Topic: the bell. Nadia wants quiet. Samir wants to be remembered. It turns when he lets slip he did not retire.": "Thema: die Glocke. Nadia will Ruhe. Samir will in Erinnerung bleiben. Es kippt, als ihm herausrutscht, dass er nicht in Rente ging.", "Ending: bittersweet. Must include: the brass bell.": "Ende: bittersüß. Muss enthalten: die Messingglocke.", "Shot / reverse shot for the argument, a slow push for the reveal, an insert of the bell.": "Schuss und Gegenschuss für den Streit, eine langsame Fahrt nach vorn für die Enthüllung, ein Insert der Glocke."});
@@ -5053,7 +5105,8 @@ function sheets(text,opt){
       it.push({x:l.x,line:l.y,s:l.s,bold:l.k==='head'&&!!opt.bold,u:!!l.u&&!!l.s,it:!!l.it});
       if(l.s2)it.push({x:l.x2,line:l.y,s:l.s2,u:LAY.kind==='radio'&&l.k!=='cue'});
       if(l.num2)it.push({x:L.left-5*L.cw,line:l.y,s:String(l.num2)+'.'});
-      if(l.num&&opt.nums){var ns=L.kind==='multicam'?sceneLetter(l.num):String(l.num);it.push({x:L.left-(ns.length+5)*L.cw,line:l.y,s:ns});it.push({x:L.right+2*L.cw,line:l.y,s:ns})}});
+      if(l.num&&opt.nums){var ns=l.lab||(L.kind==='multicam'?sceneLetter(l.num):String(l.num));it.push({x:L.left-(ns.length+5)*L.cw,line:l.y,s:ns});it.push({x:L.right+2*L.cw,line:l.y,s:ns})}
+      if(l.rev&&opt.revmarks)it.push({x:L.right+7*L.cw,line:l.y,s:'*'});});
     out.push(fix(it))});
   return out}
 function itemY(it){return it.yin!=null?it.yin:LAY.top+it.line*LAY.lh}
@@ -5061,7 +5114,7 @@ function renderSheets(host,sh){
   setLayout();host.textContent='';host.classList.add('pv');
   var L=LAY,px=96,W=L.w*px,H=L.h*px;
   sh.forEach(function(items){
-    var w=h('div',{class:'pv-w'}),pg=h('div',{class:'pv-page'});pg.style.width=W+'px';pg.style.height=H+'px';pg.style.fontSize=(L.fs*96/72)+'px';pg.style.lineHeight=(L.lh*px)+'px';
+    var w=h('div',{class:'pv-w'}),pg=h('div',{class:'pv-page'});pg.style.width=W+'px';pg.style.height=H+'px';if(items.bg){pg.style.background=items.bg;pg.style.color='#000'}pg.style.fontSize=(L.fs*96/72)+'px';pg.style.lineHeight=(L.lh*px)+'px';
     items.forEach(function(it){if(it.ln){var r=h('div',{class:'pv-rule'});r.style.left=it.ln[0]*px+'px';r.style.top=it.ln[1]*px+'px';r.style.width=(it.ln[2]-it.ln[0])*px+'px';pg.append(r);return}
       var d=h('div',{class:'pv-l'+(it.bold?' b':'')+(it.u?' u':'')+(it.it?' i':''),text:it.s});d.style[scriptRTL()?'right':'left']=(it.x*px)+'px';d.style.top=(itemY(it)*px)+'px';
       if(it.fs)d.style.fontSize=(it.fs*96/72)+'px';pg.append(d)});
@@ -5070,41 +5123,54 @@ function renderSheets(host,sh){
 function fitSheets(host){
   Array.prototype.forEach.call(host.children,function(w){var W=+w.dataset.w||816,H=+w.dataset.h||1056,k=Math.min(1,(host.clientWidth||W)/W);w.style.width=(W*k)+'px';w.style.height=(H*k)+'px';if(w.firstChild)w.firstChild.style.transform='scale('+k+')'})}
 function buildPDF(sh,meta){
+  /* Basic tagged PDF: reading order, document language and title, one paragraph tag per text line, rules and tints marked as artifacts.
+     It is not PDF/UA: the standard Courier font is not embedded. */
   if(!LAY)setLayout();
-  var objs=[],n=sh.length,kids=[];
+  var objs=[],n=sh.length,kids=[],tag=meta.tags!==false,lang=scriptRTL()?'ar':'en-US';
   for(var i=0;i<n;i++)kids.push((6+i*2)+' 0 R');
-  objs[1]='<< /Type /Catalog /Pages 2 0 R >>';
+  var INFO=6+n*2,ROOT=INFO+1,DOC=INFO+2,PTREE=INFO+3,next=INFO+4,pRefs=[];
+  objs[1]='<< /Type /Catalog /Pages 2 0 R'+(tag?' /MarkInfo << /Marked true >> /StructTreeRoot '+ROOT+' 0 R /Lang ('+lang+') /ViewerPreferences << /DisplayDocTitle true >>':'')+' >>';
   objs[2]='<< /Type /Pages /Kids ['+kids.join(' ')+'] /Count '+n+' >>';
   objs[3]='<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>';
   objs[4]='<< /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold /Encoding /WinAnsiEncoding >>';
   objs[5]='<< /Type /Font /Subtype /Type1 /BaseFont /Courier-Oblique /Encoding /WinAnsiEncoding >>';
   var PWi=meta.w||LAY.w,PHi=meta.h||LAY.h,PW2=(PWi*72).toFixed(2),PH2=(PHi*72).toFixed(2);
   sh.forEach(function(items,pi){
-    var c='BT\n',g='';
+    var tint=items.bg?pdfRG(items.bg)+' rg 0 0 '+PW2+' '+PH2+' re f 0 g\n':'';
+    var c=(tint?(tag?'/Artifact BMC\n'+tint+'EMC\n':tint):'')+'BT\n',g='',mc=0,refs=[];
     items.forEach(function(it){
       if(it.ln){g+='0.5 w '+(it.ln[0]*72).toFixed(2)+' '+((PHi-it.ln[1])*72).toFixed(2)+' m '+(it.ln[2]*72).toFixed(2)+' '+((PHi-it.ln[3])*72).toFixed(2)+' l S\n';return}
       if(!it.s)return;
       var fs=it.fs||LAY.fs,x=it.x*72,yb=it.yin!=null?(PHi-it.yin)*72:(PHi-itemY(it))*72-fs*0.8;
-      c+='/'+(it.bold?'F2':it.it?'F3':'F1')+' '+fs+' Tf\n1 0 0 1 '+x.toFixed(2)+' '+yb.toFixed(2)+' Tm\n('+winStr(it.s)+') Tj\n';
+      var op='/'+(it.bold?'F2':it.it?'F3':'F1')+' '+fs+' Tf\n1 0 0 1 '+x.toFixed(2)+' '+yb.toFixed(2)+' Tm\n('+winStr(it.s)+') Tj\n';
+      if(tag){c+='/P << /MCID '+mc+' >> BDC\n'+op+'EMC\n';var id=next++;objs[id]='<< /Type /StructElem /S /P /P '+DOC+' 0 R /Pg '+(6+pi*2)+' 0 R /K '+mc+' >>';refs.push(id);mc++}
+      else c+=op;
       if(it.u)g+='0.6 w '+x.toFixed(2)+' '+(yb-1.6).toFixed(2)+' m '+(x+it.s.length*fs*0.6).toFixed(2)+' '+(yb-1.6).toFixed(2)+' l S\n'});
-    c+='ET\n'+g;
-    objs[6+pi*2]='<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+PW2+' '+PH2+'] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents '+(7+pi*2)+' 0 R >>';
+    pRefs.push(refs);
+    c+='ET\n'+(tag&&g?'/Artifact BMC\n'+g+'EMC\n':g);
+    objs[6+pi*2]='<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+PW2+' '+PH2+'] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents '+(7+pi*2)+' 0 R'+(tag?' /StructParents '+pi:'')+' >>';
     objs[7+pi*2]='<< /Length '+c.length+' >>\nstream\n'+c+'\nendstream'});
-  var info=objs.length;objs[info]='<< /Title ('+winStr(meta.title||'')+') /Author ('+winStr(meta.author||'')+') /Creator (Script Room) >>';
-  var out='%PDF-1.4\n%\u00E2\u00E3\u00CF\u00D3\n',offs=[];
-  for(var k=1;k<objs.length;k++){offs[k]=out.length;out+=k+' 0 obj\n'+objs[k]+'\nendobj\n'}
+  objs[INFO]='<< /Title ('+winStr(meta.title||'')+') /Author ('+winStr(meta.author||'')+') /Creator (Script Room) >>';
+  if(tag){
+    var all=[];pRefs.forEach(function(r){r.forEach(function(id){all.push(id+' 0 R')})});
+    objs[ROOT]='<< /Type /StructTreeRoot /K '+DOC+' 0 R /ParentTree '+PTREE+' 0 R /ParentTreeNextKey '+n+' >>';
+    objs[DOC]='<< /Type /StructElem /S /Document /P '+ROOT+' 0 R /K ['+all.join(' ')+'] >>';
+    objs[PTREE]='<< /Nums ['+pRefs.map(function(r,i){return i+' ['+r.map(function(id){return id+' 0 R'}).join(' ')+']'}).join(' ')+'] >>'}
+  else{objs[ROOT]='<< >>';objs[DOC]='<< >>';objs[PTREE]='<< >>'}
+  var out='%PDF-1.4\n%âãÏÓ\n',offs=[];
+  for(var k=1;k<objs.length;k++){if(objs[k]==null)continue;offs[k]=out.length;out+=k+' 0 obj\n'+objs[k]+'\nendobj\n'}
   var xref=out.length;out+='xref\n0 '+objs.length+'\n0000000000 65535 f \n';
   for(k=1;k<objs.length;k++)out+=('0000000000'+offs[k]).slice(-10)+' 00000 n \n';
-  out+='trailer\n<< /Size '+objs.length+' /Root 1 0 R /Info '+info+' 0 R >>\nstartxref\n'+xref+'\n%%EOF\n';
+  out+='trailer\n<< /Size '+objs.length+' /Root 1 0 R /Info '+INFO+' 0 R >>\nstartxref\n'+xref+'\n%%EOF\n';
   var u=new Uint8Array(out.length);for(var j=0;j<out.length;j++)u[j]=out.charCodeAt(j)&255;return u}
 function printHTML(sh){
   setLayout();var L=LAY,rtl=scriptRTL();
   var css='@page{size:'+L.w+'in '+L.h+'in;margin:0}html,body{margin:0;background:#888}.tip{font:14px/1.5 -apple-system,Arial,sans-serif;background:#fffbe6;color:#222;padding:10px 16px;text-align:center}'+
-    '.p{width:'+L.w+'in;height:'+L.h+'in;position:relative;background:#fff;color:#000;margin:0 auto .3in;overflow:hidden;page-break-after:always;break-after:page}'+
+    '.p{width:'+L.w+'in;height:'+L.h+'in;position:relative;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;color:#000;margin:0 auto .3in;overflow:hidden;page-break-after:always;break-after:page}'+
     '.l{position:absolute;white-space:pre;font:'+L.fs+'pt/'+(L.lh)+'in "Courier Prime","Courier New",Courier,monospace}.b{font-weight:700}.u{text-decoration:underline}.i{font-style:italic}.r{position:absolute;border-top:.5pt solid #000;height:0}'+
     '@media print{html,body{background:#fff}.p{margin:0}.tip{display:none}}';
   var tip='<div class="tip">'+xmlEsc('Print on '+L.paperL+' paper ('+L.w+' × '+L.h+' in), scale 100% (Actual size), margins None. Or choose Save as PDF.')+'</div>';
-  var body=sh.map(function(items){return '<div class="p">'+items.map(function(it){
+  var body=sh.map(function(items){return '<div class="p"'+(items.bg?' style="background:'+items.bg+'"':'')+'>'+items.map(function(it){
     if(it.ln)return '<div class="r" style="left:'+it.ln[0]+'in;top:'+it.ln[1]+'in;width:'+(it.ln[2]-it.ln[0]).toFixed(3)+'in"></div>';
     return '<div class="l'+(it.bold?' b':'')+(it.u?' u':'')+(it.it?' i':'')+'" style="'+(rtl?'right':'left')+':'+it.x.toFixed(3)+'in;top:'+itemY(it).toFixed(4)+'in'+(it.fs?';font-size:'+it.fs+'pt':'')+'">'+xmlEsc(it.s)+'</div>'}).join('')+'</div>'}).join('');
   return '<!doctype html><html'+(rtl?' dir="rtl" lang="ar"':'')+'><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+xmlEsc(S.title||'Script')+'</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"><style>'+css+'</style></head><body>'+tip+body+'</body></html>'}
@@ -7241,7 +7307,9 @@ function renderTeam(st){
 function openPrivacy(){modalBox('Privacy',function(box,done){
   box.append(h('p',{text:'Your projects are saved only in this browser on this device. Nobody else can see them, including the people who made Script Room.'}),
     h('p',{text:'When you use an AI feature (suggestions, writing, importing a book, analysing a photo), the text or image goes to the AI you connected, under your own account with that provider and its terms. A local model (Ollama, LM Studio) keeps everything on your computer. Your API key is kept in this browser only, and only if you tick Remember.'}),
-    h('p',{text:'Write together is available when the page is opened on claude.ai: a shared project is stored there and can be opened by anyone who has its code.'}),
+    h('p',{text:'Share and Write together: when you press Share, a copy of that one project is stored on this site so people with the link can open it. The link contains a long random key, and the site keeps only a hash of it.'}),
+    h('p',{text:'Images: when you generate an image, the prompt (and any character photos you chose as references) goes to the image service you picked.'}),
+    h('p',{text:'Connected tools (MCP): when you press Send, the fields you filled in, including any part of the project you chose to fill them with, go to that server. A token is kept in memory unless you tick Remember, and is never put in project files or share links.'}),
     h('p',{text:'Prompts you copy go wherever you paste them. Script Room never connects to your image or video accounts.'}),
     h('p',{class:'hint',text:'Browser storage can be cleared. Keep a project file (Save, then Save project file) for anything important.'}),
     h('div',{class:'bar'},h('button',{type:'button',class:'btn primary',text:'Close',onclick:function(){done(true)}})))})}
@@ -8031,7 +8099,401 @@ function initV3(){
   v2Top();window.addEventListener('resize',v2Top);
   setTimeout(function(){v3Last='';renderNav();v2Top()},50)}
 
-load();initPal();syncMode();renderAll();scheduleSave();initExtras();initShell();initV9Shell();initV10();initV11();initPublic();initAI();initShare();initV2();initV3();initProjects();
+/* ===== V4 =====================================================================
+   1. Script locking, locked scene numbers (5, 5A, 5B) and revision colours (white, blue, pink ...)
+   2. MCP connector (see mod_mcp.js, appended below by make_public.py)
+   3. Keyboard and PDF accessibility leftovers
+   Shares the app's IIFE scope, so functions can be wrapped by reassigning them. */
+
+/* ---------- revisions ---------- */
+var REV_COLORS=[['White','#FFFFFF'],['Blue','#CFE3FA'],['Pink','#F7D3DF'],['Yellow','#F8EDB0'],['Green','#D0ECD5'],['Goldenrod','#EDCF8E'],['Buff','#E8DAC0'],['Salmon','#F7C9BA'],['Cherry','#EBA9B0']];
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function revName(k){return (k>=REV_COLORS.length?'Double ':'')+REV_COLORS[k%REV_COLORS.length][0]}
+function revTint(k){return REV_COLORS[k%REV_COLORS.length][1]}
+function revToday(){var d=new Date();return d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear()}
+function revState(){if(!S.rev)S.rev={locked:false,lockDate:'',nums:[],rounds:[],marks:true};return S.rev}
+var REVCTX=null;
+
+/* One text signature per block. elemsOf() makes exactly one element per block, except for empty action blocks. */
+function revSigs(text){var bs=parseBlocks(text||''),sig=[],heads=[];
+  bs.forEach(function(b){
+    if(b.t==='action'&&!(b.x||'').trim())return;
+    var s;
+    if(b.t==='head')s='H|'+b.x.trim().toUpperCase();
+    else if(b.t==='trans')s='T|'+b.x.trim().toUpperCase();
+    else if(b.t==='action')s='A|'+b.x.replace(/\s+/g,' ').trim();
+    else s='S|'+(b.who||'').toUpperCase()+'|'+(b.ext||'')+'|'+(b.p||'').trim()+'|'+(b.x||'').replace(/\s+/g,' ').trim();
+    sig.push(s);if(b.t==='head')heads.push(b.x.trim().toUpperCase())});
+  return {sig:sig,heads:heads}}
+
+/* For each entry of a, the index of its partner in b (longest common subsequence), or -1. */
+function lcsPairs(a,b){
+  var n=a.length,m=b.length,map=[],i,j;for(i=0;i<n;i++)map.push(-1);
+  var s=0;while(s<n&&s<m&&a[s]===b[s]){map[s]=s;s++}
+  var e=0;while(e<n-s&&e<m-s&&a[n-1-e]===b[m-1-e]){map[n-1-e]=m-1-e;e++}
+  var A=a.slice(s,n-e),B=b.slice(s,m-e),N=A.length,M=B.length;
+  if(!N||!M)return map;
+  if(N*M>4000000){ /* very large rewrite: greedy in-order match instead of a full table */
+    var pos={};B.forEach(function(x,q){(pos[x]=pos[x]||[]).push(q)});var last=-1;
+    A.forEach(function(x,q){var l=pos[x];if(!l)return;for(var z=0;z<l.length;z++){if(l[z]>last){map[s+q]=s+l[z];last=l[z];break}}});
+    return map}
+  var D=[];for(i=0;i<=N;i++)D.push(new Uint16Array(M+1));
+  for(i=N-1;i>=0;i--)for(j=M-1;j>=0;j--)D[i][j]=A[i]===B[j]?D[i+1][j+1]+1:Math.max(D[i+1][j],D[i][j+1]);
+  i=0;j=0;while(i<N&&j<M){if(A[i]===B[j]){map[s+i]=s+j;i++;j++}else if(D[i+1][j]>=D[i][j+1])i++;else j++}
+  return map}
+
+function letterIdx(s){var n=0;for(var i=0;i<s.length;i++)n=n*26+(s.charCodeAt(i)-64);return n}
+function idxLetter(n){var s='';while(n>0){n--;s=String.fromCharCode(65+n%26)+s;n=Math.floor(n/26)}return s}
+/* Labels for the current scene headings: kept from the lock, new scenes get 5A, 5B (or A1 before scene 1). */
+function revLabels(heads){
+  var R=revState(),L=R.nums||[],map=lcsPairs(heads,L.map(function(x){return x.h})),used={},out=[],prev=null;
+  L.forEach(function(x){used[x.n]=1});
+  heads.forEach(function(hd,i){
+    if(map[i]>=0){prev=L[map[i]].n;out.push(prev);return}
+    var lab;
+    if(prev==null){var first=L.length?String(L[0].n).replace(/[A-Z]+$/,''):'1',k=1;do{lab=idxLetter(k++)+first}while(used[lab])}
+    else{var base=String(prev).replace(/[A-Z]+$/,''),suf=String(prev).replace(/^[0-9]+/,''),k2=suf?letterIdx(suf)+1:1;do{lab=base+idxLetter(k2++)}while(used[lab])}
+    used[lab]=1;prev=lab;out.push(lab)});
+  return out}
+
+/* Which round last changed each block of the current text. Round 0 (white) means unchanged since the lock. */
+function revAnalyze(text){
+  var R=revState(),cur=revSigs(text),r=R.rounds.length-1,rv=[],ids=[],i;
+  for(i=0;i<cur.sig.length;i++){rv.push(0);ids.push(i)}
+  var upper=cur.sig;
+  for(var j=r;j>=1;j--){
+    var base=revSigs(R.rounds[j].base).sig,map=lcsPairs(upper,base),nIds=[];
+    for(i=0;i<base.length;i++)nIds.push(-1);
+    for(i=0;i<upper.length;i++){if(map[i]<0){if(ids[i]>=0)rv[ids[i]]=j}else nIds[map[i]]=ids[i]}
+    upper=base;ids=nIds}
+  var counts={};rv.forEach(function(x){counts[x]=(counts[x]||0)+1});
+  return {rv:rv,r:r,labels:R.locked?revLabels(cur.heads):[],counts:counts,scenes:cur.heads.length}}
+
+var _elemsOf4=elemsOf;
+elemsOf=function(bs){var E=_elemsOf4(bs);E.forEach(function(e,k){e.L.forEach(function(l){l.ei=k})});return E};
+var _paginate4=paginate;
+paginate=function(text){
+  var pages=_paginate4(text);
+  if(!REVCTX)return pages;
+  var A=revAnalyze(text);REVCTX.pages=pages;
+  pages.forEach(function(pg){var top=0;
+    pg.forEach(function(l){
+      if(l.ei!=null){var q=A.rv[l.ei]|0;if(q>top)top=q;if(A.r>=1&&q===A.r)l.rev=true}
+      if(l.num&&A.labels[l.num-1]!=null)l.lab=A.labels[l.num-1]});
+    pg.revRound=top});
+  return pages};
+var _sheets4=sheets;
+sheets=function(text,opt){
+  var R=S.rev;
+  if(!(R&&R.locked)||(opt&&opt.rev===false))return _sheets4(text,opt);
+  opt=Object.assign({},opt,{nums:true,revmarks:R.marks!==false});
+  REVCTX={};var out,C;
+  try{out=_sheets4(text,opt)}finally{C=REVCTX;REVCTX=null}
+  if(!C.pages)return out;
+  var off=out.length-C.pages.length;
+  C.pages.forEach(function(pg,i){var k=pg.revRound|0,rd=R.rounds[k],it=out[i+off];
+    if(it&&k>=1&&rd){it.bg=revTint(rd.k);it.push({x:LAY.left,line:-3,s:revName(rd.k)+' Revision '+rd.date})}});
+  return out};
+var _fountainOut4=fountainOut;
+fountainOut=function(text,opt){
+  var f=_fountainOut4(text,opt),R=S.rev;if(!(R&&R.locked))return f;
+  var heads=revSigs(text).heads,labs=revLabels(heads),k=0,lines=f.split('\n');
+  for(var i=0;i<lines.length&&k<heads.length;i++){var ln=lines[i].trim().replace(/^\./,'').replace(/\s+#[^#]+#$/,'');
+    if(ln.toUpperCase()===heads[k]){lines[i]=lines[i].replace(/\s+#[^#]+#\s*$/,'')+' #'+labs[k]+'#';k++}}
+  return lines.join('\n')};
+var _toFDX4=toFDX;
+toFDX=function(text,opt){
+  var x=_toFDX4(text,opt),R=S.rev;if(!(R&&R.locked))return x;
+  var labs=revLabels(revSigs(text).heads),k=0;
+  return x.replace(/<Paragraph Type="Scene Heading"/g,function(){var n=labs[k++];return '<Paragraph Number="'+xmlEsc(n==null?'':n)+'" Type="Scene Heading"'})};
+function pdfRG(hex){var m=/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex||'');if(!m)return '1 1 1';return [1,2,3].map(function(i){return (parseInt(m[i],16)/255).toFixed(3)}).join(' ')}
+
+function revLock(){
+  var R=revState(),T=exportText(),sg=revSigs(T);
+  R.locked=true;R.lockDate=revToday();R.marks=true;
+  R.nums=sg.heads.map(function(hd,i){return {h:hd,n:String(i+1)}});
+  R.rounds=[{k:0,date:R.lockDate,base:T}];
+  scheduleSave()}
+function revStart(){
+  var R=revState(),T=exportText(),A=revAnalyze(T);
+  R.nums=revSigs(T).heads.map(function(hd,i){return {h:hd,n:A.labels[i]}}); /* freeze the numbers new scenes received */
+  var k=R.rounds.length;R.rounds.push({k:k,date:revToday(),base:T});scheduleSave()}
+function revUnlock(){S.rev={locked:false,lockDate:'',nums:[],rounds:[],marks:true};scheduleSave()}
+
+function openRevisions(){openSheet('Revisions and scene numbers',function(st){
+  var R=revState(),T=exportText(),again=drawSheet;
+  st.append(h('p',{class:'info',text:'Locking fixes every scene number so pages printed on different days still match. After that, each round of changes can be printed on coloured pages with a star in the margin beside every changed block.'}));
+  if(!R.locked){
+    st.append(h('div',{class:'v3-card'},h('h3',{text:'The script is not locked'}),
+      h('p',{text:'Scenes are numbered 1, 2, 3 in the order they stand now. Add a scene later and it becomes 5A. Delete one and the others keep their numbers.'}),
+      h('p',{text:revSigs(T).heads.length+(revSigs(T).heads.length===1?' scene would be numbered.':' scenes would be numbered.')}),
+      h('div',{class:'v3-card-b'},h('button',{type:'button',class:'btn primary',text:'Lock the script',disabled:!revSigs(T).heads.length,onclick:function(){
+        askIn('Lock scene numbers now? You can unlock later, but unlocking clears the revision history.','Lock').then(function(ok){if(ok){revLock();again();toast('Script locked. Scenes are numbered.')}})}}))));
+    if(!revSigs(T).heads.length)st.append(h('p',{class:'note',text:'There are no scene headings yet. Write or generate some scenes first.'}));
+    return}
+  var A=revAnalyze(T),last=R.rounds.length-1;
+  var card=h('div',{class:'v3-card'},h('h3',{text:'Locked on '+R.lockDate}),
+    h('p',{text:A.scenes+(A.scenes===1?' scene numbered. ':' scenes numbered. ')+(last===0?'All pages are white. Changes are not marked until you start a revision.':revName(R.rounds[last].k)+' revision in progress.')}));
+  var ul=h('ul',{class:'rv-list'});
+  R.rounds.forEach(function(rd,j){
+    var txt=j===0?'White. The locked script, '+rd.date:revName(rd.k)+' revision, started '+rd.date+' · '+(A.counts[j]||0)+' changed '+((A.counts[j]||0)===1?'block':'blocks')+(j===last?' (current)':'');
+    ul.append(h('li',null,h('span',{class:'rv-sw','aria-hidden':'true',style:'background:'+revTint(rd.k)}),h('span',{text:txt})))});
+  card.append(ul);
+  var nx=revName(R.rounds.length);
+  card.append(h('div',{class:'v3-card-b'},
+    h('button',{type:'button',class:'btn primary',text:'Start the '+nx+' revision',onclick:function(){
+      askIn('Start the '+nx+' revision? Everything you change from now on is marked as '+nx+'. The current text becomes the starting point.','Start').then(function(ok){if(ok){revStart();again();toast(nx+' revision started.')}})}}),
+    h('button',{type:'button',class:'btn','aria-pressed':R.marks!==false?'true':'false',text:R.marks!==false?'Margin stars: on':'Margin stars: off',onclick:function(){R.marks=R.marks===false;scheduleSave();again()}}),
+    h('button',{type:'button',class:'btn',text:'Preview the pages',onclick:function(){S.exp.pv=true;scheduleSave();closeSheet();var b=document.getElementById('btnExport');if(b)b.click()}}),
+    h('button',{type:'button',class:'btn ghost',text:'Unlock',onclick:function(){
+      askIn('Unlock the script? Scene numbers go back to 1, 2, 3 and the revision history is deleted.','Unlock').then(function(ok){if(ok){revUnlock();again();toast('Script unlocked.')}})}})));
+  st.append(card);
+  var det=h('details',{class:'v3-about'},h('summary',{text:'Scene numbers now ('+A.scenes+')'}));
+  var ol=h('ol',{class:'rv-nums'});revSigs(T).heads.forEach(function(hd,i){ol.append(h('li',null,h('b',{text:A.labels[i]+'  '}),h('span',{text:hd})))});
+  det.append(ol);st.append(det);
+  st.append(h('p',{class:'note',text:'What carries into exports: scene numbers appear on the page preview, the PDF and the print page, in Fountain as #5A#, and in Final Draft files as scene numbers. Page colours and stars appear on the preview, the PDF and the print page. A whole changed block is starred, not single words. Final Draft revision marks and Fountain have no revision colours, so those files carry numbers only.'}))})}
+
+var _stepReview4=stepReview;
+stepReview=function(p){_stepReview4(p);
+  var g=p.querySelector('.v3-cards');if(!g)return;var R=S.rev,last=R&&R.locked?R.rounds.length-1:-1;
+  var c=h('div',{class:'v3-card'},h('h3',{text:'Lock and revisions'}),
+    h('p',{text:R&&R.locked?'Locked. '+(last===0?'All pages white.':revName(R.rounds[last].k)+' revision in progress.'):'Fix the scene numbers and print each round of changes on coloured pages.'}),
+    h('div',{class:'v3-card-b'},h('button',{type:'button',class:'btn',text:'Open revisions',onclick:openRevisions})));
+  g.insertBefore(c,g.children[2]||null)};
+var _renderXC4=renderXC;
+renderXC=function(st){_renderXC4(st);
+  if(xc.tab==='script')st.append(h('div',{class:'bar'},h('button',{type:'button',class:'btn',text:(S.rev&&S.rev.locked?'Revisions and scene numbers (locked)':'Lock script, revisions and scene numbers'),onclick:openRevisions})))};
+
+var V4CSS='.seg button[role=tab][aria-selected="true"]{background:var(--seg-on);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.04)}.rv-list{list-style:none;margin:6px 0;padding:0;display:grid;gap:6px}.rv-list li{display:flex;gap:10px;align-items:center}.rv-sw{width:22px;height:22px;border-radius:6px;border:1px solid var(--ink-2);flex:none}.rv-nums{margin:6px 0;padding-inline-start:0;list-style:none;display:grid;gap:3px;font-family:var(--f-script)}\n';
+
+/* ---------- tab lists: roving tabindex, aria-selected, focus kept after a redraw ---------- */
+var v4TabQ=0;
+function v4NormTabs(){v4TabQ=0;
+  [].forEach.call(document.querySelectorAll('[role=tablist]'),function(list){
+    var tabs=[].filter.call(list.querySelectorAll('[role=tab]'),function(x){return x.closest('[role=tablist]')===list});
+    if(!tabs.length)return;
+    tabs.forEach(function(t){
+      if(t.hasAttribute('aria-pressed')){if(!t.hasAttribute('aria-selected'))t.setAttribute('aria-selected',t.getAttribute('aria-pressed'));t.removeAttribute('aria-pressed')}});
+    var sel=tabs.filter(function(t){return t.getAttribute('aria-selected')==='true'})[0]||tabs[0];
+    tabs.forEach(function(t){var want=t===sel?'0':'-1';if(t.getAttribute('tabindex')!==want)t.setAttribute('tabindex',want)})})}
+function v4WatchTabs(){
+  var mo=new MutationObserver(function(){if(v4TabQ)return;v4TabQ=requestAnimationFrame(v4NormTabs)});
+  mo.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-selected','aria-pressed']});
+  /* arrow keys redraw some tab lists from scratch, which drops focus: put it back on the same tab */
+  document.addEventListener('keydown',function(e){
+    if(!/^(ArrowLeft|ArrowRight|Home|End)$/.test(e.key))return;
+    var t=e.target&&e.target.closest&&e.target.closest('[role=tab]');if(!t)return;
+    setTimeout(function(){
+      var sel=document.querySelector('[role=tablist] [role=tab][aria-selected=true]');
+      var ae=document.activeElement;if(ae&&ae!==document.body&&ae.getAttribute&&ae.getAttribute('role')==='tab')return;
+      if(sel)sel.focus()},80)},true);
+  v4NormTabs()}
+function initV4(){
+  if(document.getElementById('v4css'))return;
+  var st=document.createElement('style');st.id='v4css';st.textContent=V4CSS+(typeof MCPCSS==='string'?MCPCSS:'');document.head.append(st);v4WatchTabs()}
+
+/* ===== V4: connect other tools (MCP over HTTP) ==================================
+   A small MCP client for the browser. It speaks the "Streamable HTTP" transport: JSON-RPC 2.0 over POST,
+   answered either as JSON or as a server-sent-event stream. It lists a server's tools, builds a form from each
+   tool's input schema and shows the real answer. It does nothing on its own: every call is a button press,
+   and you see which part of the project would be sent before it goes.
+   Not supported: servers that run as a local process (stdio) and need a bridge, and servers that do not
+   allow web pages to call them (CORS). The page cannot work around either, so it says so. */
+var MCPK='scriptroom.mcp';
+var mcp={servers:null,cur:null,tools:null,busy:false,err:'',note:'',tool:'',args:{},fill:{},res:null,add:{name:'',url:'',token:'',remember:false}};
+function mcpServers(){if(mcp.servers)return mcp.servers;var o=null;try{o=JSON.parse(localStorage.getItem(MCPK)||'null')}catch(e){}
+  mcp.servers=((o&&o.servers)||[]).map(function(s){return {id:s.id,name:s.name,url:s.url,token:s.token||'',remember:!!s.remember}});return mcp.servers}
+function mcpSave(){try{localStorage.setItem(MCPK,JSON.stringify({servers:mcpServers().map(function(s){return {id:s.id,name:s.name,url:s.url,token:s.remember?s.token:'',remember:!!s.remember}})}))}catch(e){}}
+function mcpUrlOK(u){try{var x=new URL(u);if(x.protocol==='https:')return true;return x.protocol==='http:'&&/^(localhost|127\.0\.0\.1|\[::1\])$/.test(x.hostname)}catch(e){return false}}
+function mcpHost(u){try{return new URL(u).host}catch(e){return u}}
+
+var mcpSeq=1;
+function mcpReadSSE(res,id){
+  var rd=res.body.getReader(),dec=new TextDecoder(),buf='';
+  function pump(){return rd.read().then(function(r){
+    if(r.done)throw {code:'closed'};
+    buf+=dec.decode(r.value,{stream:true}).replace(/\r\n/g,'\n');
+    var parts=buf.split('\n\n');buf=parts.pop();
+    for(var i=0;i<parts.length;i++){
+      var data=parts[i].split('\n').filter(function(l){return l.indexOf('data:')===0}).map(function(l){return l.slice(5).replace(/^ /,'')}).join('\n');
+      if(!data)continue;var m;try{m=JSON.parse(data)}catch(e){continue}
+      var list=Array.isArray(m)?m:[m];
+      for(var k=0;k<list.length;k++)if(list[k]&&list[k].id===id&&(list[k].result!==undefined||list[k].error)){try{rd.cancel()}catch(e){}return list[k]}}
+    return pump()})}
+  return pump()}
+function mcpFetch(srv,body,wantReply,ms){
+  var ac=new AbortController(),to=setTimeout(function(){ac.abort()},ms||45000);
+  var hd={'Content-Type':'application/json','Accept':'application/json, text/event-stream'};
+  if(srv.token)hd.Authorization=/^[A-Za-z]+ /.test(srv.token)?srv.token:'Bearer '+srv.token;
+  if(srv.sid)hd['Mcp-Session-Id']=srv.sid;
+  if(srv.proto)hd['MCP-Protocol-Version']=srv.proto;
+  return fetch(srv.url,{method:'POST',headers:hd,body:JSON.stringify(body),credentials:'omit',cache:'no-store',signal:ac.signal}).then(function(res){
+    var sid=res.headers.get('Mcp-Session-Id');if(sid)srv.sid=sid;
+    if(!res.ok)return res.text().then(function(t){throw {code:'http',status:res.status,text:t}});
+    if(!wantReply)return null;
+    var ct=(res.headers.get('Content-Type')||'').toLowerCase();
+    if(ct.indexOf('text/event-stream')>-1)return mcpReadSSE(res,body.id);
+    return res.json()}).then(function(m){clearTimeout(to);return m},function(e){clearTimeout(to);
+    if(e&&e.code)throw e;if(e&&e.name==='AbortError')throw {code:'timeout'};throw {code:'network'}})}
+function mcpRpc(srv,method,params,ms){var id=mcpSeq++;
+  return mcpFetch(srv,{jsonrpc:'2.0',id:id,method:method,params:params||{}},true,ms).then(function(m){
+    if(Array.isArray(m))m=m.filter(function(x){return x&&x.id===id})[0];
+    if(!m)throw {code:'empty'};if(m.error)throw {code:'rpc',rpc:m.error};return m.result})}
+function mcpListTools(srv){var all=[];
+  function page(cur){return mcpRpc(srv,'tools/list',cur?{cursor:cur}:{}).then(function(r){all=all.concat(r.tools||[]);if(r.nextCursor&&all.length<500&&all.length)return page(r.nextCursor);return all})}
+  return page('')}
+function mcpConnect(srv){srv.sid='';srv.proto='';srv.info=null;
+  return mcpRpc(srv,'initialize',{protocolVersion:'2025-06-18',capabilities:{},clientInfo:{name:'Script Room',version:'4'}}).then(function(r){
+    srv.proto=(r&&r.protocolVersion)||'2025-06-18';srv.info=(r&&r.serverInfo)||{};
+    return mcpFetch(srv,{jsonrpc:'2.0',method:'notifications/initialized'},false)}).then(function(){return mcpListTools(srv)})}
+function mcpErrText(e){e=e||{};
+  switch(e.code){
+    case 'network':return 'Could not reach the server. Check the address and that the server is running. If it is running, it may not allow web pages to call it (CORS). This page cannot get around that.';
+    case 'timeout':return 'The server did not answer in time.';
+    case 'http':return 'The server answered with status '+e.status+(e.status===401||e.status===403?' (not allowed: check the token)':e.status===404?' (nothing at this address)':'')+(e.text?': '+String(e.text).replace(/\s+/g,' ').slice(0,160):'.');
+    case 'rpc':return 'The server reported an error: '+((e.rpc&&e.rpc.message)||'unknown')+(e.rpc&&e.rpc.code!=null?' (code '+e.rpc.code+')':'');
+    case 'closed':return 'The server closed the connection without an answer.';
+    case 'empty':return 'The server sent no answer to this request.';
+    default:return 'Something went wrong talking to the server.'}}
+
+/* what the project can fill into a text field */
+var MCP_FILLS=[['','I will type it'],['fountain','Script as Fountain text'],['plain','Script as plain text'],['title','Title'],['logline','Logline'],['cast','Character names']];
+function mcpFillVal(k){
+  try{
+    if(k==='fountain')return fountainOut(exportText(),{});
+    if(k==='plain')return exportText();
+    if(k==='title')return S.title||'';
+    if(k==='logline')return S.logline||'';
+    if(k==='cast')return namedChars().map(nm).join(', ')}catch(e){}
+  return ''}
+function mcpFillLabel(k){var f=MCP_FILLS.filter(function(x){return x[0]===k})[0];return f?f[1].toLowerCase():k}
+function mcpResultText(r){
+  var out=[];
+  if(r&&Array.isArray(r.content))r.content.forEach(function(c){
+    if(c.type==='text')out.push(c.text);
+    else if(c.type==='resource'&&c.resource&&c.resource.text)out.push(c.resource.text);
+    else out.push('['+(c.type||'content')+' not shown here]')});
+  if(!out.length&&r&&r.structuredContent)out.push(JSON.stringify(r.structuredContent,null,2));
+  return out.join('\n\n')}
+
+function mcpField(prop,key,req,idp){
+  var id=idp+key,sch=prop||{},type=Array.isArray(sch.type)?sch.type[0]:sch.type,wrap=h('div',{class:'field'}),ctl;
+  var lab=key+(req?' (required)':'');
+  if(sch.enum&&sch.enum.length){ctl=h('select',{id:id});ctl.append(h('option',{value:'',text:'Choose'}));sch.enum.forEach(function(v){ctl.append(h('option',{value:String(v),text:String(v)}))});
+    ctl.value=mcp.args[key]!=null?String(mcp.args[key]):'';ctl.addEventListener('change',function(){mcp.args[key]=ctl.value===''?undefined:ctl.value})}
+  else if(type==='boolean'){ctl=h('input',{id:id,type:'checkbox'});ctl.checked=!!mcp.args[key];ctl.addEventListener('change',function(){mcp.args[key]=ctl.checked})}
+  else if(type==='number'||type==='integer'){ctl=h('input',{id:id,type:'number',step:type==='integer'?'1':'any'});ctl.value=mcp.args[key]!=null?mcp.args[key]:'';
+    ctl.addEventListener('input',function(){mcp.args[key]=ctl.value===''?undefined:Number(ctl.value)})}
+  else if(type==='string'||!type){
+    ctl=h('textarea',{id:id,rows:2});ctl.value=mcp.args[key]!=null?String(mcp.args[key]):'';
+    ctl.addEventListener('input',function(){mcp.args[key]=ctl.value;mcp.fill[key]=''})}
+  else{ctl=h('textarea',{id:id,rows:3,placeholder:'JSON, for example {"a":1}'});ctl.value=mcp.args[key]!=null?(typeof mcp.args[key]==='string'?mcp.args[key]:JSON.stringify(mcp.args[key])):'';
+    ctl.addEventListener('input',function(){mcp.args[key]=ctl.value===''?undefined:ctl.value;mcp.jsonKeys=mcp.jsonKeys||{};mcp.jsonKeys[key]=1})}
+  wrap.append(h('label',{class:'lbl','for':id,text:lab}));
+  if(sch.description)wrap.append(h('p',{class:'hint',text:sch.description}));
+  wrap.append(ctl);
+  if((type==='string'||!type)&&!(sch.enum&&sch.enum.length)){
+    var sid=id+'-fill',fs=h('select',{id:sid,'aria-label':'Fill '+key+' from the project'});
+    MCP_FILLS.forEach(function(f){fs.append(h('option',{value:f[0],text:f[1]}))});fs.value=mcp.fill[key]||'';
+    fs.addEventListener('change',function(){mcp.fill[key]=fs.value;if(fs.value){mcp.args[key]=mcpFillVal(fs.value);ctl.value=mcp.args[key]}});
+    wrap.append(h('div',{class:'row'},h('label',{class:'hint','for':sid,text:'Fill from the project: '}),fs))}
+  return wrap}
+
+function mcpBuildArgs(tool){
+  var sc=(tool.inputSchema&&tool.inputSchema.properties)||{},req=(tool.inputSchema&&tool.inputSchema.required)||[],out={},bad=null;
+  Object.keys(sc).forEach(function(k){
+    var v=mcp.args[k],type=Array.isArray(sc[k].type)?sc[k].type[0]:sc[k].type;
+    if(v===undefined||v===''){if(req.indexOf(k)>-1&&type!=='boolean')bad='"'+k+'" is required.';return}
+    if(type==='object'||type==='array'){try{out[k]=typeof v==='string'?JSON.parse(v):v}catch(e){bad='"'+k+'" is not valid JSON.'}return}
+    out[k]=v});
+  return {args:out,bad:bad}}
+
+function openMCP(){openSheet('Connect other tools',function(st){
+  var servers=mcpServers(),again=drawSheet;
+  st.append(h('p',{class:'info',text:'Connect an MCP server to use its tools with your project, for example a screenplay formatter or analyser. Nothing is sent until you press Send, and you see what goes first.'}));
+  st.append(h('details',{class:'v3-about'},h('summary',{text:'What works and what does not'}),h('div',{class:'v3-ab-b'},
+    h('p',{text:'Works: servers that are reachable over HTTP at an address you have (Streamable HTTP, answering as JSON or as an event stream). That includes servers on your own computer, at http://localhost.'}),
+    h('p',{text:'Does not work from a web page: servers that only run as a program on your computer (stdio) unless something turns them into an HTTP address, and servers that do not allow web pages to call them (CORS). The page will tell you if that is the problem.'}),
+    h('p',{text:'The AI in this app does not call these tools by itself. You choose the tool, fill the fields and press Send.'}))));
+  /* list */
+  var box=h('div',{class:'v3-card'},h('h3',{text:'Your servers'}));
+  if(!servers.length)box.append(h('p',{text:'None yet. Add one below.'}));
+  var ul=h('ul',{class:'rv-list mcp-list'});
+  servers.forEach(function(s){
+    var on=mcp.cur&&mcp.cur.id===s.id;
+    ul.append(h('li',null,h('span',{text:s.name+' · '+mcpHost(s.url)+(on&&mcp.tools?' · '+mcp.tools.length+(mcp.tools.length===1?' tool':' tools'):'')}),
+      h('button',{type:'button',class:'btn sm'+(on?'':' primary'),disabled:mcp.busy,text:on?'Reconnect':'Connect','aria-label':(on?'Reconnect ':'Connect to ')+s.name,onclick:function(){mcpDoConnect(s,again)}}),
+      h('button',{type:'button',class:'btn sm ghost','aria-label':'Remove '+s.name,text:'Remove',onclick:function(){
+        mcp.servers=servers.filter(function(x){return x.id!==s.id});if(on){mcp.cur=null;mcp.tools=null;mcp.res=null}mcpSave();again()}})))});
+  box.append(ul);st.append(box);
+  if(mcp.err)st.append(h('p',{class:'err',role:'alert',text:mcp.err}));
+  if(mcp.note)st.append(h('p',{class:'note',role:'status',text:mcp.note}));
+  /* add */
+  var ad=h('div',{class:'v3-card'},h('h3',{text:'Add a server'}));
+  function inp(id,label,key,type,ph,hint){var i=h('input',{id:id,type:type||'text',placeholder:ph||'',autocomplete:'off'});i.value=mcp.add[key];i.addEventListener('input',function(){mcp.add[key]=i.value});
+    return h('div',{class:'field'},h('label',{class:'lbl','for':id,text:label}),i,hint?h('p',{class:'hint',text:hint}):null)}
+  ad.append(inp('mcp-name','Name','name','text','For example My screenplay tools'),
+    inp('mcp-url','Address','url','url','https://example.com/mcp','Must start with https://, or http://localhost for a server on this computer.'),
+    inp('mcp-tok','Token (optional)','token','password','','Only if the server asks for one. It is sent to that server and nowhere else.'));
+  var rem=h('input',{id:'mcp-rem',type:'checkbox'});rem.checked=mcp.add.remember;rem.addEventListener('change',function(){mcp.add.remember=rem.checked});
+  ad.append(h('div',{class:'field'},h('label',{'for':'mcp-rem',class:'mcp-chk'},rem,h('span',{text:'Remember the token on this device (stored as plain text in this browser)'}))));
+  ad.append(h('div',{class:'v3-card-b'},h('button',{type:'button',class:'btn primary',text:'Add and connect',onclick:function(){
+    var a=mcp.add;if(!a.name.trim()){mcp.err='Give the server a name.';return again()}
+    if(!mcpUrlOK(a.url.trim())){mcp.err='The address must start with https://, or be http://localhost for this computer.';return again()}
+    var s={id:'m'+Date.now().toString(36),name:a.name.trim(),url:a.url.trim(),token:a.token.trim(),remember:a.remember};
+    mcpServers().push(s);mcp.add={name:'',url:'',token:'',remember:false};mcp.err='';mcpSave();mcpDoConnect(s,again)}})));
+  st.append(ad);
+  /* tools */
+  if(mcp.cur&&mcp.tools){
+    var tb=h('div',{class:'v3-card'},h('h3',{text:'Tools on '+mcp.cur.name}));
+    if(!mcp.tools.length)tb.append(h('p',{text:'This server connected but lists no tools.'}));
+    else{
+      var sel=h('select',{id:'mcp-tool'});sel.append(h('option',{value:'',text:'Choose a tool'}));
+      mcp.tools.forEach(function(t){sel.append(h('option',{value:t.name,text:t.title||t.name}))});sel.value=mcp.tool;
+      sel.addEventListener('change',function(){mcp.tool=sel.value;mcp.args={};mcp.fill={};mcp.res=null;mcp.jsonKeys={};again();setTimeout(function(){var s2=document.getElementById('mcp-tool');if(s2)s2.focus()},30)});
+      tb.append(h('div',{class:'field'},h('label',{class:'lbl','for':'mcp-tool',text:'Tool'}),sel));
+      var tool=mcp.tools.filter(function(t){return t.name===mcp.tool})[0];
+      if(tool){
+        if(tool.description)tb.append(h('p',{text:tool.description}));
+        var an=tool.annotations||{};
+        if(an.destructiveHint===true)tb.append(h('p',{class:'note',text:'This tool says it can change or delete things on the server.'}));
+        var props=(tool.inputSchema&&tool.inputSchema.properties)||{},req=(tool.inputSchema&&tool.inputSchema.required)||[];
+        Object.keys(props).forEach(function(k){tb.append(mcpField(props[k],k,req.indexOf(k)>-1,'mcpf-'))});
+        if(!Object.keys(props).length)tb.append(h('p',{class:'hint',text:'This tool takes no fields.'}));
+        tb.append(h('div',{class:'v3-card-b'},h('button',{type:'button',class:'btn primary',disabled:mcp.busy,text:mcp.busy?'Waiting for the server…':'Send',onclick:function(){mcpSend(tool,again)}})))}}
+    st.append(tb)}
+  if(mcp.res){
+    var rs=h('div',{class:'v3-card',role:'region','aria-label':'Answer from the server'},h('h3',{text:mcp.res.isError?'The tool reported an error':'Answer from the server'}));
+    var txt=mcpResultText(mcp.res);
+    rs.append(h('pre',{class:'mcp-out',tabindex:'0',text:txt||'(no text in the answer)'}));
+    var bt=h('div',{class:'v3-card-b'},h('button',{type:'button',class:'btn',text:'Copy',onclick:function(){copy(txt)}}));
+    if(txt.trim())bt.append(h('button',{type:'button',class:'btn',text:'Open in Import',onclick:function(){
+      imp.text=txt;imp.name='Answer from '+(mcp.cur?mcp.cur.name:'a tool');imp.kind=looksLikeScript(txt)?'script':'prose';imp.words=words(txt);imp.err='';openImport()}}));
+    rs.append(bt);st.append(rs)}
+  })}
+function mcpDoConnect(s,again){
+  mcp.busy=true;mcp.err='';mcp.note='Connecting to '+s.name+'…';mcp.res=null;again();
+  mcpConnect(s).then(function(tools){mcp.cur=s;mcp.tools=tools;mcp.tool='';mcp.args={};mcp.fill={};mcp.busy=false;
+      mcp.note='Connected to '+((s.info&&s.info.name)||s.name)+'. '+tools.length+(tools.length===1?' tool found.':' tools found.');again()},
+    function(e){mcp.busy=false;mcp.cur=null;mcp.tools=null;mcp.note='';mcp.err=mcpErrText(e);again()})}
+function mcpSend(tool,again){
+  var b=mcpBuildArgs(tool);if(b.bad){mcp.err=b.bad;again();return}
+  var parts=Object.keys(b.args).map(function(k){var v=b.args[k],f=mcp.fill[k];
+    return k+': '+(f?mcpFillLabel(f)+' ('+(typeof v==='string'?words(v)+' words':'')+')':typeof v==='string'?(v.length>40?v.slice(0,40)+'…':v):JSON.stringify(v).slice(0,40))});
+  var msg='Send to '+mcpHost(mcp.cur.url)+' ('+mcp.cur.name+')?\n'+(parts.length?parts.join('\n'):'No fields.');
+  askIn(msg,'Send').then(function(ok){if(!ok)return;
+    mcp.busy=true;mcp.err='';mcp.note='';mcp.res=null;again();
+    mcpRpc(mcp.cur,'tools/call',{name:tool.name,arguments:b.args},120000).then(function(r){mcp.busy=false;mcp.res=r||{};again();setTimeout(function(){var el=document.querySelector('.mcp-out');if(el)el.focus()},40)},
+      function(e){mcp.busy=false;mcp.err=mcpErrText(e);again()})})}
+var _stepReview5=stepReview;
+stepReview=function(p){_stepReview5(p);
+  var g=p.querySelector('.v3-cards');if(!g)return;
+  var c=h('div',{class:'v3-card'},h('h3',{text:'Other tools'}),h('p',{text:'Connect an MCP server, for example a screenplay formatter or analyser, and use its tools with this project.'}),
+    h('div',{class:'v3-card-b'},h('button',{type:'button',class:'btn',text:'Connect tools',onclick:openMCP})));
+  g.insertBefore(c,g.children[4]||null)};
+var MCPCSS='.mcp-chk{display:flex;gap:8px;align-items:center}.askbx p{white-space:pre-line}.mcp-list li{flex-wrap:wrap}.mcp-list li>span{flex:1;min-width:12ch}.mcp-out{white-space:pre-wrap;word-break:break-word;max-height:50vh;overflow:auto;background:var(--fill-2);border-radius:10px;padding:10px 12px;font:13px/1.45 var(--f-script);margin:0}\n';
+
+load();initPal();syncMode();renderAll();scheduleSave();initExtras();initShell();initV9Shell();initV10();initV11();initPublic();initAI();initShare();initV2();initV3();initV4();initProjects();
 
 function localDownloads(){return {save:async function(r){var b=r.data instanceof Blob?r.data:new Blob([r.data],{type:'application/octet-stream'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=r.filename;document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);return {status:'saved'}}}}
 function adapterSample(){var A=window.ScriptRoomAI;if(!A||typeof A.sample!=='function')return null;
