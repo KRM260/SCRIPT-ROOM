@@ -6,6 +6,14 @@ Script Room is one web page. No account and no build step. Projects stay in your
 
 The first screen asks for the interface language: **English, العربية or Deutsch**. You can change it later from the View menu.
 
+## What is new in V5
+
+- **Storyboard frames redrawn as pencil sketches** (second pass: pencil shading, cross-hatching, paper grain and a vignette; faces with eyes, nose, lips and hair strands; exterior scenes get a skyline with windows, a road with lamp posts and passers-by, interiors get a door, window, table and floor perspective). Every shot now shows a panel in the style of a hand-drawn storyboard instead of a diagram: a person with a face, hair and jacket (a stand-in person when the scene has no cast yet), drawn at the right size for the shot, with the horizon at the camera's eye height and a skyline, mountains, street or room behind them. Extreme close-ups show one large eye; top views show a tiled floor; low, high and Dutch angles change the perspective; over-the-shoulder, two-shot, group and POV frames are drawn too. The label names the shot size in capitals with its short code (WS, MCU...).
+- The guides stay: dashed lines for the rule of thirds, small blue marks on the frame edges for the eye line, a blue arrow for where a person looks and blue arrows for camera moves.
+- **Pencil look for Generate image.** Shots → Look, studio & export has a button that fills Look and Never for a pencil storyboard; the image prompt then starts with "Pencil storyboard panel". Not tested with a real image generator.
+- No library is used. The pencil wobble is an SVG filter and the shading is a hatch pattern, so the page stays one file and works offline. Each panel is drawn the same way every time.
+- What it is not: it is a stylised pencil sketch, not a drawing of your actual actors or locations. For that, use Generate image or Use my image on a shot.
+
 ## What is new in V4
 
 V4 keeps everything in V3 and adds three things that working screenwriters ask for, plus accessibility work that was left over.
