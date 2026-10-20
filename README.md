@@ -6,6 +6,15 @@ Script Room is one web page. No account and no build step. Projects stay in your
 
 The first screen asks for the interface language: **English, العربية or Deutsch**. You can change it later from the View menu.
 
+## What is new in V2
+
+- **AI usage** (left menu, under Tools): requests, estimated tokens and images per project, per provider and model, and per day. Counted on your device only. Token numbers are estimates (about 4 characters per token); your provider's dashboard has the exact figure. Free and paid providers are labelled.
+- **Shot list opens as a Storyboard.** Each box shows one shot with a bigger sketch, the shot size, angle and movement in plain words, and a short "How to read this storyboard" guide. Technical details (lens, rig, abbreviations) are under "Camera details". The List view is one click away. Shot presets fold away once you have shots.
+- **Images and video tools**: the fal.ai entry now explains what fal.ai is (pay-as-you-go, no permanent free plan). A new panel explains that Kling, Hailuo and Higgsfield are video tools: Script Room writes their prompts (Higgsfield is a new prompt target) and you paste them into the tool. Free-tier figures in that panel were reported in September 2026 and are labelled as possibly out of date.
+- **Arabic and German** now cover the landing cards, the shot board, the planner, export and the new panels. Machine-assisted translations: please have a native speaker review them.
+- **Workspace bar** under the toolbar: Plan, Cards, Script, Shots and Stats, one click each. Stats shows scene, character and dialogue-word counts, a per-scene navigator, a timeline of estimated scene lengths, a relationship diagram drawn from the Bonds step, a locations summary and who speaks most. Length figures are estimates from word count (about 175 words a minute).
+- Script Room does **not** generate video itself.
+
 ## Use any AI
 
 Click **Connect AI** in the toolbar and pick a provider. Your key stays in your browser.
